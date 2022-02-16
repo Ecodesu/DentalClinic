@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 1vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dr_bg1.gif);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+  /* START of LOGIN BTN */
+  .login-btn{
+    background: WHITE;
+    padding: 6px 15px;
+    border: 2px solid #507973;
+    border-radius: 5px;
+  }
+  .login-button a{
+    color: #065446;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 25px;
+    text-decoration: none;
+  }
+  .login-button a:hover{
+    background: #507973;
+    color: #FFFFFF; 
+    border: 2px solid #507973;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    box-shadow: 0 2px 2px rgba(0,0,0,.1) inset;
+    text-shadow: none;
+  }
+  /* END of LOGIN BTN */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+.content .link-boxes .box .link_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  position: relative;
+}
+.link-boxes .box .link_name::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 35px;
+  background: #fff;
+}
+.content .link-boxes .box li{
+  margin: 6px 0;
+  list-style: none;
+}
+.content .link-boxes .box li a{
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.4s ease
+}
+.content .link-boxes .box li p{
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: -3px;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.4s ease
+}
+.content .link-boxes .box li a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    padd
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  /*END of FOOTER*/
+
+        /*START OF CONTACT US */
+      .contact-us {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      }
+      .contact-container{
+      background-color:white;
+      width: 70%;
+      border-radius: 6px;
+      padding: 20px 20px 20px 20px;
+      text-align: center;
+      display: inline-block;
+      margin-bottom: 30px;
+      }
+      .contact-container h2{
+      font-size: 50px;
+      font-weight: 800; 
+      color: #333;  
+      }
+      .contact-container h2 span{
+      color: #507973;
+      }
+      .contact-container .content{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      }
+      .contact-container .content .left-side{
+      width: 25%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      position: relative;
+      }
+      .content .left-side::before{
+      content: '';
+      position: absolute;
+      height: 70%;
+      width: 2px;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #507973;
+      }
+      .content .left-side .details{
+      margin: 14px;
+      text-align: center;
+      }
+      .content .left-side .details i{
+      font-size: 30px;
+      color: #86B170;
+      margin-bottom: 10px;
+      }
+      .content .left-side .details .topic{
+      font-size: 18px;
+      font-weight: 500;
+      }
+      .content .left-side .details .text-one,
+      .content .left-side .details .text-two{
+      font-size: 14px;
+      color: #afafb6;
+      }
+      .contact-container .content .right-side{
+      width: 75%;
+      margin-left: 75px;
+      }
+      .content .right-side .topic-text{
+      font-size: 23px;
+      font-weight: 600;
+      color: #507973;
+      text-align: left;
+      margin-bottom: 20px;
+      }
+      .right-side .input-box{
+      height: 40px;
+      width: 100%;
+      margin: 5px 0;
+      }
+      .right-side .input-box input,
+      .right-side .input-box textarea{
+      height: 100%;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      background: #FFF;
+      border-radius: 6px;
+      padding: 0 15px;
+      resize: none;
+      color: grey;
+      border-color: black;
+      border-width: 1px;
+      }
+      .right-side .message-box{
+      min-height: 110px;
+      background: #FFF;
+      }
+      .right-side .input-box textarea{
+      padding-top: 6px;
+      }
+      .right-side .button{
+      display: inline-block;
+      margin-top: 12px;
+      float: right;
+      }
+      .right-side .button input[type="button"]{
+      color: #fff;
+      font-size: 18px;
+      outline: none;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: #86B170;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      }
+      .button input[type="button"]:hover{
+      background: #507973;
+      }
+      @media (max-width: 950px) {
+      .contact-container{
+      width: 100%;
+      padding: 30px 40px 40px 35px ;
+      }
+      .contact-container .content .right-side{
+      width: 75%;
+      margin-left: 55px;
+      }
+      }
+      @media (max-width: 820px) {
+      .contact-container{
+      margin: 40px 0;
+      height: 100%;
+      }
+      .contact-container .content{
+      flex-direction: column-reverse;
+      }
+      .contact-container .content .left-side{
+      width: 100%;
+      flex-direction: row;
+      margin-top: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      }
+      .contact-container .content .left-side::before{
+      display: none;
+      }
+      .contact-container .content .right-side{
+      width: 100%;
+      margin-left: 0;
+      }
+      }
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dr. Mila Patajo Dental Clinic </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+
+<body class="bg">
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar" style="border-radius: 0px;">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="PUB_Contact.html">CONTACT</a></li>
+            <div class="login-button">
+               <a class = "login-btn" href = "PUB_Login.html"> LOGIN </a>
+            </div>
+         </ul>
+         <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+         </div>
+      </div>
+   </nav>
+   <div class="banner"></div>
+   <!-- END of NAVIGATION BAR -->
+      <!-- Start of Contact Us-->
+      <section class="contact-us" id="contact-section">
+         <div class="contact-container">
+            <h2> CONTACT  <span> US!</span> </h2>
+            <div class="content">
+               <div class="left-side">
+                  <div class="address details">
+                     <i class="fas fa-map-marker-alt"></i>
+                     <div class="topic">Address</div>
+                     <div class="text-one">#312 Dansalan St. Brgy. Ilaya</div>
+                     <div class="text-two">Mandaluyong City</div>
+                  </div>
+                  <div class="phone details">
+                     <i class="fas fa-phone-alt"></i>
+                     <div class="topic">Phone</div>
+                     <div class="text-one">77461448</div>
+                  </div>
+                  <div class="email details">
+                     <i class="fas fa-envelope"></i>
+                     <div class="topic">Email</div>
+                     <div class="text-one">milapatajo69@gmail.com</div>
+                  </div>
+               </div>
+               <div class="right-side">
+                  <div class="topic-text">Send us a message</div>
+                  <form action="#">
+                     <div class="input-box">
+                        <input type="text" placeholder="Enter your name">
+                     </div>
+                     <div class="input-box">
+                        <input type="text" placeholder="Enter your email">
+                     </div>
+                     <div class="input-box message-box">
+                        <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message"></textarea>
+                     </div>
+                     <div class="button">
+                        <input type="button" value="Send Now" >
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="map">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.456490278196!2d121.04182131484004!3d14.573044989820064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c84f763ea697%3A0xdac187861992fbe6!2s312%20Dansalan%2C%20Mandaluyong%2C%201550%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1642486619550!5m2!1sen!2sph" width="80%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+         </div>
+      </section>
+      <!--End of Contact Us-->
+    <!--START of Footer -->
+   <footer>
+    <div class="content">
+      
+      <div class="link-boxes">
+        <ul class="box logo">
+         <div class="top">
+          <div class="logo-details">
+          <img src = "white-logo.png" width="285px" height="100%" class="logo" alt="">
+          </div>
+         </div>
+         </ul>
+          <div class="box-left">
+            <ul class="box none">
+            </ul>
+           <ul class="box quick-links">
+             <li class="link_name">Quick Links</li>
+             <li><a href="#">Sign Up</a></li>
+             <li><a href="#">About the Doctor</a></li>
+             <li><a href="#">Contact us</a></li>
+             <li><a href="#">Feedbacks</a></li>
+             <li><a href="#">FAQs</a></li>
+           </ul>
+           <ul class="box visit">
+             <li class="link_name">Visit Us</li>
+             <li><p>Clinic Hours: 9AM - 6PM</p></li>
+             <li><p><i class="fa fa-phone-alt"></i>&emsp;77461448</p></li>
+             <li><p><i class="fa fa-envelope"></i>&emsp;milapatajo69@gmail.com</p></li>
+             <li><p><i class="fa fa-map-marker"></i>&emsp;#312 Dansalan St. Brgy. Ilaya, Mandaluyong City</p></li>
+           </ul>
+           <ul class="box services">
+             <li class="link_name">Services</li>
+             <li><p>Prophylaxis </p></li>
+             <li><p>Extraction</p></li>
+             <li><p>Dental Fillings</p></li>
+             <li><p>Root Canal Treatment</p></li>
+             <li><p>Prosthodontics</p></li>
+             <li><p>Odontectomy</a></li>
+             <li><p>Teeth Whitening</p></li>
+             <li><p>Orthodontics</p></li>
+           </ul>
+        </div>
+       </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2022 <a href="#">Patajo Dental Clinic.</a>All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+   <!-- End of Footer -->   
+
+   <script>
+      const body = document.querySelector("body");
+      const navbar = document.querySelector(".navbar");
+      const menuBtn = document.querySelector(".menu-btn");
+      const cancelBtn = document.querySelector(".cancel-btn");
+      menuBtn.onclick = ()=>{
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+      }
+      cancelBtn.onclick = ()=>{
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+      }
+      window.onscroll = ()=>{
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+      }
+      // number count for stats, using jQuery animate
+      var x = 0;
+      $(window).scroll(function() {
+
+        var oTop = $('.counter-stats').offset().top - window.innerHeight;
+        if (x == 0 && $(window).scrollTop() > oTop) {
+          $('.counting').each(function() {
+            var $this = $(this),
+                countTo = $this.attr('data-count');
+            $({
+              countNum: $this.text()
+            }).animate({
+              countNum: countTo
+            },
+                       {
+              duration: 2000,
+              easing: 'swing',
+              step: function() {
+                $this.text(Math.floor(this.countNum));
+              },
+              complete: function() {
+                $this.text(this.countNum);
+              }
+            });
+          });
+          x = 1;
+        }
+      });
+ 
+
+   </script>
+ </body>
+</html>

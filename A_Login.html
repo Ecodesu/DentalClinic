@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+      *{
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      }
+
+
+      /* START of SCROLL BAR */
+      ::-webkit-scrollbar {
+      width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+      background: #507973;
+      }
+      ::selection{
+      background: rgb(0,123,255,0.3);
+      }
+      /* END of SCROLL BAR */
+
+
+      /* START of NAVIGATION BAR */
+      .content{
+      max-width: 1250px;
+      margin: auto;
+      padding: 0 30px;
+      }
+      .navbar{
+      background: #065446;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+      padding: 10px;
+      transition: all 0.3s ease;
+      top: 0;
+      left: 0;
+      }
+      .navbar.sticky{
+      background: #065446;
+      padding: 10px 0;
+      box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+      }
+      .navbar .content{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .banner{
+      height: 20vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      }
+      .about{
+      padding: 30px 0;
+      }
+      .about .title{
+      font-size: 38px;
+      font-weight: 700;
+      }
+      .about p{
+      padding-top: 20px;
+      text-align: justify;
+      }
+      .icon{
+      color:#065446;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      }
+      @media (max-width: 1230px) {
+      .content{
+      padding: 0 60px;
+      }
+      }
+      @media (max-width: 1100px) {
+      .content{
+      padding: 0 40px;
+      }
+      }
+      @media (max-width: 900px) {
+      .content{
+      padding: 0 30px;
+      }
+      }
+      @media (max-width: 868px) {
+      body.disabled{
+      overflow: hidden;
+      }
+      .icon{
+      display: block;
+      }
+      .icon.hide{
+      display: none;
+      }
+      }
+      @media (max-width: 380px) {
+      .navbar .logo a{
+      font-size: 27px;
+      }
+      }
+      /* END of NAVIGATION BAR */
+
+
+      /* START of LOGIN */
+      *{
+      box-sizing: border-box;
+      }
+      .bg {
+      background-image: url("DC_BG.png");
+      height: 100%; 
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      } 
+      .container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      top: 50px;
+      padding: 70px;
+      margin-bottom: 10%;
+      }
+      .login-box{
+      flex-basis: 300px;
+      background: #EFFFE7;
+      padding: 20px;
+      color: #065446;;
+      border-radius: 15px;
+      text-align: center;
+      }
+      input, select{
+      width: 80%;
+      padding:  5px 20px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      }
+      input[value="LOG IN"]{
+      background: #065446;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      }
+      form a{
+      text-decoration: none;
+      color: black;
+      padding: 0 0 0 135px;
+      font-size: 11px;
+      }
+      a:hover{
+      color: green;
+      }
+      h6{
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      }
+      .teeth {
+      margin-top: -35%;
+      padding:5px;
+      text-align: center;
+      height: 130px;
+      width: 130px;
+      }
+      .title{
+      font-size: 20px;
+      color:#065446;;
+      text-align: center;
+      font-weight: bolder;
+      position: relative;
+      }
+      /* END of LOGIN*/
+
+
+      /* START OF FOOTER */
+      footer{
+      position: relative;
+      background: #140B5C;
+      width: 100%;
+      margin-top: 100px;
+      }
+      footer .content .link-boxes .box{
+      width: calc(100% / 5 - 10px);
+      }
+      footer .bottom-details{
+      width: 100%;
+      background: #065446;
+      border-radius: 0px;
+      }
+      footer .bottom-details .bottom_text{
+      max-width: 1250px;
+      margin: auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a{
+      font-size: 14px;
+      font-weight: 300;
+      color: #fff;
+      opacity: 0.8;
+      text-decoration: none;
+      }
+      .bottom-details .bottom_text a:hover{
+      opacity: 1;
+      text-decoration: underline;
+      }
+      .bottom-details .bottom_text a{
+      margin-right: 10px;
+      }
+      @media (max-width: 900px) {
+      footer .content .link-boxes{
+      flex-wrap: wrap;
+      }
+      footer .content .link-boxes .input-box{
+      width: 40%;
+      margin-top: 20px;
+      }
+      footer{
+      position: absolute;
+      }
+      }
+      @media (max-width: 700px){
+      footer{
+      position: absolute;
+      }
+      @media (max-width: 1285px){
+      footer{
+      position: relative;
+
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a{
+      font-size: 12px;
+      }
+      }
+      /* END OF FOOTER */
+
+
+   </style>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> ADMIN LOGIN </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+   <body class = "bg">
+
+
+      <!-- START of NAVIGATION BAR --> 
+      <nav class="navbar">
+         <div class="content">
+            <div class="logo">
+               <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+
+      <!-- START of Container --> 
+      <div class="container">
+         <section class="login-box">
+            <img src = "TEETH.png" class="teeth">
+            <div class="title" style="margin-bottom: 5%;"> ADMIN LOG IN </div>
+            <form method="post" action="Login.java">
+               <input type="text" placeholder="Username" id="username">
+               <input type="password" placeholder="Password" id="password" style="margin-bottom: 5%;">
+               <input type="submit" value="LOG IN">
+            </form>
+         </section>
+      </div>
+      <!-- END of Container --> 
+
+
+      <!-- START of FOOTER  --> 
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+               <span class="policy_terms">
+               <a href="#">Terms & condition</a>
+               </span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+   
+   <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f18d7c253c6a',m:'2pAQtPmQa6dLYpxfcU8HH3uqxh1uRqftSa7jg8sc6.0-1645005780-0-AVjOi2mh3cvMbA7xOIRtaqTr8t18AnlWBrJAC9Pp13Ummz3FoeTrNjXhekkDuHtmgF17eNPR/mh9jMacLDJFzwC3rCuml6ao5wXdKmhgzoSiMknz+xdnIduqHl2+RgYrL+NRixJlnWEJTErwYXQEwVv92N7RH8b6yt+67+OjZhTphfIn5/xnpojP3XRfvdNfpA==',s:[0xd9b67491cf,0xfaf9634d1a],}})();</script></body>
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+   <style>
+      @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 10vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dc_bg.png);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    padd
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  /*END of FOOTER*/
+
+      /* START OF APPOINTMENTS*/
+      .profile-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      margin-top: 1%;
+      }
+      .profile-card {
+      width: 1300px;
+      max-width: 1300px;
+      height: 630px;
+      background-color: #efffe7;
+      border-radius: 20px;
+      box-shadow: 0px 10px 10px 0px rgb(0 0 0 / 20%);
+      display: flex;
+      }
+      .profile-nav {
+      width: 250px;
+      height: 100%;
+      background-color: #cfe8c1;
+      border-radius: 20px;
+      padding: 30px 15px;
+      }
+      .profile-list {
+      width: 100%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      }
+      .profile-list ul {
+      list-style: none;
+      width: 100%;
+      }
+      .profile-list ul li {
+      font-size: 16px;
+      padding: 6px;
+      width: 100%;
+      margin: 2px;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      }
+      .profile-list ul li a {
+      color: #86b170;
+      text-decoration: none;
+      }
+      .profile-list ul li.selected {
+      background-color: #86b170;
+      }
+      .profile-list ul li.selected a {
+      color: #efffe7;
+      }
+      .logout-container {
+      height: 10%;
+      padding: 10px 30px;
+      }
+      .logout-container a {
+      text-decoration: none;
+      color: #86b170;
+      font-weight: 600;
+      font-size: 18px;
+      }
+      .navy-blue {
+      color: #507973;
+      }
+      .profile-content {
+      width: 1050px;
+      max-width: 1050px;
+      min-width: 1050px;
+      padding: 30px;
+      }
+      .profile-content .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .profile-content .profile-header h2 {
+      font-size: 36px;
+      color: #507973;
+      }
+      .profile-content .profile-header button {
+      background: #507973;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      }
+      .profile-info {
+      margin-top: 50px;
+      width: 100%;
+      height: 410px;
+      box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      }
+      .profile-info .appointment-table {
+      width: 100%;
+      height: 100%;
+      background: #cae5bb;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 10px 20px;
+      }
+      .profile-info .appointment-header {
+      background-color: #efffe7;
+      width: 100%;
+      height: 40px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      }
+      .profile-info .appointment-header .header-item {
+      display: inline-block;
+      height: 100%;
+      padding: 10px 20px;
+      color: #86b170;
+      cursor: pointer;
+      }
+      .selected-app {
+      background: #cae5bb;
+      border-top-right-radius: 20px;
+      border-top-left-radius: inherit;
+      color: white !important;
+      }
+      table {
+      width: 100%;
+      font-size: 12px;
+      color: white;
+      border-collapse: collapse;
+      }
+      table th {
+      height: 35px;
+      }
+      table tr th {
+      background-color: #86b170;
+      border-right: 1px solid white;
+      }
+      table tr th:last-child {
+      border-right: none;
+      }
+      table tr td {
+      border-right: 1px solid #86b170;
+      border-left: 1px solid #86b170;
+      padding: 10px 0;
+      background-color: #efffe7;
+      }
+      table tr:last-child td {
+      border-bottom: 2px solid #86b170;
+      }
+      .hidden {
+      display: none;
+      }
+      /* END OF APPOINTMENTS*/
+
+
+   </style>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title> APPOINTMENTS </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   </head>
+   <body class="bg">
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="PUB_Contact.html">CONTACT</a></li>
+            <li><a href="P_Profile.html">PROFILE</a></li>
+         </ul>
+         <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+         </div>
+      </div>
+   </nav>
+   <div class="banner"></div>
+   <!-- END of NAVIGATION BAR -->
+
+
+      <!-- START of Container -->
+      <div class="profile-container">
+         <div class="profile-card">
+            <div class="profile-nav">
+               <div class="profile-list">
+                  <ul>
+                     <li><a href="P_Profile.html">Profile</a></li>
+                     <li class="selected"><a href="P_Appointments.html">View Appointments</a></li>
+                     <li><a href="P_ChangePass.html">Change Password</a></li>
+                     <li><a href="P_Feedback.html">Feedback</a></li>
+                  </ul>
+               </div>
+               <div class="logout-container">
+                  <a href=""><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+               </div>
+            </div>
+            <div class="profile-content">
+               <div class="profile-header">
+                  <h2>Appointment</h2>
+                  <form action = "P_SetAppointment.html"> 
+                  <button type="submit">Book an Appointment</button>
+                </form>
+               </div>
+               <div class="profile-info">
+                  <div class="appointment-header">
+                     <div id="pending" class="header-item selected-app">Pending Appointments</div>
+                     <div id="present" class="header-item">Upcoming Appointments</div>
+                     <div id="past" class="header-item">Past Appointments</div>
+                  </div>
+                  <div class="appointment-table">
+                     <div class="appointment-content">
+                        <table id="pendingApp">
+                           <tr>
+                              <th>REF NO.</th>
+                              <th>MAIN CONCERN</th>
+                              <th>SCHEDULED DATE & TIME</th>
+                              <th>APPOINTMENT CREATED</th>
+                              <th>STATUS</th>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                        </table>
+                        <table id="presentApp" class="hidden">
+                           <tr>
+                              <th>REF NO.</th>
+                              <th>MAIN CONCERN</th>
+                              <th>SCHEDULED DATE & TIME</th>
+                              <th>APPOINTMENT CREATED</th>
+                              <th>STATUS</th>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                        </table>
+                        <table id="pastApp" class="hidden">
+                           <tr>
+                              <th>REF NO.</th>
+                              <th>MAIN CONCERN</th>
+                              <th>SCHEDULED DATE & TIME</th>
+                              <th>APPOINTMENT CREATED</th>
+                              <th>STATUS</th>
+                           </tr>
+                           <tr>
+                              <td>asd</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- END of Container -->
+
+
+      <!-- START of FOOTER  --> 
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+
+      <script>
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = () => {
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         };
+         cancelBtn.onclick = () => {
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         };
+         window.onscroll = () => {
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         };
+         
+         const pending = document.getElementById("pending");
+         const present = document.getElementById("present");
+         const past = document.getElementById("past");
+         const pendingTable = document.getElementById("pendingtApp");
+         const presentTable = document.getElementById("presentApp");
+         const pastTable = document.getElementById("pastApp");
+         pending.addEventListener("click", (e) => {
+           if (past.classList.contains("selected-app")) {
+             past.classList.remove("selected-app");
+             pending.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             presentTable.classList.add("hidden");
+             pendingTable.classList.remove("hidden");
+           }
+           if (present.classList.contains("selected-app")) {
+             present.classList.remove("selected-app");
+             pending.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             presentTable.classList.add("hidden");
+             pendingTable.classList.remove("hidden");
+           }
+         });
+         present.addEventListener("click", (e) => {
+           if (past.classList.contains("selected-app")) {
+             past.classList.remove("selected-app");
+             present.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             presentTable.classList.remove("hidden");
+           }
+           if (pending.classList.contains("selected-app")) {
+             pending.classList.remove("selected-app");
+             present.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             presentTable.classList.remove("hidden");
+           }
+         });
+         past.addEventListener("click", (e) => {
+           if (present.classList.contains("selected-app")) {
+             present.classList.remove("selected-app");
+             past.classList.add("selected-app");
+         
+             presentTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             pastTable.classList.remove("hidden");
+           }
+           if (pending.classList.contains("selected-app")) {
+             pending.classList.remove("selected-app");
+             past.classList.add("selected-app");
+         
+             presentTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             pastTable.classList.remove("hidden");
+           }
+         });
+      </script>
+   </body>
+</html>

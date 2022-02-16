@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dr. Mila Patajo Dental Clinic </title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+   <link rel="stylesheet" href="style1.css">
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+
+<body class="bg">
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="PUB_Contact.html">CONTACT</a></li>
+            <div class="login-button">
+               <a class = "login-btn" href = "PUB_Login.html"> LOGIN </a>
+            </div>
+         </ul>
+         <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+         </div>
+      </div>
+   </nav>
+   <div class="banner"></div>
+   <!-- END of NAVIGATION BAR -->
+
+   <!--START of INDEX -->
+
+    <!--START of Footer -->
+   <footer>
+    <div class="content">
+      
+      <div class="link-boxes">
+        <ul class="box logo">
+         <div class="top">
+          <div class="logo-details">
+          <img src = "white-logo.png" width="285px" height="100%" class="logo" alt="">
+          </div>
+         </div>
+         </ul>
+          <div class="box-left">
+            <ul class="box none">
+            </ul>
+           <ul class="box quick-links">
+             <li class="link_name">Quick Links</li>
+             <li><a href="PUB_Registration-1.html">Sign Up</a></li>
+             <li><a href="PUB_AboutDoctor.html">About the Doctor</a></li>
+             <li><a href="PUB_Contact.html">Contact us</a></li>
+             <li><a href="index.html#feedback-section">Feedbacks</a></li>
+             <li><a href="PUB_FAQs.html">FAQs</a></li>
+           </ul>
+           <ul class="box visit">
+             <li class="link_name">Visit Us</li>
+             <li><p>Clinic Hours: 9AM - 6PM</p></li>
+             <li><p><i class="fa fa-phone-alt"></i>&emsp;77461448</p></li>
+             <li><p><i class="fa fa-envelope"></i>&emsp;milapatajo69@gmail.com</p></li>
+             <li><p><i class="fa fa-map-marker"></i>&emsp;#312 Dansalan St. Brgy. Ilaya, Mandaluyong City</p></li>
+           </ul>
+           <ul class="box services">
+             <li class="link_name">Services</li>
+             <li><p>Prophylaxis </p></li>
+             <li><p>Extraction</p></li>
+             <li><p>Dental Fillings</p></li>
+             <li><p>Root Canal Treatment</p></li>
+             <li><p>Prosthodontics</p></li>
+             <li><p>Odontectomy</a></li>
+             <li><p>Teeth Whitening</p></li>
+             <li><p>Orthodontics</p></li>
+           </ul>
+        </div>
+       </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2022 <a href="#">Patajo Dental Clinic.</a>All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+   <!-- End of Footer -->   
+
+   <script>
+      const body = document.querySelector("body");
+      const navbar = document.querySelector(".navbar");
+      const menuBtn = document.querySelector(".menu-btn");
+      const cancelBtn = document.querySelector(".cancel-btn");
+      menuBtn.onclick = ()=>{
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+      }
+      cancelBtn.onclick = ()=>{
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+      }
+      window.onscroll = ()=>{
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+      }
+      // number count for stats, using jQuery animate
+      var x = 0;
+      $(window).scroll(function() {
+
+        var oTop = $('.counter-stats').offset().top - window.innerHeight;
+        if (x == 0 && $(window).scrollTop() > oTop) {
+          $('.counting').each(function() {
+            var $this = $(this),
+                countTo = $this.attr('data-count');
+            $({
+              countNum: $this.text()
+            }).animate({
+              countNum: countTo
+            },
+                       {
+              duration: 2000,
+              easing: 'swing',
+              step: function() {
+                $this.text(Math.floor(this.countNum));
+              },
+              complete: function() {
+                $this.text(this.countNum);
+              }
+            });
+          });
+          x = 1;
+        }
+      });
+ 
+
+   </script>
+
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6ddde73449e66e34',m:'OahZmZUtb3aVT8B2mjC8BUg5Xg21NWC7wel7hmn6oZA-1644921470-0-AcKSODUJ43P5xyZ/HwPBl+P/qy7rnWVINMVWxsTaY1m5KjpgAg874QLgkNC9rHl6PkJ4oppci5jvUvPt0wE6ylFAKPwz93QnleK0I2mRVb9JSwEAmJKg+FX98rfOvRJHt72a8P39NNWssbfbvmGYXsSCDYqBFPg78ZycaNuk2a/qcttMoN2Ksk27kmCeCDzSOw==',s:[0xf49d57a863,0x3da8e55234],}})();</script></body>
+</html>

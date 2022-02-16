@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title> PATIENT RECORDS </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+      <style>
+
+      @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 10vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dc_bg.png);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    padd
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  /*END of FOOTER*/
+
+
+
+         /*START OF RECORDS CONTAINER*/
+         .records-container{
+         width:100%; 
+         height:100vh;
+         margin-top: 5%;
+         position:relative; 
+         }
+         .header-container .records-header{
+         padding:20px 80px;
+         display: flex;
+         align-items:center;
+         justify-content: space-between;
+         }
+         /*END OF RECORDS CONTAINER */
+
+
+         /*START OF SEARCH BOX*/
+         input {
+         border: 1px solid #ccc;
+         font-size: 12px;
+         height: 42px;
+         padding-left: 20px; 
+         position: absolute;
+         width: 50%;
+         }
+         input:focus {
+         outline: none;
+         }
+         button {
+         text-align: center;
+         }
+         button:focus {
+         outline: none;
+         }
+         button.btn-search, button.btn-reset {
+         border: none;
+         height: 30px;
+         font-size: 12px;
+         padding: 4px;
+         position: absolute;
+         width: 30px;
+         }
+         .search-container {
+         float: left;
+         height: 50px;
+         position: relative;
+         width: 34%;
+         }
+         .search-container input {
+         border-radius: 15px;
+         transition: all .6s ease-in-out;
+         width: 400px;
+         }
+         .search-container input:focus {
+         transition-delay: 0;
+         width: 500px;
+         }
+         .search-container input:focus ~ button {
+         transform: rotateZ(360deg);
+         }
+         .search-container input:focus ~ button.btn-search {
+         background: #507973;
+         color: #fff;
+         left: 450px;
+         transition-delay: 0;
+         }
+         .search-container input:focus ~ button.btn-reset {
+         left: 340px;
+         transition-delay: 0;
+         }
+         .search-container button {
+         transition: all .6s ease-in-out;
+         }
+         .search-container button.btn-search {
+         background: #86b170;
+         border-radius: 50%;
+         height: 30px;
+         left: 360px;
+         top: 6px;
+         transition-delay: 0;
+         width: 30px;
+         color: #ffff;
+         cursor: pointer;
+         }
+         .search-container button.btn-reset {
+         background: #fff;
+         border: 1px solid #ccc;
+         border-radius: 50%;
+         font-size: 10px;
+         height: 20px;
+         left: 92px;
+         line-height: 20px;
+         padding: 0;
+         top: 5px;
+         width: 20px;
+         z-index: -1;
+         }
+         @keyframes bounceRight {
+         0% {
+         transform: translateX(0px);
+         }
+         50% {
+         transform: translateX(10px);
+         }
+         100% {
+         transform: translateX(0px);
+         }
+         }
+         @keyframes jumpTowardSearch {
+         0% {
+         opacity: 1;
+         transform: rotateZ(0deg) scale(1);
+         }
+         20% {
+         opacity: 0;
+         transform: rotateZ(-60deg) scale(50);
+         }
+         55% {
+         opacity: 0;
+         transform: rotateZ(-30deg) scale(100);
+         }
+         90% {
+         opacity: 0;
+         transform: rotateZ(-30deg) scale(50);
+         }
+         100% {
+         opacity: 1;
+         transform: rotateZ(0deg) scale(1);
+         }
+         }
+         @keyframes jumpTowardReset {
+         0% {
+         opacity: 0;
+         transform: rotateZ(0deg) scale(1);
+         }
+         20% {
+         opacity: 0;
+         transform: rotateZ(-60deg) scale(50);
+         }
+         55% {
+         opacity: 0;
+         transform: rotateZ(-30deg) scale(100);
+         }
+         90% {
+         opacity: 0;
+         transform: rotateZ(-30deg) scale(50);
+         }
+         100% {
+         opacity: 1;
+         transform: rotateZ(0deg) scale(1);
+         }
+         }
+         /*END OF SEARCH BOX*/
+
+
+         /*START OF ADD PATIENT BTN*/ 
+         .add-btn{
+         background: #678F4F;
+         color: white;
+         width: 200px;
+         height: 38px;
+         font-weight: bold;
+         border-radius: 6px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         font-size: 16px;
+         border: none;
+         outline:none;
+         position:relative; 
+         }
+         .add-btn:hover {
+         background: #507973;
+         color: #FFFFFF; 
+         box-shadow: 0 2px 2px rgba(0,0,0,.1);
+         box-shadow: 0 2px 2px rgba(0,0,0,.1) inset;
+         text-shadow: none;
+         }
+         .add-btn:active {
+         box-shadow: none;
+         outline:none;
+         }
+         /*END OF ADD PATIENT BTN*/
+         /*START OF RECORDS TABLE */
+         .records-table{
+         display: flex;
+         margin: 20px 80px;
+         padding:20px 50px;
+         background: rgba(255, 255, 255, .3);
+         border-radius: 15px;
+         }
+         .rtable{
+         width:100%;
+         border-collapse:collapse;
+         table-layout: fixed;
+         }
+         .rtable tr td{
+         font-size: 16px;
+         font-weight: bold;
+         letter-spacing:0/35px;
+         color: #FFFFFF;
+         padding: 8px;
+         text-align: center;
+         border-bottom: 1px solid #6f6f6f;
+         border-top: 0px;
+         }
+         .rtable .patient-count{
+         color: #507973;
+         text-align:left;
+         letter-spacing:1px;
+         margin-right: 20px;
+         }
+         .rtable .view-btn{
+         width:100px;
+         padding: 5px 20px;
+         text-decoration:none;
+         line-height: 35px;
+         background-color: #86b170;
+         font-weight: medium;
+         color: #FFFFFF;
+         text-align:center;
+         user-select:none;
+         font-size: 14px;
+         opacity:1;
+         border-radius: 5px;
+         }
+         .rtable .edit-btn{
+         width:100px;
+         text-decoration:none;
+         line-height: 35px;
+         padding: 5px 20px;
+         background-color: #507973;
+         font-weight: medium;
+         color: #FFFFFF;
+         text-align:center;
+         user-select:none;
+         font-size: 14px;
+         opacity:1;
+         border-radius: 5px;
+         }
+         .rtable .patient-count{
+         width: 75%;
+         }
+         .rtable.viewbtn-column .editbtn-column{
+         width: 15%;
+         }
+         tr:hover {
+         background-color: rgba(255, 255, 255, .5);
+         }
+         .records-pagination{
+         margin-right:80px;
+         display: flex;
+         justify-content:  right;
+         }
+         .pagination li a.page-link{
+         background: #86b170;
+         color: #ffff;
+         font-weight: medium;
+         }
+         .pagination li a.page-link:hover,
+         .pagination li a.page-link:focus,
+         .pagination li.active a.page-link:hover,
+         .pagination li.active a.page-link{
+         color: #ffff;
+         background: #507973;
+         font-weight: bold;
+         box-shadow: 0 0 10px rgba(0,0,0,0.4);
+         }
+         @media (max-width: 1230px){
+         .header-container .records-header{
+         margin-top: 80px;
+         }
+         .rtable{
+         width: 1200px;
+         }
+         .rtable .patient-count{
+         width: 900px;
+         }
+         .rtable.viewbtn-column {
+         width: 150px;
+         }
+         .rtable .editbtn-column{
+         width: 150px;
+         }
+         .records-table {
+         display: block;
+         overflow-x: scroll;
+         }
+         }
+         @media (max-width: 780px){
+         .header-container .records-header{
+         margin-top: 50px;
+         display: inline-block;
+         align-items: unset;
+         justify-content:left;
+         }
+         }
+         /*END OF ADD PATIENT BTN*/ 
+      </style>
+   </head>
+   <body class="bg">
+
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="PUB_Contact.html">CONTACT</a></li>
+               <div class="dropdown">
+                  <li><a href = "#"> PROFILE </a></li>
+                  <div class="dropdown-content">
+                     <a class = "dd-content" href = "S_Calendar.html"> CALENDAR </a>
+                     <a class = "dd-content" href = "S_Appointments.html"> APPOINTMENTS </a>
+                     <a class = "dd-content" href = "S_PatientRecord.html"> PATIENT RECORDS </a>
+                     <a class = "dd-content" href = "#"> LOGOUT </a>
+                  </div>
+               </div>
+            </ul>
+            <div class="icon menu-btn">
+               <i class="fas fa-bars"></i>
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+
+      <!-- START of Container -->
+      <div class="records-container">
+      <div class="header-container">
+         <div class="records-header">
+            <div class="search-container">
+               <input type="text" name="search" placeholder="Search">
+               <button type="submit" class="btn btn-search">
+               <i class="fa fa-search"></i>
+               </button>
+            </div>
+            <div class="add-container">
+               <button class="add-btn center">
+               <i class="fas fa-user-plus"></i>
+               ADD PATIENT
+               </button>
+            </div>
+         </div>
+      </div>
+      <div class="records-table">
+         <table class="rtable">
+            <tbody>
+               <tr>
+                  <td class="patient-count"> Patient 1 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 2 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 3 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 4 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 5 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 6 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 7 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 8 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 9 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+               <tr>
+                  <td class="patient-count"> Patient 10 </td>
+                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="editbtn-column"> <a href="#" class="edit-btn"> EDIT </a> </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div class="records-pagination">
+         <ul class="pagination pagination-circle">
+            <li class="page-item">
+               <a class="page-link" href="#" aria-label="Previous">
+               <span aria-hidden="true">&laquo;</span>
+               <span class="sr-only">Previous</span>
+               </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+               <a class="page-link" href="#" aria-label="Next">
+               <span aria-hidden="true">&raquo;</span>
+               <span class="sr-only">Next</span>
+               </a>
+            </li>
+         </ul>
+      </div>
+      <!-- END of Container -->
+
+
+      <!-- START of FOOTER  --> 
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+
+      <script>
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = () => {
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         };
+         cancelBtn.onclick = () => {
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         };
+         window.onscroll = () => {
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         };
+         
+         
+      </script>
+   </body>
+</html>

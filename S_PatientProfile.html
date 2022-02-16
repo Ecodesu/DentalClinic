@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>PATIENT PROFILE</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+      <style>
+
+      @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 10vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dc_bg.png);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    padd
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  /*END of FOOTER*/
+
+         /*START OF HEADER BUTTONS*/
+         .header-container{
+         width:100%; 
+         padding:50px 80px;
+         margin-top: 5%;
+         position:relative; 
+         }
+         .profile-header {
+         display: flex;
+         align-items: inherit;
+         justify-content: flex-end;
+         }
+         .edituser-btn{
+         background:#86B170;
+         color: white;
+         width: 100px;
+         height: 30px;
+         font-weight: bold;
+         border-radius: 6px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         font-size: 12px;
+         border: none;
+         outline: none;
+         position: relative;
+         margin-left: 20px;
+         margin-right: 235px;
+         }
+         .print-btn{
+         background:#86B170;
+         color: white;
+         width:50px;
+         height: 30px;
+         font-weight: bold;
+         border-radius: 6px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         font-size: 12px;
+         border: none;
+         outline: none;
+         position: relative;
+         margin-left: 20px;
+         justify-content: center;
+         }
+         .updateuser-btn{
+         background:#507973;
+         }
+         /*END OF HEADER BUTTONS*/
+
+
+         /*START OF PATIENT BASIC INFORMATION*/
+         .patient-details{
+         justify-content: center;
+         max-width: 900px;
+         width: 100%;
+         background-color: #EFFFE7;
+         padding: 10px 5px;
+         border-radius: 10px;
+         box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+         position: relative;
+         margin-left: auto;
+         margin-right: auto;
+         margin-bottom: 20px;
+         align-items: center;
+         }
+         .patient-info form{
+         width: 100%;
+         padding-left: 10%;
+         padding-right: 10%;
+         padding-top: 10px;
+         padding-bottom: 20px;
+         }
+         .patient-info .form-control{
+         margin: 10px 0;
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         }
+         .patient-info .form-control .col-3 label,
+         .patient-info .form-control .col-6 label{
+         display: block;
+         color:  #507973;
+         font-size: 14px;
+         }
+         .patient-info .form-control .col-3 input,
+         .patient-info .form-control .col-6 input {
+         font-size: 14px;
+         padding: 4px 5px;
+         border: 1px solid gray;
+         border-radius: 5px;
+         width: 100%;
+         }
+         .patient-info .form-control .col-6 {
+         width: 50%;
+         margin: 0 10px;
+         }
+         .patient-info .form-control .col-3 {
+         width: 100%;
+         margin: 0 10px;
+         }
+         /*END OF PATIENT BASIC INFORMATION*/
+
+
+         /*START OF PAST APPOINTMENT*/
+         table {
+         width: 100%;
+         font-size: 12px;
+         color: white;
+         border-collapse: collapse;
+         }
+         table th {
+         height: 35px;
+         }
+         table tr th {
+         background-color: #86b170;
+         border-right: 1px solid white;
+         }
+         table tr th:last-child {
+         border-right: none;
+         }
+         table tr td {
+         border-right: 1px solid #86b170;
+         border-left: 1px solid #86b170;
+         padding: 10px 0;
+         background-color: #efffe7;
+         }
+         table tr:last-child td {
+         border-bottom: 2px solid #86b170;
+         }
+         .appointment-info{
+         margin-top: 50px;
+         margin-left: auto;
+         margin-right: auto;
+         max-width: 900px;
+         width: 100%;
+         height: 410px;
+         box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+         border-top-left-radius: 20px;
+         border-top-right-radius: 20px;
+         }
+         .appointment-info .appointment-table{
+         width: 100%;
+         height: 410px;
+         background: #cae5bb;
+         border-bottom-left-radius: 20px;
+         border-bottom-right-radius: 20px;
+         padding: 10px 20px;
+         }
+         .appointment-info .appointment-header{
+         background-color: #efffe7;
+         width: 100%;
+         height: 40px;
+         border-top-left-radius: 20px;
+         border-top-right-radius: 20px; 
+         }
+         .appointment-info .appointment-header .header-item{
+         display: inline-block;
+         height: 100%;
+         margin-right: 20px;
+         padding: 10px 20px;
+         color: #86b170;
+         cursor: pointer;
+         }
+         .selected-app{
+         background: #cae5bb;
+         border-top-right-radius: 20px;
+         border-top-left-radius: inherit;
+         color: white !important;
+         }
+         /* END OF APPOINTMENT*/
+
+
+         /*START OF DENTAL INFO*/
+         .dental-info{
+         max-width: 900px;
+         width: 100%;
+         height: 1050px;
+         margin-top: 80px;
+         margin-right: auto;
+         margin-bottom: 50px;
+         margin-left: auto;
+         }
+         .dental-legend-container{
+         width: 48%;
+         height: 32.5%;
+         float: right;
+         padding:3% 3%;
+         margin-top: 20px;
+         background:#EFFFE7;
+         border-radius: 20px;
+         box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+         }
+         .dental-legend-container label{
+         display: block;
+         color:  #507973;
+         font-size: 14px;
+         font-weight: bold;
+         }
+         .dental-remarks-container{
+         width: 100%;
+         height: 30%;
+         padding:3% 3%;
+         margin-top: 380px;
+         background:#EFFFE7;
+         border-radius: 20px;
+         box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+         }
+         .dental-remarks-container label{
+         display: block;
+         color:  #507973;
+         font-size: 14px;
+         font-weight: bold;
+         }
+         .dental-remarks-container textarea{
+         resize: none;
+         width: 100%;
+         height: 80%;
+         margin-top: 20px;
+         border: 1px solid #C4C4C4;
+         box-sizing: border-box;
+         border-radius: 5px;
+         }
+         .dental-legend-container p{
+            display: block;
+            font-size: 10px;
+            margin-left: 25px;
+            margin-top: 10px;
+         }
+         @media (max-width: 870px){
+            .dental-info{
+               height: 1530px;
+            }
+            .dental-legend-container{
+               float: left;
+               height: auto;
+            }
+            .dental-remarks-container{
+               margin-top: 730px;
+            }
+         }
+         @media (max-width: 650px) {
+            .dental-info{
+               height: 1050px;
+            }
+            .child-chart{
+            width: 90%;
+            margin-left: 30px;
+            }
+            .dental-legend-container{
+            width: 90%;
+            float: left;
+            margin-left:30px;
+            margin-top: 20px;
+            }
+            .dental-remarks-container{
+            width: 90%;
+            float: left;
+            padding: 30px;
+            margin-left:30px;
+            margin-top: 20px;
+            margin-bottom: 100px;
+            }
+            .dental-info{
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 500px;
+            justify-content: center;
+            }
+            .header-container{
+            margin-top: 50px;
+            justify-items: right;
+            }
+         }
+         /*END OF DENTAL INFO*/
+
+         /*START OF TEETH DIAGRAM*/
+         .adult-chart{
+           display: flex;
+           background-color: #EFFFE7;
+           padding: 20px;
+           border-radius: 10px;
+           box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+         }
+         .adult-chart table tr:nth-child(3n){
+            background-color: #EFFFE7;
+         }
+         .dental-info .adult-chart img{
+            height: 120px;
+            width: 25px;
+         }
+         .child-chart{
+            display: flex;
+            max-width: 450px;
+            width: 100%;
+            float: left;
+            margin-top: 20px;
+            background-color: #EFFFE7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
+         }
+         .dental-info table{
+           border-radius: 5px;
+         }
+         .dental-info table tr td{
+             margin: auto;
+             width: 340px;
+             border-collapse: collapse;
+             border: 2px solid #507973;
+             background: #ffff;
+             color: #000000;
+             text-align:center;
+             padding: 0px;
+         }
+         .dental-info input{
+             width: 90%;
+             border-style: hidden;
+         }    
+         .dental-info input:focus{
+            outline: none;
+         } 
+         .dental-info img{
+             height:100px; 
+             width:30px;
+         }
+         
+         /*END OF TEETH DIAGRAM*/
+      </style>
+   </head>
+   <body class="bg">
+
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="PUB_Contact.html">CONTACT</a></li>
+               <div class="dropdown">
+                  <li><a href = "#"> PROFILE </a></li>
+                  <div class="dropdown-content">
+                     <a class = "dd-content" href = "S_Calendar.html"> CALENDAR </a>
+                     <a class = "dd-content" href = "S_Appointments.html"> APPOINTMENTS </a>
+                     <a class = "dd-content" href = "S_PatientRecord.html"> PATIENT RECORDS </a>
+                     <a class = "dd-content" href = "#"> LOGOUT </a>
+                  </div>
+               </div>
+            </ul>
+            <div class="icon menu-btn">
+               <i class="fas fa-bars"></i>
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+      <!-- START of Container -->
+      <div class="header-container">
+         <div class="profile-header">
+             <div class="print-record">
+               <button class="print-btn center">
+               <ion-icon name="print" size="large"></ion-icon></ion-icon>
+               </button>
+            </div>
+            <div class="edit-user">
+               <button class="edituser-btn center">
+               EDIT
+               </button>
+            </div>
+           
+         </div>
+      </div>
+      <div class="patient-details">
+         <div class="patient-info">
+            <form>
+               <div class="form-control">
+                  <div class="col-3">
+                     <label for="full-name">Full Name</label>
+                     <input type="text" placeholder="Full Name" />
+                  </div>
+               </div>
+               <div class="form-control">
+                  <div class="col-6">
+                     <label for="email-add">Email Address</label>
+                     <input type="text" placeholder="E-mail" />
+                  </div>
+                  <div class="col-6">
+                     <label for="contact-number">Contact Number</label>
+                     <input type="text" placeholder="Contact Number" />
+                  </div>
+               </div>
+               <div class="form-control">
+                  <div class="col-3">
+                     <label for="address">Address</label>
+                     <input type="text" placeholder="Address" />
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div class="appointment-info">
+         <div class="appointment-header">
+            <div id="pastApp" class="header-item selected-app">Past Appointments</div>
+         </div>
+         <div class="appointment-table">
+            <div class="appointment-content">
+               <table id="pastApp">
+                  <tr>
+                     <th>REF NO.</th>
+                     <th>MAIN CONCERN</th>
+                     <th>SCHEDULED DATE & TIME</th>
+                     <th>APPOINTMENT CREATED</th>
+                     <th>STATUS</th>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+      <div class="dental-info">
+        <div class="adult-chart">
+          <table align="center" >
+            <tr>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>            
+            </tr>
+            <tr>
+                <td style="text-align: center;"><img src="18.png"></td>
+                <td style="text-align: center;"><img src="17.png"></td>
+                <td style="text-align: center;"><img src="16.png"></td>
+                <td style="text-align: center;"><img src="15.png"></td>
+                <td style="text-align: center;"><img src="14.png"></td>
+                <td style="text-align: center;"><img src="13.png"></td>
+                <td style="text-align: center;"><img src="12.png"></td>
+                <td style="text-align: center;"><img src="11.png"></td>
+                <td style="text-align: center;"><img src="21.png"></td>
+                <td style="text-align: center;"><img src="22.png"></td>
+                <td style="text-align: center;"><img src="23.png"></td>
+                <td style="text-align: center;"><img src="24.png"></td>
+                <td style="text-align: center;"><img src="25.png"></td>
+                <td style="text-align: center;"><img src="26.png"></td>
+                <td style="text-align: center;"><img src="27.png"></td>
+                <td style="text-align: center;"><img src="28.png"></td>
+            </tr>
+            <tr>
+                <td class = "teeth-no" style="text-align: center;"> 18 </td>
+                <td class = "teeth-no" style="text-align: center;"> 17 </td>
+                <td class = "teeth-no" style="text-align: center;"> 16 </td>
+                <td class = "teeth-no" style="text-align: center;"> 15 </td>
+                <td class = "teeth-no" style="text-align: center;"> 14 </td>
+                <td style="text-align: center;"> 13 </td>
+                <td style="text-align: center;"> 12 </td>
+                <td style="text-align: center;"> 11 </td>
+                <td style="text-align: center;"> 21 </td>
+                <td style="text-align: center;"> 22 </td>
+                <td style="text-align: center;"> 23 </td>
+                <td style="text-align: center;"> 24 </td>
+                <td style="text-align: center;"> 25 </td>
+                <td style="text-align: center;"> 26 </td>
+                <td style="text-align: center;"> 27 </td>
+                <td style="text-align: center;"> 28 </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"> 48 </td>
+                <td style="text-align: center;"> 47 </td>
+                <td style="text-align: center;"> 46 </td>
+                <td style="text-align: center;"> 45 </td>
+                <td style="text-align: center;"> 44 </td>
+                <td style="text-align: center;"> 43 </td>
+                <td style="text-align: center;"> 42 </td>
+                <td style="text-align: center;"> 41 </td>
+                <td style="text-align: center;"> 31 </td>
+                <td style="text-align: center;"> 32 </td>
+                <td style="text-align: center;"> 33 </td>
+                <td style="text-align: center;"> 34 </td>
+                <td style="text-align: center;"> 35 </td>
+                <td style="text-align: center;"> 36 </td>
+                <td style="text-align: center;"> 37 </td>
+                <td style="text-align: center;"> 38 </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><img src="48.png"></td>
+                <td style="text-align: center;"><img src="47.png"></td>
+                <td style="text-align: center;"><img src="46.png"></td>
+                <td style="text-align: center;"><img src="45.png"></td>
+                <td style="text-align: center;"><img src="44.png"></td>
+                <td style="text-align: center;"><img src="43.png"></td>
+                <td style="text-align: center;"><img src="42.png"></td>
+                <td style="text-align: center;"><img src="41.png"></td>
+                <td style="text-align: center;"><img src="31.png"></td>
+                <td style="text-align: center;"><img src="32.png"></td>
+                <td style="text-align: center;"><img src="33.png"></td>
+                <td style="text-align: center;"><img src="34.png"></td>
+                <td style="text-align: center;"><img src="35.png"></td>
+                <td style="text-align: center;"><img src="36.png"></td>
+                <td style="text-align: center;"><img src="37.png"></td>
+                <td style="text-align: center;"><img src="38.png"></td>
+            </tr>
+            <tr>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>
+                <td> <input type="text" id="name" name="name"/> </td>            
+            </tr>
+
+        </table>
+      </div>
+          <div class="child-chart">
+              <table align="center">
+                <tr>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name" /></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                </tr>
+                <tr>
+                    <td><img src="55.png" alt=""></img></td>
+                    <td><img src="54.png" alt=""></img></td>
+                    <td><img src="53.png" alt=""></img></td>
+                    <td><img src="52.png" alt=""></img></td>
+                    <td><img src="51.png" alt=""></img></td>
+                    <td><img src="61.png" alt=""></img></td>
+                    <td><img src="62.png" alt=""></img></td>
+                    <td><img src="63.png" alt=""></img></td>
+                    <td><img src="64.png" alt=""></img></td>
+                    <td><img src="65.png" alt=""></img></td>
+                </tr>
+                <tr>
+                    <td>55</td>
+                    <td>54</td>
+                    <td>53</td>
+                    <td>52</td>
+                    <td>51</td>
+                    <td>61</td>
+                    <td>62</td>
+                    <td>63</td>
+                    <td>64</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>85</td>
+                    <td>84</td>
+                    <td>83</td>
+                    <td>82</td>
+                    <td>81</td>
+                    <td>71</td>
+                    <td>72</td>
+                    <td>73</td>
+                    <td>74</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td><img src="85.png" alt=""></img></td>
+                    <td><img src="84.png" alt=""></img></td>
+                    <td><img src="83.png" alt=""></img></td>
+                    <td><img src="82.png" alt=""></img></td>
+                    <td><img src="81.png" alt=""></img></td>
+                    <td><img src="71.png" alt=""></img></td>
+                    <td><img src="72.png" alt=""></img></td>
+                    <td><img src="73.png" alt=""></img></td>
+                    <td><img src="74.png" alt=""></img></td>
+                    <td><img src="75.png" alt=""></img></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                    <td><input type="text" id="name" name="name"/></td>
+                </tr>
+            </table>
+          </div>
+
+          <div class="dental-legend-container">
+            <label class for="legend-details">Legend:</label>
+            <p>C - Dental Caries
+            <br> C1 - Dental Caries with Vital Pulp Expose
+            <br> C2 - Dental Caries with  Non-Vital Pulp Expose
+            <br> X - Indicated for Extraction
+            <br> R.F. - Retained Root Fragment
+            <br> AM - Amalgam Filling
+            <br> Col - Composite Inlay
+            <br> GIC - Glass Ionomer Cement
+            <br> Co - Composite Resin
+            <br> GC - Gold Crown
+            <br> A Bt- Bridge Abutment
+            <br> P - Pontic
+            <br> PorJC - Porcelain Jacket Crown
+            <br> PJC - Plastic Jacket Crown
+            <br> MI - Metal Inlays
+            <br> M - Missing due to Extraction
+            <br> Un - Unerupted </p>
+
+          </div>
+
+          <div class = "dental-remarks-container">
+            <label class for="remarks-details">Remarks:</label>
+            <textarea name="textarea"></textarea>
+          </div>
+      </div>
+      <!-- END of Container -->
+
+
+      <!-- START of FOOTER  --> 
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+
+      <script>
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = () => {
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         };
+         cancelBtn.onclick = () => {
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         };
+         window.onscroll = () => {
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         };
+         
+         
+      </script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   </body>
+</html>

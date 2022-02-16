@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> Dr. Mila Patajo Dental Clinic </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+         *{
+         padding: 0;
+         font-family: 'Poppins', sans-serif;
+         }
+         .dark-blue-bg{
+          background:#065446;
+          color: #fff;
+          border: 2px solid #065446;
+          }
+        .white-bg{
+          background:#fff;
+          color: #065446;
+          border: 2px solid #fff;
+          }
+         /* START of SCROLL BAR */
+         ::-webkit-scrollbar {
+         width: 10px;
+         }
+         ::-webkit-scrollbar-track {
+         background: #f1f1f1;
+         }
+         ::-webkit-scrollbar-thumb {
+         background: #507973;
+         }
+         ::selection{
+         background: rgb(0,123,255,0.3);
+         }
+         /* END of SCROLL BAR */
+         /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  }
+  .navbar.sticky {
+  background:#065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .navbar .menu-list li a{
+    color: #065446;
+  }
+  .navbar.sticky .menu-list li a{
+  color: #fff;
+  }
+  .menu-list li a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: #86b170;
+  }
+  .banner {
+  height: 0vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color: #065446;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  color: #fff;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  color: #fff;
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url("DC_BG.png");
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  }
+  .dd-content {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+  text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  .login-button a {
+    color: #065446;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 25px;
+    text-decoration: none;
+  }
+  .login-btn {
+    background: WHITE;
+    padding: 6px 15px;
+    border: 2px solid #507973;
+    border-radius: 5px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+  /* START of LOGIN BTN */
+  .login-btn{
+   padding: 6px 15px;
+    border-radius: 5px;
+  }
+  .login-button a{
+     font-size: 14px;
+     font-weight: 500;
+     margin-left: 25px;
+     text-decoration: none;
+  }
+  .login-button a:hover{
+   background: #507973;
+     color: #FFFFFF; 
+     border: 2px solid #507973;
+      box-shadow: 0 2px 2px rgba(0,0,0,.1);
+     box-shadow: 0 2px 2px rgba(0,0,0,.1) inset;
+     text-shadow: none;
+  }
+  /* END of LOGIN BTN */
+   /*START of SERVICES */
+   .blog-card {
+   display: flex;
+   flex-direction: column;
+   margin: 1rem auto;
+   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, .1);
+   margin-bottom: 1.6%;
+   background: #fff;
+   line-height: 1.4;
+   font-family: sans-serif;
+   border-radius: 5px;
+   overflow: hidden;
+   z-index: 0;
+   }
+   .blog-card a {
+   color: inherit;
+   }
+   .blog-card a:hover {
+   color: #5ad67d;
+   }
+   .blog-card:hover .photo {
+   transform: scale(1.3) rotate(3deg);
+   }
+   .blog-card .meta {
+   position: relative;
+   z-index: 0;
+   height: 200px;
+   }
+   .blog-card .photo {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background-size: cover;
+   background-position: center;
+   transition: transform 0.2s;
+   }
+   .blog-card .description {
+   padding: 30px;
+   background: #fff;
+   position: relative;
+   z-index: 1;
+   }
+   .blog-card .description h1, .blog-card .description h2 {
+   font-family: Poppins, sans-serif;
+   }
+   .blog-card .description h1 {
+   line-height: 1;
+   margin: 0;
+   font-size: 20px;
+   font-weight: bolder;
+   color: #507973;
+   }
+   .blog-card .description h2 {
+   font-size: 15px;
+   font-weight: normal;
+   text-transform: uppercase;
+   color: #a2a2a2;
+   margin-top: 5px;
+   }
+   .blog-card .description .read-more {
+   text-align: right;
+   }
+   .blog-card .description .read-more a {
+   color: #5ad67d;
+   display: inline-block;
+   position: relative;
+   }
+   .blog-card .description .read-more a:after {
+   content: "\f061";
+   font-family: FontAwesome;
+   margin-left: -10px;
+   opacity: 0;
+   vertical-align: middle;
+   transition: margin 0.3s, opacity 0.3s;
+   }
+   .blog-card .description .read-more a:hover:after {
+   margin-left: 5px;
+   opacity: 1;
+   }
+   .blog-card p {
+   position: relative;
+   margin: 1rem 0 0;
+   }
+   .blog-card p:first-of-type {
+   margin-top: 1.25rem;
+   }
+   .blog-card p:first-of-type:before {
+   content: "";
+   position: absolute;
+   height: 5px;
+   background: #5ad67d;
+   width: 35px;
+   top: -0.75rem;
+   border-radius: 3px;
+   }
+   .blog-card:hover .details {
+   left: 0%;
+   }
+   @media (min-width: 640px) {
+   .blog-card {
+   flex-direction: row;
+   max-width: 700px;
+   }
+   .blog-card .meta {
+   flex-basis: 40%;
+   height: auto;
+   }
+   .blog-card .description {
+   flex-basis: 60%;
+   }
+   .blog-card .description:before {
+   transform: skewX(-3deg);
+   content: "";
+   background: #fff;
+   width: 30px;
+   position: absolute;
+   left: -10px;
+   top: 0;
+   bottom: 0;
+   z-index: -1;
+   }
+   .blog-card.alt {
+   flex-direction: row-reverse;
+   }
+   .blog-card.alt .description:before {
+   left: inherit;
+   right: -10px;
+   transform: skew(3deg);
+   }
+   .blog-card.alt .details {
+   padding-left: 25px;
+   }
+   }
+   /*END of SERVICES */
+   /*START of FOOTER*/
+   footer{
+     position: relative;
+     background: #065446;
+     width: 100%;
+     bottom: 100;
+     left: 0;
+   }
+   .bottom-details{
+     border-top:2px solid #FFF;
+   }
+   footer .content{
+     max-width: 1250px;
+     margin: auto;
+     padding: 0px 20px 0px 20px;
+   }
+   footer .content .top .logo-details{
+     display: flex;
+     align-items: right;
+     z-index: -1;
+   }
+   .content .top .logo-details{
+     color: #fff;
+     font-size:10px;
+   }
+   footer .content .link-boxes{
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+   }
+   footer .box-left{
+     margin-left: 80px;
+     display: contents;
+   }
+   footer .content .link-boxes .box{
+     padding: 30px 0 0 0;
+     width: calc(80% / 3 - 10px);
+   }
+   footer .box-left .fa{
+     font-size: 13px;
+     color: #fff;
+   }
+   .content .link-boxes .box .link_name{
+     color: #fff;
+     font-size: 15px;
+     font-weight: 400;
+     margin-bottom: 10px;
+     position: relative;
+   }
+   .link-boxes .box .link_name::before{
+     content: '';
+     position: absolute;
+     left: 0;
+     bottom: -2px;
+     height: 2px;
+     width: 35px;
+     background: #fff;
+   }
+   .content .link-boxes .box li{
+     margin: 6px 0;
+     list-style: none;
+   }
+   .content .link-boxes .box li a{
+     color: #fff;
+     font-size: 13px;
+     font-weight: 400;
+     text-decoration: none;
+     opacity: 0.8;
+     transition: all 0.4s ease
+   }
+   .content .link-boxes .box li p{
+     color: #fff;
+     font-size: 13px;
+     font-weight: 400;
+     margin-bottom: -3px;
+     text-decoration: none;
+     opacity: 0.8;
+     transition: all 0.4s ease
+   }
+   .content .link-boxes .box li a:hover{
+     opacity: 1;
+     text-decoration: underline;
+   }
+   footer .bottom-details{
+     width: 100%;
+     background:#065446;
+   }
+   footer .bottom-details .bottom_text{
+     max-width: 1250px;
+     margin: auto;
+     padding: 20px 40px;
+     display: flex;
+     justify-content: space-between;
+   }
+   .bottom-details .bottom_text span,
+   .bottom-details .bottom_text a{
+     font-size: 10px;
+     font-weight: 300;
+     color: #fff;
+     opacity: 0.8;
+     text-decoration: none;
+   }
+   .bottom-details .bottom_text a:hover{
+     opacity: 1;
+     text-decoration: underline;
+   }
+   .bottom-details .bottom_text a{
+     margin-right: 10px;
+   }
+   @media (max-width: 900px) {
+     footer .content .link-boxes .none{
+       display: none;
+     }
+     footer .content .link-boxes .quick-links{
+       margin: 60px 0 0 0;
+     }
+     footer .content .link-boxes .visit{
+       margin: 60px 0 0 0;
+     }
+     footer .content .link-boxes .services{
+       margin: 60px 0 0 0;
+     }
+   }
+   @media (max-width: 700px){
+     footer{
+       position: relative;
+     }
+     footer .content .link-boxes{
+       display: contents;
+     }
+     footer .content .link-boxes .box{
+       width: calc(100% / 3 - 10px);
+     }
+     footer .content .link-boxes .quick-links{
+       margin:0px;
+       padd
+     }
+     footer .content .link-boxes .visit{
+       margin: 0px;
+     }
+     footer .content .link-boxes .services{
+       margin:0px;
+     }
+     .bottom-details .bottom_text span,
+     .bottom-details .bottom_text a{
+       font-size: 12px;
+     }
+   }
+   @media (max-width: 520px){
+     footer::before{
+       top: 145px;
+     }
+     footer .content .top{
+       flex-direction: column;
+     }
+     .content .top .media-icons{
+       margin-top: 16px;
+     }
+     footer .content .link-boxes .box{
+       width: calc(100% / 2 - 10px);
+     }
+     footer .content .link-boxes .input-box{
+       width: 100%;
+     }
+   }
+
+     /*END of FOOTER*/
+   /* START of HEADER */
+   .servicesweoffer .services {
+   position: absolute;
+   margin-top: -20%;
+   text-align: left;
+   left: 8%;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 5vw;
+   color: #86B170;
+   text-shadow: 2px 2px 4px white;
+   }
+   .servicesweoffer .weoffer {
+   position: absolute;
+   margin-top: -16%;
+   text-align: left;
+   left: 8%;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 5vw;
+   color:  #86B170;
+   text-shadow: 2px 2px 4px white;
+   } 
+   .servicesweoffer .here {
+   position: absolute;
+   margin-top: -12%;
+   text-align: left;
+   left: 8%;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 5vw;
+   color:  #86B170;
+   text-shadow: 2px 2px 4px white;
+   } 
+   .herecontainer {
+   background-color: #86B170;
+   height: 50px;
+   padding: 10px;
+   }
+   @media (max-width: 1250px){
+   .herecontainer {
+   height: 50px;
+   padding: 15px;
+   }
+   }
+   /* END of HEADER */
+   .container{
+   max-width: 100%;
+   width: 100%;
+   overflow: hidden;
+   padding: 80px 0;
+   }
+   .container .main-card{
+   display: flex;
+   justify-content: space-evenly;
+   width: 200%;
+   transition: 1s;
+   }
+   #two:checked ~ .main-card{
+   margin-left: -100%;
+   }
+   .container .main-card .cards{
+   width: calc(100% / 2 - 10px);
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 20px;
+   justify-content: space-between;
+   }
+   .main-card .cards .card{
+   width: calc(100% / 3 - 10px);
+   background: #fff;
+   border-radius: 12px;
+   padding: 30px;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+   transition: all 0.4s ease;
+   }
+   .main-card .cards .card:hover{
+   transform: translateY(-15px);
+   }
+   .cards .card .content{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   }
+   .cards .card .content .img{
+   height: 25vw;
+   width: 25vw;
+   border-radius: 10%;
+   padding: 3px;
+   background: #ADD896;
+   margin-bottom: 14px;
+   }
+   .card .content .img img{
+   height: 100%;
+   width: 100%;
+   border: 3px solid #ffff;
+   border-radius: 10%;
+   object-fit: cover;
+   }
+   .card .content .name{
+   font-size: 20px;
+   font-weight: 500;
+   color: #507973;
+   text-transform: uppercase;
+   }
+   .card .content .job{
+   font-size: 12px;
+   color: grey;
+   }
+   .card .content .media-icons{
+   margin-top: 10px;
+   display: flex;
+   }
+   .container .button{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   margin: 20px;
+   }
+   .button label{
+   height: 15px;
+   width: 15px;
+   border-radius: 20px;
+   background: #fff;
+   margin: 0 4px;
+   cursor: pointer;
+   transition: all 0.5s ease;
+   }
+   .button label.active{
+   width: 35px;
+   }
+   #one:checked ~ .button .one{
+   width: 35px;
+   }
+   #one:checked ~ .button .two{
+   width: 15px;
+   }
+   #two:checked ~ .button .one{
+   width: 15px;
+   }
+   #two:checked ~ .button .two{
+   width: 35px;
+   }
+   input[type="radio"]{
+   display: none;
+   }
+   @media (max-width: 768px) {
+   .main-card .cards .card{
+   margin: 20px 0 10px 0;
+   width: calc(100% / 2 - 10px);
+   }
+   }
+   @media (max-width: 600px) {
+   .main-card .cards .card{
+   /* margin: 20px 0 10px 0; */
+   width: 100%;
+   }
+   }
+</style>
+   <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script><script async src='/cdn-cgi/bm/cv/669835187/api.js'></script><script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+   <body class = "bg" style = "max-width: 100%;">
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="index.html">HOME</a></li>
+            <div class="dropdown">
+               <li><a href = "#"> ABOUT US </a></li>
+               <div class="dropdown-content">
+                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+               </div>
+            </div>
+            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+            <li><a href="index.html#contact-section">CONTACT</a></li>
+            <div class="login-button">
+               <a class = "login-btn dark-blue-bg" href = "PUB_Login.html"> LOGIN </a>
+            </div>
+         </ul>
+         <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+         </div>
+      </div>
+   </nav>
+   <div class="banner"></div>
+   <!-- END of NAVIGATION BAR -->
+
+      <!-- START of HEADER --> 
+      <!-- START of IMG --> 
+      <div class="carousel">
+         <img src = "SERV_services.png" height=100% width=100%>
+      </div>
+      <!-- END of IMG --> 
+      <!-- START of TEXT --> 
+      <div class = "servicesweoffer">
+         <p class = "services"> ORAL HEALTH </p>
+         <p class = "weoffer"> IS A MIRROR TO</p>
+         <p class = "here"> GENERAL HEALTH</p>
+      </div>
+      <!-- END of TEXT --> 
+      <!-- END of HEADER --> 
+      <div class="container" style="background-color: #CAE5BB;">
+         <input type="radio" name="dot" id="one">
+         <input type="radio" name="dot" id="two">
+         <div class="main-card">
+            <div class="cards">
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_dentalinn.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">Dental Innervation</div>
+                        <div class="job">The trigeminal nerve (fifth cranial) is composed of large sensory branches and a small motorial branch. There are three sensory branches: the ophtalmic one towards the orbit and the forehead, the mandibular one toward the teeth of the inferior maxilla and toward the tongue and the maxillary one toward the maxillary sinus and toward the teeth of the superior mandible. </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_malocclusion.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">Malocclusion</div>
+                        <div class="job">The potrusion could be due to hereditary factors or an acquired caused. Metallic wires made to adjust to the teeth are applied by an orthodontics specialist. The proper alignment is obtained with a gentle pressure and occasional adjustment with results obtained after some time.</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_oralcavity.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">The Oral Cavity</div>
+                        <div class="job">When you open your mouth to show the dentist, he does not only examine teeth and gums. The oral cavity is composed of lips, tongue, base of mouth, palate, and muccous of the mouth, temporomandibular joints, fauces and tonsils, adenoid tissue and the throat. Checking the condition of these structures is part of a routine dental examination in order to check for any pathological change of systemic or local origin.</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="cards">
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_propercleaning.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">Appropriate Teeth Cleaning</div>
+                        <div class="job">Dentist recommend non-rough movements in a vertical direction with the toothbrush maintained at an angle of 45 degrees to remove food and plaque from the internal and external surface of the teeth. The masticatory surface should be brushed with short rubbing strokes.</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_dentitionsix.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">Dentition of a Six Year Old Child</div>
+                        <div class="job">Under the primary teeth (milk teeth) there are the cutting permanent teeth (indicated in blue). The twenty primary teeth are substituted during the growth of the child.</div>
+                     </div>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="content">
+                     <div class="img">
+                        <img src="SERV_interdentical.png" alt="">
+                     </div>
+                     <div class="details">
+                        <div class="name">Interdentical Cleaning</div>
+                        <div class="job">Interdental cleaning helps remove debris and interproximal dental plaque, the plaque that collects between two teeth. Dental floss and other interdental cleaners help clean these hard-to-reach tooth surfaces and reduce the likelihood of gum disease and tooth decay.</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="button">
+            <label for="one" class=" active one"></label>
+            <label for="two" class="two"></label>
+         </div>
+      </div>
+      <!-- START of IMG --> 
+      <div class="carousel">
+         <img src = "ourservices.gif" height=100% width=100%>
+         <!-- END of IMG -->  
+         <!-- START of Container --> 
+         <div class="blog-card" style="margin-top: 5%;">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Prophylaxis.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Prophylaxis</h1>
+               <h2>Cleaning</h2>
+               <p> A dental prophylaxis is a cleaning procedure performed to thoroughly clean the teeth.  Prophylaxis is an important dental treatment for halting the progression of periodontal disease and gingivitis. </p>
+            </div>
+         </div>
+         <div class="blog-card alt">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Extraction.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Extraction</h1>
+               <h2> Tooth Pulling </h2>
+               <p> A tooth extraction, or exodontia, is the removal of a tooth. Reasons for a tooth extraction include decayed or broken teeth. They may also be removed to make room for other teeth or an orthodontia treatment. </p>
+            </div>
+         </div>
+         <div class="blog-card">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Fillings.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Dental Fillings</h1>
+               <h2>Restoration</h2>
+               <p> To treat a cavity your dentist will remove the decayed portion of the tooth and then "fill" the area on the tooth where the decayed material was removed. Fillings are also used to repair cracked or broken teeth and teeth that have been worn down from misuse (such as from nail-biting or tooth grinding).</p>
+            </div>
+         </div>
+         <div class="blog-card alt">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Rootcanal.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Root Canal Treatment</h1>
+               <h2> Endodontic Treatment </h2>
+               <p> Patients typically need a root canal when there is inflammation or infection in the roots of a tooth. During root canal treatment, an endodontist who specializes in such treatment carefully removes the pulp inside the tooth, cleans, disinfects and shapes the root canals, and places a filling to seal the space. </p>
+            </div>
+         </div>
+         <div class="blog-card">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Prostho.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Prosthodontics</h1>
+               <h2>Dental Prosthetics</h2>
+               <p> A dental prosthesis is a dental appliance that replaces a missing tooth or covers up tooth defects. These dental appliances include implants, crowns, bridges, dentures and veneers, and some of them can be removable or permanently fixed in your mouth. </p>
+            </div>
+         </div>
+         <div class="blog-card alt">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Odontectomy.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Odontectomy</h1>
+               <h2> Wisdom Tooth Removal </h2>
+               <p> Wisdom tooth extraction is a surgical procedure to remove one or more wisdom teeth — the four permanent adult teeth located at the back corners of your mouth on the top and bottom. </p>
+            </div>
+         </div>
+         <div class="blog-card">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_TeethWhitening.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Teeth Whitening</h1>
+               <h2>Bleaching</h2>
+               <p> Teeth whitening is ideal for people who have healthy, unrestored teeth (no fillings) and gums. Individuals with yellow tones to their teeth respond best </p>
+            </div>
+         </div>
+         <div class="blog-card alt" style="margin-bottom: 10%;">
+            <div class="meta">
+               <div class="photo" style="background-image: url(SERV_Orthodontics.png)"></div>
+            </div>
+            <div class="description">
+               <h1>Orthodontics</h1>
+               <h2> Braces </h2>
+               <p> Orthodontics is a branch of dentistry that treats malocclusion, a condition in which the teeth are not correctly positioned when the mouth is closed. This results in an improper bite. An orthodontist specializes in making the teeth straight.  </p>
+            </div>
+         </div>
+      </div>
+      <!-- END of Container --> 
+
+    <!--START of Footer -->
+   <footer>
+    <div class="content">
+      
+      <div class="link-boxes">
+        <ul class="box logo">
+         <div class="top">
+          <div class="logo-details">
+          <img src = "white-logo.png" width="285px" height="100%" class="logo" alt="">
+          </div>
+         </div>
+         </ul>
+          <div class="box-left">
+            <ul class="box none">
+            </ul>
+           <ul class="box quick-links">
+             <li class="link_name">Quick Links</li>
+             <li><a href="PUB_Registration-1.html">Sign Up</a></li>
+             <li><a href="PUB_AboutDoctor.html">About the Doctor</a></li>
+             <li><a href="index.html#contact-section">Contact us</a></li>
+             <li><a href="index.html#feedback-section">Feedbacks</a></li>
+             <li><a href="PUB_FAQs.html">FAQs</a></li>
+           </ul>
+           <ul class="box visit">
+             <li class="link_name">Visit Us</li>
+             <li><p>Clinic Hours: 9AM - 6PM</p></li>
+             <li><p><i class="fa fa-phone-alt"></i>&emsp;77461448</p></li>
+             <li><p><i class="fa fa-envelope"></i>&emsp;milapatajo69@gmail.com</p></li>
+             <li><p><i class="fa fa-map-marker"></i>&emsp;#312 Dansalan St. Brgy. Ilaya, Mandaluyong City</p></li>
+           </ul>
+           <ul class="box services">
+             <li class="link_name">Services</li>
+             <li><p>Prophylaxis </p></li>
+             <li><p>Extraction</p></li>
+             <li><p>Dental Fillings</p></li>
+             <li><p>Root Canal Treatment</p></li>
+             <li><p>Prosthodontics</p></li>
+             <li><p>Odontectomy</a></li>
+             <li><p>Teeth Whitening</p></li>
+             <li><p>Orthodontics</p></li>
+           </ul>
+        </div>
+       </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2022 <a href="index.html">Patajo Dental Clinic.</a>All rights reserved</span>
+        <span class="policy_terms">
+        </span>
+      </div>
+    </div>
+  </footer>
+
+   <!-- End of Footer -->  
+   
+      <script>
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = ()=>{
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         }
+         cancelBtn.onclick = ()=>{
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         }
+         window.onscroll = ()=>{
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+         $(document).ready(function() {
+          $(window).on("scroll", function() {
+            console.log($(this).scrollTop())
+            if($(this).scrollTop() >= 30){
+              // set to new image
+              $(".logo img").attr("src","white-logo.png");
+              $('.icon').css('color', '#ffffff');
+              $('.login-btn').css('background', '#ffffff');
+              $('.dark-blue-bg').css('color', '#065446');
+              $('.dark-blue-bg').css('border', 'none');
+            } else {
+              //back to default
+              $(".logo img").attr("src","LOGO.png");
+              $('.icon, .content').attr('style', '');
+              $('.login-btn, .menu-list').attr('style', '');
+              $('.dark-blue-bg').css('color', '#ffffff');
+              $('.dark-blue-bg').attr('style', '');
+            }
+          })
+        })
+      </script>
+   <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6dbd483a38bd4a02',m:'CFw6nlMffc4LZbJ4aEwEQuBERlVCXkBeLlhEUnyxCGA-1644579414-0-AWHaYHWmcIvlEmka8LL+cQQzQN1Q+LShFlbAme8iNlIe9fHIHMX6nbQCME5oxmCaYmzgv13wp2o1rjLFgZN6enOgzJy9OTW8aIx8f1Wwk320X07a3E5O6hzCcEinn0sywErkp2113YrYIjwERMaWlOwYGh+8c6W0YhZDy4g900GHXjwhoqBEHy2ssC6qRJwaK1qz42kWqVovyGERMZaPw48=',s:[0x6bed7ed76c,0xce52521db6],}})();</script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'6dc520271aea3d30',m:'IrulVQe3g4nBwZmUKPJmeNpElAhHs2wfF2w9lXvlL9Q-1644661658-0-AT41HAxGpD0TrrcRS7lisTUdz0XMh4ZaaeyO7I/q7kdMQzF4wGeRGBMoOn5gFUvcbLgYdVqbiJTulNB7yIHHzU6TtgrAbbSbOdUcpiBPFgWL1YX6rMSr2wXvHvZVtmGr4BJLYZbnStSwHn1ttqkO2IQCcBv9v7R51371ci+oODUHWLPGeyzIi0wAbHfNQpS4a2VDYQbxIsJtMQkqN9Mew1E=',s:[0x6f65b8ea5a,0x3b6f073489],}})();</script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5d3d71d1f6e52',m:'ueqfHgIQQYNZyysXeokIxUi8.HbEyGqZi2.40tHEh7s-1645004563-0-AZfu1IYlxUXd6mDBev1vEZ0WJZ92NIEImjjh+zyPpD3JLWAIUwzMyNnHdE7sRHNUMPRzHTh72Zcqs1D2HMd+xAOcN1T1paWc9S+8sBnTuZUbfIAb1zizs4Zr9TUK0xRhucpKHUN+9CMRwlEFGY1o2mMGGbIiJXcOUZOWTeEyxbijFyr4zDr7pZ+IRIQ9gwisGLj9XBQ3uRaxnq8p81U62SI=',s:[0xa79dce7498,0xa1971a71b7],}})();</script></body>
+</html>

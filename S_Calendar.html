@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CALENDAR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    
+    <style>
+
+   /* START OF CALENDAR */
+         *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ body {
+    font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #ececec;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+ .green {
+    background: #507973;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+      @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  }
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dc_bg.png);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    padd
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  /*END of FOOTER*/
+
+         .bg {
+         background-image: url("DC_BG.png");
+         height: 100%; 
+         background-attachment: fixed;
+         background-repeat: no-repeat;
+         background-size: cover;
+         } 
+
+ #calendar {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    max-height: 577px;
+    max-width: 1020px;
+    overflow: hidden;
+    margin: 0 auto;
+    box-sizing: content-box;
+    margin-bottom: 100px;
+    x-axis: true;
+}
+ #calendar .header {
+    height: 50px;
+    width: 1020px;
+    background-color: #86B170;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+ #calendar .header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 50px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    color: #fff;
+}
+ #calendar .header .left, #calendar .header .right {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 50%;
+    margin-top: -7.5px;
+    cursor: pointer;
+}
+ #calendar .header .left {
+    border-width: 7.5px 10px 7.5px 0;
+    border-color: transparent #ffff transparent transparent;
+    left: 20px;
+}
+ #calendar .header .right {
+    border-width: 7.5px 0 7.5px 10px;
+    border-color: transparent transparent transparent #ffff;
+    right: 20px;
+}
+ #calendar .month {
+   /*overflow: hidden;
+   */
+    opacity: 0;
+    margin-top: 30px;
+}
+ #calendar .month.new {
+    -webkit-animation: fadeIn 1s ease-out;
+    opacity: 1;
+}
+ #calendar .month.in.next {
+    -webkit-animation: moveFromTopFadeMonth 0.4s ease-out;
+    -moz-animation: moveFromTopFadeMonth 0.4s ease-out;
+    animation: moveFromTopFadeMonth 0.4s ease-out;
+    opacity: 1;
+}
+ #calendar .month.out.next {
+    -webkit-animation: moveToTopFadeMonth 0.4s ease-in;
+    -moz-animation: moveToTopFadeMonth 0.4s ease-in;
+    animation: moveToTopFadeMonth 0.4s ease-in;
+    opacity: 1;
+}
+ #calendar .month.in.prev {
+    -webkit-animation: moveFromTopFadeMonth 0.4s ease-out;
+    -moz-animation: moveFromTopFadeMonth 0.4s ease-out;
+    animation: moveFromTopFadeMonth 0.4s ease-out;
+    opacity: 1;
+}
+ #calendar .month.out.prev {
+    -webkit-animation: moveToTopFadeMonth 0.4s ease-in;
+    -moz-animation: moveToTopFadeMonth 0.4s ease-in;
+    animation: moveToTopFadeMonth 0.4s ease-in;
+    opacity: 1;
+}
+ #calendar .month .week {
+    background: #fff;
+}
+ #calendar .month .week .day {
+    display: inline-block;
+    max-width: 145px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+    position: relative;
+    z-index: 100;
+}
+ #calendar .month .week .day.other {
+    color: rgba(255, 255, 255, 0.3);
+}
+ #calendar .month .week .day.today {
+    color: #000;
+    background-color: #ffcb08;
+}
+ #calendar .month .week .day .day-name {
+    font-size: 9px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #000;
+    letter-spacing: 0.7px;
+}
+ #calendar .month .week .day .day-number {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+}
+ #calendar .month .week .day .day-events {
+    list-style: none;
+    margin-top: 3px;
+    text-align: center;
+    height: 12px;
+    line-height: 6px;
+    overflow: hidden;
+}
+ #calendar .month .week .day .day-events span {
+    vertical-align: top;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 5px;
+    height: 5px;
+    line-height: 5px;
+    margin: 0 2px;
+}
+ #calendar .month .week .day.Issue.Close {
+    color: #5b5c5f;
+    background-color: #efefef;
+    opacity: 0.6;
+    pointer-events: none;
+}
+ #calendar .month .week .details {
+    position: relative;
+    width: 1020px;
+    height: 90px;
+    background: #86B170;
+    color: #fff;
+   /*-border-radius: 4px;
+   -*/
+}
+ #calendar .month .week .details.in {
+    -webkit-animation: moveFromTopFade 0.5s ease both;
+    -moz-animation: moveFromTopFade 0.5s ease both;
+    animation: moveFromTopFade 0.5s ease both;
+    z-index: 100;
+}
+ #calendar .month .week .details.out {
+    -webkit-animation: moveToTopFade 0.5s ease both;
+    -moz-animation: moveToTopFade 0.5s ease both;
+    animation: moveToTopFade 0.5s ease both;
+}
+ #calendar .month .week .details .arrow {
+    z-index: 100;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -2px;
+    width: 100px;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5px 5px 5px;
+    border-color: transparent transparent #86B170 transparent;
+    transition: all 0.7s ease;
+}
+ #calendar .month .week .details.out .events {
+    -webkit-animation: fadeOutShrink 0.4s ease both;
+    -moz-animation: fadeOutShink 0.4s ease both;
+    animation: fadeOutShink 0.4s ease both;
+}
+ #calendar .month .week .details .events {
+    height: 95px;
+    padding: 7px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ #calendar .month .week .details .events.in {
+    -webkit-animation: fadeIn 0.3s ease both;
+    -moz-animation: fadeIn 0.3s ease both;
+    animation: fadeIn 0.3s ease both;
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+ #calendar .month .week .details .events.out {
+    -webkit-animation: fadeOut 0.3s ease both;
+    -moz-animation: fadeOut 0.3s ease both;
+    animation: fadeOut 0.3s ease both;
+}
+ #calendar .month .week .details .event {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    padding: 2px 16px;
+    vertical-align: top;
+}
+ #calendar .month .week .details .event.empty {
+    color: #fff;
+}
+ #calendar .month .week .details .event .event-category {
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    margin: 6px 0 0;
+    vertical-align: top;
+}
+ #calendar .month .week .details .event span {
+    display: inline-block;
+    padding: 0 0 0 7px;
+    font-size: 14px;
+}
+ #calendar .legend {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: 30px;
+    background: #fff;
+    line-height: 30px;
+    color: #000;
+    border-bottom: 1px solid #86B170;
+    text-align: center;
+}
+ #calendar .legend .entry {
+    position: relative;
+    padding: 0 0 0 25px;
+    font-size: 13px;
+    display: inline-block;
+    line-height: 30px;
+    background: transparent;
+}
+ #calendar .legend .entry:after {
+    position: absolute;
+    content: "";
+    height: 5px;
+    width: 5px;
+    top: 12px;
+    left: 14px;
+}
+ #calendar .legend .entry.green:after {
+    background: #507973;
+}
+ @-webkit-keyframes moveFromTopFadeMonth {
+    from {
+       opacity: 0;
+       -webkit-transform: translateY(30%) scale(0.95);
+   }
+}
+ @-moz-keyframes moveFromTopFadeMonth {
+    from {
+       opacity: 0;
+       -moz-transform: translateY(30%);
+   }
+}
+ @keyframes moveFromTopFadeMonth {
+    from {
+       opacity: 0;
+       -moz-transform: translateY(30%);
+   }
+}
+ @-webkit-keyframes moveToTopFadeMonth {
+    to {
+       opacity: 0;
+       -webkit-transform: translateY(-30%) scale(0.95);
+   }
+}
+ @-moz-keyframes moveToTopFadeMonth {
+    to {
+       opacity: 0;
+       -moz-transform: translateY(-30%);
+   }
+}
+ @keyframes moveToTopFadeMonth {
+    to {
+       opacity: 0;
+       -moz-transform: translateY(-30%);
+   }
+}
+ @-webkit-keyframes moveFromTopFade {
+    from {
+       opacity: 0.3;
+       height: 0;
+       margin-top: 0;
+       -webkit-transform: translateY(-100%);
+   }
+}
+ @-moz-keyframes moveFromTopFade {
+    from {
+       height: 0;
+       margin-top: 0;
+       -moz-transform: translateY(-100%);
+   }
+}
+ @keyframes moveFromTopFade {
+    from {
+       height: 0;
+       margin-top: 0;
+       transform: translateY(-100%);
+   }
+}
+ @-webkit-keyframes moveToTopFade {
+    to {
+       opacity: 0.3;
+       height: 0;
+       margin-top: 0;
+       opacity: 0.3;
+       -webkit-transform: translateY(-100%);
+   }
+}
+ @-moz-keyframes moveToTopFade {
+    to {
+       height: 0;
+       -moz-transform: translateY(-100%);
+   }
+}
+ @keyframes moveToTopFade {
+    to {
+       height: 0;
+       transform: translateY(-100%);
+   }
+}
+ @-webkit-keyframes fadeOutShink {
+    to {
+       opacity: 0;
+       padding: 0;
+       height: 0;
+   }
+}
+ @-moz-keyframes fadeOutShink {
+    to {
+       opacity: 0;
+       padding: 0;
+       height: 0;
+   }
+}
+ @keyframes fadeOutShink {
+    to {
+       opacity: 0;
+       padding: 0;
+       height: 0;
+   }
+}
+ @-webkit-keyframes fadeIn {
+    from {
+       opacity: 0;
+   }
+}
+ @-moz-keyframes fadeIn {
+    from {
+       opacity: 0;
+   }
+}
+ @keyframes fadeIn {
+    from {
+       opacity: 0;
+   }
+}
+ @-webkit-keyframes fadeOut {
+    to {
+       opacity: 0;
+   }
+}
+ @-moz-keyframes fadeOut {
+    to {
+       opacity: 0;
+   }
+}
+ @keyframes fadeOut {
+    to {
+       opacity: 0;
+   }
+}
+ 
+
+
+    </style>
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script><script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+
+<body class="bg">
+
+      <!-- START of NAVIGATION BAR --> 
+      <nav class="navbar">
+         <div class="content">
+            <div class="logo">
+               <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+            </div>
+            <ul class="menu-list">
+               <div class="icon cancel-btn">
+                  <i class="fas fa-times"></i>
+               </div>
+               <li><a href="#">HOME</a></li>
+               <div class="dropdown">
+                  <li><a href = "#"> ABOUT US </a></li>
+                  <div class="dropdown-content">
+                     <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
+                     <a class = "dd-content" href = "PUB_AboutServices.html"> OUR SERVICES </a>
+                  </div>
+               </div>
+               <li><a href="#">CONTACT</a></li>
+               <div class="dropdown">
+                  <li><a href = "#"> PROFILE </a></li>
+                  <div class="dropdown-content">
+                     <a class = "dd-content" href = "S_Calendar.html"> CALENDAR </a>
+                     <a class = "dd-content" href = "S_Appointments.html"> APPOINTMENTS </a>
+                     <a class = "dd-content" href = "S_PatientRecord.html"> PATIENT RECORDS </a>
+                     <a class = "dd-content" href = "#"> LOGOUT </a>
+                  </div>
+               </div>
+            </ul>
+            <div class="icon menu-btn">
+               <i class="fas fa-bars"></i>
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+      <!--START of INDEX -->
+
+      <div id="calendar"></div>
+
+      <!-- END of INDEX -->
+
+   <!-- START of FOOTER  --> 
+    <footer>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- END of FOOTER  -->
+
+<script >
+   !function() {
+
+  var today = moment();
+
+  function Calendar(selector, events) {
+    this.el = document.querySelector(selector);
+    this.events = events;
+    this.current = moment().date(1);
+    this.draw();
+    var current = document.querySelector('.today');
+    if(current) {
+      var self = this;
+      window.setTimeout(function() {
+        self.openDay(current);
+      }, 500);
+    }
+  }
+
+  Calendar.prototype.draw = function() {
+    //Create Header
+    this.drawHeader();
+
+    //Draw Month
+    this.drawMonth();
+
+    this.drawLegend();
+  }
+
+  Calendar.prototype.drawHeader = function() {
+    var self = this;
+    if(!this.header) {
+      //Create the header elements
+      this.header = createElement('div', 'header');
+      this.header.className = 'header';
+
+      this.title = createElement('h1');
+
+      var right = createElement('div', 'right');
+      right.addEventListener('click', function() { self.nextMonth(); });
+
+      var left = createElement('div', 'left');
+      left.addEventListener('click', function() { self.prevMonth(); });
+
+      //Append the Elements
+      this.header.appendChild(this.title); 
+      this.header.appendChild(right);
+      this.header.appendChild(left);
+      this.el.appendChild(this.header);
+    }
+
+    this.title.innerHTML = this.current.format('MMMM YYYY');
+  }
+
+  Calendar.prototype.drawMonth = function() {
+    var self = this;
+    
+    this.events.forEach(function(ev) {
+     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+    });
+    
+    
+    if(this.month) {
+      this.oldMonth = this.month;
+      this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+      this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+        self.oldMonth.parentNode.removeChild(self.oldMonth);
+        self.month = createElement('div', 'month');
+        self.backFill();
+        self.currentMonth();
+        self.fowardFill();
+        self.el.appendChild(self.month);
+        window.setTimeout(function() {
+          self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+        }, 16);
+      });
+    } else {
+        this.month = createElement('div', 'month');
+        this.el.appendChild(this.month);
+        this.backFill();
+        this.currentMonth();
+        this.fowardFill();
+        this.month.className = 'month new';
+    }
+  }
+
+  Calendar.prototype.backFill = function() {
+    var clone = this.current.clone();
+    var dayOfWeek = clone.day();
+
+    if(!dayOfWeek) { return; }
+
+    clone.subtract('days', dayOfWeek+1);
+
+    for(var i = dayOfWeek; i > 0 ; i--) {
+      this.drawDay(clone.add('days', 1));
+    }
+  }
+
+  Calendar.prototype.fowardFill = function() {
+    var clone = this.current.clone().add('months', 1).subtract('days', 1);
+    var dayOfWeek = clone.day();
+
+    if(dayOfWeek === 6) { return; }
+
+    for(var i = dayOfWeek; i < 6 ; i++) {
+      this.drawDay(clone.add('days', 1));
+    }
+  }
+
+  Calendar.prototype.currentMonth = function() {
+    var clone = this.current.clone();
+
+    while(clone.month() === this.current.month()) {
+      this.drawDay(clone);
+      clone.add('days', 1);
+    }
+  }
+
+  Calendar.prototype.getWeek = function(day) {
+    if(!this.week || day.day() === 0) {
+      this.week = createElement('div', 'week');
+      this.month.appendChild(this.week);
+    }
+  }
+
+  Calendar.prototype.drawDay = function(day) {
+    var self = this;
+    this.getWeek(day);
+
+    //Outer Day
+    var outer = createElement('div', this.getDayClass(day));
+    outer.addEventListener('click', function() {
+      self.openDay(this);
+    });
+
+    //Day Name
+    var name = createElement('div', 'day-name', day.format('ddd'));
+
+    //Day Number
+    var number = createElement('div', 'day-number', day.format('DD'));
+
+
+    //Events
+    var events = createElement('div', 'day-events');
+    this.drawEvents(day, events);
+
+    outer.appendChild(name);
+    outer.appendChild(number);
+    outer.appendChild(events);
+    this.week.appendChild(outer);
+  }
+
+  Calendar.prototype.drawEvents = function(day, element) {
+    if(day.month() === this.current.month()) {
+      var todaysEvents = this.events.reduce(function(memo, ev) {
+        if(ev.date.isSame(day, 'day')) {
+          memo.push(ev);
+        }
+        return memo;
+      }, []);
+
+      todaysEvents.forEach(function(ev) {
+        var evSpan = createElement('span', ev.color);
+        element.appendChild(evSpan);
+      });
+    }
+  }
+
+  Calendar.prototype.getDayClass = function(day) {
+    classes = ['day'];
+    if(day.month() !== this.current.month()) {
+      classes.push('other');
+    } else if (today.isSame(day, 'day')) {
+      classes.push('today');
+    }
+    return classes.join(' ');
+  }
+
+  Calendar.prototype.openDay = function(el) {
+    var details, arrow;
+    var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
+    var day = this.current.clone().date(dayNumber);
+
+    var currentOpened = document.querySelector('.details');
+
+    //Check to see if there is an open detais box on the current row
+    if(currentOpened && currentOpened.parentNode === el.parentNode) {
+      details = currentOpened;
+      arrow = document.querySelector('.arrow');
+    } else {
+      //Close the open events on differnt week row
+      //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
+      if(currentOpened) {
+        currentOpened.addEventListener('webkitAnimationEnd', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('oanimationend', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('msAnimationEnd', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('animationend', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.className = 'details out';
+      }
+
+      //Create the Details Container
+      details = createElement('div', 'details in');
+
+      //Create the arrow
+      var arrow = createElement('div', 'arrow');
+
+      //Create the event wrapper
+
+      details.appendChild(arrow);
+      el.parentNode.appendChild(details);
+    }
+
+    var todaysEvents = this.events.reduce(function(memo, ev) {
+      if(ev.date.isSame(day, 'day')) {
+        memo.push(ev);
+      }
+      return memo;
+    }, []);
+
+    this.renderEvents(todaysEvents, details);
+
+    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+  }
+
+  Calendar.prototype.renderEvents = function(events, ele) {
+    //Remove any events in the current details element
+    var currentWrapper = ele.querySelector('.events');
+    var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+
+    events.forEach(function(ev) {
+      var div = createElement('div', 'event');
+      var square = createElement('div', 'event-category ' + ev.color);
+      var span = createElement('span', '', ev.eventName);
+
+      div.appendChild(square);
+      div.appendChild(span);
+      wrapper.appendChild(div);
+    });
+
+    if(!events.length) {
+      var div = createElement('div', 'event empty');
+      var span = createElement('span', '', 'No Events');
+
+      div.appendChild(span);
+      wrapper.appendChild(div);
+    }
+
+    if(currentWrapper) {
+      currentWrapper.className = 'events out';
+      currentWrapper.addEventListener('webkitAnimationEnd', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('oanimationend', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('msAnimationEnd', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('animationend', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+    } else {
+      ele.appendChild(wrapper);
+    }
+  }
+
+  Calendar.prototype.drawLegend = function() {
+    var legend = createElement('div', 'legend');
+    var calendars = this.events.map(function(e) {
+      return e.calendar + '|' + e.color;
+    }).reduce(function(memo, e) {
+      if(memo.indexOf(e) === -1) {
+        memo.push(e);
+      }
+      return memo;
+    }, []).forEach(function(e) {
+      var parts = e.split('|');
+      var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
+      legend.appendChild(entry);
+    });
+    this.el.appendChild(legend);
+  }
+
+  Calendar.prototype.nextMonth = function() {
+    this.current.add('months', 1);
+    this.next = true;
+    this.draw();
+  }
+
+  Calendar.prototype.prevMonth = function() {
+    this.current.subtract('months', 1);
+    this.next = false;
+    this.draw();
+  }
+
+  window.Calendar = Calendar;
+
+  function createElement(tagName, className, innerText) {
+    var ele = document.createElement(tagName);
+    if(className) {
+      ele.className = className;
+    }
+    if(innerText) {
+      ele.innderText = ele.textContent = innerText;
+    }
+    return ele;
+  }
+}();
+
+!function() {
+  var data = [
+
+    { eventName: 'Free Tamale Night', calendar: 'Appointment', color: 'green' },
+    { eventName: 'Bowling Team', calendar: 'Appointment', color: 'green' },
+    { eventName: 'Teach Kids to Code', calendar: 'Appointment', color: 'green' },
+    { eventName: 'Startup Weekend', calendar: 'Appointment', color: 'green' }
+  ];
+
+  
+
+  function addDate(ev) {
+    
+  }
+
+  var calendar = new Calendar('#calendar', data);
+
+}();
+</script>
+
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db4292088d4191d',m:'wbn2FSkCw8b.2Bj2uiJWj8kHMbbFi.SqleFcFk8Pyec-1644483768-0-AYLwAnjTf3W6PDJ5obL5dgC0A7t7HMr6cFKz67GBF0ZcmqfXeRN1IouBLGncRufjZe6BY7cdABJNC78+tj0P9znFUt8/W8RN90L7GbuJqnO/n2VGIF8WICfcJ8Z1E1WeY9eaDdHte7XBPJumJ/kTfGdXZR4t1Ixw1UI3aE99bnDXIyqzJUmQqynJjobbPkk18wYeQgqazH3HvVvlHtXz4Ho=',s:[0x37880d0237,0xb5067fa9ae],}})();</script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'6db50b47ef1e8b47',m:'VyBfdisCcal_t7enxoY9lQDK2IXniAqICG.7wZQbXAs-1644493031-0-AayyLQ1IkdKw/2e1t1UFNa93HL5eqrfdYnkPq1SYqf4mvvbcHHtvtDkhjELFj3QXnbCofAP3Z1rKCJTmTi2I0v4q7C9AGj/rHBgZS7oDskcchmM1csXCwM1K6YjYt8nv8RXOgSZTToPVKTLZRUQ2eUHwfaq83+CEGygKYwY5IDi45+mfrILOROIrblMV7tqk4FgDUk8p8UAAOoRNayh+qe0=',s:[0x2fd5e975d9,0x6f1470ab50],}})();</script></body>
+</html>
