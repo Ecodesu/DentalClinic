@@ -16,7 +16,7 @@
           
           $message = "<b>verification code</b>";
           $message .= "<h1>".$_POST['verification_code']."</h1>";
-          
+
           $header = "From:abc@somedomain.com \r\n";
           $header .= "Cc:afgh@somedomain.com \r\n";
           $header .= "MIME-Version: 1.0\r\n";
@@ -24,7 +24,7 @@
           
           $retval = mail($to,$subject,$message,$header);
           if($retval){
-        echo json_encode(array("status"=>true));
+            echo json_encode(array("status"=>true));
           }else{
             echo json_encode(array("status"=>false));
           }
