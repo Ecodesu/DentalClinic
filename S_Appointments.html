@@ -1,364 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+      }
 
 
-      @charset "ISO-8859-1";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
-/*Credits / Attributes to author: 
-FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
-*/
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  box-sizing: border-box;
-  
-  }
-
-
-  /* START of SCROLL BAR */
-  ::-webkit-scrollbar {
-  width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-  background: #507973;
-  }
-  ::selection {
-  background: rgb(0, 123, 255, 0.3);
-  }
-  /* END of SCROLL BAR */
-
-  /* START of NAVIGATION BAR */
-  .content {
-  max-width: 1250px;
-  margin: auto;
-  padding: 0 30px;
-  }
-  .navbar {
-  position: fixed;
-  background: #065446;
-  width: 100%;
-  z-index: 2;
-  padding: 10px;
-  transition: all 0.3s ease;
-  top: 0;
-  left: 0;
-  border-radius:0px;
-  }
-  .navbar.sticky {
-  background: #065446;
-  padding: 10px 0;
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  border-radius:0px;
-  }
-
-  .sticky .menu-list li a {
-    color:  #fff;
-  }
-  .navbar .content {
-  color: #065446;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  }
-  .navbar .menu-list {
-  display: inline-flex;
-  }
-  .menu-list li {
-  list-style: none;
-  color: #fff;
-  }
-  .menu-list li a {
-  color:  #fff;
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 25px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  }
-  .menu-list li a:hover {
-  color: white;
-  }
-  .banner {
-  height: 10vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  }
-  .about {
-  padding: 30px 0;
-  }
-  .about .title {
-  font-size: 38px;
-  font-weight: 700;
-  }
-  .about p {
-  padding-top: 20px;
-  text-align: justify;
-  }
-  .icon {
-  color:white;
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  }
-  .menu-list .cancel-btn {
-  position: absolute;
-  right: 30px;
-  top: 20px;
-  }
-  @media (max-width: 1230px) {
-  .content {
-  padding: 0 60px;
-  }
-  .profile-card {
-  overflow-x: scroll;
-  overflow-y: scroll;
-  }
-  }
-  @media (max-width: 1100px) {
-  .content {
-  padding: 0 40px;
-  }
-  }
-  @media (max-width: 900px) {
-  .content {
-  padding: 0 30px;
-  }
-  }
-  @media (max-width: 868px) {
-  body.disabled {
-  overflow: hidden;
-  }
-  .icon {
-  display: block;
-  }
-  .icon.hide {
-  display: none;
-  }
-  .navbar .menu-list {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  max-width: 400px;
-  left: -100%;
-  top: 0px;
-  display: block;
-  padding: 40px 0;
-  text-align: center;
-  background: #065446;
-  transition: all 0.3s ease;
-  }
-  .navbar.show .menu-list {
-  left: 0%;
-  }
-  .navbar .menu-list li {
-  margin-top: 45px;
-  }
-  .navbar .login-button {
-  margin-top: 50px;
-  margin-left: -25px;
-  }
-  .navbar .menu-list li a {
-  font-size: 23px;
-  margin-left: -100%;
-  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-  .navbar.show .menu-list li a {
-  margin-left: 0px;
-  }
-  }
-  @media (max-width: 380px) {
-  .navbar .logo a {
-  font-size: 27px;
-  }
-  }
-  .bg {
-  background-image: url(dc_bg.png);
-  height: 100%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
-  .dropdown {
-  position: relative;
-  display: inline-block;
-  }
-  .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #065446;
-  min-width: 160px;
-  z-index: 1;
-  line-height: 2;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left: 5px;
-  padding-right: 5px;
-    text-decoration: none;
-  }
-  .dd-content {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  text-decoration: none;
-
-  }
-  .dropdown:hover .dropdown-content {
-  display: block;
-  text-decoration: none;
-  }
-  .dd-content:hover, .dd-content:focus {
-  background-color: #507973;
-  color: white;
-    text-decoration: none;
-  }
-  @media (max-width: 868px){
-  .dropdown-content {
-  min-width: 250px;
-  line-height: 2;
-  display: none;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  }
-  }
-  /* END of NAVIGATION BAR */
+      /* START of SCROLL BAR */
+      ::-webkit-scrollbar {
+      width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+      background: #507973;
+      }
+      ::selection {
+      background: rgb(0, 123, 255, 0.3);
+      }
+      /* END of SCROLL BAR */
 
 
-  /*START of FOOTER*/
-footer{
-  position: relative;
-  background: #065446;
-  width: 100%;
-  bottom: 100;
-  left: 0;
-}
-.bottom-details{
-  border-top:2px solid #FFF;
-}
-footer .content{
-  max-width: 1250px;
-  margin: auto;
-  padding: 0px 20px 0px 20px;
-}
-footer .content .top .logo-details{
-  display: flex;
-  align-items: right;
-  z-index: -1;
-}
-.content .top .logo-details{
-  color: #fff;
-  font-size:10px;
-}
-footer .content .link-boxes{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-footer .box-left{
-  margin-left: 80px;
-  display: contents;
-}
-footer .content .link-boxes .box{
-  padding: 30px 0 0 0;
-  width: calc(80% / 3 - 10px);
-}
-footer .box-left .fa{
-  font-size: 13px;
-  color: #fff;
-}
-footer .bottom-details{
-  width: 100%;
-  background: #065446;
-}
-footer .bottom-details .bottom_text{
-  max-width: 1250px;
-  margin: auto;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-}
-.bottom-details .bottom_text span,
-.bottom-details .bottom_text a{
-  font-size: 10px;
-  font-weight: 300;
-  color: #fff;
-  opacity: 0.8;
-  text-decoration: none;
-}
-.bottom-details .bottom_text a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-.bottom-details .bottom_text a{
-  margin-right: 10px;
-}
-@media (max-width: 900px) {
-  footer .content .link-boxes .none{
-    display: none;
-  }
-  footer .content .link-boxes .quick-links{
-    margin: 60px 0 0 0;
-  }
-  footer .content .link-boxes .visit{
-    margin: 60px 0 0 0;
-  }
-  footer .content .link-boxes .services{
-    margin: 60px 0 0 0;
-  }
-}
-@media (max-width: 700px){
-  footer{
-    position: relative;
-  }
-  footer .content .link-boxes{
-    display: contents;
-  }
-  footer .content .link-boxes .box{
-    width: calc(100% / 3 - 10px);
-  }
-  footer .content .link-boxes .quick-links{
-    margin:0px;
-    padd
-  }
-  footer .content .link-boxes .visit{
-    margin: 0px;
-  }
-  footer .content .link-boxes .services{
-    margin:0px;
-  }
-  .bottom-details .bottom_text span,
-  .bottom-details .bottom_text a{
-    font-size: 12px;
-  }
-}
-@media (max-width: 520px){
-  footer::before{
-    top: 145px;
-  }
-  footer .content .top{
-    flex-direction: column;
-  }
-  .content .top .media-icons{
-    margin-top: 16px;
-  }
-  footer .content .link-boxes .box{
-    width: calc(100% / 2 - 10px);
-  }
-  footer .content .link-boxes .input-box{
-    width: 100%;
-  }
-}
+      /* START of NAVIGATION BAR */
+      .content {
+      max-width: 1250px;
+      margin: auto;
+      padding: 0 30px;
+      }
+      .navbar {
+      background: #065446;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+      padding: 10px;
+      transition: all 0.3s ease;
+      top: 0;
+      left: 0;
+      }
+      .navbar.sticky {
+      background: #065446;
+      padding: 10px 0;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+      }
+        .sticky .menu-list li a {
+      color:  #fff;
+      }
+      .navbar .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .navbar .menu-list {
+      display: inline-flex;
+      }
+      .menu-list li {
+      list-style: none;
+      color: #507973;
+      }
+      .menu-list li a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 25px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      }
+      .menu-list li a:hover {
+      color: #86b170;
+      }
+      .banner {
+      height: 1vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      }
+      .about {
+      padding: 30px 0;
+      }
+      .about .title {
+      font-size: 38px;
+      font-weight: 700;
+      }
+      .about p {
+      padding-top: 20px;
+      text-align: justify;
+      }
+      .icon {
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      }
+      .menu-list .cancel-btn {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      }
+      @media (max-width: 1230px) {
+      .content {
+      padding: 0 60px;
+      }
+      .profile-card {
+      overflow-x: scroll;
+      overflow-y: scroll;
+      }
+      }
+      @media (max-width: 1100px) {
+      .content {
+      padding: 0 40px;
+      }
+      }
+      @media (max-width: 900px) {
+      .content {
+      padding: 0 30px;
+      }
+      }
+      @media (max-width: 868px) {
+      body.disabled {
+      overflow: hidden;
+      }
+      .icon {
+      display: block;
+      }
+      .icon.hide {
+      display: none;
+      }
+      .navbar .menu-list {
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      max-width: 400px;
+      left: -100%;
+      top: 0px;
+      display: block;
+      padding: 40px 0;
+      text-align: center;
+      background: #065446;
+      transition: all 0.3s ease;
+      }
+      .navbar.show .menu-list {
+      left: 0%;
+      }
+      .navbar .menu-list li {
+      margin-top: 45px;
+      }
+      .navbar .menu-list li a {
+      font-size: 23px;
+      margin-left: -100%;
+      transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      .navbar.show .menu-list li a {
+      margin-left: 0px;
+      }
+      }
+      @media (max-width: 380px) {
+      .navbar .logo a {
+      font-size: 27px;
+      }
+      }
+      .bg {
+      background-image: url("DC_BG.png");
+      height: 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      }
+      .dropdown {
+      position: relative;
+      display: inline-block;
+      }
+      .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #507973;
+      min-width: 160px;
+      z-index: 1;
+      line-height: 2;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 5px;
+      padding-right: 5px;
+      }
+      .dd-content {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      }
+      .dropdown:hover .dropdown-content {
+      display: block;
+      }
+      .dd-content:hover, .dd-content:focus {
+      background-color:#065446;
+      color: #fff;
+      }
+      @media (max-width: 868px){
+      .dropdown-content {
+      min-width: 250px;
+      line-height: 2;
+      display: none;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      }
+      }
+      /* END of NAVIGATION BAR */
 
-  /*END of FOOTER*/
 
       /* START OF APPOINTMENT */
       .profile-container {
@@ -409,7 +261,6 @@ footer .bottom-details .bottom_text{
       .profile-info .appointment-header .header-item {
       display: inline-block;
       height: 100%;
-      margin-right: 20px;
       padding: 10px 20px;
       color: #86b170;
       cursor: pointer;
@@ -440,6 +291,7 @@ footer .bottom-details .bottom_text{
       border-right: 1px solid #86b170;
       border-left: 1px solid #86b170;
       padding: 10px 0;
+      text-align: center;
       background-color: #efffe7;
       }
       table tr:last-child td {
@@ -448,8 +300,93 @@ footer .bottom-details .bottom_text{
       .hidden {
       display: none;
       }
+      .pending-edit button{
+         width: 30px;
+         height: 30px;
+         border: none;
+         color: white;
+         padding: 5px;
+         cursor: pointer;
+         margin-right: 10px;
+         border-radius: 10px;
+         background-color: #4cae4c;
+      }
+      button.fas.fa-times{
+         background-color: #d43f3a;
+      }
+
+      .done-btn{
+         width:100px;
+         text-decoration:none;
+         line-height: 35px;
+         padding: 5px 20px;
+         background-color: #507973;
+         font-weight: medium;
+         color: #FFFFFF;
+         text-align:center;
+         user-select:none;
+         font-size: 14px;
+         opacity:1;
+         border-radius: 5px;
+      }
+      .past-status p{
+         font-weight: medium;
+         font-size: 14px;
+         color: #333;
+      }
+
       /* END OF APPOINTMENT */
 
+      /* START OF FOOTER */
+      footer .content .link-boxes .box {
+      width: calc(100% / 5 - 10px);
+      }
+      footer .bottom-details {
+      width: 100%;
+      background: #065446;
+      border-radius: 0px;
+      }
+      footer .bottom-details .bottom_text {
+      max-width: 1250px;
+      margin: auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+      font-size: 14px;
+      font-weight: 300;
+      color: #fff;
+      opacity: 0.8;
+      text-decoration: none;
+      }
+      .bottom-details .bottom_text a:hover {
+      opacity: 1;
+      text-decoration: underline;
+      }
+      .bottom-details .bottom_text a {
+      margin-right: 10px;
+      }
+      @media (max-width: 900px) {
+      footer .content .link-boxes {
+      flex-wrap: wrap;
+      }
+      footer .content .link-boxes .input-box {
+      width: 40%;
+      margin-top: 10px;
+      }
+      }
+      @media (max-width: 700px) {
+      footer {
+      position: relative;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+      font-size: 12px;
+      }
+      }
+      /* END OF FOOTER */
 
 
    </style>
@@ -462,32 +399,32 @@ footer .bottom-details .bottom_text{
    <body class="bg">
 
 
-   <!-- START of NAVIGATION BAR --> 
-   <nav class="navbar">
-      <div class="content">
-         <div class="logo">
-            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
-         </div>
-         <ul class="menu-list">
-            <div class="icon cancel-btn">
-               <i class="fas fa-times"></i>
+      <!-- START of NAVIGATION BAR --> 
+      <nav class="navbar">
+         <div class="content">
+            <div class="logo">
+               <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
             </div>
-            <li><a href="index.html">HOME</a></li>
-            <div class="dropdown">
-               <li><a href = "#"> ABOUT </a></li>
-               <div class="dropdown-content">
+            <ul class="menu-list">
+               <div class="icon cancel-btn">
+                  <i class="fas fa-times"></i>
+               </div>
+               <li><a href="#">HOME</a></li>
+               <div class="dropdown">
+                  <li><a href = "#"> ABOUT US </a></li>
+                  <div class="dropdown-content">
                   <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
                   <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
+                  </div>
                </div>
-            </div>
-            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
-            <li><a href="PUB_Contact.html">CONTACT</a></li>
+               <li><a href="PUB_AboutServices.html">SERVICES</a></li>
+               <li><a href="PUB_Contact.html">CONTACT</a></li>
                <div class="dropdown">
                   <li><a href = "#"> PROFILE </a></li>
                   <div class="dropdown-content">
-                     <a class = "dd-content" href = "S_Calendar.html"> CALENDAR </a>
-                     <a class = "dd-content" href = "S_Appointments.html"> APPOINTMENTS </a>
-                     <a class = "dd-content" href = "S_PatientRecord.html"> PATIENT RECORDS </a>
+                     <a class = "dd-content" href = "#S_Calendar.html"> CALENDAR </a>
+                     <a class = "dd-content" href = "#S_Appointments.html"> APPOINTMENTS </a>
+                     <a class = "dd-content" href = "#S_PatientRecord.html"> PATIENT RECORDS </a>
                      <a class = "dd-content" href = "#"> LOGOUT </a>
                   </div>
                </div>
@@ -506,18 +443,26 @@ footer .bottom-details .bottom_text{
             <div class="profile-content">
                <div class="profile-info">
                   <div class="appointment-header">
-                     <div id="present" class="header-item selected-app">Upcoming Appointments</div>
+                     <div id="pending" class="header-item selected-app">Pending Appointments</div>
+                     <div id="present" class="header-item">Upcoming Appointments</div>
                      <div id="past" class="header-item">Past Appointments</div>
                   </div>
                   <div class="appointment-table">
                      <div class="appointment-content">
-                        <table id="presentApp">
+                        <table id="pendingApp">
                            <tr>
                               <th>REF NO.</th>
                               <th>MAIN CONCERN</th>
                               <th>SCHEDULED DATE & TIME</th>
                               <th>APPOINTMENT CREATED</th>
-                              <th>STATUS</th>
+                              <th>ACTION</th>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td class="pending-edit"> <button class="fas fa-check"/> <button class="fas fa-times"/> </td>
                            </tr>
                            <tr>
                               <td></td>
@@ -525,6 +470,57 @@ footer .bottom-details .bottom_text{
                               <td></td>
                               <td></td>
                               <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                           </tr>
+                        </table>
+                        <table id="presentApp"class="hidden">
+                           <tr>
+                              <th>REF NO.</th>
+                              <th>MAIN CONCERN</th>
+                              <th>SCHEDULED DATE & TIME</th>
+                              <th>APPOINTMENT CREATED</th>
+                              <th>ACTION</th>
+                           </tr>
+                           <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td class="upcoming-done"> <a href="#" class="done-btn"> DONE </a> </td>
                            </tr>
                            <tr>
                               <td></td>
@@ -578,18 +574,18 @@ footer .bottom-details .bottom_text{
                               <th>STATUS</th>
                            </tr>
                            <tr>
-                              <td>asd</td>
                               <td></td>
                               <td></td>
                               <td></td>
                               <td></td>
+                              <td class="past-status"><p> DONE </p> </td>
                            </tr>
                            <tr>
                               <td></td>
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td></td>
+                              <td class="past-status"><p> CANCELLED </p> </td>
                            </tr>
                            <tr>
                               <td></td>
@@ -641,6 +637,9 @@ footer .bottom-details .bottom_text{
          <div class="bottom-details">
             <div class="bottom_text">
                <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+               <span class="policy_terms">
+               <a href="#">Terms & condition</a>
+               </span>
             </div>
          </div>
       </footer>
@@ -666,16 +665,45 @@ footer .bottom-details .bottom_text{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
          
+         const pending = document.getElementById("pending");
          const present = document.getElementById("present");
          const past = document.getElementById("past");
+         const pendingTable = document.getElementById("pendingApp");
          const presentTable = document.getElementById("presentApp");
          const pastTable = document.getElementById("pastApp");
+         pending.addEventListener("click", (e) => {
+           if (past.classList.contains("selected-app")) {
+             past.classList.remove("selected-app");
+             pending.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             presentTable.classList.add("hidden");
+             pendingTable.classList.remove("hidden");
+           }
+           if (present.classList.contains("selected-app")) {
+             present.classList.remove("selected-app");
+             pending.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             presentTable.classList.add("hidden");
+             pendingTable.classList.remove("hidden");
+           }
+         });
          present.addEventListener("click", (e) => {
            if (past.classList.contains("selected-app")) {
              past.classList.remove("selected-app");
              present.classList.add("selected-app");
          
              pastTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             presentTable.classList.remove("hidden");
+           }
+           if (pending.classList.contains("selected-app")) {
+             pending.classList.remove("selected-app");
+             present.classList.add("selected-app");
+         
+             pastTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
              presentTable.classList.remove("hidden");
            }
          });
@@ -685,6 +713,15 @@ footer .bottom-details .bottom_text{
              past.classList.add("selected-app");
          
              presentTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
+             pastTable.classList.remove("hidden");
+           }
+           if (pending.classList.contains("selected-app")) {
+             pending.classList.remove("selected-app");
+             past.classList.add("selected-app");
+         
+             presentTable.classList.add("hidden");
+             pendingTable.classList.add("hidden");
              pastTable.classList.remove("hidden");
            }
          });
