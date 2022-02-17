@@ -539,7 +539,9 @@ footer .bottom-details .bottom_text{
             <p style="margin-top: 5%; margin-bottom: 5%; font-size: 12px;"> We will send an code to start your registration.</p>
             <input type="text" placeholder="E-mail Address" id="email" style="margin-bottom: 5%;">
             <div class = buttons>
-               <a href = "PUB_Registration-2.html"><input type="submit" value="CONTINUE"></a>
+               <!-- <a href = "PUB_Registration-2.html"> -->
+                 <input type="submit" onclick="email_send_code()" value="CONTINUE">
+                <!-- </a> -->
                <a href = "PUB_Login.html"> <input type="submit" value="CANCEL"> </a>
             </div>
          </section>
@@ -596,6 +598,7 @@ footer .bottom-details .bottom_text{
     </div>
   </footer>
       <!-- End of Footer -->  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -613,6 +616,42 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+         function email_send_code(){
+          var verification_code = parseInt(Math.random() * (99999 - 10000) + 10000);
+          var email = $('#email').val();
+          localStorage.setItem('email',email)
+          localStorage.setItem('verification_code',verification_code)
+        //  console.log(verification_code)
+
+          if(email!=""){
+            $.ajax({
+              url: "http://localhost/dental_clinic/api/mail_sender.php",
+              type: "POST",
+              data: {
+                email: email,
+                verification_code: verification_code,
+                      
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  alert("verification code sent")	
+                  window.location = "PUB_Registration-2.html";
+                }
+                else {
+                  alert("Error occured !");
+                }
+                
+              }
+            });
+            }
+            else{
+              alert('Please fill all the field !');
+            }
+
          }
       </script>
    </body>
