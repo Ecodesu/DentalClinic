@@ -646,37 +646,32 @@ footer .bottom-details .bottom_text{
          }
 
          function login(){
-         
-
-
           var user_name = $('#user_name').val();
           var password = $('#password').val();
-
           if(user_name!="" && password!=""){
             $.ajax({
-              url: "http://localhost/dental_clinic/api/insert.php",
+              url: "http://localhost/dental_clinic/api/login.php",
               type: "POST",
               data: {
                 user_name: user_name,
-                password: password,
-                      
+                password: password,      
               },
               cache: false,
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
-                if(dataResult.statusCode==200){
+                if(dataResult.status){
                   alert("success")						
                 }
-                else if(dataResult.statusCode==201){
+                else{
                   alert("Error occured !");
                 }
-                
               }
             });
-            }
-            else{
-              alert('Please fill all the field !');
-            }
+          }
+          else
+          {
+            alert('Please fill all the field !');
+          }
 
 
         }

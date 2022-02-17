@@ -11,18 +11,18 @@
          
           echo json_encode(array("status"=>false));
       
-      } else{
+        }else{
           $subject = "This is subject";
-         
-         $message = "<b>verification code</b>";
-         $message .= "<h1>".$_POST['verification_code']."</h1>";
-         
-         $header = "From:abc@somedomain.com \r\n";
-         $header .= "Cc:afgh@somedomain.com \r\n";
-         $header .= "MIME-Version: 1.0\r\n";
-         $header .= "Content-type: text/html\r\n";
-         
-         $retval = mail ($to,$subject,$message,$header);
+          
+          $message = "<b>verification code</b>";
+          $message .= "<h1>".$_POST['verification_code']."</h1>";
+          
+          $header = "From:abc@somedomain.com \r\n";
+          $header .= "Cc:afgh@somedomain.com \r\n";
+          $header .= "MIME-Version: 1.0\r\n";
+          $header .= "Content-type: text/html\r\n";
+          
+          $retval = mail($to,$subject,$message,$header);
         echo json_encode(array("status"=>true));
       }
 
