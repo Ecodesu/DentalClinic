@@ -552,38 +552,38 @@ footer .bottom-details .bottom_text{
             <div class="profile-content">
                <div class="profile-header">
                   <h2>Profile</h2>
-                  <button>Save Changes</button>
+                  <button onclick="save_profile()">Save Changes</button>
                </div>
                <div class="profile-info">
                   <form>
                      <div class="form-control">
                         <div class="col-3">
                            <label for="full-name">Full Name</label>
-                           <input type="text" placeholder="Enter First Name" />
+                           <input type="text" placeholder="Enter First Name" id="first_name"/>
                         </div>
                         <div class="col-3">
                            <label for="full-name" style="opacity: 0">a</label>
-                           <input type="text" placeholder="Enter Last Name" />
+                           <input type="text" placeholder="Enter Last Name" id="last_name" />
                         </div>
                      </div>
                      <div class="form-control">
                         <div class="col-6">
                            <label for="full-name">Email Address</label>
-                           <input type="text" placeholder="Enter Email" />
+                           <input type="text" placeholder="Enter Email" id="email" readonly/>
                         </div>
                         <div class="col-3">
                            <label for="full-name">Contact Number</label>
-                           <input type="text" placeholder="Enter Phone" />
+                           <input type="text" placeholder="Enter Phone" id="contact"/>
                         </div>
                      </div>
                      <div class="form-control">
                         <div class="col-6">
                            <label for="full-name">Address</label>
-                           <input type="text" placeholder="Enter Address" />
+                           <input type="text" placeholder="Enter Address" id="address"/>
                         </div>
                         <div class="col-3">
                            <label for="full-name">Username</label>
-                           <input type="text" placeholder="Enter Username" />
+                           <input type="text" placeholder="Enter Username" id="user_name"/>
                         </div>
                      </div>
                   </form>
@@ -604,7 +604,7 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -623,6 +623,50 @@ footer .bottom-details .bottom_text{
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
+$( document ).ready(function() {
+  $('#first_name').val(localStorage.getItem('first_name'));
+  $('#last_name').val(localStorage.getItem('last_name'));
+  $('#email').val(localStorage.getItem('email'));
+  $('#contact').val(localStorage.getItem('contact'));
+  $('#address').val(localStorage.getItem('address'));
+  $('#user_name').val(localStorage.getItem('user_name'));
+
+
+});
+
+function save_profile(){
+  var first_name  = $('#first_name').val();
+  var last_name   = $('#last_name').val();
+  // var email       = $('#email').val()
+  var contact     = $('#contact').val();
+  var address     = $('#address').val();
+  var user_name   = $('#user_name').val();
+  var user_id     = localStorage.getItem('user_id')
+  $.ajax({
+              url: "http://localhost/dental_clinic/api/update_profile.php",
+              type: "POST",
+              data: {
+                first_name: first_name,
+                last_name: last_name,
+                contact: contact,
+                address: address,
+                user_id: user_id,
+                user_name: user_name,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  alert("profile update success")		
+                  		
+                }
+                else{
+                  alert("Error occured !");
+                }
+              }
+            });
+}
+
       </script>
    </body>
 </html>
