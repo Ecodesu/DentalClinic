@@ -558,9 +558,9 @@ footer .bottom-details .bottom_text{
             <img src = "TEETH.png" class="teeth">
             <div class="title"> LOG IN </div>
 
-               <input type="text" placeholder="Username" id="username">
+               <input type="text" placeholder="Username" id="user_name">
                <input type="password" placeholder="Password" id="password">
-               <input type="submit" value="LOG IN">
+               <input type="submit" value="LOG IN" onclick="login()">
                <a href="PUB_ForgotPW-1.html" class="forgot">Forgot Password?</a><br></br>
                <hr>
                </hr>
@@ -625,7 +625,7 @@ footer .bottom-details .bottom_text{
 
    <!-- End of Footer -->  
 
-      
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -644,6 +644,43 @@ footer .bottom-details .bottom_text{
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          }
+
+         function login(){
+         
+
+
+          var user_name = $('#user_name').val();
+          var password = $('#password').val();
+
+          if(user_name!="" && password!=""){
+            $.ajax({
+              url: "http://localhost/dental_clinic/api/insert.php",
+              type: "POST",
+              data: {
+                user_name: user_name,
+                password: password,
+                      
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.statusCode==200){
+                  alert("success")						
+                }
+                else if(dataResult.statusCode==201){
+                  alert("Error occured !");
+                }
+                
+              }
+            });
+            }
+            else{
+              alert('Please fill all the field !');
+            }
+
+
+        }
+
       </script>
    </body>
 </html>
