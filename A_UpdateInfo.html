@@ -205,7 +205,6 @@
       width: 600px;
       }
       label{
-      width: 100px;
       display: inline-block;
       color: #507973;
       }
@@ -215,7 +214,7 @@
       border-radius: 5px;
       }
       button{
-      background: #507973;;
+      background: #507973;
       color: white;
       font-weight: bold;
       border-radius: 6px;
@@ -224,7 +223,7 @@
       font-size: 16px;
       padding: 5px 30px;
       border: none;
-      margin-left: 350px;
+      margin-left:0px;
       }
       .hidden {
       display: none;
@@ -315,10 +314,10 @@
             <div class="profile-nav">
                <div class="profile-list">
                   <ul>
-                     <li class="selected"><a href="A_AddUser.html">Add Users</a></li>
+                     <li><a href="A_AddUser.html">Add Users</a></li>
                      <li><a href="A_ManageUsers.html">Manage Users</a></li>
                      <li><a href="A_UpdatePhotos.html">Upload Photos</a></li>
-                     <li><a href="A_UpdateInfo.html">Update Information</a></li>
+                     <li class="selected"><a href="A_UpdateInfo.html">Update Information</a></li>
                   </ul>
                </div>
                <div class="logout-container">
@@ -327,44 +326,25 @@
             </div>
             <div class="profile-content">
                <div class="profile-header">
-                  <h2>Add New User</h2>
+                  <h2>Update Information</h2>
                </div>
                <div class="profile-info">
                   <form>
                      <div class="form-control">
-                        <label for="fname">First name:</label>
-                        <input size="50" type="text" id="fname" name="fname"><br><br>
+                        <label for="email">E-mail: </label><br>
+                        <input size="50" type="email" id="email" name="email"><br>
                      </div>
                      <div class="form-control">
-                        <label for="lname">Last name:</label>
-                        <input size="50" type="text" id="lname" name="lname"><br><br>
+                        <label for="contactnum">Contact Number:</label><br>
+                        <input size="50" type="text" id="contactnum" name="contactnum"><br>
                      </div>
                      <div class="form-control">
-                        <label for="email">Email:</label>
-                        <input size="50" type="text" id="email" name="email"><br><br>
+                        <label for="uname">Trainings & Awards: </label><br>
+                        <input size="50" type="text" id="uname" name="uname"><br>
                      </div>
-                     <div class="form-control">
-                        <label for="uname">Username:</label>
-                        <input size="50" type="text" id="uname" name="uname"><br><br>
-                     </div>
-                     <div class="form-control">
-                        <label for="password">Password:</label>
-                        <input type="password" size="50" type="text" id="password" name="password"><br><br>
-                     </div>
-                     <div class="form-control">
-                        <label for="cpassword">Confirm Password:</label>
-                        <input type="password" size="50" type="text" id="password" name="cpassword"><br><br>
-                     </div>
-                     <div class="form-control">
-                        <label for="role">Role:</label>
-                        <select id="role">
-                           <option value="select">  </option>
-                           <option value="administrator"> Administrator</option>
-                           <option value="doctor"> Doctor</option>
-                           <option value="personnel"> Personnel</option>
-                        </select>
+
                         <br><br>
-                        <button>Add User</button>
+                        <button>SAVE CHANGES</button>
                      </div>
                   </form>
                </div>
