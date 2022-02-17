@@ -654,16 +654,16 @@ footer .bottom-details .bottom_text{
                   <div class="topic-text">Send us a message</div>
                   <form action="#">
                      <div class="input-box">
-                        <input type="text" placeholder="Enter your name">
+                        <input type="text" placeholder="Enter your name" id="name">
                      </div>
                      <div class="input-box">
-                        <input type="text" placeholder="Enter your email">
+                        <input type="text" placeholder="Enter your email" id="email">
                      </div>
                      <div class="input-box message-box">
-                        <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message"></textarea>
+                        <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message" id="message"></textarea>
                      </div>
                      <div class="button">
-                        <input type="button" value="Send Now" >
+                        <input type="button" onclick="send_message()" value="Send Now" >
                      </div>
                   </form>
                </div>
@@ -726,24 +726,24 @@ footer .bottom-details .bottom_text{
   </footer>
 
    <!-- End of Footer -->   
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script>
       const body = document.querySelector("body");
       const navbar = document.querySelector(".navbar");
       const menuBtn = document.querySelector(".menu-btn");
       const cancelBtn = document.querySelector(".cancel-btn");
       menuBtn.onclick = ()=>{
-      navbar.classList.add("show");
-      menuBtn.classList.add("hide");
-      body.classList.add("disabled");
+        navbar.classList.add("show");
+        menuBtn.classList.add("hide");
+        body.classList.add("disabled");
       }
       cancelBtn.onclick = ()=>{
-      body.classList.remove("disabled");
-      navbar.classList.remove("show");
-      menuBtn.classList.remove("hide");
+        body.classList.remove("disabled");
+        navbar.classList.remove("show");
+        menuBtn.classList.remove("hide");
       }
       window.onscroll = ()=>{
-      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+        this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
       }
       // number count for stats, using jQuery animate
       var x = 0;
@@ -774,6 +774,36 @@ footer .bottom-details .bottom_text{
         }
       });
  
+ function send_message(){
+  var email         = $('#email').val();
+  var name          = $('#name').val();
+  var message       = $('#message').val();
+  var request_type  = 'contact_us';
+
+  $.ajax({
+    url: "http://localhost/dental_clinic/api/mail_sender.php",
+    type: "POST",
+    data: {
+      email: email,
+      name : name,
+      message : message,
+      request_type: request_type,
+            
+    },
+    cache: false,
+    success: function(dataResult){
+      var dataResult = JSON.parse(dataResult);
+      if(dataResult.status){
+        alert("Message sent")	
+        location.reload();
+      }
+      else {
+        alert("message not sent");
+      }
+      
+    }
+  });
+ }
 
    </script>
  </body>
