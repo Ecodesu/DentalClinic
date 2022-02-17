@@ -1,9 +1,9 @@
 <?php
-         $to = "eurekare.hendrix@gmail.com";
+         $to = $_POST['email'];
          $subject = "This is subject";
          
-         $message = "<b>This is HTML message.</b>";
-         $message .= "<h1>This is headline.</h1>";
+         $message = "<b>verification code</b>";
+         $message .= "<h1>".$_POST['verification_code']."</h1>";
          
          $header = "From:abc@somedomain.com \r\n";
          $header .= "Cc:afgh@somedomain.com \r\n";
@@ -12,5 +12,12 @@
          
          $retval = mail ($to,$subject,$message,$header);
          
-        var_dump($retval);
+        if($retval){
+          echo json_encode(array("status"=>true));
+
+        }
+        else
+        {
+          echo json_encode(array("status"=>false));
+        }
       ?>

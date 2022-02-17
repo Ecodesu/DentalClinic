@@ -550,7 +550,9 @@ footer .bottom-details .bottom_text{
                <p style="margin-top: 5%; margin-bottom: 5%; font-size: 12px;"> Please check your e-mail for a message with your code.</p>
                <input type="text" placeholder="Code" id="code" style="margin-bottom: 5%;">
                <div class = buttons>
-                  <a href = "PUB_Registration-3.html"><input type="submit" value="CONTINUE"></a>
+                  <!-- <a href = "PUB_Registration-3.html"> -->
+                    <input type="submit" value="CONTINUE" onclick="verify()">
+                  <!-- </a> -->
                   <a href = "PUB_Registration-1.html"><input type="submit" value="CANCEL"></a>
                </div>
 
@@ -610,7 +612,7 @@ footer .bottom-details .bottom_text{
   </footer>
 
    <!-- End of Footer -->  
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -628,6 +630,19 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+         function verify(){
+           var verification_code = localStorage.getItem('verification_code')
+           var code = $('#code').val();
+          //  console.log(verification_code)
+
+           if(code == verification_code){
+            alert('verification success')
+            window.location = "PUB_Registration-3.html";
+           }else{
+            alert('verification code not match');
+           }
          }
       </script>
    </body>
