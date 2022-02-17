@@ -23,7 +23,11 @@
           $header .= "Content-type: text/html\r\n";
           
           $retval = mail($to,$subject,$message,$header);
+          if($retval){
         echo json_encode(array("status"=>true));
+          }else{
+            echo json_encode(array("status"=>false));
+          }
       }
 
       ?>
