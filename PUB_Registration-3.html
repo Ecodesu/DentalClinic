@@ -570,35 +570,35 @@ footer .bottom-details .bottom_text{
          <img src = "TEETH.png" class="teeth">
          <div class="title">REGISTRATION</div>
          <div class="content">
-            <form action="#">
+            <form action="javascript:register_user();" method="post" id="signup">
                <div class="user-details">
                   <div class="input-box">
                      <span class="details">First Name</span>
-                     <input type="text" placeholder="First Name" required>
+                     <input type="text" placeholder="First Name" id="first_name" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Last Name</span>
-                     <input type="text" placeholder="Last Name" required>
+                     <input type="text" placeholder="Last Name" id="last_name" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Username</span>
-                     <input type="text" placeholder="Username" required>
+                     <input type="text" placeholder="Username" id="user_name" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Contact Number</span>
-                     <input type="number" placeholder="Contact number" required>
+                     <input type="number" placeholder="Contact number" id="contact" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Password</span>
-                     <input type="password" placeholder="Password" required>
+                     <input type="password" placeholder="Password" id="password" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Confirm Password</span>
-                     <input type="password" placeholder="Confirm Password" required>
+                     <input type="password" placeholder="Confirm Password" id="confirm_password" required>
                   </div>
                   <div class="input-box" style="width: 100%;">
                      <span class="details">Address</span>
-                     <input type="text" placeholder="Address" required>
+                     <input type="text" placeholder="Address" id="address" required>
                   </div>
                </div>
                <div class="tacbox">
@@ -662,7 +662,8 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
   </footer>
-      <!-- End of Footer -->  
+      <!-- End of Footer --> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -680,6 +681,53 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+
+         function register_user(){
+           var email = localStorage.getItem('email');
+          var first_name        = $('#first_name').val();
+          var last_name         = $('#last_name').val();
+          var user_name         = $('#user_name').val();
+          var contact           = $('#contact').val();
+          var password          = $('#password').val();
+          var confirm_password  = $('#confirm_password').val();
+          var address           = $('#address').val();
+          // console.log(last_name)
+          if($('#checkbox').is(':checked')){
+            if(confirm_password == password){
+              $.ajax({
+              url: "http://localhost/dental_clinic/api/patient_register.php",
+              type: "POST",
+              data: {
+                first_name:   first_name,
+                last_name:    last_name,
+                user_name:    user_name,
+                contact:      contact,
+                password:     password,
+                address:      address,
+                email:        email,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                   alert("register success")	
+                  // window.location = "PUB_Registration-2.html";
+                }
+                else {
+                  alert("Error occured !");
+                }
+              }
+            });
+            }else{
+              alert("password not match")
+            }
+         
+          }else{
+            alert('not agree to the terms and condition?')
+          }
+
          }
       </script>
    </body>
