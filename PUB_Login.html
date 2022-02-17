@@ -660,7 +660,8 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                  alert("success")						
+                  alert("success")		
+                  window.location = "P_Profile.html";				
                 }
                 else{
                   alert("Error occured !");
