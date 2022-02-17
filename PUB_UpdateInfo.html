@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+   <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+      }
+
+      /* START of SCROLL BAR */
+      ::-webkit-scrollbar {
+      width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+      background: #507973;
+      }
+      ::selection {
+      background: rgb(0, 123, 255, 0.3);
+      }
+      /* END of SCROLL BAR */
+
+
+      /* START of NAVIGATION BAR */
+      .content {
+      max-width: 1250px;
+      margin: auto;
+      padding: 0 30px;
+      }
+      .navbar {
+      background: #065446;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+      padding: 10px;
+      transition: all 0.3s ease;
+      top: 0;
+      left: 0;
+      }
+      .navbar.sticky {
+      background: #efffe7;
+      padding: 10px 0;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+      }
+      .navbar .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .banner {
+      height: 1vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      }
+      .about {
+      padding: 30px 0;
+      }
+      .about .title {
+      font-size: 38px;
+      font-weight: 700;
+      }
+      .about p {
+      padding-top: 20px;
+      text-align: justify;
+      }
+      .icon {
+      color: #065446;;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      }
+      @media (max-width: 1230px) {
+      .content {
+      padding: 0 60px;
+      }
+      .profile-card {
+      overflow-x: scroll;
+      }
+      }
+      @media (max-width: 1100px) {
+      .content {
+      padding: 0 40px;
+      }
+      }
+      @media (max-width: 900px) {
+      .content {
+      padding: 0 30px;
+      }
+      }
+      @media (max-width: 868px) {
+      body.disabled {
+      overflow: hidden;
+      }
+      .icon {
+      display: block;
+      }
+      .icon.hide {
+      display: none;
+      }
+      }
+      @media (max-width: 380px) {
+      .navbar .logo a {
+      font-size: 27px;
+      }
+      }
+      .bg {
+      background-image: url("DC_BG.png");
+      height: 100%;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      }
+      /* END of NAVIGATION BAR */
+
+
+      /* START OF ADD USER*/
+      .profile-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      margin-top: 5%;
+      }
+      .profile-card {
+      width: 800px;
+      height: 530px;
+      background-color: #efffe7;
+      border-radius: 20px;
+      box-shadow: 0px 10px 10px 0px rgb(0 0 0 / 20%);
+      display: flex;
+      }
+      .profile-nav {
+      width: 250px;
+      height: 100%;
+      min-height: 100%;
+      background-color: #cfe8c1;
+      border-radius: 20px;
+      padding: 30px 15px;
+      }
+      .profile-list {
+      width: 200px;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      }
+      .profile-list ul {
+      list-style: none;
+      width: 100%;
+      }
+      .profile-list ul li {
+      font-size: 16px;
+      padding: 6px;
+      width: 100%;
+      margin: 2px;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      }
+      .profile-list ul li a {
+      color: #86b170;
+      text-decoration: none;
+      }
+      .profile-list ul li.selected {
+      background-color: #86b170;
+      }
+      .profile-list ul li.selected a {
+      color: #efffe7;
+      }
+      .logout-container {
+      height: 10%;
+      padding: 10px 30px;
+      }
+      .logout-container a {
+      text-decoration: none;
+      color: #86b170;
+      font-weight: 600;
+      font-size: 18px;
+      }
+      .navy-blue {
+      color: #065446;;
+      }
+      .profile-content {
+      max-width: 850px;
+      padding: 30px;
+      }
+      .profile-content .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .profile-content .profile-header h2 {
+      font-size: 36px;
+      color: #065446;
+      }
+      .profile-info form {
+      width: 600px;
+      }
+      label{
+      display: inline-block;
+      color: #065446;
+      }
+      input{
+      font-size: 14px;
+      border: 1px solid gray;
+      border-radius: 5px;
+      }
+      button{
+      background: #065446;;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      margin-left:0px;
+      }
+      .hidden {
+      display: none;
+      }
+      /* END OF ADD USER */
+
+
+      /* START OF FOOTER */
+      footer .content .link-boxes .box {
+      width: calc(100% / 5 - 10px);
+      }
+      footer .bottom-details {
+      width: 100%;
+      background: #065446;;
+      border-radius: 0px;
+      }
+      footer .bottom-details .bottom_text {
+      max-width: 1250px;
+      margin: auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+      font-size: 14px;
+      font-weight: 300;
+      color: #fff;
+      opacity: 0.8;
+      text-decoration: none;
+      }
+      .bottom-details .bottom_text a:hover {
+      opacity: 1;
+      text-decoration: underline;
+      }
+      .bottom-details .bottom_text a {
+      margin-right: 10px;
+      }
+      @media (max-width: 900px) {
+      footer .content .link-boxes {
+      flex-wrap: wrap;
+      }
+      footer .content .link-boxes .input-box {
+      width: 40%;
+      margin-top: 10px;
+      }
+      }
+      @media (max-width: 700px) {
+      footer {
+      position: relative;
+      }
+      .bottom-details .bottom_text span,
+      .bottom-details .bottom_text a {
+      font-size: 12px;
+      }
+      }
+      .profile-info {
+      margin-top: 30px;
+      }
+      /* END OF FOOTER */
+
+
+   </style>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title> ADD USER </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+   <body class="bg">
+
+
+      <!-- START of NAVIGATION BAR --> 
+      <nav class="navbar">
+         <div class="content">
+            <div class="logo">
+               <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+
+      <!-- START of Container -->
+      <div class="profile-container">
+         <div class="profile-card">
+            <div class="profile-nav">
+               <div class="profile-list">
+                  <ul>
+                     <li><a href="A_AddUser.html">Add Users</a></li>
+                     <li><a href="A_ManageUsers.html">Manage Users</a></li>
+                     <li><a href="A_UpdatePhotos.html">Upload Photos</a></li>
+                     <li class="selected"><a href="A_UpdateInfo.html">Update Information</a></li>
+                  </ul>
+               </div>
+               <div class="logout-container">
+                  <a href=""><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+               </div>
+            </div>
+            <div class="profile-content">
+               <div class="profile-header">
+                  <h2>Update Information</h2>
+               </div>
+               <div class="profile-info">
+                  <form>
+                     <div class="form-control">
+                        <label for="email">E-mail: </label><br>
+                        <input size="50" type="email" id="email" name="email"><br>
+                     </div>
+                     <div class="form-control">
+                        <label for="contactnum">Contact Number:</label><br>
+                        <input size="50" type="text" id="contactnum" name="contactnum"><br>
+                     </div>
+                     <div class="form-control">
+                        <label for="uname">Trainings & Awards: </label><br>
+                        <input size="50" type="text" id="uname" name="uname"><br>
+                     </div>
+
+                        <br><br>
+                        <button>SAVE CHANGES</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- END of Container -->
+
+
+      <!-- START of FOOTER  -->    
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="#"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+               <span class="policy_terms">
+               <a href="#">Terms & condition</a>
+               </span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+
+      <script>
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = () => {
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         };
+         cancelBtn.onclick = () => {
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         };
+         window.onscroll = () => {
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         };
+         
+      </script>
+   <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script></body>
+</html>
