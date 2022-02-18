@@ -5,10 +5,6 @@ $user_id  = $_POST['user_id'];
 $new_password = hash('ripemd160', $_POST['new_password']);
 $old_password  = hash('ripemd160', $_POST['old_password']);
 
-
-
-
-
 $json_return = array();
 $sql = "SELECT * FROM tbl_user WHERE user_id = '$user_id' AND user_password = '$old_password'";
 $result = $conn->query($sql);

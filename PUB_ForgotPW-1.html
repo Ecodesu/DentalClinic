@@ -626,7 +626,7 @@ footer .bottom-details .bottom_text{
           var verification_code = parseInt(Math.random() * (99999 - 10000) + 10000);
           localStorage.setItem('verification_code',verification_code)
           var email = $('#email').val();
-
+          localStorage.setItem('email',email)
 
           $.ajax({
               url: "http://localhost/dental_clinic/api/mail_sender.php",

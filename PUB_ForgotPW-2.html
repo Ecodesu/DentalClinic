@@ -527,7 +527,7 @@ footer .bottom-details .bottom_text{
             <li><a href="PUB_AboutServices.html">SERVICES</a></li>
             <li><a href="PUB_Contact.html">CONTACT</a></li>
             <div class="login-button">
-               <a class = "login-btn" href = "PUB_Login.html"> LOGIN </a>
+               <a class = "login-btn" href = ""> LOGIN </a>
             </div>
          </ul>
          <div class="icon menu-btn">
@@ -545,7 +545,9 @@ footer .bottom-details .bottom_text{
             <p style="margin-top: 5%; margin-bottom: 5%; font-size: 12px;"> Please check your e-mail for a message with your code.</p>
             <input type="text" placeholder="Code" id="code" style="margin-bottom: 5%;">
             <div class = buttons>
-               <a href = "PUB_ForgotPW-3.html"><input type="submit" value="CONTINUE"></a>
+               <!-- <a href = "PUB_ForgotPW-3.html"> -->
+                 <input onclick="verify_code()" type="submit" value="CONTINUE">
+                <!-- </a> -->
                <a href = "PUB_ForgotPW-1.html"><input type="submit" value="CANCEL"></a>
             </div>
          </section>
@@ -602,6 +604,7 @@ footer .bottom-details .bottom_text{
     </div>
   </footer>
       <!-- End of Footer -->   
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -619,6 +622,16 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+         function verify_code(){
+           var code = $('#code').val();
+           if(code == localStorage.getItem('verification_code')){
+             alert('verification success')
+             window.location = "PUB_ForgotPW-3.html";
+           }else{
+             alert('verification code not match')
+             
+           }
          }
       </script>
    </body>

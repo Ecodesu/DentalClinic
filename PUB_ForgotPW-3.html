@@ -535,9 +535,11 @@ footer .bottom-details .bottom_text{
             <img src = "TEETH.png" class="teeth">
             <div class="title">FORGOT PASSWORD</div>
             <p style="margin-top: 5%; margin-bottom: 5%; font-size: 12px;"> Create a new password that is at least 6 characters long. A strong password is combination of letters, numbers, and punctuation marks.</p>
-            <input type="password" placeholder="New Password" id="newpass">
-            <input type="password" placeholder="Confirm Password" id="cpass" style="margin-bottom: 5%;">
-            <a href = "PUB_Login.html"> <input type="submit" value="CONTINUE"></a>
+            <input type="password" placeholder="New Password" id="password">
+            <input type="password" placeholder="Confirm Password" id="confirm_password" style="margin-bottom: 5%;">
+            <!-- <a href = "PUB_Login.html"> -->
+               <input onclick="submit_new_password()" type="submit" value="CONTINUE">
+              <!-- </a> -->
          </section>
       </div>
       <!-- END of Container --> 
@@ -591,7 +593,8 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
   </footer>
-      <!-- End of Footer -->   
+      <!-- End of Footer -->  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -609,6 +612,36 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+         function submit_new_password(){
+          var password          = $('#password').val();
+          var confirm_password  = $('#confirm_password').val();
+          var email             = localStorage.getItem('email');
+          if(password == confirm_password){
+            $.ajax({
+              url: "http://localhost/dental_clinic/api/forgot_password.php",
+              type: "POST",
+              data: {
+                email: email,
+                password: password,
+                
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                
+               alert(dataResult.message)
+               if(dataResult.status){
+                window.location = "PUB_Login.html";
+               }
+               
+              }
+            });
+          }else{
+            alert('password not match')
+          }
+
          }
       </script>
    </body>
