@@ -452,16 +452,18 @@ footer .bottom-details .bottom_text{
       box-sizing: border-box;
       border-radius: 6px;
       }
-      input[value="CONTINUE"]{
+      .continue-btn{
       background: #507973;
       color: white;
       font-weight: bold;
       border-radius: 6px;
-      display: inline;
       width: 100%;
-      float: right;
       cursor: pointer;
       transition: all 0.3s ease;
+      padding:  10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      width: 100%;
       }
       input[value="CANCEL"]{
       background: #86B170;
@@ -484,8 +486,8 @@ footer .bottom-details .bottom_text{
       color: green;
       }
       .teeth {
-      margin-top: -70%;
-      margin-left: 28%;
+      margin-top: -45%;
+      margin-left: 25%;
       padding:5px;
       text-align: center;
       height: 110px;
@@ -495,6 +497,38 @@ footer .bottom-details .bottom_text{
       display: inline;
       }
       /* END OF RESETPASS1 */
+
+      /* START OF MODAL */
+
+      .modalsec{
+      display: flex;
+      height: 30vh;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      }
+      .modalsec .dots span{
+      position: absolute;
+      height: 10px;
+      width: 10px;
+      background: #065446;
+      border-radius: 50%;
+      transform: rotate(calc(var(--i) * (360deg / 15))) translateY(35px);
+      animation: animate 1.5s linear infinite;
+      animation-delay: calc(var(--i) * 0.1s);
+      opacity: 0;
+      }
+      @keyframes animate {
+      0%{
+      opacity: 1;
+      }
+      100%{
+      opacity: 0;
+      }
+      }
+
+      /* END OF MODAL */
+
    </style>
    <head>
       <meta charset="UTF-8">
@@ -503,6 +537,10 @@ footer .bottom-details .bottom_text{
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
       <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
    </head>
    <body class = "bg">
       <!-- START of NAVIGATION BAR --> 
@@ -545,7 +583,44 @@ footer .bottom-details .bottom_text{
             <input type="text" placeholder="E-mail Address" id="email" style="margin-bottom: 5%;">
             <div class = buttons>
                <!-- <a href = "PUB_ForgotPW-2.html"> -->
-                 <input onclick="confirm_email()" type="submit" value="CONTINUE">
+               <button class="continue-btn" data-toggle="modal" data-target="#myModal" onclick="confirm_email()" type="submit" value="CONTINUE"> CONTINUE </button>
+               <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+                     <!-- START OF MODAL CONTENT -->
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                           <h4 class="modal-title">Please wait for the verification code on your e-mail.</h4>
+                        </div>
+                        <div class="modal-body">
+                           <section class="modalsec">
+                            <!-- LOADING -->
+                              <div class="dots">
+                                 <span style="--i:1;"></span>
+                                 <span style="--i:2;"></span>
+                                 <span style="--i:3;"></span>
+                                 <span style="--i:4;"></span>
+                                 <span style="--i:5;"></span>
+                                 <span style="--i:6;"></span>
+                                 <span style="--i:7;"></span>
+                                 <span style="--i:8;"></span>
+                                 <span style="--i:9;"></span>
+                                 <span style="--i:10;"></span>
+                                 <span style="--i:11;"></span>
+                                 <span style="--i:12;"></span>
+                                 <span style="--i:13;"></span>
+                                 <span style="--i:14;"></span>
+                                 <span style="--i:15;"></span>
+                              </div>
+                           </section>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                     <!-- END OF MODAL CONTENT -->
+                  </div>
+               </div>
                 <!-- </a> -->
                <a href = "PUB_Login.html"><input type="submit" value="CANCEL"></a>
             </div>
