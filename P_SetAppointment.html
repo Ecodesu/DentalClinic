@@ -499,6 +499,13 @@ footer .bottom-details .bottom_text{
       font-size: 17px;
       color: #000000;
       }
+      .timepicker{
+        font-size: 14px;
+        padding: 4px 5px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        width: 50%;
+      }
       .submitbtn {
       margin-top: 50px;
       background: #507973;
@@ -603,7 +610,7 @@ footer .bottom-details .bottom_text{
                      <div class="form-control">
                         <div class="col-6">
                            <label class for="app-concern">Concern</label>
-                           <textarea name="textarea"></textarea>
+                           <textarea name="textarea" id="concern"></textarea>
                         </div>
                      </div>
                      <div class="form-control">
@@ -614,15 +621,33 @@ footer .bottom-details .bottom_text{
                         <div class="col-6">
                            <label for="app-time">Time</label>
                            <div class ="time-con">
-                            <input id="timepicker" class = "timepicker" type="time" value="09:00" step="5400" min="09:00" max="18:00" required>
-                              
-                              <!--<i class="far fa-clock"></i>-->
+                            <select name="datetime" id="timepicker" class="timepicker">
+                                  <option value="nine">9:00 AM</option>
+                                  <option value="nine_thirty">9:30 AM</option>
+                                  <option value="ten">10:00 AM</option>
+                                  <option value="ten_thirty">10:30 AM</option>
+                                  <option value="eleven">11:00 AM</option>
+                                  <option value="eleven_thirty">11:30 AM</option>
+                                  <option value="twelve">12:00 NN</option>
+                                  <option value="twelve_thirty">12:30 NN</option>
+                                  <option value="one">01:00 PM</option>
+                                  <option value="one_thirty">01:30 PM</option>
+                                  <option value="two">02:00 PM</option>
+                                  <option value="two_thirty">02:30 PM</option>
+                                  <option value="three">03:00 PM</option>
+                                  <option value="three_thirty">03:30 PM</option>
+                                  <option value="four">04:00 PM</option>
+                                  <option value="four_thirty">04:30 PM</option>
+                                  <option value="five">05:00 PM</option>
+                                  <option value="five_thirty">05:30 PM</option>
+                                  
+                                </select>
                            </div>
                         </div>
                      </div>
                      <div class="control-button" id="form-button">
                         <button type="submit" class="cancel" >Cancel</button>
-                        <button type="submit" class="clear">Clear</button>
+                        <button type="submit" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
                         <button type="submit" class="submitbtn">Submit</button>
                      </div>
                   </form>
