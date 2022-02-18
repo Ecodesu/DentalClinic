@@ -623,15 +623,43 @@ footer .bottom-details .bottom_text{
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
+         var user_id     = localStorage.getItem('user_id')
+
+         
 $( document ).ready(function() {
-  $('#first_name').val(localStorage.getItem('first_name'));
-  $('#last_name').val(localStorage.getItem('last_name'));
-  $('#email').val(localStorage.getItem('email'));
-  $('#contact').val(localStorage.getItem('contact'));
-  $('#address').val(localStorage.getItem('address'));
-  $('#user_name').val(localStorage.getItem('user_name'));
+  
 
 
+  // $('#first_name').val(localStorage.getItem('first_name'));
+  // $('#last_name').val(localStorage.getItem('last_name'));
+  // $('#email').val(localStorage.getItem('email'));
+  // $('#contact').val(localStorage.getItem('contact'));
+  // $('#address').val(localStorage.getItem('address'));
+  // $('#user_name').val(localStorage.getItem('user_name'));
+
+  $.ajax({
+              url: "http://localhost/dental_clinic/api/view_user.php",
+              type: "POST",
+              data: {
+                user_id: user_id,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  $('#first_name').val(dataResult.data.user_first_name);     
+                  $('#last_name').val(dataResult.data.user_last_name);      
+                  $('#contact').val(dataResult.data.user_contact_number); 
+                  $('#email').val(dataResult.data.user_email); 
+                  $('#address').val(dataResult.data.user_address );       
+                  $('#user_name').val(dataResult.data.user_name);	          
+                  		
+                }
+                else{
+                  alert("Error occured !");
+                }
+              }
+            });
 });
 
 function save_profile(){
@@ -641,7 +669,7 @@ function save_profile(){
   var contact     = $('#contact').val();
   var address     = $('#address').val();
   var user_name   = $('#user_name').val();
-  var user_id     = localStorage.getItem('user_id')
+  
   $.ajax({
               url: "http://localhost/dental_clinic/api/update_profile.php",
               type: "POST",
