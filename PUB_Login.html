@@ -662,12 +662,6 @@ footer .bottom-details .bottom_text{
                 if(dataResult.status){
                   alert("success")		
                   localStorage.setItem('user_id',dataResult.data.user_id)
-                  localStorage.setItem('first_name',dataResult.data.user_first_name)
-                  localStorage.setItem('last_name',dataResult.data.user_last_name)
-                  localStorage.setItem('email',dataResult.data.user_email)
-                  localStorage.setItem('contact',dataResult.data.user_contact_number)
-                  localStorage.setItem('address',dataResult.data.user_address)
-                  localStorage.setItem('user_name',dataResult.data.user_name)
                   window.location = "P_Profile.html";				
                 }
                 else{

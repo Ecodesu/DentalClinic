@@ -544,7 +544,9 @@ footer .bottom-details .bottom_text{
             <p style="margin-top: 5%; margin-bottom: 5%; font-size: 12px;"> Please check your e-mail after clicking continue.</p>
             <input type="text" placeholder="E-mail Address" id="email" style="margin-bottom: 5%;">
             <div class = buttons>
-               <a href = "PUB_ForgotPW-2.html"><input type="submit" value="CONTINUE"></a>
+               <!-- <a href = "PUB_ForgotPW-2.html"> -->
+                 <input onclick="confirm_email()" type="submit" value="CONTINUE">
+                <!-- </a> -->
                <a href = "PUB_Login.html"><input type="submit" value="CANCEL"></a>
             </div>
          </section>
@@ -600,7 +602,8 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
   </footer>
-      <!-- End of Footer -->   
+      <!-- End of Footer --> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
       <script>
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -618,6 +621,34 @@ footer .bottom-details .bottom_text{
          }
          window.onscroll = ()=>{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+         function confirm_email(){
+          var verification_code = parseInt(Math.random() * (99999 - 10000) + 10000);
+          localStorage.setItem('verification_code',verification_code)
+          var email = $('#email').val();
+
+
+          $.ajax({
+              url: "http://localhost/dental_clinic/api/mail_sender.php",
+              type: "POST",
+              data: {
+                email: email,
+                verification_code: verification_code,
+                request_type: 'forgot_password',
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  alert(dataResult.message)	
+                  window.location = "PUB_ForgotPW-2.html";
+                }
+                else {
+                  alert(dataResult.message);
+                }
+                
+              }
+            });
          }
       </script>
    </body>

@@ -559,7 +559,7 @@ footer .bottom-details .bottom_text{
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href=""><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a href="" onclick="test()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -572,22 +572,22 @@ footer .bottom-details .bottom_text{
                         <div class="form-control">
                            <div class="col-6">
                               <label for="full-name">Old Password</label>
-                              <input type="password" placeholder="Enter Old Password" />
+                              <input type="password" placeholder="Enter Old Password" id="old_password" />
                            </div>
                         </div>
                         <div class="form-control">
                            <div class="col-6">
                               <label for="full-name">New Password</label>
-                              <input type="password" placeholder="Enter New Password" />
+                              <input type="password" placeholder="Enter New Password" id="new_password" />
                            </div>
                         </div>
                         <div class="form-control">
                            <div class="col-6">
                               <label for="full-name">Confirm Password</label>
-                              <input type="password" placeholder="Confirm New Password" />
+                              <input type="password" placeholder="Confirm New Password" id="confirm_password" />
                            </div>
                         </div>
-                        <button>Submit</button>
+                        <button onclick="change_pass()">Submit</button>
                      </div>
                   </form>
                </div>
@@ -608,8 +608,12 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
       <script>
+       if(!localStorage.getItem('user_id')){
+        window.location = "index.html";		
+       }
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
@@ -650,6 +654,34 @@ footer .bottom-details .bottom_text{
              pastTable.classList.remove("hidden");
            }
          });
+
+
+         function change_pass(){
+          var user_id = localStorage.getItem('user_id')
+          var old_password      = $('#old_password').val();
+          var new_password      = $('#new_password').val();
+          var confirm_password  = $('#confirm_password').val();
+
+          if(new_password == confirm_password){
+          $.ajax({
+              url: "http://localhost/dental_clinic/api/change_password.php",
+              type: "POST",
+              data: {
+                user_id: user_id,
+                old_password: old_password,
+                new_password: new_password,     
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                  alert(dataResult.message)				 
+              }
+            });
+          }
+         }
+         function test(){
+           localStorage.removeItem('user_id');
+         }
       </script>
    </body>
 </html>

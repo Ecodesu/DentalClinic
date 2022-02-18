@@ -3,7 +3,6 @@
 include 'database.php';
 
 $user_id = $_POST['user_id'];
-
 $sql = "SELECT * FROM tbl_user WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

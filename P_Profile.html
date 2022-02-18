@@ -606,6 +606,9 @@ footer .bottom-details .bottom_text{
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+        if(!localStorage.getItem('user_id')){
+          window.location = "index.html";	
+       }
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
@@ -693,6 +696,10 @@ function save_profile(){
                 }
               }
             });
+}
+function logout(){
+  localStorage.removeItem('user_id')
+  location.reload()
 }
 
       </script>

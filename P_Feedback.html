@@ -555,6 +555,9 @@ footer .bottom-details .bottom_text{
 
 
       <script>
+        if(!localStorage.getItem('user_id')){
+          window.location = "index.html";	
+       }
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
