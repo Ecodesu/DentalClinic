@@ -13,7 +13,8 @@ if($request_type == 'verification')
   $sql = "SELECT * FROM tbl_user WHERE user_email = '$to'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
-    $json_return['status'] = true;
+    $json_return['status'] = false;
+    $result = false;
   }
   else
   {

@@ -588,7 +588,7 @@ footer .bottom-details .bottom_text{
                      <div class="modal-content">
                         <div class="modal-header">
                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                           <h4 class="modal-title1">VERIFICATION CODE SENT </h4>
+                           <h4 class="modal-title1" id="close_modal" data-dismiss="modal">VERIFICATION CODE SENT </h4>
                            <h5 class="modal-title2"> Please wait for it to appear on your e-mail. </h5>
                         </div>
                         <div class="modal-body">
@@ -613,13 +613,13 @@ footer .bottom-details .bottom_text{
                            </section>
                         </div>
                         <div class="modal-footer">
-                           <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                           <!-- <button type="button" class="btn btn-default" >Close</button> -->
                         </div>
                      </div>
                   </div>
                </div>
                <!-- </a> -->
-               <a href = "PUB_Login.html"> <input type="submit" value="CANCEL"> </a>
+               <a href = "PUB_Login.html"> <input type="submit" value="CANCEL" > </a>
             </div>
          </section>
       </div>
@@ -715,11 +715,16 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                  // alert("verification code sent")	
+                  document.getElementById("close_modal").click();
+                  
+                  
                   window.location = "PUB_Registration-2.html";
                 }
                 else {
+                  document.getElementById("close_modal").click();
                   alert("Email already used !");
+                 
+                  
                 }
                 
               }
