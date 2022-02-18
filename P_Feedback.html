@@ -534,8 +534,8 @@ footer .bottom-details .bottom_text{
                </div>
                <div class="profile-info">
                   <form>
-                     <textarea name="" id="" cols="150" rows="20"></textarea>
-                     <button>Submit Feedback</button>
+                     <textarea name="" id="feedback_message" cols="150" rows="20"></textarea>
+                     <button onclick="send_feedback()">Submit Feedback</button>
                   </form>
                </div>
             </div>
@@ -553,7 +553,7 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
         if(!localStorage.getItem('user_id')){
           window.location = "index.html";	
@@ -575,6 +575,31 @@ footer .bottom-details .bottom_text{
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
+         function send_feedback(){
+          var feedback      = $('#feedback_message').val();
+
+          $.ajax({
+              url: "http://localhost/dental_clinic/api/send_feedback.php",
+              type: "POST",
+              data: {
+                feedback: feedback,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  alert(dataResult.message);
+                }
+                else 
+                {
+                  alert(dataResult.message);
+                }			 
+              },error:function(err){
+            console.log(err)
+            }
+            });
+            
+         }
       </script>
    </body>
 </html>

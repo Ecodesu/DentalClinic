@@ -675,7 +675,9 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                   alert(dataResult.message)				 
-              }
+              },error:function(err){
+            console.log(err)
+            }
             });
           }
          }
