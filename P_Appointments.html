@@ -574,7 +574,7 @@ footer .bottom-details .bottom_text{
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href=""><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a href="" onclick="logout()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -785,7 +785,7 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
          if(!localStorage.getItem('user_id')){
           window.location = "index.html";	
@@ -868,6 +868,10 @@ footer .bottom-details .bottom_text{
              pastTable.classList.remove("hidden");
            }
          });
+         function logout(){
+           alert("Log out")
+           localStorage.removeItem('user_id')
+         }
       </script>
    </body>
 </html>

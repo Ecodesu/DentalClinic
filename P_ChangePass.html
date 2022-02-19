@@ -559,7 +559,7 @@ footer .bottom-details .bottom_text{
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href="" onclick="test()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a href="" onclick="logout()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -681,8 +681,9 @@ footer .bottom-details .bottom_text{
             });
           }
          }
-         function test(){
-           localStorage.removeItem('user_id');
+         function logout(){
+           alert("Log out")
+           localStorage.removeItem('user_id')
          }
       </script>
    </body>
