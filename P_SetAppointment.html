@@ -630,16 +630,16 @@ footer .bottom-details .bottom_text{
                                   <option value="11:30 AM">11:30 AM</option>
                                   <option value="12:00 NN">12:00 NN</option>
                                   <option value="12:30 NN">12:30 NN</option>
-                                  <option value="01:00 PM">01:00 PM</option>
-                                  <option value="01:30 PM">01:30 PM</option>
-                                  <option value="02:00 PM">02:00 PM</option>
-                                  <option value="02:30 PM">02:30 PM</option>
-                                  <option value="03:00 PM">03:00 PM</option>
-                                  <option value="03:30 PM">03:30 PM</option>
-                                  <option value="04:00 PM">04:00 PM</option>
-                                  <option value="04:30 PM">04:30 PM</option>
-                                  <option value="05:00 PM">05:00 PM</option>
-                                  <option value="05:30 PM">05:30 PM</option>
+                                  <option value="1:00 PM">1:00 PM</option>
+                                  <option value="1:30 PM">1:30 PM</option>
+                                  <option value="2:00 PM">2:00 PM</option>
+                                  <option value="2:30 PM">2:30 PM</option>
+                                  <option value="3:00 PM">3:00 PM</option>
+                                  <option value="3:30 PM">3:30 PM</option>
+                                  <option value="4:00 PM">4:00 PM</option>
+                                  <option value="4:30 PM">4:30 PM</option>
+                                  <option value="5:00 PM">5:00 PM</option>
+                                  <option value="5:30 PM">5:30 PM</option>
                                   
                                 </select>
                            </div>
@@ -719,11 +719,43 @@ footer .bottom-details .bottom_text{
            localStorage.removeItem('user_id')
          }
          function submit_appointment(){
-          var date      = $('#app-date').val();
-          var time      = $('#timepicker').val();
+          var date          = $('#app-date').val();
+          var time          = $('#timepicker').val();
+          var main_concern  = $('#concern').val();
+          var ref_no        = makeid(2)+"-"+makeid(5)
+          var user_id       = localStorage.getItem("user_id")
 
-          alert(time)
+          $.ajax({
+              url: "http://localhost/dental_clinic/api/insert_appointment.php",
+              type: "POST",
+              data: {
+                user_id: user_id,
+                time: time,
+                date: date,
+                ref_no: ref_no,
+                main_concern: main_concern,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                  alert(dataResult.message)				 
+              },error:function(err){
+            console.log(err)
+            }
+            });
          }
+
+
+         function makeid(length) {
+          var result           = '';
+          var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+          var charactersLength = characters.length;
+          for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * 
+          charactersLength));
+          }
+            return result;
+          }
       </script>
    </body>
 </html>
