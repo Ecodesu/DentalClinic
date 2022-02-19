@@ -38,7 +38,8 @@
             </div>
             <li><a href="PUB_AboutServices.html">SERVICES</a></li>
             <li><a href="PUB_Contact.html">CONTACT</a></li>
-            <div class="login-button">
+            <li id="profile_val"><a href="P_Profile.html">PROFILE</a></li>
+            <div class="login-button" id="login_val">
                <a class = "login-btn dark-blue-bg" href = "PUB_Login.html"> LOGIN </a>
             </div>
          </ul>
@@ -386,6 +387,13 @@
       });
       
       $(document).ready(function() {
+        if(localStorage.getItem('user_id')){
+          document.getElementById("login_val").hidden = true
+        }
+        else
+        {
+          document.getElementById("profile_val").hidden = true
+        }
       $(window).on("scroll", function() {
         console.log($(this).scrollTop())
         if($(this).scrollTop() >= 30){
