@@ -649,6 +649,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
             <div class="appointment-table">
               <div class="appointment-content">
                 <table id="pendingApp">
+                  <thead>
                   <tr>
                     <th style="width: 20%">REF NO.</th>
                     <th>MAIN CONCERN</th>
@@ -657,7 +658,11 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <th>STATUS</th>
                     <th>ACTION</th>
                   </tr>
-                  <tr>
+                </thead>
+                <tbody id="table_appointment">
+
+                </tbody>
+                  <!-- <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -712,7 +717,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <td></td>
                     <td></td>
                     <td></td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
             </div>
@@ -731,11 +736,12 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       </div>
     </footer>
     <!-- END of FOOTER  -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       if(!localStorage.getItem('user_id')){
           window.location = "index.html";
        }
+       var user_id = localStorage.getItem('user_id')
 
       const body = document.querySelector("body");
       const navbar = document.querySelector(".navbar");
@@ -756,6 +762,32 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       };
 
       const pending = document.getElementById("pending");
+
+      {
+        
+        $.ajax({
+            url:"http://localhost/dental_clinic/api/view_appointment.php",
+            type:"POST",
+            data:{
+              user_id: user_id
+            },
+            success:function(response){
+              
+                var data = "";
+                for (i = 0; i < response.length; i++) {
+                  data+="<tr>"
+                  data+="<td>"+response[i].ref_no+"</td>"
+                  data+="<td>"+response[i].main_concern+"</td>"
+                  data+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                  data+="<td>"+response[i].date_created+"</td>"
+                  data+="<td>"+response[i].status+"</td>"
+                  data+="<td>none</td>"
+                  data+="</tr>"
+                }
+                $('#table_appointment').html(data)
+            }
+        })
+    }
     </script>
   </body>
 </html>
