@@ -18,7 +18,7 @@ if($request_type == 'verification')
   }
   else
   {
-    $subject = "<h1>".$_POST['verification_code']."</h1>" "is your verification code";
+    $subject = "Patajo Dental Clinic Verification Code";
               
     $message = "<b>verification code</b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
@@ -49,7 +49,7 @@ elseif($request_type == 'forgot_password')
   $sql = "SELECT * FROM tbl_user WHERE user_email = '$to'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
-    $subject = "'verification_code'is your verification code";
+    $subject = "Patajo Dental Clinic Verification Code";
             
     $message = "<b>verification code</b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
