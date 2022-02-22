@@ -21,13 +21,13 @@ if($request_type == 'verification')
     $subject = "Patajo Dental Clinic Verification Code";
 
     $message = '<html><body style=" display: flex; min-height: 100vh; align-items: center; justify-content: center; background: #F4F7FF; ">';
-    $message .= "<div style = "max-width: 550px; margin: 0 20px; background: white; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); padding: 40px 40px; border-radius: 12px;">";
+    $message .= '<div style = "max-width: 550px; margin: 0 20px; background: white; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); padding: 40px 40px; border-radius: 12px;">';
 
     $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo"> <br>';
 
-    $message .= "<p class = "head" style= "font-size: 25px; font-weight: 400; text-align: justify; margin-top: 40px;"><b> We have received a request to register an account. </b></p>";
+    $message .= '<p class = "head" style= "font-size: 25px; font-weight: 400; text-align: justify; margin-top: 40px;"><b> We have received a request to register an account. </b></p>';
 
-    $message .= "<p class = "message" style= "margin-top: 20px; font-size: 16px; font-weight: 400; text-align: justify;"> Enter the following verification code to continue:</p>";
+    $message .= 'p class = "message" style= "margin-top: 20px; font-size: 16px; font-weight: 400; text-align: justify;"> Enter the following verification code to continue:</p>';
 
     $message .= "<h1>".$_POST['verification_code']."</h1>";
     $message .= "</div>";
