@@ -296,7 +296,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title> ADD USER </title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-   <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+   <!-- <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script> -->
+</head>
    <body class="bg">
 
 
@@ -371,9 +372,10 @@
                            <option value="personnel"> Personnel</option>
                         </select>
                         <br><br>
-                        <button onclick="register_user()">Add User</button>
+                        
                      </div>
                   </form>
+                  <button onclick="register_user()">Add User</button>
                </div>
             </div>
          </div>
@@ -407,31 +409,32 @@
          //   navbar.classList.remove("show");
          //   menuBtn.classList.remove("hide");
          // };
-         // window.onscroll = () => {
-         //   this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
-         // };
+         window.onscroll = () => {
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         };
          function register_user(){
-         var first_name        = $('#first_name').val();
-         var last_name         = $('#last_name').val();
-         var user_name         = $('#user_name').val();
-         var contact           = $('#contact').val();
-         var password          = $('#password').val();
-         var confirm_password  = $('#confirm_password').val();
-         var address           = $('#address').val();
-         var role              = $('#role').val();
-         if(confirm_password == password || role != "none"){
+         // var first_name        = document.getElementById('first_name').value
+         // var last_name         = document.getElementById('last_name').value
+         // var user_name         = document.getElementById('user_name').value
+         // var contact           = document.getElementById('contact').value
+         var password          = document.getElementById('password').value
+         var confirm_password  = document.getElementById('confirm_password').value
+         // var address           = document.getElementById('address').value
+         // var role              = document.getElementById('role').value
+         // alert(first_name)
+         if(confirm_password == password && role != "none"){
               $.ajax({
               url: "http://localhost/dental_clinic/api/user_register.php",
               type: "POST",
               data: {
-                first_name:   first_name,
-                last_name:    last_name,
-                user_name:    user_name,
-                contact:      contact,
-                password:     password,
-                address:      address,
-                email:        email,
-                role:         role,
+                first_name:   document.getElementById('first_name').value,
+                last_name:    document.getElementById('last_name').value,
+                user_name:    document.getElementById('user_name').value,
+                contact:      document.getElementById('contact').value,
+                password:     document.getElementById('password').value,
+                address:      'N/A',
+                email:        document.getElementById('email').value,
+                role:         document.getElementById('role').value,
               },
               cache: false,
               success: function(dataResult){
@@ -445,7 +448,7 @@
                 }
               }
             });
-            }else{
+            }else if(confirm_password != password || role == "none"){
               alert("password not match or role not assigned")
             }
          }

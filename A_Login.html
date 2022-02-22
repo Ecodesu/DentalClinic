@@ -314,8 +314,8 @@
                   // localStorage.setItem('user_id',dataResult.data.user_id)
                   window.location = "A_AddUser.html";				
                 }
-                else if(dataResult.status == false){
-                  alert("Error occured !");
+                else if(dataResult.status == false || dataResult.data.user_credential != "admin"){
+                  alert("Login Failed!");
                 }
               },error:function(err){
             console.log(err)
