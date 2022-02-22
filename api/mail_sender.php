@@ -66,7 +66,7 @@ if($request_type == 'verification')
     $message .= "<h1>".$_POST['verification_code']."</h1>";
 
 
-    $message .= "</div> </body> </html>"
+    $message .= "</div> </body> </html>";
 
 
     $header = "From:abc@somedomain.com \r\n";
