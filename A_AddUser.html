@@ -336,11 +336,11 @@
                   <form>
                      <div class="form-control">
                         <label for="fname">First name:</label>
-                        <input size="50" type="text" id="fname" name="fname"><br>
+                        <input size="50" type="text" id="first_name" name="fname"><br>
                      </div>
                      <div class="form-control">
                         <label for="lname">Last name:</label>
-                        <input size="50" type="text" id="lname" name="lname"><br>
+                        <input size="50" type="text" id="last_name" name="lname"><br>
                      </div>
                      <div class="form-control">
                         <label for="email">Email:</label>
@@ -348,11 +348,11 @@
                      </div>
                      <div class="form-control">
                         <label for="uname">Username:</label>
-                        <input size="50" type="text" id="uname" name="uname"><br>
+                        <input size="50" type="text" id="user_name" name="uname"><br>
                      </div>
                      <div class="form-control">
-                        <label for="contactnum">Contact Number:</label>
-                        <input size="50" type="text" id="contactnum" name="contactnum"><br>
+                        <label for="contactnum">Contact:</label>
+                        <input size="50" type="text" id="contact" name="contactnum"><br>
                      </div>
                      <div class="form-control">
                         <label for="password">Password:</label>
@@ -360,18 +360,18 @@
                      </div>
                      <div class="form-control">
                         <label for="cpassword">Confirm Password:</label>
-                        <input type="password" size="50" type="text" id="password" name="cpassword"><br>
+                        <input type="password" size="50" type="text" id="confirm_password" name="cpassword"><br>
                      </div>
                      <div class="form-control">
                         <label for="role">Role:</label>
                         <select id="role">
-                           <option value="select">  </option>
+                           <option value="none">  </option>
                            <option value="administrator"> Administrator</option>
                            <option value="doctor"> Doctor</option>
                            <option value="personnel"> Personnel</option>
                         </select>
                         <br><br>
-                        <button>Add User</button>
+                        <button onclick="register_user()">Add User</button>
                      </div>
                   </form>
                </div>
@@ -391,26 +391,66 @@
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
-         const body = document.querySelector("body");
-         const navbar = document.querySelector(".navbar");
-         const menuBtn = document.querySelector(".menu-btn");
-         const cancelBtn = document.querySelector(".cancel-btn");
-         menuBtn.onclick = () => {
-           navbar.classList.add("show");
-           menuBtn.classList.add("hide");
-           body.classList.add("disabled");
-         };
-         cancelBtn.onclick = () => {
-           body.classList.remove("disabled");
-           navbar.classList.remove("show");
-           menuBtn.classList.remove("hide");
-         };
-         window.onscroll = () => {
-           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
-         };
+         // const body = document.querySelector("body");
+         // const navbar = document.querySelector(".navbar");
+         // const menuBtn = document.querySelector(".menu-btn");
+         // const cancelBtn = document.querySelector(".cancel-btn");
+         // menuBtn.onclick = () => {
+         //   navbar.classList.add("show");
+         //   menuBtn.classList.add("hide");
+         //   body.classList.add("disabled");
+         // };
+         // cancelBtn.onclick = () => {
+         //   body.classList.remove("disabled");
+         //   navbar.classList.remove("show");
+         //   menuBtn.classList.remove("hide");
+         // };
+         // window.onscroll = () => {
+         //   this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         // };
+         function register_user(){
+         var first_name        = $('#first_name').val();
+         var last_name         = $('#last_name').val();
+         var user_name         = $('#user_name').val();
+         var contact           = $('#contact').val();
+         var password          = $('#password').val();
+         var confirm_password  = $('#confirm_password').val();
+         var address           = $('#address').val();
+         var role              = $('#role').val();
+         if(confirm_password == password || role != "none"){
+              $.ajax({
+              url: "http://localhost/dental_clinic/api/user_register.php",
+              type: "POST",
+              data: {
+                first_name:   first_name,
+                last_name:    last_name,
+                user_name:    user_name,
+                contact:      contact,
+                password:     password,
+                address:      address,
+                email:        email,
+                role:         role,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                   alert("register success")	
+                  // window.location = "PUB_Login.html";
+                }
+                else {
+                  alert("Error occured !");
+                }
+              }
+            });
+            }else{
+              alert("password not match or role not assigned")
+            }
+         }
+
          
       </script>
-   <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script></body>
+   <!-- <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script></body> -->
 </html>
