@@ -19,12 +19,9 @@ if($request_type == 'verification')
   else
   {
     $subject = "Patajo Dental Clinic Verification Code";
-    
-    $message = "<html> <body>"          
-    $message = "<img src="LOGO.png"><br><b>We have received a request to reset your password. Enter the following verification code: </b>";
+         
+    $message = "<b>We have received a request to reset your password. Enter the following verification code: </b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
-    $message .= "haha"
-    $message .= "</body></html>";
 
     $header = "From:abc@somedomain.com \r\n";
     $header .= "Cc:afgh@somedomain.com \r\n";
