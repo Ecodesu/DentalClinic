@@ -30,7 +30,7 @@ if($request_type == 'verification')
     $message .= "<p class = "message" style= "margin-top: 20px; font-size: 16px; font-weight: 400; text-align: justify;"> Enter the following verification code to continue:</p>";
 
     $message .= "<h1>".$_POST['verification_code']."</h1>";
-    $message .= "</table>";
+    $message .= "</div>";
     $message .= "</body></html>";
 
 
