@@ -20,7 +20,13 @@ if($request_type == 'verification')
   {
     $subject = "Patajo Dental Clinic Verification Code";
          
-    $message = "<b>We have received a request to register an account. Enter the following verification code to continue: </b>";
+    $message = "<html> <body> 
+
+    <div class = "logo" style = width = "118" height = "24"> <img src = "logo.png"></div>
+
+    <b>We have received a request to register an account. Enter the following verification code to continue: </b>
+
+    </html> </body";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
 
     $header = "From:abc@somedomain.com \r\n";
