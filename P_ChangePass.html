@@ -240,7 +240,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
     .popup {
       width: 350px;
-      height: 250px;
+      height: 270px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -296,7 +296,8 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
     .popup .dismiss-btn button {
       padding: 10px 20px;
-      margin: auto;
+      width: 75px;
+      margin: auto 10px;
       background: #86b170;
       color: #f5f5f5;
       border: none;
@@ -328,12 +329,16 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     .popup.active .description {
       transition: all 300ms ease-in-out 350ms;
     }
+
     .popup.active .dismiss-btn {
       transition: all 300ms ease-in-out 400ms;
     }
 
-    /* END OF POPUP */
+    .popup.active .confirm-btn {
+      transition: all 300ms ease-in-out 400ms;
+    }
 
+    /* END OF POPUP */
 
   /*START of FOOTER*/
 footer{
@@ -530,6 +535,11 @@ footer .bottom-details .bottom_text{
       font-weight: 600;
       font-size: 18px;
       }
+
+      .logout-container:hover{
+      cursor: pointer;
+      }
+
       .navy-blue {
       color: #507973;
       }
@@ -663,7 +673,7 @@ footer .bottom-details .bottom_text{
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href="" onclick="logout()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a type="button" id="open-popup-btn-2"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -712,6 +722,18 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
 
+    <div class="popup popup2 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Logout</div>
+      <div class="description">Are you sure you want to logout?</div>
+      <div class="dismiss-btn">
+        <button id="confirm-popup-btn-2" onclick="logout()">Yes</button>
+        <button id="dismiss-popup-btn-2">No</button>
+      </div>
+    </div>
+
     <!-- END OF POPUP -->
 
       <!-- END of Container -->
@@ -742,6 +764,18 @@ footer .bottom-details .bottom_text{
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.remove("active");
+      });
+
+      document.getElementById("open-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+      });
+
+      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
       });
 
          const body = document.querySelector("body");
@@ -812,7 +846,6 @@ footer .bottom-details .bottom_text{
           }
          }
          function logout(){
-           alert("Log out")
            localStorage.removeItem('user_id')
          }
       </script>

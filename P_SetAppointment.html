@@ -325,7 +325,6 @@ footer .bottom-details .bottom_text{
   }
   footer .content .link-boxes .quick-links{
     margin:0px;
-    padd
   }
   footer .content .link-boxes .visit{
     margin: 0px;
@@ -425,6 +424,11 @@ footer .bottom-details .bottom_text{
       font-weight: 600;
       font-size: 18px;
       }
+
+      .logout-container:hover{
+      cursor: pointer;
+      }
+
       .navy-blue {
       color: #507973;
       }
@@ -441,6 +445,116 @@ footer .bottom-details .bottom_text{
       justify-content: space-between;
       }
       /* END OF CARD CONTAINER */
+
+      /* START OF POPUP */
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .popup {
+        width: 350px;
+        height: 270px;
+        padding: 20px 20px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        text-align: center;
+        opacity: 0;
+        top: -200%;
+        transform: translate(-50%, -50%) scale(0.5);
+        transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+      }
+
+      .popup.active {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+      }
+
+      .popup .ckicon {
+        margin: 5px 0px;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #507973;
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 60px;
+      }
+
+      .popup .ckicon i.fa {
+        font-size: 30px;
+        color: #507973;
+      }
+
+      .popup .popup-title {
+        color: #507973;
+        margin: 5px 0px;
+        font-size: 26px;
+        font-weight: 600;
+      }
+
+      .popup .description {
+        color: #507973;
+        font-size: 15px;
+        padding: 5px;
+      }
+
+      .popup .dismiss-btn {
+        margin-top: 15px;
+      }
+
+      .popup .dismiss-btn button {
+        padding: 10px 20px;
+        width: 75px;
+        margin: auto 10px;
+        background: #86b170;
+        color: #f5f5f5;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 10px;
+        transition: all 300ms ease-in-out;
+      }
+
+      .popup > div {
+        position: relative;
+        top: 10px;
+        opacity: 0;
+      }
+
+      .popup.active > div {
+        top: 0px;
+        opacity: 1;
+      }
+
+      .popup.active .ckicon {
+        transition: all 300ms ease-in-out 250ms;
+      }
+
+      .popup.active .popup-title {
+        transition: all 300ms ease-in-out 300ms;
+      }
+
+      .popup.active .description {
+        transition: all 300ms ease-in-out 350ms;
+      }
+
+      .popup.active .dismiss-btn {
+        transition: all 300ms ease-in-out 400ms;
+      }
+
+      .popup.active .confirm-btn {
+        transition: all 300ms ease-in-out 400ms;
+      }
+
+      /* END OF POPUP */
 
       /*START OF SET APPOINTMENT*/
       .setapp-card {
@@ -600,7 +714,7 @@ footer .bottom-details .bottom_text{
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href="" onclick="logout()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a type="button" id="open-popup-btn-2"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="setapp-content">
@@ -648,7 +762,7 @@ footer .bottom-details .bottom_text{
                      <div class="control-button" id="form-button">
                         <button type="submit" class="cancel" >Cancel</button>
                         <button type="submit" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
-                        <button type="submit" class="submitbtn" onclick="submit_appointment()">Submit</button>
+                        <button id="open-popup-btn" type="submit" class="submitbtn" onclick="submit_appointment()">Submit</button>
                      </div>
                   </form>
                </div>
@@ -657,6 +771,31 @@ footer .bottom-details .bottom_text{
       </div>
       <!-- END of Container -->
 
+      <!-- START OF POPUP -->
+      <div class="popup center">
+        <div class="ckicon">
+          <i class="fa fa-check"></i>
+        </div>
+        <div class="popup-title">Save Changes</div>
+        <div class="description">Changes saved successfully!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn">Close</button>
+        </div>
+      </div>
+
+      <div class="popup popup2 center">
+        <div class="ckicon">
+          <i class="fa fa-check"></i>
+        </div>
+        <div class="popup-title">Logout</div>
+        <div class="description">Are you sure you want to logout?</div>
+        <div class="dismiss-btn">
+          <button id="confirm-popup-btn-2" onclick="logout()">Yes</button>
+          <button id="dismiss-popup-btn-2">No</button>
+        </div>
+      </div>
+
+      <!-- END OF POPUP -->
 
       <!-- START of FOOTER  --> 
       <footer>
@@ -670,9 +809,31 @@ footer .bottom-details .bottom_text{
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
-        if(!localStorage.getItem('user_id')){
-        window.location = "index.html";		
-       }
+      //   if(!localStorage.getItem('user_id')){
+      //   window.location = "index.html";		
+      //  }
+
+        // Popup Button
+      document.getElementById("open-popup-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup")[0].classList.add("active");
+      });
+
+      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+      });
+
+      document.getElementById("open-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+      });
+
+      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
@@ -715,7 +876,6 @@ footer .bottom-details .bottom_text{
          });
 
          function logout(){
-           alert("Log out")
            localStorage.removeItem('user_id')
          }
          function submit_appointment(){
