@@ -22,14 +22,51 @@ if($request_type == 'verification')
 
     $message = '<html><body>';
 
-    $message .= "<table border='0' cellspacing='0' width='100%' align='center'>";
-    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "150" height = "100%" alt="PDClogo"> <br>';
 
-    $message .= "<b> We have received a request to register an account. Enter the following verification code to continue: </b>";
+    $message .= '<html> <head>'; 
+    $message .= "<style> *{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }";
+    $message .= " body{
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #F4F7FF;
+}
 
+.container{
+  max-width: 550px;
+  margin: 0 20px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px 40px;
+  border-radius: 12px;
+
+}
+.container .head{
+  font-size: 25px;
+  font-weight: 400;
+  text-align: justify;
+  margin-top: 40px;
+}
+
+.container .message{
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: justify;
+}
+"
+    $message .= "</style> </head> <body>";
+
+    $message .= "<div class="container">";
+    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo"> <br>';
+
+    $message .=  "<p class = "head"><b> We have received a request to register an account. </b></p>";
+    $message .= "<p class = "message"> Enter the following verification code to continue:</p>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
-    $message .= "</table>";
-    $message .= "</body></html>";
+
+
+    $message .= "</div> </body> </html>"
 
 
     $header = "From:abc@somedomain.com \r\n";
