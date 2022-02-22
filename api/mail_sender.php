@@ -49,7 +49,7 @@ elseif($request_type == 'forgot_password')
   $sql = "SELECT * FROM tbl_user WHERE user_email = '$to'";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
-    $subject = "This is subject";
+    $subject = "'verification_code'is your verification code";
             
     $message = "<b>verification code</b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
