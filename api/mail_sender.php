@@ -22,7 +22,7 @@ if($request_type == 'verification')
               
     $message = "<b>verification code</b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
-    $message .= "haha"
+    $message .= "haha";
 
     $header = "From:abc@somedomain.com \r\n";
     $header .= "Cc:afgh@somedomain.com \r\n";
