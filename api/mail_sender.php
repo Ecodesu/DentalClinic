@@ -22,7 +22,7 @@ if($request_type == 'verification')
 
     $message = '<html><body>';
          
-    $message .= '<img src = "logo.png"></div>';
+    $message .= '<img src="LOGO.png" alt="PDClogo">';
 
     $message .= "<b> We have received a request to register an account. Enter the following verification code to continue: </b>";
 
