@@ -20,7 +20,7 @@ if($request_type == 'verification')
   {
     $subject = "Patajo Dental Clinic Verification Code";
               
-    $message = "<b>verification code</b>";
+    $message = "<img src="LOGO.png"><br><b>We have received a request to reset your password. Enter the following verification code: </b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
     $message .= "haha"
 
@@ -52,7 +52,7 @@ elseif($request_type == 'forgot_password')
   if ($result->num_rows > 0) {
     $subject = "Patajo Dental Clinic Verification Code";
             
-    $message = "<b>verification code</b>";
+    $message = "<img src="LOGO.png"><br><b>We have received a request to reset your password. Enter the following verification code: </b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
 
     $header = "From:abc@somedomain.com \r\n";
