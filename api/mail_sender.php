@@ -18,7 +18,7 @@ if($request_type == 'verification')
   }
   else
   {
-    $subject = "This is subject";
+    $subject = "'verification_code'is your verification code";
               
     $message = "<b>verification code</b>";
     $message .= "<h1>".$_POST['verification_code']."</h1>";
