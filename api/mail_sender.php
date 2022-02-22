@@ -22,7 +22,7 @@ if($request_type == 'verification')
 
     $message = '<html><body>';
          
-    $message .= '<img src="https://ibb.co/3M6v27q" alt="PDClogo">';
+    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" alt="PDClogo">';
 
     $message .= "<b> We have received a request to register an account. Enter the following verification code to continue: </b>";
 
