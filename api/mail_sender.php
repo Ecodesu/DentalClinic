@@ -21,14 +21,16 @@ if($request_type == 'verification')
     $subject = "Patajo Dental Clinic Verification Code";
 
     $message = '<html><body>';
-         
-    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "118" height = "24" alt="PDClogo">';
+
+    $message .= "<table border='0' cellspacing='0' width='100%' align='center'>";
+    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "150" height = "100%" alt="PDClogo"> <br>';
 
     $message .= "<b> We have received a request to register an account. Enter the following verification code to continue: </b>";
 
+    $message .= "<h1>".$_POST['verification_code']."</h1>";
+    $message .= "</table>";
     $message .= "</body></html>";
 
-    $message .= "<h1>".$_POST['verification_code']."</h1>";
 
     $header = "From:abc@somedomain.com \r\n";
     $header .= "Cc:afgh@somedomain.com \r\n";
