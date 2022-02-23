@@ -569,6 +569,7 @@
                               <th>APPOINTMENT CREATED</th>
                               <th>ACTION</th>
                            </tr>
+                           <tbody id="table_pending">
                            <tr>
                               <td></td>
                               <td></td>
@@ -618,6 +619,7 @@
                               <td></td>
                               <td></td>
                            </tr>
+                        </tbody>
                         </table>
                         <table id="presentApp"class="hidden">
                            <tr>
@@ -782,7 +784,7 @@
       </footer>
       <!-- END of FOOTER  --> 
 
-           
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
 
          // Popup Button
@@ -885,6 +887,33 @@
              pastTable.classList.remove("hidden");
            }
          });
+      </script>
+      <script>
+         $.ajax({
+            url:"http://localhost/dental_clinic/api/view_appointment.php",
+            type:"POST",
+            data:{
+              user_id: null
+            },
+            success:function(response){
+              
+                var pending = "";
+                var upcoming = "";
+                var past   = "";
+                var data = ""
+                for (i = 0; i < response.length; i++) {
+                  data+="<tr>"
+                  data+="<td>"+response[i].ref_no+"</td>"
+                  data+="<td>"+response[i].main_concern+"</td>"
+                  data+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                  data+="<td>"+response[i].date_created+"</td>"
+                  data+="<td class='pending-edit'> <button type='button' id='open-popup-btn' class='fas fa-check'/> <button type='button' id='open-popup2-btn' class='fas fa-times'/> </td>"
+                  data+="</tr>"
+                 
+                }
+                $('#table_pending').html(data)
+            }
+        })
       </script>
    </body>
 </html>
