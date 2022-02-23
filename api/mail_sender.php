@@ -27,6 +27,7 @@ $message .=  '<table id="outertable" border="0" cellspacing="0" cellpadding="0" 
 $message .= '<tr><td class="topborder" style="background-color: #065446; font-size: 8pt; border-radius: 4px 4px 0 0; padding: 10px; " >&nbsp;</td></tr>';
 $message .= '<tr><td class="spacer" style="font-size: 5px;">&nbsp;</td></tr>';
 $message .=  '<tr>';
+$message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo"> <br>';
 $message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"> Registration Verification Code </td>';
 $message .= '</tr>';
 $message .= '<tr>';
@@ -36,7 +37,7 @@ $message .= '<br> We have received a request to register an account. <br><br>';
 $message .= 'Enter the following verification code to continue: <br>';
 $message .= "<h1>".$_POST['verification_code']."</h1>";     
 $message .=  '</div>';
-$message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td> /tr>';
+$message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td>';
 $message .= '<tr><td class="spacer">&nbsp;</td></tr> </table>';
 $message .= '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px;"width="550">';
 $message .= '<tr class="legalfooter">';
