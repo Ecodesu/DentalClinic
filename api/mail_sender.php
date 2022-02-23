@@ -33,8 +33,8 @@ if($request_type == 'verification')
     $message .= '<tr>';
     $message .= '<td class="contents" style="padding: 2px 50px 3px 50px; font-size: 11pt; ">';
     $message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000; text-align:center;">';
-    $message .= '<br style="text-align:center;"> We have received a request to register an account. <br>';
-    $message .= '<div style="text-align:center;">Enter the following verification code to continue: <br>';
+    $message .= '<br style="text-align:center; color: black;"> We have received a request to register an account. <br>';
+    $message .= '<div style="text-align:center; color: black;">Enter the following verification code to continue: <br>';
     $message .= '<h1 style="text-align:center;">'.$_POST['verification_code'].'</h1>';     
     $message .=  '</div>';
     $message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td>';
@@ -42,7 +42,7 @@ if($request_type == 'verification')
     $message .= '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px;"width="550">';
     $message .= '<tr class="legalfooter">';
     $message .= '<td class="legal" style="color: #777777; font-family: Helvetica,Arial,sans-serif; font-size: 9pt; text-align: center;"> <br>';
-    $message .= '© 2022 Patajo Dental Clinic . All rights reserved.';
+    $message .= '© 2022 Patajo Dental Clinic. All rights reserved.';
     $message .= '<br><br></td></tr></table><br><br></div></body>';
 
 
@@ -101,7 +101,7 @@ elseif($request_type == 'forgot_password')
     $message .= '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px;"width="550">';
     $message .= '<tr class="legalfooter">';
     $message .= '<td class="legal" style="color: #777777; font-family: Helvetica,Arial,sans-serif; font-size: 9pt; text-align: center;"> <br>';
-    $message .= '© 2022 Patajo Dental Clinic . All rights reserved.';
+    $message .= '© 2022 Patajo Dental Clinic. All rights reserved.';
     $message .= '<br><br></td></tr></table><br><br></div></body>';
 
     $header = "From:abc@somedomain.com \r\n";
