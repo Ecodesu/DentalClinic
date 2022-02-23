@@ -368,6 +368,94 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 	    100% { transform: translateX(2px); }
 	}
 	/*END of GET STARTED BTN*/
+  /*START OF DEMO*/
+  @media screen and (max-width:9999px){
+      .cboxcheck:checked + * .thumb-carousel{
+        height: auto !important;
+        max-height: none !important;
+        line-height:0;
+      }
+      .thumb-carousel span {
+        font-size:0;
+        line-height:0;
+      }
+      .car-content{
+        box-shadow: 0 4px 8px 0 rgba(145, 196, 131, 0.2), 0 6px 20px 0 rgba(145, 196, 131, 0.19);
+      }
+      .cboxcheck:checked + * .thumb-carousel .car-content{
+        display:none;
+        max-height:0px;
+        overflow:hidden;
+      }
+      .thumb-carousel .cbox1:checked + span .content-1,
+      .thumb-carousel .cbox2:checked + span .content-2,
+      .thumb-carousel .cbox3:checked + span .content-3,
+      .thumb-carousel .cbox4:checked + span .content-4,
+      .thumb-carousel .cbox5:checked + span .content-5 
+      {
+        display:block !important;
+        max-height:none !important;
+        overflow:visible !important;
+      }
+      
+
+      .thumb-carousel .thumb{
+        cursor:pointer;
+        display:inline-block !important;
+        width:17.5%;
+        margin:4.5% 2%;
+        border:2px solid #d6d6d6;
+      }
+      /* hide for thunderbird as it doesn't support checkbox toggling */
+      .moz-text-html .thumb {
+        display:none !important;
+      }
+    .arrow {background:url(http://media.whatcounts.com/whatcounts_marketing/170619_Carousel/arrow.jpg) no-repeat; width:15px; height:8px; display:block}
+    .thumb-carousel .thumb:hover{
+        border:2px solid #86B170;
+    border-radius:2px;
+      }
+      .thumb-carousel .cbox1:checked + span .thumb-1,
+      .thumb-carousel .cbox2:checked + span .thumb-2,
+      .thumb-carousel .cbox3:checked + span .thumb-3,
+      .thumb-carousel .cbox4:checked + span .thumb-4,
+      .thumb-carousel .cbox5:checked + span .thumb-5 
+      {
+        border-color: #86B170;
+    border-radius:2px;
+      }
+
+      .thumb-carousel .thumb img{
+        width:100%;
+        height: auto;
+      }
+      .thumb-carousel img{
+        max-height: none !important;
+      }      
+      .cboxcheck:checked + * .fallback{
+        display:none !important;
+        display:none;
+        max-height: 0px;
+        height: 0px;
+        overflow: hidden;
+      }
+    }
+
+    @media screen and (max-width:600px){
+      .car-table.responsive,
+      .car-table.responsive .thumb-carousel,
+      .car-table.responsive .thumb-carousel .car-content img,
+      .car-table.responsive .fallback .car-content img
+       {
+        width:100% !important;
+        height:auto;
+       }
+    }    
+
+    .car-table label {
+      display: contents;
+    }
+  /*END OF DEMO*/
 
 	/*START of DESCRIPTION */
 	.desc-container{
@@ -469,6 +557,23 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
   }
   .row{
     display: flex;
+    margin: 0px;
+  }
+  .desc-content .row{
+    margin-top: 20px;
+  }
+  .desc-column{
+    max-width: 380px;
+    width:100%;
+  }
+  .desc-column,
+  .img-column{
+    margin: auto;
+  }
+  @media (max-width: 850px) {
+    .row{
+      display: grid;
+    }
   }
   .sc2-inner {
   margin-left: 80px;

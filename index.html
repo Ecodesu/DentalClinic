@@ -12,7 +12,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="style.css">
 <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
 
@@ -78,10 +77,56 @@
    <section class="desc-section" id="description-section">
       <div class="desc-container">
          <div class="desc-content text-center">
-            <h2>We've got what you need!</h2>
-            <hr class="divider divider-light" />
-            <p class= "text-center" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <div class= row>
+              <div class= img-column>
+                  <table class="car-table responsive" cellpadding=0 cellspacing=0 border=0 width="540"><tr><td>
+                    <input type=radio class="cboxcheck" style="display:none !important;" checked>
+                    <!--<![endif]-->
+                    <div>
+                    <div class="thumb-carousel " style="width:540px;height:0px;max-height:0px;overflow:hidden;text-align:center">
+                        <label>
+                    <input type="radio" name="car-rd1" class="cbox4" style="display:none !important;"  >
+                    <span>
+                        <label>
+                    <input type="radio" name="car-rd1" class="cbox3" style="display:none !important;"  >
+                    <span>
+                        <label>
+                    <input type="radio" name="car-rd1" class="cbox2" style="display:none !important;"  >
+                    <span>
+                        <label>
+                    <input type="radio" name="car-rd1" class="cbox1" style="display:none !important;" checked >
+                    <span>
+                        <div class="content-1 car-content"><img src="HOME_image1.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-2 car-content"><img src="HOME_image2.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-3 car-content"><img src="HOME_image3.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-4 car-content"><img src="HOME_image4.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
+                          <span class="thumb thumb-1" style="display:none;"><img src="HOME_image1.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                    </span>
+                    </label>
+                          <span class="thumb thumb-2" style="display:none;"><img src="HOME_image2.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                    </span>
+                    </label>
+                          <span class="thumb thumb-3" style="display:none;"><img src="HOME_image3.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                    </span>
+                    </label>
+                          <span class="thumb thumb-4" style="display:none;"><img src="HOME_image4.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                    </span>
+                    </label>
+                        </div>
+                    <!--<![endif]-->
+                    <div class="fallback">
+                    <div class="car-content"><a href="%%DISPLAY_MSG%%"><img src="HOME_image1.jpg" width="540" height="377" alt="." style="display:block;" border=0></a></div>
+                    </div>
+                    </div>
+                    </td></tr></table>
+              </div>
+              <div class= desc-column>
+                <h2>We've got what you need!</h2>
+                <hr class="divider divider-light" />
+                <p class= "text-center" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              </div>
+            </div>
          </div>
       </div>
       <div class="counter-stats" class="wow fadeInRight" data-wow-duration="1.4s">
@@ -153,46 +198,6 @@
          </div>
    </section>
    <!-- End of Description --> 
-
-
-   <!-- Start of Carousel-->
-   <section class="img-carousel">
-      <div class="owl-slider">
-          <div id="carousel" class="owl-carousel">
-            <div class="item">
-              <img src="HOME_image1.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image2.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image3.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image4.jpg" alt="">
-            </div>
-              <div class="item">
-              <img src="HOME_image1.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image4.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image3.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image2.jpg" alt="">
-            </div>
-              <div class="item">
-              <img src="HOME_image1.jpg" alt="">
-            </div>
-            <div class="item">
-              <img src="HOME_image4.jpg" alt="">
-            </div>
-          </div>
-      </div>
-   </section>
-   <!--End of Carousel-->
 
    <!--Start of Steps -->
    <section class="steps">
@@ -416,50 +421,9 @@
 
    
 
-      //carousel
-      $(document).ready(function(){
-  
-      jQuery("#carousel").owlCarousel({
-      autoplay: true,
-      rewind: true, /* use rewind if you don't want loop */
-      margin: 20,
-       /*
-      animateOut: 'fadeOut',
-      animateIn: 'fadeIn',
-      */
-      responsiveClass: true,
-      autoHeight: true,
-      autoplayTimeout: 4000,
-      smartSpeed: 800,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-
-        600: {
-          items: 3
-        },
-
-        1024: {
-          items: 4
-        },
-
-        1366: {
-          items: 4
-        }
-      }
-         });
-
-      //carousel options
-      $('#quote-carousel').carousel({
-      pause: true, interval: 10000,
-      });
-      });
    </script>
 
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5fe394ea93dca',m:'0fGa28dAFvKo8YZkOPWI.M03pwDYePkmbVVj0Ixpk1k-1645006299-0-ASZEcTx/YdctIyYsjrNWr02hW45v9PvLcig0npj1GQajNv0iNtEcm0uPmpnK7P2G7wzLI3gOeTZDTQsUwbaMEpwmkegy6cbNfTuDnOHud1ZshhAyEMpBPjpTwIy43EoxQASZip0qmgCxJTCNAVTutJdilRFqSGBl5hACFe1knEeI7B5uHAaJQLLEEpXFF9RIHw==',s:[0x4472999dd1,0x0c1adbd69d],}})();</script></body>
 </html>
