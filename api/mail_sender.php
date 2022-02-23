@@ -20,24 +20,40 @@ if($request_type == 'verification')
   {
     $subject = "Patajo Dental Clinic Verification Code";
 
-    $message = '<html><body style=" display: flex; min-height: 100vh; align-items: center; justify-content: center; background: #F4F7FF;align-items: center; text-align:center;">';
-    $message .= '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
+    $message = '<html> <body align="center" style="background-color:#DFDFDF; margin:0 auto; padding:0; width:100%;">'
+$message .= '<div style="background-color:#dfdfdf;padding:0;margin:0 auto;width:100%">'
+$message .= '<br><br>'
+$message .=  '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px; border-radius: 4px; background-color: #ffffff; margin: 10px auto;" width="550">'
+$message .= '<tr><td class="topborder" style="background-color: #065446; font-size: 8pt; border-radius: 4px 4px 0 0; padding: 10px; " >&nbsp;</td></tr>'
+$message .= '<tr><td class="spacer" style="font-size: 5px;">&nbsp;</td></tr>'
+$message .=  '<tr>'
+$message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"> Registration Verification Code </td>'
+$message .= '</tr>'
+$message .= '<tr>'
+$message .= '<td class="contents" style="padding: 2px 50px 3px 50px; font-size: 11pt; ">'
+$message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000;">'
+$message .= '<br> We have received a request to register an account. <br><br>'
+$message .= 'Enter the following verification code to continue: <br>'
+$message .= "<h1>".$_POST['verification_code']."</h1>";     
+$message .=  '</div>'
+$message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td> /tr>'
+$message .= '<tr><td class="spacer">&nbsp;</td></tr> </table>'
+$message .= '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px;" width="550">'
+$message .= '<tr class="legalfooter">'
+$message .= '<td class="legal" style="color: #777777; font-family: Helvetica,Arial,sans-serif; font-size: 9pt; text-align: center;"> <br>'
+$message .= '© 2022 Dr. Mila Patajo Dental Clinic . All rights reserved.'
+$message .= '<br><br></td></tr></table><br><br></div></body>'
 
-    $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo"> <br>';
 
-    $message .= '<p class ="head" style="font-size: 25px; font-weight: 400; text-align: justify; margin-top: 40px; text-align:center;"><b> We have received a request to register an account. </b></p>';
-
-    $message .= '<p class = "message" style= "margin-top: 20px; font-size: 16px; font-weight: 400; text-align: justify; text-align:center;"> Enter the following verification code to continue:</p>';
-
-    $message .= "<h1>".$_POST['verification_code']."</h1>";
-    $message .= "</table>";
-    $message .= "</body></html>";
 
 
     $header = "From:abc@somedomain.com \r\n";
     $header .= "Cc:afgh@somedomain.com \r\n";
     $header .= "MIME-Version: 1.0\r\n";
     $header .= "Content-type: text/html\r\n";
+
+
+
   }
 }
 elseif($request_type == 'contact_us')
