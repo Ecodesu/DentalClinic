@@ -533,6 +533,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       border-radius: 5px;
     }
 
+    .cancel-btn:hover{
+      cursor: pointer;
+    }
     /* SORT */
 
     .sort-container {
@@ -787,7 +790,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="action-cancel"><a href="#" class="cancel-btn"> CANCEL </a></td>
+                    <td class="action-cancel"><a type="button" id="open-popup2-btn" class="cancel-btn"> CANCEL </a></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -859,6 +862,18 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       </div>
     </div>
 
+    <div class="popup popup2 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Cancel Appointment</div>
+      <div class="description">Are you sure you want to cancel this appointmen?</div>
+      <div class="dismiss-btn">
+        <button id="confirm-popup-btn-2">Yes</button>
+        <button id="dismiss-popup-btn-2">No</button>
+      </div>
+    </div>
+
     <!-- END OF POPUP -->
 
     <!-- START of FOOTER  -->
@@ -872,9 +887,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     <!-- END of FOOTER  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      if(!localStorage.getItem('user_id')){
-          window.location = "index.html";
-       }
+      // if(!localStorage.getItem('user_id')){
+      //     window.location = "index.html";
+      //  }
        var user_id = localStorage.getItem('user_id')
 
        // Popup Button
@@ -888,6 +903,18 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.remove("active");
+      });
+
+      document.getElementById("open-popup2-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+      });
+
+      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+         document.getElementsByClassName("popup2")[0].classList.remove("active");
+         });
+
+      document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
       });
 
       const body = document.querySelector("body");
