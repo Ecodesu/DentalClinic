@@ -801,10 +801,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <th>ACTION</th>
                   </tr>
                 </thead>
-                <!-- <tbody id="table_appointment">
+                <tbody id="table_appointment">
 
-                </tbody> -->
-                  <tr>
+                </tbody>
+                  <!-- <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -859,7 +859,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <td></td>
                     <td></td>
                     <td></td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
             </div>
@@ -889,7 +889,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       <div class="popup-title">Cancel Appointment</div>
       <div class="description">Are you sure you want to cancel this appointment?</div>
       <div class="dismiss-btn">
-        <button id="confirm-popup-btn-2">Yes</button>
+        <button id="confirm-popup-btn-2" onclick="cancel_appointment()">Yes</button>
         <button id="dismiss-popup-btn-2">No</button>
       </div>
     </div>
@@ -919,9 +919,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     <!-- END of FOOTER  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      // if(!localStorage.getItem('user_id')){
-      //     window.location = "index.html";
-      //  }
+      if(!localStorage.getItem('user_id')){
+          window.location = "index.html";
+       }
        var user_id = localStorage.getItem('user_id')
 
        // Popup Button
@@ -937,9 +937,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
         document.getElementsByClassName("popup")[0].classList.remove("active");
       });
 
-      document.getElementById("open-popup2-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup2")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup2-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup2")[0].classList.add("active");
+      // });
 
       document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
          document.getElementsByClassName("popup2")[0].classList.remove("active");
@@ -949,9 +949,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
         document.getElementsByClassName("popup2")[0].classList.remove("active");
       });
 
-      document.getElementById("open-popup3-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup3")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup3-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup3")[0].classList.add("active");
+      // });
 
       document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
         document.getElementsByClassName("popup3")[0].classList.remove("active");
@@ -979,7 +979,9 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
       {
         
-        $.ajax({
+       
+    }
+    $.ajax({
             url:"http://localhost/dental_clinic/api/view_appointment.php",
             type:"POST",
             data:{
@@ -996,20 +998,49 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   data+="<td>"+response[i].date+" "+response[i].time+"</td>"
                   data+="<td>"+response[i].date_created+"</td>"
                   data+="<td>"+response[i].status+"</td>"
-                  data+="<td>none</td>"
+                  if(response[i].status == 'Pending'){
+                    data+="<td class='action-cancel'><a type='button' onclick='open_popup2("+response[i].appointment_id+")' class='cancel-btn'> CANCEL </a></td>" 
+                  }else if(response[i].status == 'Cancelled'){
+                    data+="<td class='action-remarks'><a type='button' id='open-popup3-btn' class='remarks-btn'> REMARKS </td>"
+                  }else{
+                    data+="<td>none</td>"
+                  }
                   data+="</tr>"
                 }
                 $('#table_appointment').html(data)
             }
         })
+
+    function cancel_appointment(){
+      $.ajax({
+                url: "http://localhost/dental_clinic/api/update_appointment.php",
+                type: "POST",
+                data: {app_id:localStorage.getItem('app_id'),
+                        status:'Cancelled', },
+                success: function (response) {
+                  //  alert("updated")
+                  //  viewarea()
+                  location.reload();
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
     }
 
     function logout()
     {
       localStorage.removeItem('user_id')
     }
+    function open_popup2(response){
+      localStorage.setItem('app_id',response)
+      document.getElementsByClassName("popup2")[0].classList.add("active");
+      
+    }
     function onchange_filter()
     {
+      
       $.ajax({
             url:"http://localhost/dental_clinic/api/view_appointment.php",
             type:"POST",
@@ -1027,7 +1058,14 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   data+="<td>"+response[i].date+" "+response[i].time+"</td>"
                   data+="<td>"+response[i].date_created+"</td>"
                   data+="<td>"+response[i].status+"</td>"
-                  data+="<td>none</td>"
+                  if(response[i].status == 'Pending'){
+                    data+="<td class='action-cancel'><a type='button' onclick='open_popup2("+response[i].appointment_id+")' class='cancel-btn'> CANCEL </a></td>" 
+                  }else if(response[i].status == 'Cancelled'){
+                    data+="<td class='action-remarks'><a type='button' id='open-popup3-btn' class='remarks-btn'> REMARKS </td>"
+                  }else{
+                    data+="<td>none</td>"
+                  }
+                  
                   data+="</tr>"
                 }
                 $('#table_appointment').html(data)
