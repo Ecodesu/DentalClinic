@@ -33,7 +33,7 @@ $message .= '</tr>';
 $message .= '<tr>';
 $message .= '<td class="contents" style="padding: 2px 50px 3px 50px; font-size: 11pt; ">';
 $message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000; text-align:center;">';
-$message .= '<br style="text-align:center;"> We have received a request to register an account. <br><br>';
+$message .= '<br style="text-align:center;"> We have received a request to register an account. <br>';
 $message .= '<div style="text-align:center;">Enter the following verification code to continue: <br>';
 $message .= '<h1 style="text-align:center;">'.$_POST['verification_code'].'</h1>';     
 $message .=  '</div>';
