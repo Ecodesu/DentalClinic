@@ -636,7 +636,7 @@
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td class="upcoming-done"> <a href="#" class="done-btn"> DONE </a> </td>
+                              <td class="upcoming-done"> <a type="button" id="open-popup3-btn" class="done-btn"> DONE </a> </td>
                            </tr>
                            <tr>
                               <td></td>
@@ -772,6 +772,18 @@
       </div>
    </div>
 
+   <div class="popup popup3 center">
+      <div class="ckicon">
+      <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Appointments</div>
+      <div class="description">Are you sure you want to mark this appointment as done?</div>
+      <div class="dismiss-btn">
+      <button id="confirm-popup-btn-3">Yes</button>
+      <button id="dismiss-popup-btn-3">No</button>
+      </div>
+   </div>
+
     <!-- END OF POPUP -->
 
       <!-- START of FOOTER  --> 
@@ -837,6 +849,18 @@
 
       document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
       document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
+      document.getElementById("open-popup3-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup3")[0].classList.add("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+         document.getElementsByClassName("popup3")[0].classList.remove("active");
+      });
+
+      document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
+      document.getElementsByClassName("popup3")[0].classList.remove("active");
       });
          
          const body = document.querySelector("body");
