@@ -413,15 +413,10 @@
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
          function register_user(){
-         // var first_name        = document.getElementById('first_name').value
-         // var last_name         = document.getElementById('last_name').value
-         // var user_name         = document.getElementById('user_name').value
-         // var contact           = document.getElementById('contact').value
+         
          var password          = document.getElementById('password').value
          var confirm_password  = document.getElementById('confirm_password').value
-         // var address           = document.getElementById('address').value
-         // var role              = document.getElementById('role').value
-         // alert(first_name)
+     
          if(confirm_password == password && role != "none"){
               $.ajax({
               url: "http://localhost/dental_clinic/api/user_register.php",
