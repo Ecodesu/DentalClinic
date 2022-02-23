@@ -533,9 +533,29 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       border-radius: 5px;
     }
 
-    .cancel-btn:hover{
+    .cancel-btn:hover {
       cursor: pointer;
     }
+
+    .remarks-btn {
+    width: 100px;
+    text-decoration: none;
+    line-height: 35px;
+    padding: 5px 20px;
+    background-color: #507973;
+    font-weight: medium;
+    color: #ffffff;
+    text-align: center;
+    user-select: none;
+    font-size: 14px;
+    opacity: 1;
+    border-radius: 5px;
+    }
+
+    .remarks-btn:hover{
+      cursor: pointer;
+    }
+
     /* SORT */
 
     .sort-container {
@@ -798,7 +818,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td class="action-remarks"><a type="button" id="open-popup3-btn" class="remarks-btn"> REMARKS </td>
                   </tr>
                   <tr>
                     <td></td>
@@ -867,10 +887,22 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
         <i class="fa fa-check"></i>
       </div>
       <div class="popup-title">Cancel Appointment</div>
-      <div class="description">Are you sure you want to cancel this appointmen?</div>
+      <div class="description">Are you sure you want to cancel this appointment?</div>
       <div class="dismiss-btn">
         <button id="confirm-popup-btn-2">Yes</button>
         <button id="dismiss-popup-btn-2">No</button>
+      </div>
+    </div>
+
+    <div class="popup popup3 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Remarks</div>
+      <div class="description">Remarks from the dentist:</div>
+      <textarea name="" id="" cols="45" rows="3"></textarea>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-3">Close</button>
       </div>
     </div>
 
@@ -915,6 +947,14 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
+      document.getElementById("open-popup3-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup3")[0].classList.add("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+        document.getElementsByClassName("popup3")[0].classList.remove("active");
       });
 
       const body = document.querySelector("body");

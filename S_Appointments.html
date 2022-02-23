@@ -420,8 +420,6 @@
       transition: all 300ms ease-in-out;
     }
 
-    
-
     .popup > div {
       position: relative;
       top: 10px;
@@ -770,10 +768,13 @@
       <i class="fa fa-check"></i>
       </div>
       <div class="popup-title">Appointments</div>
-      <div class="description">Are you sure you want to reject this request?</div>
+      <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
+      <form action="">
+         <textarea name="" id="" cols="45" rows="3"></textarea>
+      </form>
       <div class="dismiss-btn">
       <button id="confirm-popup-btn-2">Yes</button>
-      <button id="dismiss-popup-btn-2">No</button>
+      <button id="dismiss-popup-btn-2">Cancel</button>
       </div>
    </div>
 
@@ -843,9 +844,9 @@
         document.getElementsByClassName("popup")[0].classList.remove("active");
       });
 
-      // document.getElementById("open-popup2-btn").addEventListener("click", function () {
-      //   document.getElementsByClassName("popup2")[0].classList.add("active");
-      // });
+      document.getElementById("open-popup2-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+      });
 
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
