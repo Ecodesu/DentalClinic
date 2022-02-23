@@ -512,11 +512,14 @@
                   <form>
                      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Users..">
                      <table id="myTable">
+                        <thead>
                         <tr class="header">
                            <th style="width:50%;">USER</th>
                            <th style="width:40%;">ROLE</th>
                            <th style= "width:10%;"> </th>
                         </tr>
+                     </thead>
+                     <tbody id="table_users">
                         <tr>
                            <td>ASample</td>
                            <td>
@@ -585,6 +588,7 @@
                </div>
                </td>
                </tr>
+            </tbody>
                </table>
                </form>
             </div>
@@ -600,7 +604,7 @@
          <div class="popup-title">Change Role</div>
          <div class="description">Are you sure you want to change the role?</div>
          <div class="dismiss-btn">
-         <button id="confirm-popup-btn">Yes</button>
+         <button id="confirm-popup-btn" onclick="update_user()">Yes</button>
          <button id="dismiss-popup-btn">No</button>
          </div>
       </div>
@@ -612,7 +616,7 @@
          <div class="popup-title">Remove User</div>
          <div class="description">Are you sure you want to remove the user?</div>
          <div class="dismiss-btn">
-         <button id="confirm-popup-btn-2">Yes</button>
+         <button id="confirm-popup-btn-2" onclick="remove_user()">Yes</button>
          <button id="dismiss-popup-btn-2">No</button>
          </div>
       </div>
@@ -628,8 +632,45 @@
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
+
+      $.ajax({
+            url:"http://localhost/dental_clinic/api/view_user.php",
+            type:"POST",
+            data:{
+              request_key: 'admin'
+            },
+            success:function(response){
+            //   alert('success')
+                var data = "";
+                for (i = 0; i < response.length; i++) {
+                  data+="<tr>"
+                  data+="<td>"+response[i].user_name+"</td>"
+                  data+="<td>"
+                  data+=response[i].user_credential
+                  data+="<div class='dropdown'>"
+                  data+="<li><a href = '#'> <i class='fas fa-cog' style= 'color: #065446'></i> </a></li>"
+                  data+="<div class='dropdown-content'>"
+                  data+="<a class = 'dd-content edit-popup' onclick='assign_id("+response[i].user_id+",1)' href = '#'> Personnel </a>"
+                  data+="<a class = 'dd-content edit-popup' onclick='assign_id("+response[i].user_id+",2)' href = '#'> Doctor </a>"
+                  data+="<a class = 'dd-content edit-popup' onclick='assign_id("+response[i].user_id+",3) 'href = '#'> Admin </a>"
+                  data+="</div>"
+                  data+="</div>"
+                  data+="</td>"
+                  data+="<td>"
+                  data+="<div class='dropdown'>"
+                  data+="<li><a href = '#'> <i class='fas fa-ellipsis-v' style= 'color: #065446'></i> </a></li>"
+                  data+="<div class='dropdown-content '>"
+                  data+="<a class = 'dd-content remove-user' onclick='assign_id("+response[i].user_id+",null)'href = '#''> Remove User </a>"
+                  data+="</div>"
+                  data+="</div>"
+                  data+="</td>"
+                  data+="</tr>"
+                }
+                $('#table_users').html(data)
+            }
+        })
          const changePopup = document.querySelector('#myTable');
          changePopup.addEventListener('click', updatePopup);
          function updatePopup(e){
@@ -680,7 +721,66 @@
             $('.dropdown > li div ul li a').click(function(e) {
                e.stopPropagation();
             });
+
+
+
+        
+
+
          });       
+         function assign_id(response,role1){
+            localStorage.setItem('user',response)
+            // alert(role1)
+            if(role1 != null){
+               localStorage.setItem('role',role1)
+            }
+         }
+         function remove_user(){
+            // alert(localStorage.getItem('remove_user'))
+            $.ajax({
+                url: "http://localhost/dental_clinic/api/delete_user.php",
+                type: "POST",
+                data: {user_id:localStorage.getItem('user')},
+                success: function (response) {
+                   alert("Deleted")
+                  //  viewarea()
+                  location.reload();
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
+         }
+         function update_user(){
+            // Personnel = 1
+            // Doctor   = 2
+            // admin    = 3
+            // alert(localStorage.getItem('role'))
+            var role = localStorage.getItem('role')
+            if(role == 1){
+               role == 'Personnel'
+            }else if(role == 2){
+               role == 'Doctor'
+            }else if(role == 3){
+               role == 'Admin'
+            }
+            $.ajax({
+                url: "http://localhost/dental_clinic/api/update_user_role.php",
+                type: "POST",
+                data: {user_id:localStorage.getItem('user'),
+                        role:role },
+                success: function (response) {
+                   alert("updated")
+                  //  viewarea()
+                  location.reload();
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
+         }
          
          
       </script>
