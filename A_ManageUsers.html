@@ -756,20 +756,22 @@
             // Personnel = 1
             // Doctor   = 2
             // admin    = 3
+          
             // alert(localStorage.getItem('role'))
             var role = localStorage.getItem('role')
-            if(role == 1){
-               role == 'Personnel'
-            }else if(role == 2){
-               role == 'Doctor'
-            }else if(role == 3){
-               role == 'Admin'
+            if(role == "1"){
+               role1 = "Personnel"
+            }else if(role == "2"){
+               role1 = "Doctor"
+            }else if(role == "3"){
+               role1 = "Admin"
             }
+            
             $.ajax({
                 url: "http://localhost/dental_clinic/api/update_user_role.php",
                 type: "POST",
                 data: {user_id:localStorage.getItem('user'),
-                        role:role },
+                        role:role1, },
                 success: function (response) {
                    alert("updated")
                   //  viewarea()
