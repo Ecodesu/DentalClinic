@@ -28,21 +28,21 @@ $message .= '<tr><td class="topborder" style="background-color: #065446; font-si
 $message .= '<tr><td class="spacer" style="font-size: 5px;">&nbsp;</td></tr>';
 $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo" style="display: block; margin-left: auto; margin-right: auto;"> <br>';
 $message .=  '<tr>';
-$message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"> REGISTRATION VERIFICATION CODE </td>';
+$message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"><b> REGISTRATION CONFIRMATION </b></td>';
 $message .= '</tr>';
 $message .= '<tr>';
 $message .= '<td class="contents" style="padding: 2px 50px 3px 50px; font-size: 11pt; ">';
-$message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000;">';
-$message .= '<br> We have received a request to register an account. <br><br>';
-$message .= 'Enter the following verification code to continue: <br>';
-$message .= "<h1>".$_POST['verification_code']."</h1>";     
+$message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000; text-align:center;">';
+$message .= '<br style="text-align:center;"> We have received a request to register an account. <br><br>';
+$message .= '<div style="text-align:center;">Enter the following verification code to continue: <br>';
+$message .= '<h1 style="text-align:center;">'.$_POST['verification_code'].'</h1>';     
 $message .=  '</div>';
 $message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td>';
 $message .= '<tr><td class="spacer">&nbsp;</td></tr> </table>';
 $message .= '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px;"width="550">';
 $message .= '<tr class="legalfooter">';
 $message .= '<td class="legal" style="color: #777777; font-family: Helvetica,Arial,sans-serif; font-size: 9pt; text-align: center;"> <br>';
-$message .= '© 2022 Dr. Mila Patajo Dental Clinic . All rights reserved.';
+$message .= '© 2022 Patajo Dental Clinic . All rights reserved.';
 $message .= '<br><br></td></tr></table><br><br></div></body>';
 
 
