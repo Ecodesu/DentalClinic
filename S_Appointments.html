@@ -630,6 +630,7 @@
                               <th>APPOINTMENT CREATED</th>
                               <th>ACTION</th>
                            </tr>
+                           <tbody id="table_upcoming">
                            <tr>
                               <td></td>
                               <td></td>
@@ -679,6 +680,7 @@
                               <td></td>
                               <td></td>
                            </tr>
+                        </tbody>
                         </table>
                         <table id="pastApp" class="hidden">
                            <tr>
@@ -754,7 +756,7 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Added upcoming appointments successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn" onclick="approved()">Close</button>
       </div>
     </div>
 
@@ -789,17 +791,44 @@
       <script>
 
          // Popup Button
-      document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.add("active");
+      // });
+      function approved_submit(response){
+         localStorage.setItem('app_id',response)
+         document.getElementsByClassName("popup")[0].classList.add("active");
+        
+         
+      }
+      function approved(){
+         $.ajax({
+                url: "http://localhost/dental_clinic/api/update_appointment.php",
+                type: "POST",
+                data: {app_id:localStorage.getItem('app_id'),
+                        status:'Upcoming', },
+                success: function (response) {
+                  //  alert("updated")
+                  //  viewarea()
+                  location.reload();
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
+      }
+      function decline_submit(e){
+         alert(e)
+         document.getElementsByClassName("popup2")[0].classList.add("active");
+      }
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.remove("active");
       });
 
-      document.getElementById("open-popup2-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup2")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup2-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup2")[0].classList.add("active");
+      // });
 
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
@@ -903,16 +932,27 @@
                 var past   = "";
                 var data = ""
                 for (i = 0; i < response.length; i++) {
-                  data+="<tr>"
-                  data+="<td>"+response[i].ref_no+"</td>"
-                  data+="<td>"+response[i].main_concern+"</td>"
-                  data+="<td>"+response[i].date+" "+response[i].time+"</td>"
-                  data+="<td>"+response[i].date_created+"</td>"
-                  data+="<td class='pending-edit'> <button type='button' id='open-popup-btn' class='fas fa-check'/> <button type='button' id='open-popup2-btn' class='fas fa-times'/> </td>"
-                  data+="</tr>"
-                 
+                  if(response[i].status == 'Pending'){
+                     pending+="<tr>"
+                     pending+="<td>"+response[i].ref_no+"</td>"
+                     pending+="<td>"+response[i].main_concern+"</td>"
+                     pending+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     pending+="<td>"+response[i].date_created+"</td>"
+                     pending+="<td class='pending-edit'> <button type='button' onclick='approved_submit("+response[i].appointment_id+")' class='fas fa-check'/> <button type='button' onclick='decline_submit("+response[i].appointment_id+")'  class='fas fa-times'/> </td>"
+                     pending+="</tr>"
+                   }else if(response[i].status == 'Upcoming'){
+                     upcoming+="<tr>"
+                     upcoming+="<td>"+response[i].ref_no+"</td>"
+                     upcoming+="<td>"+response[i].main_concern+"</td>"
+                     upcoming+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     upcoming+="<td>"+response[i].date_created+"</td>"
+                     upcoming+="<td class='upcoming-done'> <a href='#' class='done-btn'> DONE </a> </td>"
+                     upcoming+="</tr>"
+                   }
+
                 }
-                $('#table_pending').html(data)
+                $('#table_pending').html(pending)
+                $('#table_upcoming').html(upcoming)
             }
         })
       </script>
