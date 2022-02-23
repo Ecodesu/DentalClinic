@@ -753,12 +753,12 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
           <span class = "sort">Sort:</span>
           <div class="sort-container">
             <div class="select-box">
-              <select>
-                <option>All</option>
-                <option>PENDING</option>
-                <option>APPROVED</option>
-                <option>CANCELLED</option>
-                <option>DONE</option>
+              <select onchange="onchange_filter()" id="filter">
+                <option value="">All</option>
+                <option value="Pending">PENDING</option>
+                <option value="Upcoming">APPROVED</option>
+                <option value="Cancel">CANCELLED</option>
+                <option value="Done">DONE</option>
               </select>
             </div>
           </div>
@@ -916,7 +916,8 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
             url:"http://localhost/dental_clinic/api/view_appointment.php",
             type:"POST",
             data:{
-              user_id: user_id
+              user_id: user_id,
+              filter: '',
             },
             success:function(response){
               
@@ -936,9 +937,36 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
         })
     }
 
-    function logout(){
-           localStorage.removeItem('user_id')
-         }
+    function logout()
+    {
+      localStorage.removeItem('user_id')
+    }
+    function onchange_filter()
+    {
+      $.ajax({
+            url:"http://localhost/dental_clinic/api/view_appointment.php",
+            type:"POST",
+            data:{
+              user_id: user_id,
+              filter: document.getElementById('filter').value,
+            },
+            success:function(response){
+              
+                var data = "";
+                for (i = 0; i < response.length; i++) {
+                  data+="<tr>"
+                  data+="<td>"+response[i].ref_no+"</td>"
+                  data+="<td>"+response[i].main_concern+"</td>"
+                  data+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                  data+="<td>"+response[i].date_created+"</td>"
+                  data+="<td>"+response[i].status+"</td>"
+                  data+="<td>none</td>"
+                  data+="</tr>"
+                }
+                $('#table_appointment').html(data)
+            }
+        })
+    }
     </script>
   </body>
 </html>
