@@ -435,7 +435,8 @@
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                   alert("register success")	
+                   alert("new user registered")	
+                   location.reload();
                   // window.location = "PUB_Login.html";
                 }
                 else {
