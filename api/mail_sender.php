@@ -20,13 +20,13 @@ if($request_type == 'verification')
   {
     $subject = "Patajo Dental Clinic Verification Code";
 
-    $message = '<html> <body align="center" style="background-color:#DFDFDF; margin:0 auto; padding:0; width:100%;">';
+    $message = '<html> <body align="center" style="background-color:#DFDFDF; margin:0 auto; padding:0; width:100%; ">';
 $message .= '<div style="background-color:#dfdfdf;padding:0;margin:0 auto;width:100%">';
 $message .= '<br><br>';
 $message .=  '<table id="outertable" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family:Tahoma,Verdana,sans-serif; min-width:290px; border-radius: 4px; background-color: #ffffff; margin: 10px auto;" width="550">';
 $message .= '<tr><td class="topborder" style="background-color: #065446; font-size: 8pt; border-radius: 4px 4px 0 0; padding: 10px; " >&nbsp;</td></tr>';
 $message .= '<tr><td class="spacer" style="font-size: 5px;">&nbsp;</td></tr>';
-$message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo"> <br>';
+$message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo" style="text-align:center;"> <br>';
 $message .=  '<tr>';
 $message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"> Registration Verification Code </td>';
 $message .= '</tr>';
