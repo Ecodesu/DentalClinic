@@ -693,6 +693,7 @@
                               <th>APPOINTMENT CREATED</th>
                               <th>STATUS</th>
                            </tr>
+                           <tbody id="table_past">
                            <tr>
                               <td></td>
                               <td></td>
@@ -742,6 +743,7 @@
                               <td></td>
                               <td></td>
                            </tr>
+                        </tbody>
                         </table>
                      </div>
                   </div>
@@ -1016,11 +1018,24 @@
                      upcoming+="<td>"+response[i].date_created+"</td>"
                      upcoming+="<td class='upcoming-done'> <a href='#' class='done-btn'> DONE </a> </td>"
                      upcoming+="</tr>"
-                   }
+                  }else if(response[i].status == 'Cancelled' || response[i].status == 'Done'){
+                     past+="<tr>"
+                     past+="<td>"+response[i].ref_no+"</td>"
+                     past+="<td>"+response[i].main_concern+"</td>"
+                     past+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     past+="<td>"+response[i].date_created+"</td>"
+                     if(response[i].status == 'Cancelled'){
+                        past+="<td class='past-status'> CANCEL </td>"
+                     }else{
+                        past="<td class='past-status'> DONE </td>"
+                     }
+                     past+="</tr>"
+                  }
 
                 }
                 $('#table_pending').html(pending)
                 $('#table_upcoming').html(upcoming)
+                $('#table_past').html(past)
             }
         })
       </script>
