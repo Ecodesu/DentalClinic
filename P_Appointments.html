@@ -780,7 +780,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                 <option value="">All</option>
                 <option value="Pending">PENDING</option>
                 <option value="Upcoming">APPROVED</option>
-                <option value="Cancel">CANCELLED</option>
+                <option value="Cancelled">CANCELLED</option>
                 <option value="Done">DONE</option>
               </select>
             </div>
@@ -900,7 +900,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       </div>
       <div class="popup-title">Remarks</div>
       <div class="description">Remarks from the dentist:</div>
-      <textarea name="" id="" cols="45" rows="3"></textarea>
+      <text id="remarks_output"></text>
       <div class="dismiss-btn">
         <button id="dismiss-popup-btn-3">Close</button>
       </div>
@@ -1001,7 +1001,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   if(response[i].status == 'Pending'){
                     data+="<td class='action-cancel'><a type='button' onclick='open_popup2("+response[i].appointment_id+")' class='cancel-btn'> CANCEL </a></td>" 
                   }else if(response[i].status == 'Cancelled'){
-                    data+="<td class='action-remarks'><a type='button' id='open-popup3-btn' class='remarks-btn'> REMARKS </td>"
+                    data+="<td class='action-remarks'><a type='button' onclick='open_popup3("+response[i].appointment_id+")' class='remarks-btn'> REMARKS </td>"
                   }else{
                     data+="<td>none</td>"
                   }
@@ -1038,6 +1038,11 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       document.getElementsByClassName("popup2")[0].classList.add("active");
       
     }
+    function open_popup3(response){
+      localStorage.setItem('app_id',response)
+      document.getElementsByClassName("popup3")[0].classList.add("active");
+      
+    }
     function onchange_filter()
     {
       
@@ -1061,7 +1066,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   if(response[i].status == 'Pending'){
                     data+="<td class='action-cancel'><a type='button' onclick='open_popup2("+response[i].appointment_id+")' class='cancel-btn'> CANCEL </a></td>" 
                   }else if(response[i].status == 'Cancelled'){
-                    data+="<td class='action-remarks'><a type='button' id='open-popup3-btn' class='remarks-btn'> REMARKS </td>"
+                    data+="<td class='action-remarks'><a type='button' onclick='open_popup3("+response[i].appointment_id+")' class='remarks-btn'> REMARKS </td>"
                   }else{
                     data+="<td>none</td>"
                   }
