@@ -770,10 +770,10 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
       <form action="">
-         <textarea name="" id="" cols="45" rows="3"></textarea>
+         <textarea name="" id="remarks_input" cols="45" rows="3"></textarea>
       </form>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2">Yes</button>
+      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks()"">Yes</button>
       <button id="dismiss-popup-btn-2">Cancel</button>
       </div>
    </div>
@@ -835,9 +835,46 @@
                 }
             });
       }
-      function decline_submit(e){
-         alert(e)
+      function decline_submit(response){
+         localStorage.setItem('app_id',response)
          document.getElementsByClassName("popup2")[0].classList.add("active");
+      }
+      function cancel_appointment_with_remarks(){
+         $.ajax({
+                url: "http://localhost/dental_clinic/api/update_appointment.php",
+                type: "POST",
+                data: {app_id:localStorage.getItem('app_id'),
+                        status:'Cancelled', },
+                success: function (response) {
+                  //  alert("updated")
+                  //  viewarea()
+                  // location.reload();
+                  console.log('success')
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
+            
+      $.ajax({
+          url: "http://localhost/dental_clinic/api/cancel_remarks.php",
+          type: "POST",
+          data: {app_id:localStorage.getItem('app_id'),
+                  remarks: document.getElementById('remarks_input').value,
+                  request_key: 'insert', },
+          success: function (response) {
+            //  alert("updated")
+            //  viewarea()
+            location.reload();
+            console.log('success')
+
+          },
+          error: function (er) {
+              console.log(er)
+          }
+      });
+
       }
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {

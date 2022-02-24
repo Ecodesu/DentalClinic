@@ -1020,12 +1020,50 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                 success: function (response) {
                   //  alert("updated")
                   //  viewarea()
-                  location.reload();
+                  // location.reload();
+                  console.log('success')
 
                 },
                 error: function (er) {
                     console.log(er)
                 }
+            });
+      $.ajax({
+          url: "http://localhost/dental_clinic/api/cancel_remarks.php",
+          type: "POST",
+          data: {app_id:localStorage.getItem('app_id'),
+                  remarks:'N/A',
+                  request_key: 'insert', },
+          success: function (response) {
+            //  alert("updated")
+            //  viewarea()
+            location.reload();
+            console.log('success')
+
+          },
+          error: function (er) {
+              console.log(er)
+          }
+      });
+    }
+    function view_remarks(){
+      $.ajax({
+              url: "http://localhost/dental_clinic/api/cancel_remarks.php",
+              type: "POST",
+              data: {
+                app_id: localStorage.getItem('app_id'),
+                request_key: 'show',      
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  $('#remarks_output').html(dataResult.data.remarks_message)
+                }
+                else{
+                  alert("Error occured !");
+                }
+              }
             });
     }
 
@@ -1040,6 +1078,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     }
     function open_popup3(response){
       localStorage.setItem('app_id',response)
+      view_remarks()
       document.getElementsByClassName("popup3")[0].classList.add("active");
       
     }
