@@ -787,7 +787,7 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to mark this appointment as done?</div>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-3">Yes</button>
+      <button id="confirm-popup-btn-3" onclick="approved_done()">Yes</button>
       <button id="dismiss-popup-btn-3">No</button>
       </div>
    </div>
@@ -820,6 +820,23 @@
         
          
       }
+      function approved_done(){
+         $.ajax({
+                url: "http://localhost/dental_clinic/api/update_appointment.php",
+                type: "POST",
+                data: {app_id:localStorage.getItem('app_id'),
+                        status:'Done', },
+                success: function (response) {
+                  //  alert("updated")
+                  //  viewarea()
+                  location.reload();
+
+                },
+                error: function (er) {
+                    console.log(er)
+                }
+            });
+      }
       function approved(){
          $.ajax({
                 url: "http://localhost/dental_clinic/api/update_appointment.php",
@@ -840,6 +857,10 @@
       function decline_submit(response){
          localStorage.setItem('app_id',response)
          document.getElementsByClassName("popup2")[0].classList.add("active");
+      }
+      function done_submit(response){
+         localStorage.setItem('app_id',response)
+         document.getElementsByClassName("popup3")[0].classList.add("active");
       }
       function cancel_appointment_with_remarks(){
          $.ajax({
@@ -1016,7 +1037,7 @@
                      upcoming+="<td>"+response[i].main_concern+"</td>"
                      upcoming+="<td>"+response[i].date+" "+response[i].time+"</td>"
                      upcoming+="<td>"+response[i].date_created+"</td>"
-                     upcoming+="<td class='upcoming-done'> <a href='#' class='done-btn'> DONE </a> </td>"
+                     upcoming+="<td class='upcoming-done'> <a href='#'  onclick='done_submit("+response[i].appointment_id+")' class='done-btn'> DONE </a> </td>"
                      upcoming+="</tr>"
                   }else if(response[i].status == 'Cancelled' || response[i].status == 'Done'){
                      past+="<tr>"
@@ -1027,7 +1048,7 @@
                      if(response[i].status == 'Cancelled'){
                         past+="<td class='past-status'> CANCEL </td>"
                      }else{
-                        past="<td class='past-status'> DONE </td>"
+                        past+="<td class='past-status'> DONE </td>"
                      }
                      past+="</tr>"
                   }

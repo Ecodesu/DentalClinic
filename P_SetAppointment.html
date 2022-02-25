@@ -810,8 +810,20 @@ footer .bottom-details .bottom_text{
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
         if(!localStorage.getItem('user_id')){
-        window.location = "index.html";		
-       }
+          window.location = "index.html";		
+        }
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+
+        $('#app-date').attr('min', maxDate);
 
         // Popup Button
       document.getElementById("open-popup-btn").addEventListener("click", function () {
@@ -874,6 +886,9 @@ footer .bottom-details .bottom_text{
              pastTable.classList.remove("hidden");
            }
          });
+         
+          
+         
 
          function logout(){
            localStorage.removeItem('user_id')
@@ -899,7 +914,7 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                   alert(dataResult.message)			
-                  window.location = "P_Appointments.html";	 
+                  windows.location = "P_Appointments.html";	 
               },error:function(err){
             console.log(err)
             }

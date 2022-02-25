@@ -310,17 +310,20 @@
               cache: false,
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
-                if(dataResult.data.user_credential == "Admin"){
-                  alert("success")		
+                if(dataResult.status){
+                  if(dataResult.data.user_credential == "Admin"){
+                     alert("success")		
                   // localStorage.setItem('user_id',dataResult.data.user_id)
-                  window.location = "A_AddUser.html";				
-                }else if(dataResult.data.user_credential == "Personnel" || dataResult.data.user_credential == "Doctor"){
-                   alert('success')
-                   window.location = "S_AddPatient.html";
-                }
-                else if(dataResult.status == false || dataResult.data.user_credential != "admin"){
-                  alert("Login Failed!");
-                }
+                     window.location = "A_AddUser.html";				
+                   }else if(dataResult.data.user_credential == "Personnel" || dataResult.data.user_credential == "Doctor"){
+                     alert('success')
+                     window.location = "S_AddPatient.html";
+                  }else{
+                     alert('not allowed to login')
+                  }
+               }else{
+                  alert('not allowed to login')
+               }
               },error:function(err){
             console.log(err)
             }
