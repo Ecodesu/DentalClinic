@@ -898,7 +898,8 @@ footer .bottom-details .bottom_text{
               cache: false,
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
-                  alert(dataResult.message)				 
+                  alert(dataResult.message)			
+                  window.location = "P_Appointments.html";	 
               },error:function(err){
             console.log(err)
             }
