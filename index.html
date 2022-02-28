@@ -146,7 +146,7 @@
 
                   <div class="col-sm-4 stats">
                      <i class="fa fa-tooth" aria-hidden="true"></i>
-                     <div class="counting" data-count="122">0</div>
+                     <div id="patient_count" class="counting">0</div>
                      <h5>HAPPY CLIENTS</h5>
                   </div>
 
@@ -240,14 +240,14 @@
                 <div class="carousel slide" data-ride="carousel" id="quote-carousel">
       
                <!-- Bottom Carousel Indicators -->
-               <ol class="carousel-indicators">
+               <ol id="indicator" class="carousel-indicators">
                  <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
                  <li data-target="#quote-carousel" data-slide-to="1"></li>
                  <li data-target="#quote-carousel" data-slide-to="2"></li>
                </ol>
                        
                <!-- Carousel Slides / Quotes -->
-               <div class="carousel-inner">
+               <div id="feedback" class="carousel-inner">
 
                <!-- Quote 1 -->
                <div class="item active">
@@ -343,8 +343,62 @@
 
    <!-- End of Footer -->  
 
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script>
+
+
+$.ajax({
+            url:"http://localhost/dental_clinic/api/count.php",
+            type:"POST",
+            data:{},
+            success:function(response){
+              
+              //  console.log(response.length)
+                $('#patient_count').attr('data-count',response.length)
+            }
+        })
+
+
+        $.ajax({
+            url:"http://localhost/dental_clinic/api/view_feedback.php",
+            type:"POST",
+            data:{},
+            success:function(response){
+              var data = ''
+              var data1 = ''
+              for (i = 0; i < response.length; i++) {
+              if(i == 0){
+                data1+="<li data-target='#quote-carousel' data-slide-to='0' class='active'></li>"
+                 
+            
+                data+="<div class='item active'>"
+                data+="<div class='row'>"
+                data+="<div class='col-sm-12'>"
+                data+="<p>"+response[i].feedback_message+"</p>"
+                data+="<small><strong>Anonymous</strong></small>"
+                data+="</div>"
+                data+="</div>"
+                data+="</div>"
+              }
+              else{
+                data1+="<li data-target='#quote-carousel' data-slide-to='"+i+"'></li>"
+
+                data+="<div class='item'>"
+                data+="<div class='row'>"
+                data+="<div class='col-sm-12'>"
+                data+="<p>"+response[i].feedback_message+"</p>"
+                data+="<small><strong>Anonymous</strong></small>"
+                data+="</div>"
+                data+="</div>"
+                data+="</div>"
+              }
+              
+                }
+              // console.log(response.length)
+                $('#indicator').html(data1)
+                $('#feedback').html(data)
+            }
+        })
       const body = document.querySelector("body");
       const navbar = document.querySelector(".navbar");
       const menuBtn = document.querySelector(".menu-btn");
