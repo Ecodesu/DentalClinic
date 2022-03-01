@@ -581,13 +581,14 @@ footer .bottom-details .bottom_text{
             <input type="text" placeholder="E-mail Address" id="email" style="margin-bottom: 5%;">
             <div class = buttons>
                <!-- <a href = "PUB_Registration-2.html"> -->
-               <button class="continue-btn" data-toggle="modal" data-target="#myModal" type="submit" onclick="email_send_code()" value="CONTINUE"> CONTINUE </button>
+               <button class="continue-btn" type="submit" onclick="email_send_code()" value="CONTINUE"> CONTINUE </button>
+               <button href='' id="open_modal" data-toggle="modal" data-target="#myModal" hidden>a</button>
                <div class="modal fade" id="myModal" role="dialog">
                   <div class="modal-dialog">
                      <!-- Modal content-->
                      <div class="modal-content">
                         <div class="modal-header">
-                           <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                           <!-- <button type="button" class="close" data-dismiss="modal" hidden>&times;</button> -->
                            <h4 class="modal-title1" id="close_modal" data-dismiss="modal">VERIFICATION CODE SENT </h4>
                            <h5 class="modal-title2"> Please wait for it to appear on your e-mail. </h5>
                         </div>
@@ -703,6 +704,7 @@ footer .bottom-details .bottom_text{
         //  console.log(verification_code)
 
           if(email!=""){
+            document.getElementById("open_modal").click();
             $.ajax({
               url: "http://localhost/dental_clinic/api/mail_sender.php",
               type: "POST",
@@ -722,7 +724,7 @@ footer .bottom-details .bottom_text{
                 }
                 else {
                   document.getElementById("close_modal").click();
-                  alert("Email already used !");
+                  alert("Please try another Email !");
                  
                   
                 }
@@ -731,7 +733,9 @@ footer .bottom-details .bottom_text{
             });
             }
             else{
+             
               alert('Please fill all the field !');
+              
             }
 
          }
