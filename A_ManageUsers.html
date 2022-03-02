@@ -323,6 +323,11 @@
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
     }
 
+    .popup-long{
+       width: 400px;
+       height:500px;
+    }
+
     .popup.active {
       opacity: 1;
       top: 50%;
@@ -364,8 +369,9 @@
     }
 
     .popup .dismiss-btn button {
-      padding: 10px 20px;
+      padding: 10px 5px;
       width: 75px;
+      text-align: center;
       margin: auto 10px;
       background: #86b170;
       color: #f5f5f5;
@@ -618,11 +624,17 @@
          </div>
       </div>
 
-      <div class="popup popup3 center">
+      <div class="popup popup-long popup3 center">
          <div class="popup-title">User Profile</div>
-         <div class="description">Edit User Information</div>
+         <div class="description">Edit User Information
+            <form action="">
+               <p>First Name: <input type="text"></p>
+               <p>First Name: <input type="text"></p>
+            </form>
+         </div>
          <div class="dismiss-btn">
-         <button id="confirm-popup-btn-3">Yes</button>
+         <button id="confirm-popup-btn-3">Confirm</button>
+         <button id="dismiss-popup-btn-3">Cancel</button>
          </div>
       </div>
       <!-- END OF POPUP -->
@@ -709,6 +721,11 @@
          document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
          document.getElementsByClassName("popup3")[0].classList.remove("active");
          });
+
+         document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+         document.getElementsByClassName("popup3")[0].classList.remove("active");
+         });
+
 
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");

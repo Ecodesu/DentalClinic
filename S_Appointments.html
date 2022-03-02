@@ -353,7 +353,7 @@
 
     .popup {
       width: 350px;
-      height: 270px;
+      height: 205px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -365,6 +365,10 @@
       top: -200%;
       transform: translate(-50%, -50%) scale(0.5);
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+    }
+
+    .popup-medium{
+       height: 275px;
     }
 
     .popup.active {
@@ -757,14 +761,14 @@
       </div>
     </div>
 
-    <div class="popup popup2 center">
+    <div class="popup popup-medium popup2 center">
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
       <form action="">
          <textarea name="" id="remarks_input" cols="45" rows="3"></textarea>
       </form>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks()"">Yes</button>
+      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks()">Yes</button>
       <button id="dismiss-popup-btn-2">Cancel</button>
       </div>
    </div>
