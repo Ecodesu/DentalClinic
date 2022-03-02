@@ -372,7 +372,6 @@ footer .bottom-details .bottom_text{
          /*START OF RECORDS CONTAINER*/
          .records-container{
          width:100%; 
-         height:100vh;
          margin-top: 5%;
          position:relative; 
          }
@@ -555,32 +554,73 @@ footer .bottom-details .bottom_text{
          .records-table{
          display: flex;
          margin: 20px 80px;
-         padding:20px 50px;
-         background: rgba(255, 255, 255, .3);
          border-radius: 15px;
          }
          .rtable{
-         width:100%;
-         border-collapse:collapse;
-         table-layout: fixed;
+          padding: 20px 20px;
+          margin: auto;
+          width: 100%;
+          border-collapse:  collapse;
+          font-size: 16px;
          }
+         .rtable tr{
+          background-color: #f5f9fc;
+         }
+        .rtable tr:first-child {
+          border-top: none;
+          background: #428bca;
+          color: #fff;
+        }
+        .rtable th,
+        .rtable td,
+        .rtable tr {
+          text-align: center;
+          padding: 15px 15px;
+        }
+        .rtable tr .patient-name{
+          padding: 0px 15px;
+        }
+        .rtable .actionbtn-column{
+          text-align: center;
+        }
+        .rtable {
+          color: #333;
+          border-radius: .4em;
+          overflow: hidden;
+        }
+        .rtable tr {
+          background-color: #f9fff7;
+        }
+
+        .rtable tr:nth-child(odd):not(:first-child) {
+          background-color: #f4fff0;
+        }
+
+        .rtable td:first-child {
+          margin-top: .5em;
+        }
+
+        .rtable td:last-child {
+          margin-bottom: .5em;
+        }
          .rtable tr td{
          font-size: 16px;
-         font-weight: bold;
          letter-spacing:0/35px;
-         color: #FFFFFF;
+         color: #333;
          padding: 8px;
          text-align: center;
-         border-bottom: 1px solid #6f6f6f;
          border-top: 0px;
          }
-         .rtable .patient-count{
+         .rtable .patient-name{
          color: #507973;
+         font-weight: bold;
          text-align:left;
          letter-spacing:1px;
-         margin-right: 20px;
          }
-         .rtable .view-btn{
+         .rtable tr:hover:not(:first-child) {
+            background-color: #ebfae6;
+          }
+         .rtable .action-btn{
          width:100px;
          padding: 5px 20px;
          text-decoration:none;
@@ -594,50 +634,25 @@ footer .bottom-details .bottom_text{
          opacity:1;
          border-radius: 5px;
          }
-         .rtable .patient-count{
-         width: 75%;
-         }
-         .rtable.viewbtn-column .editbtn-column{
-         width: 15%;
-         }
+         
          tr:hover {
          background-color: rgba(255, 255, 255, .5);
          }
-         .records-pagination{
-         margin-right:80px;
-         display: flex;
-         justify-content:  right;
-         }
-         .pagination li a.page-link{
-         background: #86b170;
-         color: #ffff;
-         font-weight: medium;
-         }
-         .pagination li a.page-link:hover,
-         .pagination li a.page-link:focus,
-         .pagination li.active a.page-link:hover,
-         .pagination li.active a.page-link{
-         color: #ffff;
-         background: #507973;
-         font-weight: bold;
-         box-shadow: 0 0 10px rgba(0,0,0,0.4);
+         .rtable tr:first-child {
+          border-top: none;
+          background: #507973;
+          color: #fff;
          }
          @media (max-width: 1230px){
          .header-container .records-header{
-         margin-top: 80px;
+            margin-top: 80px;
          }
          .rtable{
+         margin: auto;
          width: 1200px;
+         border-collapse: collapse;
          }
-         .rtable .patient-count{
-         width: 900px;
-         }
-         .rtable.viewbtn-column {
-         width: 150px;
-         }
-         .rtable .editbtn-column{
-         width: 150px;
-         }
+         
          .records-table {
          display: block;
          overflow-x: scroll;
@@ -652,6 +667,13 @@ footer .bottom-details .bottom_text{
          }
          }
          /*END OF ADD PATIENT BTN*/ 
+
+    li {
+      float: left;
+      border-right: 1px solid white;
+      padding-right: 20px;
+    }
+    
       </style>
    </head>
    <body class="bg">
@@ -667,25 +689,10 @@ footer .bottom-details .bottom_text{
             <div class="icon cancel-btn">
                <i class="fas fa-times"></i>
             </div>
-            <li><a href="index.html">HOME</a></li>
-            <div class="dropdown">
-               <li><a href = "#"> ABOUT </a></li>
-               <div class="dropdown-content">
-                  <a class = "dd-content" href = "PUB_AboutDoctor.html"> THE DOCTOR </a>
-                  <a class = "dd-content" href = "PUB_FAQs.html"> FAQs </a>
-               </div>
-            </div>
-            <li><a href="PUB_AboutServices.html">SERVICES</a></li>
-            <li><a href="PUB_Contact.html">CONTACT</a></li>
-               <div class="dropdown">
-                  <li><a href = "S_PatientProfile.html"> PROFILE </a></li>
-                  <div class="dropdown-content">
-                     <a class = "dd-content" href = "S_Calendar.html"> CALENDAR </a>
-                     <a class = "dd-content" href = "S_Appointments.html"> APPOINTMENTS </a>
-                     <a class = "dd-content" href = "S_PatientRecord.html"> PATIENT RECORDS </a>
-                     <a class = "dd-content" href = "#"> LOGOUT </a>
-                  </div>
-               </div>
+            <li><a href="S_Calendar.html"> CALENDAR </a></li>
+            <li><a href="S_Appointments.html"> APPOINTMENTS </a></li>
+            <li><a href="S_PatientRecord.html"> PATIENT RECORDS </a></li>
+            <li><a href="#"> LOGOUT </a></li>
             </ul>
             <div class="icon menu-btn">
                <i class="fas fa-bars"></i>
@@ -717,68 +724,87 @@ footer .bottom-details .bottom_text{
       <div class="records-table">
          <table class="rtable">
             <tbody>
+                <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Contact Number</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>            
                <tr>
-                  <td class="patient-count"> Patient 1 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 1 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 2 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 2 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 3 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 3 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 4 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 4 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 5 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 5 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 6 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 6 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 7 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 7 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 8 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 8 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 9 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 9 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
                <tr>
-                  <td class="patient-count"> Patient 10 </td>
-                  <td class="viewbtn-column"> <a href="#" class="view-btn"> VIEW </a> </td>
+                  <td class="patient-name"> Patient 10 </td>
+                  <td class="patient-uname"> testusername </td>
+                  <td class="patient-contact"> 0915-588-2542 </td>
+                  <td class="patient-email"> test@test.com </td>
+                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
                </tr>
             </tbody>
          </table>
       </div>
-      <div class="records-pagination">
-         <ul class="pagination pagination-circle">
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Previous">
-               <span aria-hidden="true">&laquo;</span>
-               <span class="sr-only">Previous</span>
-               </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Next">
-               <span aria-hidden="true">&raquo;</span>
-               <span class="sr-only">Next</span>
-               </a>
-            </li>
-         </ul>
-      </div>
+
       <!-- END of Container -->
 
 
