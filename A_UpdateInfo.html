@@ -448,6 +448,7 @@
 
                         <br><br>
                         <button type="button" id="open-popup-btn">SAVE CHANGES</button>
+                        <button type="button" id="open-popup2-btn"> + </button>
                      </div>
                   </form>
                </div>
@@ -465,6 +466,18 @@
       <div class="description">Changes saved successfully!</div>
       <div class="dismiss-btn">
         <button id="dismiss-popup-btn">Close</button>
+      </div>
+    </div>
+
+    <div class="popup popup2 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Update Information</div>
+      <div class="description">Changes saved successfully!</div>
+      <div class="dismiss-btn">
+         <button id="confirm-popup-btn-2">Add</button>
+         <button id="dismiss-popup-btn-2">Close</button>
       </div>
     </div>
 
@@ -491,6 +504,19 @@
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.remove("active");
       });
+
+      document.getElementById("open-popup2-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+      });
+
+      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
+
 
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
