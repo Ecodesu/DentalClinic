@@ -712,7 +712,7 @@ footer .bottom-details .bottom_text{
       <div class="header-container">
          <div class="records-header">
             <div class="search-container">
-               <input type="text" name="search" placeholder="Search">
+               <input type="text" name="search" placeholder="Search" id="search" onkeyup="view_patient()">
                <button type="submit" class="btn btn-search">
                <i class="fa fa-search"></i>
                </button>
@@ -729,85 +729,11 @@ footer .bottom-details .bottom_text{
       </div>
       <div class="records-table">
          <table class="rtable">
-            <tbody>
-                <tr>
-                  <th>Name</th>
-                  <th>Username</th>
-                  <th>Contact Number</th>
-                  <th>Email</th>
-                  <th>Action</th>
-                </tr>            
-               <tr>
-                  <td class="patient-name"> Patient 1 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="S_PatientProfile.html" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 2 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 3 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 4 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 5 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 6 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 7 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 8 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 9 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-               <tr>
-                  <td class="patient-name"> Patient 10 </td>
-                  <td class="patient-uname"> testusername </td>
-                  <td class="patient-contact"> 0915-588-2542 </td>
-                  <td class="patient-email"> test@test.com </td>
-                  <td class="actionbtn-column"> <a href="#" class="action-btn"> VIEW </a> </td>
-               </tr>
-            </tbody>
+            
+                    
+                <tbody id="table_patient">     
+               
+              </tbody>
          </table>
       </div>
 
@@ -824,8 +750,10 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+        document.getElementById("search").value = ""
+        view_patient()
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
@@ -843,8 +771,43 @@ footer .bottom-details .bottom_text{
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
+         function view_patient_profile(response){
+           localStorage.setItem('user_view_id',response)
+         }
          
-         
+         function view_patient(){
+          //  var searh = document.getElementById("search").value
+          $.ajax({
+            url:"http://localhost/dental_clinic/api/view_user.php",
+            type:"POST",
+            data:{
+              request_key: 'patient',
+              search: document.getElementById("search").value
+            },
+            success:function(response){
+            // console.log(response)
+                var data = "";
+                data+="<tr>"
+                data+="<th>Name</th>"
+                data+="<th>Username</th>"
+                data+="<th>Contact Number</th>"
+                data+="<th>Email</th>"
+                data+="<th>Action</th>"
+                data+="</tr>"
+                for (i = 0; i < response.length; i++) {
+                  
+                    data+="<tr>"
+                    data+="<td class='patient-name'> "+response[i].user_first_name+" "+response[i].user_last_name+"</td>"
+                    data+="<td class='patient-uname'> "+response[i].user_name+" </td>"
+                    data+="<td class='patient-contact'> "+response[i].user_contact_number+" </td>"
+                    data+="<td class='patient-email'> "+response[i].user_email+" </td>"
+                    data+="<td class='actionbtn-column'> <a href='S_PatientProfile.html' onclick='view_patient_profile("+response[i].user_id+")' class='action-btn'> VIEW </a> </td>"
+                    data+="</tr>"
+                }
+                $('#table_patient').html(data)
+            }
+        })
+         }
       </script>
    </body>
 </html>

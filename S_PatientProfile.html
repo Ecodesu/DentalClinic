@@ -753,23 +753,23 @@ footer .bottom-details .bottom_text{
                <div class="form-control">
                   <div class="col-3">
                      <label for="full-name">Full Name</label>
-                     <input type="text" placeholder="Full Name" />
+                     <input id="full_name" type="text" placeholder="Full Name" readonly/>
                   </div>
                </div>
                <div class="form-control">
                   <div class="col-6">
                      <label for="email-add">Email Address</label>
-                     <input type="text" placeholder="E-mail" />
+                     <input id="email" type="text" placeholder="E-mail" readonly/>
                   </div>
                   <div class="col-6">
                      <label for="contact-number">Contact Number</label>
-                     <input type="text" placeholder="Contact Number" />
+                     <input id="contact" type="text" placeholder="Contact Number" readonly/>
                   </div>
                </div>
                <div class="form-control">
                   <div class="col-3">
                      <label for="address">Address</label>
-                     <input type="text" placeholder="Address" />
+                     <input id="address" type="text" placeholder="Address" readonly/>
                   </div>
                </div>
             </form>
@@ -789,6 +789,7 @@ footer .bottom-details .bottom_text{
                      <th>APPOINTMENT CREATED</th>
                      <th>STATUS</th>
                   </tr>
+                  <tbody id="table_past">
                   <tr>
                      <td></td>
                      <td></td>
@@ -838,6 +839,7 @@ footer .bottom-details .bottom_text{
                      <td></td>
                      <td></td>
                   </tr>
+                </tbody>
                </table>
             </div>
          </div>
@@ -1073,8 +1075,87 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+        var user_id = localStorage.getItem("user_view_id")
+        console.log(user_id)
+
+
+
+        $.ajax({
+              url: "http://localhost/dental_clinic/api/view_profile.php",
+              type: "POST",
+              data: {
+                user_id: user_id,
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                  $('#full_name').val(dataResult.data.user_first_name+" "+dataResult.data.user_last_name);        
+                  $('#contact').val(dataResult.data.user_contact_number); 
+                  $('#email').val(dataResult.data.user_email); 
+                  $('#address').val(dataResult.data.user_address );       
+                           
+                  		
+                }
+                else{
+                  alert("Error occured !");
+                }
+              }
+            });
+
+
+
+            $.ajax({
+            url:"http://localhost/dental_clinic/api/view_appointment.php",
+            type:"POST",
+            data:{
+              user_id: user_id,
+              filter: null,
+            },
+            success:function(response){
+              
+                var pending = "";
+                var upcoming = "";
+                var past   = "";
+                var data = ""
+                for (i = 0; i < response.length; i++) {
+                  if(response[i].status == 'Pending'){
+                     pending+="<tr>"
+                     pending+="<td>"+response[i].ref_no+"</td>"
+                     pending+="<td>"+response[i].main_concern+"</td>"
+                     pending+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     pending+="<td>"+response[i].date_created+"</td>"
+                     pending+="<td class='pending-edit'> <button type='button' onclick='approved_submit("+response[i].appointment_id+")' class='fas fa-check'/> <button type='button' onclick='decline_submit("+response[i].appointment_id+")'  class='fas fa-times'/> </td>"
+                     pending+="</tr>"
+                   }else if(response[i].status == 'Upcoming'){
+                     upcoming+="<tr>"
+                     upcoming+="<td>"+response[i].ref_no+"</td>"
+                     upcoming+="<td>"+response[i].main_concern+"</td>"
+                     upcoming+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     upcoming+="<td>"+response[i].date_created+"</td>"
+                     upcoming+="<td class='upcoming-done'> <a href='#'  onclick='done_submit("+response[i].appointment_id+")' class='done-btn'> DONE </a> </td>"
+                     upcoming+="</tr>"
+                  }else if(response[i].status == 'Cancelled' || response[i].status == 'Done'){
+                     past+="<tr>"
+                     past+="<td>"+response[i].ref_no+"</td>"
+                     past+="<td>"+response[i].main_concern+"</td>"
+                     past+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     past+="<td>"+response[i].date_created+"</td>"
+                     if(response[i].status == 'Cancelled'){
+                        past+="<td class='past-status'> CANCEL </td>"
+                     }else{
+                        past+="<td class='past-status'> DONE </td>"
+                     }
+                     past+="</tr>"
+                  }
+
+                }
+                $('#table_past').html(past)
+            }
+        })
+
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
