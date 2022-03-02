@@ -325,7 +325,7 @@
 
     .popup-long{
        width: 400px;
-       height:500px;
+       height:375px;
     }
 
     .popup.active {
@@ -363,6 +363,22 @@
       font-size: 15px;
       padding: 5px;
     }
+
+    .form-group{
+       margin-bottom: 10px;
+    }
+
+    .form-group input{
+       width: 225px;
+       height: 25px;
+       padding: 3px;
+       box-sizing: border-box;
+    }
+
+    .form-group input:focus{
+      outline: none;
+      border-color: #065446;
+}
 
     .popup .dismiss-btn {
       margin-top: 15px;
@@ -627,9 +643,28 @@
       <div class="popup popup-long popup3 center">
          <div class="popup-title">User Profile</div>
          <div class="description">Edit User Information
+            <br><br>
             <form action="">
-               <p>First Name: <input type="text"></p>
-               <p>First Name: <input type="text"></p>
+               <div class="form-group">
+                  <label for="fname">First Name:</label>
+                  <input type="text">
+                </div>
+               <div class="form-group">
+                  <label for="fname">Last Name:</label>
+                  <input type="text">
+                </div>
+                <div class="form-group">
+                  <label for="name">Email:</label>
+                  <input type="text" name="name" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="name">Username: </label>
+                  <input type="text" name="name" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="name">Contact: </label>
+                  <input type="text" name="name" id="name">
+                </div>
             </form>
          </div>
          <div class="dismiss-btn">

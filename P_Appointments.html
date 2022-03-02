@@ -609,7 +609,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
     .popup {
       width: 350px;
-      height: 270px;
+      height: 205px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -621,6 +621,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       top: -200%;
       transform: translate(-50%, -50%) scale(0.5);
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+    }
+
+    .popup-logout{
+      height: 190px;
     }
 
     .popup.active {
@@ -870,10 +874,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     <!-- END of Container -->
 
     <!-- START OF POPUP -->
-    <div class="popup center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
+    <div class="popup popup-logout center">
       <div class="popup-title">Logout</div>
       <div class="description">Are you sure you want to logout?</div>
       <div class="dismiss-btn">
@@ -883,9 +884,6 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     </div>
 
     <div class="popup popup2 center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
       <div class="popup-title">Cancel Appointment</div>
       <div class="description">Are you sure you want to cancel this appointment?</div>
       <div class="dismiss-btn">
@@ -895,9 +893,6 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
     </div>
 
     <div class="popup popup3 center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
       <div class="popup-title">Remarks</div>
       <div class="description">Remarks from the dentist:</div>
       <text id="remarks_output"></text>
