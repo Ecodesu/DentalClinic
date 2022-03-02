@@ -309,7 +309,7 @@
 
     .popup {
       width: 350px;
-      height: 270px;
+      height: 205px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -538,6 +538,7 @@
                                  <li><a href = "#"> <i class="fas fa-ellipsis-v" style= "color: #065446"></i> </a></li>
                                  <div class="dropdown-content ">
                                     <a class = "dd-content remove-user" href = "#"> Remove User </a>
+                                    <a class = "dd-content edit-profile" href = "#"> Edit Profile </a>
                                  </div>
                               </div>
                            </td>
@@ -561,6 +562,7 @@
                <li ><a href = "#"> <i class="fas fa-ellipsis-v" style= "color: #065446"></i> </a></li>
                <div class="dropdown-content">
                <a class = "dd-content remove-user" href = "#"> Remove User </a>
+               <a class = "dd-content edit-profile" href = "#"> Edit Profile </a>
                </div>
                </div>
                </td>
@@ -584,6 +586,7 @@
                <li><a href = "#"> <i class="fas fa-ellipsis-v" style= "color: #065446"></i> </a></li>
                <div class="dropdown-content">
                <a class = "dd-content remove-user" href = "#"> Remove User </a>
+               <a class = "dd-content edit-profile" href = "#"> Edit Profile </a>
                </div>
                </div>
                </td>
@@ -598,9 +601,6 @@
       <!-- END of Container -->
       <!-- START OF POPUP -->
       <div class="popup center">
-         <div class="ckicon">
-         <i class="fa fa-check"></i>
-         </div>
          <div class="popup-title">Change Role</div>
          <div class="description">Are you sure you want to change the role?</div>
          <div class="dismiss-btn">
@@ -610,14 +610,19 @@
       </div>
 
        <div class="popup popup2 center">
-         <div class="ckicon">
-         <i class="fa fa-check"></i>
-         </div>
          <div class="popup-title">Remove User</div>
          <div class="description">Are you sure you want to remove the user?</div>
          <div class="dismiss-btn">
          <button id="confirm-popup-btn-2" onclick="remove_user()">Yes</button>
          <button id="dismiss-popup-btn-2">No</button>
+         </div>
+      </div>
+
+      <div class="popup popup3 center">
+         <div class="popup-title">User Profile</div>
+         <div class="description">Edit User Information</div>
+         <div class="dismiss-btn">
+         <button id="confirm-popup-btn-3">Yes</button>
          </div>
       </div>
       <!-- END OF POPUP -->
@@ -681,6 +686,10 @@
             if(e.target.classList.contains('remove-user')){
                document.getElementsByClassName("popup2")[0].classList.add("active");
             }
+
+            if(e.target.classList.contains('edit-profile')){
+               document.getElementsByClassName("popup3")[0].classList.add("active");
+            }
          }
 
          document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
@@ -695,6 +704,10 @@
          });
          document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
          document.getElementsByClassName("popup2")[0].classList.remove("active");
+         });
+
+         document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
+         document.getElementsByClassName("popup3")[0].classList.remove("active");
          });
 
          const body = document.querySelector("body");
