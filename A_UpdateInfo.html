@@ -254,6 +254,23 @@
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
     }
 
+    .popup .popup2 .center{
+       width: 350px;
+      height: 1000px;
+      padding: 20px 20px;
+      background: #f5f5f5;
+      border-radius: 10px;
+      box-sizing: border-box;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      text-align: center;
+      opacity: 0;
+      top: -200%;
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;     
+    }
+
+
     .popup.active {
       opacity: 1;
       top: 50%;
@@ -274,6 +291,18 @@
 
     .popup .ckicon i.fa {
       font-size: 30px;
+      color: #507973;
+    }
+
+    .popup .ckicon1 i.fa {
+      font-size: 30px;
+      color: #507973;
+      padding-top: 30px;
+    }
+
+    .popup .ckicon1 h3{
+      margin-top: 5px;
+      margin-bottom: 10px;
       color: #507973;
     }
 
@@ -331,6 +360,11 @@
     .popup.active .dismiss-btn {
       transition: all 300ms ease-in-out 400ms;
     }
+
+    .popup.popup2.center.active {
+      height: 350px;
+      width: 500px;
+   }
 
     /* END OF POPUP */
 
@@ -441,10 +475,6 @@
                         <label for="contactnum">Contact Number:</label><br>
                         <input size="50" type="text" id="contactnum" name="contactnum"><br><br>
                      </div>
-                     <div class="form-control">
-                        <label for="uname">Trainings & Awards: </label><br>
-                        <input size="50" type="text" id="uname" name="uname"><br><br>
-                     </div>
 
                         <br><br>
                         <button type="button" id="open-popup-btn">SAVE CHANGES</button>
@@ -470,12 +500,18 @@
     </div>
 
     <div class="popup popup2 center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
+      <div class="ckicon1">
+        <i class="fa fa-plus-circle"></i><br>
+        <h3> Additional Trainings & Certifications: </h3>
       </div>
-      <div class="popup-title">Update Information</div>
-      <div class="description">Changes saved successfully!</div>
-      <div class="dismiss-btn">
+      <div class="form-control">
+            <label for="cert-date"> Date: </label><br>
+            <input size="50" type="text" id="cert-date" name="cert-date"><br><br>
+
+            <label for="cert-title"> Training/Certification Title: </label><br>
+            <input size="50" type="text" id="cert-title" name="cert-title"><br><br>
+
+                     </div>
          <button id="confirm-popup-btn-2">Add</button>
          <button id="dismiss-popup-btn-2">Close</button>
       </div>
