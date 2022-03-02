@@ -838,7 +838,7 @@ footer .bottom-details .bottom_text{
   </footer>
 
   <!-- END of FOOTER  -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script >
    !function() {
 
@@ -897,7 +897,7 @@ footer .bottom-details .bottom_text{
     var self = this;
     
     this.events.forEach(function(ev) {
-     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+      ev.date =moment(ev.date);
     });
     
     
@@ -1162,21 +1162,31 @@ footer .bottom-details .bottom_text{
 }();
 
 !function() {
-  var data = [
+ 
+  $.ajax({
+            url:"http://localhost/dental_clinic/api/calendar.php",
+            type:"POST",
+            data:{
+             user: 'name'
+            },
+            success:function(response){
+              var data = [];
+              for (i = 0; i < response.length; i++) {
+              data.push({ eventName: response[i].user_first_name+" "+response[i].user_last_name+" "+response[i].time, calendar: 'Appointment', color: 'green', date:response[i].date })
+              
+              }
+              var calendar = new Calendar('#calendar', data);
+            }
+        })
 
-    { eventName: 'Free Tamale Night', calendar: 'Appointment', color: 'green' },
-    { eventName: 'Bowling Team', calendar: 'Appointment', color: 'green' },
-    { eventName: 'Teach Kids to Code', calendar: 'Appointment', color: 'green' },
-    { eventName: 'Startup Weekend', calendar: 'Appointment', color: 'green' }
-  ];
-
-  
+ 
+  console.log(data)
 
   function addDate(ev) {
     
   }
 
-  var calendar = new Calendar('#calendar', data);
+  
 
 }();
 </script>
