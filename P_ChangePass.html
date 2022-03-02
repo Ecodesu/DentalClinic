@@ -240,7 +240,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
 
     .popup {
       width: 350px;
-      height: 270px;
+      height: 240px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -252,6 +252,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       top: -200%;
       transform: translate(-50%, -50%) scale(0.5);
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+    }
+
+    .popup-logout{
+      height: 190px;
     }
 
     .popup.active {
@@ -722,10 +726,7 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
 
-    <div class="popup popup2 center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
+    <div class="popup popup-logout popup2 center">
       <div class="popup-title">Logout</div>
       <div class="description">Are you sure you want to logout?</div>
       <div class="dismiss-btn">
@@ -753,9 +754,9 @@ footer .bottom-details .bottom_text{
       
       <script>
 
-       if(!localStorage.getItem('user_id')){
-        window.location = "index.html";		
-       }
+      //  if(!localStorage.getItem('user_id')){
+      //   window.location = "index.html";		
+      //  }
 
        // Popup Button
       document.getElementById("open-popup-btn").addEventListener("click", function () {
