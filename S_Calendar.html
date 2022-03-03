@@ -1172,8 +1172,9 @@ footer .bottom-details .bottom_text{
             success:function(response){
               var data = [];
               for (i = 0; i < response.length; i++) {
+                if(response[i].status != 'Cancelled'){
               data.push({ eventName: response[i].user_first_name+" "+response[i].user_last_name+" "+response[i].time, calendar: 'Appointment', color: 'green', date:response[i].date })
-              
+                }
               }
               var calendar = new Calendar('#calendar', data);
             }
