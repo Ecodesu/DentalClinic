@@ -185,6 +185,9 @@
       font-weight: 600;
       font-size: 18px;
       }
+      .logout-container:hover{
+      cursor: pointer;
+      }
       .navy-blue {
       color: #065446;;
       }
@@ -270,6 +273,9 @@
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;     
     }
 
+    .popup-logout{
+         height: 190px;
+      }
 
     .popup.active {
       opacity: 1;
@@ -324,8 +330,9 @@
     }
 
     .popup .dismiss-btn button {
-      padding: 10px 20px;
-      margin: auto;
+      padding: 10px 5px;
+      width: 75px;
+      margin: auto 10px;
       background: #86b170;
       color: #f5f5f5;
       border: none;
@@ -458,7 +465,7 @@
                   </ul>
                </div>
                <div class="logout-container">
-                  <a href="" onclick="logout()"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a type="button" id="open-popup-btn-3"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -517,7 +524,17 @@
       <button id="confirm-popup-btn-2">Add</button>
       <button id="dismiss-popup-btn-2">Close</button>
 
+    </div>
+
+    <div class="popup popup-logout popup3 center">
+      <div class="popup-title">Logout</div>
+      <div class="description">Are you sure you want to logout?</div>
+      <div class="dismiss-btn">
+      <button id="confirm-popup-btn-3" onclick="logout()">Yes</button>
+      <button id="dismiss-popup-btn-3">No</button>
+      </div>
    </div>
+
 </div>
 
     <!-- END OF POPUP -->
@@ -556,6 +573,17 @@
         document.getElementsByClassName("popup2")[0].classList.remove("active");
       });
 
+      document.getElementById("open-popup-btn-3").addEventListener("click", function () {
+      document.getElementsByClassName("popup3")[0].classList.add("active");
+      });
+
+      document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
+      document.getElementsByClassName("popup3")[0].classList.remove("active");
+      });
+
+      document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+      document.getElementsByClassName("popup3")[0].classList.remove("active");
+      });
 
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -575,7 +603,8 @@
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
          function logout(){
-            windows.location = "A_Login.html"
+            // windows.location = "A_Login.html"
+            location.href = "A_Login.html";
          }
       </script>
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script></body>
