@@ -72,14 +72,13 @@ elseif($request_type == 'contact_us')
     $message .= '<tr><td class="spacer" style="font-size: 5px;">&nbsp;</td></tr>';
     $message .= '<img src="https://lh3.googleusercontent.com/g02cpz_3gZ9o4IWJLyqTFEF7J_Y7y2DKm-5gV16gkfJJ-cYWbiX2Uo6F5TCqWF_jJGG7R3U5E8crRxx3OCM2-staPlro0SM0JnaUbXdQZ4Mauef1euPv0NFmVuibY2xqzje5P9MPsQ=w2400" width = "450" height = "110" alt="PDClogo" style="display: block; margin-left: auto; margin-right: auto;"> <br>';
     $message .=  '<tr>';
-    $message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"><b> USER C </b></td>';
+    $message .= '<td class="title" style="color: #065446; font-family: Edmondsans, Arial, sans-serif; font-size: 20pt; font-weight: bold; text-align: center;" align="center"><b> USER CONCERN </b></td>';
     $message .= '</tr>';
     $message .= '<tr>';
     $message .= '<td class="contents" style="padding: 2px 50px 3px 50px; font-size: 11pt; ">';
     $message .= '<div style="margin-left: 40px; margin-right: 40px; color: #000000; text-align:center;">';
-    $message .= '<br style="text-align:center; color: black;"> We have received a request to register an account. <br>';
-    $message .= '<div style="text-align:center; color: black;">From: '.$_POST['email'].' <br>';
     $message .= '<h1 style="text-align:center;">'.$_POST['message'].'</h1>';     
+    $message .= '<div style="text-align:center; color: black;">From: '.$_POST['email'].' <br>';
     $message .=  '</div>';
     $message .= '</td> </tr> <tr> </tr> </table> &nbsp; </td>';
     $message .= '<tr><td class="spacer">&nbsp;</td></tr> </table>';
