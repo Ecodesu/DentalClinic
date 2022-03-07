@@ -1,9 +1,9 @@
 <?php
-$to = '+639502438249@txtlocal.co.uk';
-$subject = 'from submission';
+$to = '+639502438249@vtext.com';
+// $subject = 'from submission';
 $message = 'hello world';
-$header = 'druxbogs@gmail.com';
-$retval = mail($to,$subject,$message,$header);
+$header = "From:abc@somedomain.com \r\n";
+$retval = mail($to,'',$message,$header);
 if($retval){
 $json_return['status'] = true;
 }else{
