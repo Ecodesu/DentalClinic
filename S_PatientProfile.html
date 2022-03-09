@@ -733,14 +733,14 @@ footer .bottom-details .bottom_text{
       <!-- END of NAVIGATION BAR --> 
 
       <!-- START of Container -->
-      <div class="header-container">
+      <div class="header-container" id="div5">
          <div class="profile-header">
              <div class="print-record">
-               <button class="print-btn center">
+               <button class="print-btn center" id="div2" onclick="print1()">
                <ion-icon name="print" size="large"></ion-icon></ion-icon>
                </button>
             </div>
-            <div class="save-changes">
+            <div class="save-changes" id="div3">
                <button class="savechanges-btn center" onclick="save_changes()">
                Save Changes
                </button>
@@ -776,7 +776,7 @@ footer .bottom-details .bottom_text{
             </form>
          </div>
       </div>
-      <div class="appointment-info">
+      <div class="appointment-info" id="div1">
          <div class="appointment-header">
             <div id="pastApp" class="header-item selected-app">Past Appointments</div>
          </div>
@@ -846,7 +846,7 @@ footer .bottom-details .bottom_text{
          </div>
       </div>
       <div class="dental-info">
-        <div class="adult-chart">
+        <div class="adult-chart" id="div6">
           <table align="center" >
             <tr>
                 <td> <input type="text" id="t18" name="name"/> </td>
@@ -1058,7 +1058,7 @@ footer .bottom-details .bottom_text{
 
           </div>
 
-          <div class = "dental-remarks-container">
+          <div class = "dental-remarks-container" id="div4">
             <label class for="remarks-details">Remarks:</label>
             <textarea id="remarks" name="textarea"></textarea>
           </div>
@@ -1308,6 +1308,19 @@ footer .bottom-details .bottom_text{
             }
         })
 
+         }
+      
+         function print1(){
+          
+          document.getElementById("div1").style.display = "none";
+          document.getElementById("div2").style.display = "none";
+          document.getElementById("div3").style.display = "none";
+          document.getElementById("div4").style.display = "none";
+          document.getElementById("div5").style.display = "none";
+          document.getElementById("div6").style.height = "70%";
+          
+          window.print()
+          location.reload()
          }
          
       </script>

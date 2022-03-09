@@ -4,8 +4,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title> UPDATE PHOTOS </title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-      <link rel="stylesheet" href="https://btn.ninja/css/bootstrap.css">
-      <link rel="stylesheet" href="https://btn.ninja/css/addons.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script type="text/javascript" src="https://btn.ninja/js/SimpleAjaxUploader.min.js"></script>
@@ -202,7 +200,7 @@
       color: #065446;;
       }
       .profile-content {
-      max-width: 850px;
+      margin: auto;
       padding: 30px;
       }
       .profile-content .profile-header {
@@ -557,6 +555,317 @@
 
       /* END OF POPUP */
 
+      /*START OF UPLOAD CON*/
+     .uploadContainer {
+        position: relative;
+      }
+
+      .link{
+         display: contents;
+      }
+      .link b{
+         color: #065446;
+      }
+      .uploadDropzone { 
+        border:thin dashed #aaa;
+        padding:40px; 
+        text-align: center; 
+        border-radius: 5px;
+        background: white;
+      }
+
+      .uploadDropzone .cloud { 
+        font-size: 48px;
+        line-height: 1;
+        opacity: .5;
+      }
+
+      .uploadMessage {
+        margin-top:0;
+      }
+
+      .uploadProgress {
+        margin-top: 0;
+        background-color: #fff;
+        border: thin solid #aaa;
+        border-radius: 3px;   
+      }
+
+      .uploadProgress:empty {
+        background: none; margin:0; border:0;
+      }
+
+      .uploadProgress .wrapper {
+        position: inherit;
+        background-color: #fff;
+        white-space: nowrap;
+        border-bottom: thin solid #d2d2d2;
+        line-height: 35px; 
+        padding: 0 0 0 10px; 
+        max-height: 30px;
+      }
+
+      .uploadProgress .wrapper:last-child {
+        border-bottom: 0;
+      }
+
+      .uploadProgress .wrapper:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .uploadProgress .name {
+        display: contents;
+        float: left;
+        white-space: nowrap;
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .uploadProgress .size {
+        display: contents;
+        float: left;
+        white-space: nowrap;
+        color: #aaa;
+        padding-left: 5px;
+      }
+
+      .uploadProgress .size:before {
+        content: "(";
+      }
+
+      .uploadProgress .size:after {
+        content: ")";
+      }
+
+      .uploadProgress .progress {
+        display: block;
+        float: right;
+        width: 180px;
+        margin-top: 15px;
+        margin-right:10px
+      }
+
+      .uploadProgress .deleteAttachment {
+        display: block;
+        float: right;
+        padding: 0;
+        background-color: transparent !important;
+        border: 0 !important;
+        background-image: none;
+        line-height:inherit;
+      }
+
+      .deleteAttachment:after {
+        content: '\00D7';
+        display: block;
+        line-height: inherit;
+        width: 35px;
+        text-align: center;
+        color: rgba(0, 0, 0, .3);
+        font-family: sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: -40px;
+      }
+
+      .uploadProgress .wrapper.success {
+        color:green;
+      }
+      .uploadProgress .wrapper.error {
+        color:red;
+      }
+
+      .uploadProgress .error .progress { display:none; }
+      .uploadProgress .success .progress { display:none; }
+
+      .upload-btn{
+         width:100px;
+         padding: 5px 20px;
+         text-decoration:none;
+         line-height: 35px;
+         background-color: #86b170;
+         font-weight: medium;
+         color: #FFFFFF;
+         text-align:center;
+         font-weight: 800;
+         user-select:none;
+         font-size: 14px;
+         opacity:1;
+         border-radius: 5px;
+         margin: auto;
+         }
+         /*END OF UPLOAD CON*/
+        
+
+      /*START OF TABLE */
+      .current-photos{
+         display: flex;
+         border-radius: 15px;
+         margin: auto;
+         width: 100%;
+         border-collapse:  collapse;
+         font-size: 12px;
+      }
+      .current-photos tr{
+         padding: 5px;
+         background-color: #f5f9fc;
+      }
+      .current-photos tr:first-child {
+          border-top: none;
+          height: 30px;
+          background: #507973;
+          color: #fff;
+
+        }
+      .current-photos {
+          color: #333;
+          border-radius: .4em;
+          overflow: hidden;
+        }
+        .current-photos tr {
+          
+        }
+
+        .current-photos tr:nth-child(odd):not(:first-child) {
+          
+        }
+        .current-photos td{
+         padding: 0px 20px;
+        }
+         .pic-holder{
+            width: 100px;
+            height: 50px;
+         }
+         .pic-holder img{
+            height: 80px;
+         }
+         .action-btn{
+            justify-content: center;
+         }
+
+         .popup-upload {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           position: fixed;
+           width: 100vw;
+           height: 100vh;
+           bottom: 0;
+           right: 0;
+           background-color: rgba(0, 0, 0, 0.8);
+           z-index: 2;
+           visibility: hidden;
+           opacity: 0;
+           overflow: hiden;
+           transition: 0.64s ease-in-out;
+         }
+         .popup-inner {
+           margin: auto;
+           position: relative;
+           bottom: -100vw;
+           right: -100vh;
+           align-items: center;
+           max-width: 800px;
+           max-height: 600px;
+           width: 40%;
+           height: 60%;
+           background-color: #fff;
+           transform: rotate(32deg);
+           transition: 0.64s ease-in-out;
+         }
+         .popup-upload:target {
+           visibility: visible;
+           opacity: 1;
+         }
+         .popup-upload:target .popup-inner {
+           bottom: 0;
+           right: 0;
+           transform: rotate(0);
+         }
+         .popup__close {
+           position: absolute;
+           right: -1rem;
+           top: -1rem;
+           width: 3rem;
+           height: 3rem;
+           font-size: 0.875rem;
+           font-weight: 300;
+           border-radius: 100%;
+           background-color: #0A0A0A;
+           z-index: 4;
+           color: #fff;
+           line-height: 3rem;
+           text-align: center;
+           cursor: pointer;
+           text-decoration: none;
+         }     
+         .upload-card{
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          width: 40%;
+          height: 100%;
+          overflow: hidden;
+          width: 600px;
+          padding: 30px;
+          margin: 0 auto;
+          background-color: #f5f5f5;
+         }
+         .upload-con{
+            display: grid;
+            margin: 50px;
+            justify-content: center;
+         }
+         .file-input {
+         font-family: sans-serif;
+         display: inline-block;
+         text-align: left;
+         padding: 8px 0;
+         position: relative;
+         width: 100%;
+      }
+      .file-input > [type="file"] {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         opacity: 0;
+         z-index: 10;
+         cursor: pointer;
+      }
+      .file-input > .button {
+         display: inline-block;
+         cursor: pointer;
+         background: #ccc;
+         padding: 8px 16px;
+         border-radius: 2px;
+         margin-right: 8px;
+         font-size: 14px;
+      }
+      .file-input:hover > .button {
+         background: #507973;
+         color: #fff;
+      }
+      .file-input > .label {
+         color: #333;
+         white-space: nowrap;
+         opacity: .7;
+         font-size: 13px;
+      }
+      #preview {
+         max-width: 380px;
+         width: 100%;
+         margin-top: 16px;
+         margin-bottom: 20px;
+      }
+      span .label{
+         text-decoration: none;
+
+      }
    </style>
    <body class="bg">
 
@@ -593,8 +902,9 @@
                <div class="profile-header">
                   <h2>Update Photos</h2>
                </div>
+
                <div class="profile-info">
-                  <div style="width:500px; margin:10px auto; ">
+                  <!--
                    <div class="uploadContainer">
                          <div class="uploadDropzone"> 
                              <i class="material-icons cloud">cloud_upload</i>
@@ -608,11 +918,60 @@
                   <div class="upload-btn">
                         <a href="#" class="edit-btn"> UPLOAD </a>
                   </div>
+               -->   
+                  <table class="current-photos" align= "center">
+                        <tr>
+                            <td> IMAGE </td>
+                            <td> FILE NAME / SIZE </td>
+                            <td> ACTION </td>
+                        </tr>
+                        <tr>
+                            <td class="pic-holder"><img src="HOME_image1.jpg"></td>
+                            <td> <h4>File name:</h4> <span><p class="file-name" id="file-name"> chuchcuchu </p>
+                            <span><strong>Size: </strong>353Kb</span> </td>
+                            <td class="action-btn"><a type="button" href="#popup-upload" class="upload-btn">UPLOAD IMAGE</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pic-holder"><img src="HOME_image2.jpg"></td>
+                            <td> <h4>File name:</h4> <span><p class="file-name" id="file-name"> chuchcuchu </p>
+                            <span><strong>Size: </strong>353Kb</span> </td>
+                            <td class="action-btn"><a type="button" href="#popup-upload" class="upload-btn">UPLOAD IMAGE</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pic-holder"><img src="HOME_image3.jpg"></td>
+                            <td> <h4>File name:</h4> <span><p class="file-name" id="file-name"> chuchcuchu </p>
+                            <span><strong>Size: </strong>353Kb</span> </td>
+                            <td class="action-btn"><a type="button" href="#popup-upload" class="upload-btn">UPLOAD IMAGE</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pic-holder"><img src="HOME_image4.jpg"></td>
+                            <td> <h4>File name:</h4> <span><p class="file-name" id="file-name"> chuchcuchu </p>
+                            <span><strong>Size: </strong>353Kb</span></td>
+                            <td class="action-btn"><a type="button" href="#popup-upload" class="upload-btn">UPLOAD IMAGE</a></td>                     
+                        </tr>
+                    </table>
+                  </div>
                </div>
             </div>
          </div>
       </div>
       <!-- END of Container -->
+       <div class="popup-upload" id="popup-upload">
+       <div class="popup-inner">
+         <div class="upload-con">
+            <div class="file-input" id="file-input">
+              <input class="choose" type="file" name="avatar" accept="image/*">
+              <span class="button">Choose File</span>
+              <span class="label">No File Chosen</span>
+            </div>
+         <img id="preview" src="">
+         <a type="button" href="#" class="upload-btn" id="upload-img" >UPLOAD</a>
+         </div>
+
+         <a class="popup__close" href="#">X</a>
+         </div>
+      </div>
+
 
       <div class="popup popup-logout center" id="bootstrap-overrides">
          <div class="popup-title">Logout</div>
@@ -636,6 +995,34 @@
 </body>
 
       <script>
+         //Popup File Upload
+         const readURL = (input) => {
+           if (input.files && input.files[0]) {
+             const reader = new FileReader()
+             reader.onload = (e) => {
+               $('#preview').attr('src', e.target.result)
+             }
+             reader.readAsDataURL(input.files[0])
+           }
+         }
+         $('.choose').on('change', function() {
+            readURL(this)
+           let i
+           if ($(this).val().lastIndexOf('\\')) {
+             i = $(this).val().lastIndexOf('\\') + 1
+           } else {
+             i = $(this).val().lastIndexOf('/') + 1
+           }
+           const fileName = $(this).val().slice(i)
+           $('.label').text(fileName)
+         });
+         
+         //Error!
+         $('#upload-img').on('click',function(){
+            $('.choose input[type="file"]').val('');
+            $('.label').val('');
+         });   
+        
 
          // Popup Button
          document.getElementById("open-popup-btn").addEventListener("click", function () {
@@ -667,151 +1054,6 @@
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
-      </script>
-      <script>
-         var uploader;
-
-function createUploader ( i, elem ) {
-
-    var elem = $(elem);
-    var type = elem.data("type");
-    var dropzone = elem.find('.uploadDropzone');
-    var btn = elem.find('.btnUpload'); 
-    var progBox = elem.find('.uploadProgress');
-    var msgBox = elem.find('.uploadMessage');
-    var maxsize = 10000;
-
-    function showUploadMessage ( msg, result ) {
-        msgBox.text( msg ).addClass( result ).show();
-    }
-
-
-    function hideUploadMessage () {
-        msgBox.text('').removeClass('error').removeClass('unknown').removeClass('success').hide();
-    }
-
-
-    //create uploader(s)
-
-    uploader = new ss.SimpleUpload({
-        button: btn,
-        dropzone: dropzone,
-        url: 'your_php_file.php',
-        name: 'uploadfile',
-        multipart: true,
-        disabledClass: 'disabled',
-        responseType: 'json',
-        allowedExtensions: ["gif", "jpg", "jpeg", "png", "pdf", "ppt"],
-        maxSize: maxsize,
-        multiple: true,
-        multipleSelect: true,
-          maxUploads: 10,
-       queue: false,
-        startXHR: function() {
-
-        },
-        onSubmit: function(filename) {
-
-            hideUploadMessage();  //hide any previous errors
-
-            var progress = document.createElement('div'), 
-              bar = document.createElement('div'), 
-              fileSize = document.createElement('div'), 
-              wrapper = document.createElement('div'), 
-              close = document.createElement('button'), 
-              progressBox = document.getElementById('progressContainer');
-
-          
-          // Assign each element its corresponding class
-          progress.className = 'progress';
-          bar.className = 'progress-bar';
-          fileSize.className = 'size';
-          wrapper.className = 'wrapper';
-          close.className = 'deleteAttachment';         
-
-
-          // Assemble the progress bar and add it to the page
-          progress.appendChild(bar); 
-          wrapper.innerHTML = '<div class="name">'+filename+'</div>'; 
-          wrapper.appendChild(fileSize);
-          wrapper.appendChild(close);    
-          wrapper.appendChild(progress);      
-                             
-
-          $(wrapper).data('file',filename);
-
-          progressBox.appendChild(wrapper); 
-
-          this.setAbortBtn ( close );
-          this.setProgressBar(bar); 
-          this.setFileSizeBox(fileSize); 
-          //this.setProgressContainer(wrapper); // designate the containing div to be removed after upload
-
-        },
-
-        onSizeError: function() {
-            var msg = 'Files may not exceed ' + maxsize + 'k.';
-            showUploadMessage ( msg, 'error' );
-        },
-
-        onExtError: function() {
-            var msg = 'Please select a GIF, JPG, PDF, PNG or PPT.';
-        },
-
-        onComplete: function( filename, response ) {
-
-            $('.wrapper').filterByData('file',filename).addClass('success'); //add a 'completed' class to the wrapper when file succeeds. 
-
-            if ( !response ) {
-                var msg = 'Unable to upload file(s).';
-                showUploadMessage ( msg, 'error' );
-                return;
-            }
-
-            if ( response.success === true ) {
-
-                //things to do after complete, such as show image;
-
-            } else {
-
-                if ( response.msg )  {
-                    var msg = escapeTags( response.msg );
-                    showUploadMessage ( msg, 'error' );
-                } else {
-                    var msg = 'Sorry! Unable to upload one of your files.';
-                    showUploadMessage ( msg, 'error' );
-                }
-
-            }
-
-        },
-        onError: function() {
-
-            var msg = 'Unable to upload file(s) to server.  Please try again later.';
-            showUploadMessage ( msg, 'error' );
-            $('.wrapper').removeClass('success').addClass('error');
-
-           }
-
-       });
-
-         }
-
-         $('.uploadContainer').each(createUploader);
-
-         $(document).on( 'click', '.deleteAttachment', function(e) {
-
-            e.preventDefault(); 
-            var wrapper = $(this).closest('.wrapper');
-            wrapper.remove();
-
-            // ... Back-end-dev should add a function to actually delete the image from the server.
-
-         });
-
-         function logout(){
-            location.href = "A_Login.html";
-         }
       </script>
    
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script>
