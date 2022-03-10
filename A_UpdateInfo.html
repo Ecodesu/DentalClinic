@@ -651,7 +651,7 @@
                   </ul>
                </div>
                <div class="logout-container">
-                  <a type="button" id="open-popup-btn-4"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
+                  <a type="button" id="open-popup-btn-3"><i class="fa fa-sign-out-alt navy-blue"></i> Logout</a>
                </div>
             </div>
             <div class="profile-content">
@@ -753,15 +753,6 @@
       </div>
    </div>
 
-         <div class="popup popup-logout popup4 center">
-         <div class="popup-title">Logout</div>
-         <div class="description">Are you sure you want to logout?</div>
-         <div class="dismiss-btn">
-           <button id="confirm-popup-btn-4" onclick="logout()">Yes</button>
-           <button id="dismiss-popup-btn-4">No</button>
-         </div>
-       </div>
-
 </div>
 
     <!-- END OF POPUP -->
@@ -839,19 +830,6 @@
       document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
       document.getElementsByClassName("popup3")[0].classList.remove("active");
       });
-
-      document.getElementById("open-popup-btn-4").addEventListener("click", function () {
-      document.getElementsByClassName("popup4")[0].classList.add("active");
-      });
-
-      document.getElementById("confirm-popup-btn-4").addEventListener("click", function () {
-      document.getElementsByClassName("popup4")[0].classList.remove("active");
-      });
-
-      document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
-      document.getElementsByClassName("popup4")[0].classList.remove("active");
-      });
-
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
