@@ -766,7 +766,7 @@ footer .bottom-details .bottom_text{
                      <div class="control-button" id="form-button">
                         <button type="submit" class="cancel" >Cancel</button>
                         <button type="submit" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
-                        <button id="open-popup-btn" type="submit" class="submitbtn" onclick="submit_appointment()">Submit</button>
+                        <a id="open-popup-btn" type="submit" class="submitbtn" onclick="submit_appointment()">Submit</a>
                      </div>
                   </form>
                </div>
@@ -776,12 +776,12 @@ footer .bottom-details .bottom_text{
       <!-- END of Container -->
 
       <!-- START OF POPUP -->
-      <div class="popup center">
+      <div class="popup popup1 center">
         <div class="ckicon">
           <i class="fa fa-check"></i>
         </div>
         <div class="popup-title">Set Appointment</div>
-        <div class="description">Appointment created successfully!</div>
+        <div class="description" id="return_message">Appointment created successfully!</div>
         <div class="dismiss-btn">
           <button id="dismiss-popup-btn">Close</button>
         </div>
@@ -828,11 +828,11 @@ footer .bottom-details .bottom_text{
 
         // Popup Button
       document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
+        document.getElementsByClassName("popup1")[0].classList.add("active");
       });
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.remove("active");
+        document.getElementsByClassName("popup1")[0].classList.remove("active");
       });
 
       document.getElementById("open-popup-btn-2").addEventListener("click", function () {
@@ -915,8 +915,9 @@ footer .bottom-details .bottom_text{
               cache: false,
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
-                  alert(dataResult.message)			
-                  windows.location = "P_Appointments.html";	 
+                  // alert(dataResult.message)			
+                  $('#return_message').html(dataResult.message)
+                  // window.location = "P_Appointments.html";	 
               },error:function(err){
             console.log(err)
             }
