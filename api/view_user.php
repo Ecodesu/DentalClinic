@@ -7,7 +7,7 @@ if($request_key == 'admin'){
 }
 else if($request_key == 'patient'){
 	$search = $_POST['search'];
-	$sql = "SELECT * FROM tbl_user WHERE user_credential = 'patient' AND (user_name LIKE '$search%' OR user_first_name LIKE '$search%' OR user_last_name LIKE '$search%' OR user_email LIKE '$search%' OR user_contact_number LIKE '$search%')";
+	$sql = "SELECT * FROM tbl_user WHERE user_credential = 'patient' AND (user_name LIKE '$search%' OR user_first_name LIKE '%$search%' OR user_last_name LIKE '$search%' OR user_email LIKE '$search%' OR user_contact_number LIKE '$search%')";
 }
 $result = mysqli_query($conn,$sql);
 $arr = array();
