@@ -7,14 +7,27 @@
     $time           = $_POST['time'];
     $date           = $_POST['date'];
 
-	$sql = "INSERT INTO tbl_appointment (ref_no,main_concern,user_id,date,time,status) 
-	VALUES 
-    ('$ref_no','$main_concern','$user_id','$date','$time','Pending')";
-	if (mysqli_query($conn, $sql)) {
-		echo json_encode(array("message"=>"submit success. wait for doctor approval"));
-	} 
-	else {
-		echo json_encode(array("status"=>"query error"));
+
+
+
+
+	$sql = "SELECT * FROM tbl_appointment WHERE date = '$date' AND time = '$time'";
+	$result = mysqli_query($conn,$sql);
+	$arr = array();
+	if(mysqli_num_rows($result) > 0){
+		echo json_encode(array("message"=>"Date and Time already occupied",
+											"status"=>false));
+	}else{
+		$sql = "INSERT INTO tbl_appointment (ref_no,main_concern,user_id,date,time,status) 
+		VALUES 
+		('$ref_no','$main_concern','$user_id','$date','$time','Pending')";
+		if (mysqli_query($conn, $sql)) {
+			echo json_encode(array("message"=>"submit success. wait for doctor approval",
+									"status"=>true));
+		} 
+		else {
+			echo json_encode(array("status"=>"query error"));
+		}
 	}
 	mysqli_close($conn);
 ?>
