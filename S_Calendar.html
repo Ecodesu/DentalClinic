@@ -229,6 +229,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
   display: inline-block;
   }
   .dropdown-content {
+   margin-top: 20px;
   display: none;
   position: absolute;
   background-color: #065446;
@@ -812,7 +813,13 @@ footer .bottom-details .bottom_text{
             <li><a href="S_Calendar.html"> CALENDAR </a></li>
             <li><a href="S_Appointments.html"> APPOINTMENTS </a></li>
             <li><a href="S_PatientRecord.html"> PATIENT RECORDS </a></li>
-            <li><a href="A_Login.html"> LOGOUT </a></li>
+            <div class="dropdown">
+            <li><a href = "#"> ACCOUNT </a></li>
+            <div class="dropdown-content">
+                  <a class = "dd-content" href = "S_ChangePW.html"> CHANGE PASSWORD </a>
+                  <a class = "dd-content" href="A_Login.html"> LOGOUT </a>
+            </div>
+          </div>
             </ul>
             <div class="icon menu-btn">
                <i class="fas fa-bars"></i>

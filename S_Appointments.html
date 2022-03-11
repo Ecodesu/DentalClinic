@@ -179,9 +179,10 @@
       display: inline-block;
       }
       .dropdown-content {
+      margin-top: 20px;
       display: none;
       position: absolute;
-      background-color: #507973;
+      background-color: #065446;
       min-width: 160px;
       z-index: 1;
       line-height: 2;
@@ -201,7 +202,7 @@
       display: block;
       }
       .dd-content:hover, .dd-content:focus {
-      background-color:#065446;
+      background-color:#507973;
       color: #fff;
       }
       @media (max-width: 868px){
@@ -543,7 +544,13 @@
             <li><a href="S_Calendar.html"> CALENDAR </a></li>
             <li><a href="S_Appointments.html"> APPOINTMENTS </a></li>
             <li><a href="S_PatientRecord.html"> PATIENT RECORDS </a></li>
-            <li><a href="A_Login.html"> LOGOUT </a></li>
+            <div class="dropdown">
+            <li><a href = "#"> ACCOUNT </a></li>
+            <div class="dropdown-content">
+                  <a class = "dd-content" href = "S_ChangePW.html"> CHANGE PASSWORD </a>
+                  <a class = "dd-content" href="A_Login.html"> LOGOUT </a>
+            </div>
+          </div>
             </ul>
             <div class="icon menu-btn">
                <i class="fas fa-bars"></i>
