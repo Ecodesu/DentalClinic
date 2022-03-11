@@ -400,7 +400,7 @@ footer .bottom-details .bottom_text{
       align-items: center;
       }
       .container .title{
-      font-size: 20px;
+      font-size: 36px;
       color: #507973;
       text-align: center;
       font-weight: bolder;
@@ -431,14 +431,20 @@ footer .bottom-details .bottom_text{
       width: 33.33%;
       margin: 0 10px;
       }
+      .profile-info .form-control .col-4 {
+      width: 50%;
+      margin: 0 10px;
+      }
       .profile-info .form-control .col-3 label,
-      .profile-info .form-control .col-6 label {
+      .profile-info .form-control .col-6 label,
+      .profile-info .form-control .col-4 label {
       display: block;
       color: #507973;
       font-size: 14px;
       }
       .profile-info .form-control .col-3 input,
-      .profile-info .form-control .col-6 input {
+      .profile-info .form-control .col-6 input,
+      .profile-info .form-control .col-4 input {
       font-size: 14px;
       padding: 4px 5px;
       border: 1px solid gray;
@@ -634,39 +640,46 @@ footer .bottom-details .bottom_text{
          <div class="profile-info" style="overflow-y: auto;">
             <form>
                <div class="form-control">
-                  <div class="col-3">
+                  <div class="col-4">
                      <label for="full-name">Full Name</label>
                      <input type="text" placeholder="Enter First Name" />
                   </div>
-                  <div class="col-3">
-                     <label for="full-name" style="opacity: 0">a</label>
-                     <input type="text" placeholder="Enter Middle Name" />
-                  </div>
-                  <div class="col-3">
+                  <div class="col-4">
                      <label for="full-name" style="opacity: 0">a</label>
                      <input type="text" placeholder="Enter Last Name" />
                   </div>
                </div>
                <div class="form-control">
-                  <div class="col-6">
-                     <label for="full-name">Email Address</label>
-                     <input type="text" placeholder="Enter Email" />
-                  </div>
                   <div class="col-3">
                      <label for="full-name">Contact Number</label>
                      <input type="text" placeholder="Enter Phone" />
                   </div>
+                  <div class="col-6">
+                     <label for="full-name">Email Address</label>
+                     <input type="text" placeholder="Enter Email" />
+                  </div>
                </div>
                <div class="form-control">
-                  <div class="col-6">
-                     <label for="full-name">Address</label>
-                     <input type="text" placeholder="Enter Address" />
-                  </div>
                   <div class="col-3">
                      <label for="full-name">Username</label>
                      <input type="text" placeholder="Enter Username" />
                   </div>
+                  <div class="col-6">
+                     <label for="full-name">Address</label>
+                     <input type="text" placeholder="Enter Address" />
+                  </div>
                </div>
+                <div class="form-control">
+                  <div class="col-4">
+                     <label for="password">Password</label>
+                     <input type="password" placeholder="Enter Password" />
+                  </div>
+                  <div class="col-4">
+                     <label for="cpassword">Confirm Password</label>
+                     <input type="password" placeholder="Confirm Password" />
+                  </div>
+               </div>
+
                <button type="button" id="open-popup-btn">Submit</button>
             </form>
          </div>
