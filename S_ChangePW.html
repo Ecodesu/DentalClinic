@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>CHANGE PASSWORD</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+      <style>
+
+      @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('fonts.googleapis.com/css?family=Times+New+Roman:wght@200;300;400;500;600;700&display=swap');
+/*Credits / Attributes to author: 
+FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by freepik - www.freepik.com
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  
+  }
+
+  /* START of SCROLL BAR */
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: #507973;
+  }
+  ::selection {
+  background: rgb(0, 123, 255, 0.3);
+  }
+  /* END of SCROLL BAR */
+
+  /* START of NAVIGATION BAR */
+  .content {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+  }
+  .navbar {
+  position: fixed;
+  background: #065446;
+  width: 100%;
+  z-index: 2;
+  padding: 10px;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  border-radius:0px;
+  }
+  .navbar.sticky {
+  background: #065446;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius:0px;
+  }
+
+  .sticky .menu-list li a {
+    color:  #fff;
+  }
+  .navbar .content {
+  color: #065446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  .navbar .menu-list {
+  display: inline-flex;
+  }
+  .menu-list li {
+  list-style: none;
+  color: #fff;
+  }
+  .menu-list li a {
+  color:  #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  }
+  .menu-list li a:hover {
+  color: white;
+  }
+  .banner {
+  height: 10vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  }
+  .about {
+  padding: 30px 0;
+  }
+  .about .title {
+  font-size: 38px;
+  font-weight: 700;
+  }
+  .about p {
+  padding-top: 20px;
+  text-align: justify;
+  }
+  .icon {
+  color:white;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  }
+  .menu-list .cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  }
+  @media (max-width: 1230px) {
+  .content {
+  padding: 0 60px;
+  }
+  .profile-card {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  }
+  }
+  @media (max-width: 1100px) {
+  .content {
+  padding: 0 40px;
+  }
+  }
+  @media (max-width: 900px) {
+  .content {
+  padding: 0 30px;
+  }
+  }
+  @media (max-width: 868px) {
+  body.disabled {
+  overflow: hidden;
+  }
+  .icon {
+  display: block;
+  }
+  .icon.hide {
+  display: none;
+  }
+  .navbar .menu-list {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  left: -100%;
+  top: 0px;
+  display: block;
+  padding: 40px 0;
+  text-align: center;
+  background: #065446;
+  transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list {
+  left: 0%;
+  }
+  .navbar .menu-list li {
+  margin-top: 45px;
+  float: left;
+  border-right: 1px solid white;
+  padding-right: 10px;
+  padding-left: 50px;
+}
+  .navbar .login-button {
+  margin-top: 50px;
+  margin-left: -25px;
+  }
+  .navbar .menu-list li a {
+  font-size: 23px;
+  margin-left: -100%;
+  transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a {
+  margin-left: 0px;
+  }
+  }
+  @media (max-width: 380px) {
+  .navbar .logo a {
+  font-size: 27px;
+  }
+  }
+  .bg {
+  background-image: url(dc_bg.png);
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  .dropdown-content {
+    margin-top: 20px;
+  display: none;
+  position: absolute;
+  background-color: #065446;
+  min-width: 160px;
+  z-index: 1;
+  line-height: 2;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+    text-decoration: none;
+  }
+  .dd-content {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+
+  }
+  .dropdown:hover .dropdown-content {
+  display: block;
+  text-decoration: none;
+  }
+  .dd-content:hover, .dd-content:focus {
+  background-color: #507973;
+  color: white;
+    text-decoration: none;
+  }
+  @media (max-width: 868px){
+  .dropdown-content {
+  min-width: 250px;
+  line-height: 2;
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  }
+  }
+  /* END of NAVIGATION BAR */
+
+
+  /*START of FOOTER*/
+footer{
+  position: relative;
+  background: #065446;
+  width: 100%;
+  bottom: 100;
+  left: 0;
+}
+.bottom-details{
+  border-top:2px solid #FFF;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+}
+footer .content .top .logo-details{
+  display: flex;
+  align-items: right;
+  z-index: -1;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size:10px;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+footer .box-left{
+  margin-left: 80px;
+  display: contents;
+}
+footer .content .link-boxes .box{
+  padding: 30px 0 0 0;
+  width: calc(80% / 3 - 10px);
+}
+footer .box-left .fa{
+  font-size: 13px;
+  color: #fff;
+}
+footer .bottom-details{
+  width: 100%;
+  background: #065446;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes .none{
+    display: none;
+  }
+  footer .content .link-boxes .quick-links{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .visit{
+    margin: 60px 0 0 0;
+  }
+  footer .content .link-boxes .services{
+    margin: 60px 0 0 0;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  footer .content .link-boxes{
+    display: contents;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .quick-links{
+    margin:0px;
+    
+  }
+  footer .content .link-boxes .visit{
+    margin: 0px;
+  }
+  footer .content .link-boxes .services{
+    margin:0px;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+
+  @media (max-width: 900px) {
+  footer .content .link-boxes{
+  flex-wrap: wrap;
+  }
+  footer .content .link-boxes .input-box{
+  width: 40%;
+  margin-top: 10px;
+  }
+  }
+  @media (max-width: 700px){
+  footer{
+  position: absolute;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+  font-size: 12px;
+  }
+  body {
+  margin-top: 10%;
+  }
+  }
+  /* END OF FOOTER */
+         
+  /*START of CHANGE PASSWORD*/
+ .container{
+  justify-content: center;
+  max-width: 620px;
+  width: 100%;
+  background-color: #EFFFE7;
+  padding: 10px 5px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  }
+  .container .title{
+  font-size: 20px;
+  color: #507973;
+  text-align: center;
+  font-weight: bolder;
+  position: relative;
+  }
+  .teeth {
+  margin-top: -10%;
+  margin-left: 38%;
+  padding:5px;
+  text-align: center;
+  height: 120px;
+  width: 120px;
+  }
+  .profile-info form {
+  width: 600px;
+  padding-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  }
+  .profile-info .form-control {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  }
+  .profile-info .form-control .col-3 {
+  width: 33.33%;
+  margin: 0 10px;
+  }
+  .profile-info .form-control .col-3 label,
+  .profile-info .form-control .col-6 label {
+  display: block;
+  color: #507973;
+  font-size: 14px;
+  }
+  .profile-info .form-control .col-3 input,
+  .profile-info .form-control .col-6 input {
+  font-size: 14px;
+  padding: 4px 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  }
+  .profile-info .form-control .col-6 {
+
+  width: 70%;
+  margin: auto;
+  }
+  button {
+  background: #507973;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  padding: 5px 30px;
+  border: none;
+  margin-left: 40%;
+  margin-top: 20px;
+  }
+  .bg {
+  background-image: url("DC_BG.png");
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  @media(max-width: 650px){
+  .container {
+  margin-top: 30%;
+  }
+  }
+  /*END of CHANGE PASSWORD*/
+
+   /* START OF POPUP */
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .popup {
+    width: 350px;
+    height: 250px;
+    padding: 20px 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    top: -200%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+  }
+
+  .popup.active {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  }
+
+  .popup .ckicon {
+    margin: 5px 0px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #507973;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 60px;
+  }
+
+  .popup .ckicon i.fa {
+    font-size: 30px;
+    color: #507973;
+  }
+
+  .popup .popup-title {
+    color: #507973;
+    margin: 5px 0px;
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .popup .description {
+    color: #507973;
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  .popup .dismiss-btn {
+    margin-top: 15px;
+  }
+
+  .popup .dismiss-btn button {
+    padding: 10px 20px;
+    margin: auto;
+    background: #86b170;
+    color: #f5f5f5;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+  }
+
+  .popup > div {
+    position: relative;
+    top: 10px;
+    opacity: 0;
+  }
+
+  .popup.active > div {
+    top: 0px;
+    opacity: 1;
+  }
+
+  .popup.active .ckicon {
+    transition: all 300ms ease-in-out 250ms;
+  }
+
+  .popup.active .popup-title {
+    transition: all 300ms ease-in-out 300ms;
+  }
+
+  .popup.active .description {
+    transition: all 300ms ease-in-out 350ms;
+  }
+  .popup.active .dismiss-btn {
+    transition: all 300ms ease-in-out 400ms;
+  }
+
+  /* END OF POPUP */
+
+  li {
+    float: left;
+    border-right: 1px solid white;
+    padding-right: 20px;
+  }
+  </style>
+   </head>
+   <body class="bg">
+
+
+   <!-- START of NAVIGATION BAR --> 
+   <nav class="navbar">
+      <div class="content">
+         <div class="logo">
+            <img src = "white-logo.png" width="195px" height="100%" class="logo" alt="">
+         </div>
+         <ul class="menu-list">
+            <div class="icon cancel-btn">
+               <i class="fas fa-times"></i>
+            </div>
+            <li><a href="S_Calendar.html"> CALENDAR </a></li>
+            <li><a href="S_Appointments.html"> APPOINTMENTS </a></li>
+            <li><a href="S_PatientRecord.html"> PATIENT RECORDS </a></li>
+            <div class="dropdown">
+            <li><a href = "#"> ACCOUNT </a></li>
+            <div class="dropdown-content">
+                  <a class = "dd-content" href = "S_ChangePW.html"> CHANGE PASSWORD </a>
+                  <a class = "dd-content" href="A_Login.html"> LOGOUT </a>
+            </div>
+          </div>
+            </ul>
+            <div class="icon menu-btn">
+               <i class="fas fa-bars"></i>
+            </div>
+         </div>
+      </nav>
+      <div class="banner"></div>
+      <!-- END of NAVIGATION BAR --> 
+
+      <!-- START of Container -->
+      <div class="container" style = "margin-top: 10vw; margin-bottom: 5%;" >
+         <img src = "TEETH.png" class="teeth">
+         <div class="title">CHANGE PASSWORD</div>
+         <div class="profile-info" style="overflow-y: auto;">
+            <form>
+             <div class="profile-box" >
+                <div class="form-control">
+                   <div class="col-6">
+                      <label for="full-name">Old Password</label>
+                      <input type="password" placeholder="Enter Old Password" id="old_password" />
+                   </div>
+                </div>
+                <div class="form-control">
+                   <div class="col-6">
+                      <label for="full-name">New Password</label>
+                      <input type="password" placeholder="Enter New Password" id="new_password" />
+                   </div>
+                </div>
+                <div class="form-control">
+                   <div class="col-6">
+                      <label for="full-name">Confirm Password</label>
+                      <input type="password" placeholder="Confirm New Password" id="confirm_password" />
+                   </div>
+                </div>
+                <button type="button" id="open-popup-btn" >Submit</button>
+             </div>
+          </form>
+         </div>
+      </div>
+      <!-- END of Container -->
+
+      <!-- START OF POPUP -->
+      <div class="popup center">
+        <div class="ckicon">
+          <i class="fa fa-check"></i>
+        </div>
+        <div class="popup-title">Change Password</div>
+        <div class="description">Password changed successfully!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn">Close</button>
+        </div>
+      </div>
+      <!--END OF POPUP -->
+
+
+      <!-- START of FOOTER  --> 
+      <footer>
+         <div class="bottom-details">
+            <div class="bottom_text">
+               <span class="copyright_text">Copyright © 2022. <a href="index.html"> DR. MILA PATAJO DENTAL CLINIC.</a>All rights reserved</span>
+            </div>
+         </div>
+      </footer>
+      <!-- END of FOOTER  --> 
+
+ 
+      <script >
+        // Popup Button
+        document.getElementById("open-popup-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup")[0].classList.add("active");
+      });
+
+      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+      });
+
+         const body = document.querySelector("body");
+         const navbar = document.querySelector(".navbar");
+         const menuBtn = document.querySelector(".menu-btn");
+         const cancelBtn = document.querySelector(".cancel-btn");
+         menuBtn.onclick = ()=>{
+           navbar.classList.add("show");
+           menuBtn.classList.add("hide");
+           body.classList.add("disabled");
+         }
+         cancelBtn.onclick = ()=>{
+           body.classList.remove("disabled");
+           navbar.classList.remove("show");
+           menuBtn.classList.remove("hide");
+         }
+         window.onscroll = ()=>{
+           this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+         }
+
+      </script>
+   </body>
+</html>
