@@ -810,6 +810,7 @@ footer .bottom-details .bottom_text{
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+        var val = true;
         if(!localStorage.getItem('user_id')){
           window.location = "index.html";		
         }
@@ -833,6 +834,9 @@ footer .bottom-details .bottom_text{
 
       document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup1")[0].classList.remove("active");
+        if(val){
+          window.location = "P_Appointments.html";
+        }
       });
 
       document.getElementById("open-popup-btn-2").addEventListener("click", function () {
@@ -917,7 +921,10 @@ footer .bottom-details .bottom_text{
                 var dataResult = JSON.parse(dataResult);
                   // alert(dataResult.message)			
                   $('#return_message').html(dataResult.message)
-                  // window.location = "P_Appointments.html";	 
+                  val = dataResult.status
+                    // window.location = "P_Appointments.html";	
+                  // }
+                  //  
               },error:function(err){
             console.log(err)
             }
