@@ -580,7 +580,7 @@ footer .bottom-details .bottom_text{
       }
 
        /* START OF POPUP */
-  .center {
+    .center {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -589,7 +589,7 @@ footer .bottom-details .bottom_text{
 
     .popup {
       width: 350px;
-      height: 250px;
+      height: 175px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -680,6 +680,9 @@ footer .bottom-details .bottom_text{
     .popup.active .dismiss-btn {
       transition: all 300ms ease-in-out 400ms;
     }
+    .popup.active .confirm-btn {
+         transition: all 300ms ease-in-out 400ms;
+      }
 
     /* END OF POPUP */
 
@@ -780,15 +783,20 @@ footer .bottom-details .bottom_text{
 
             <!-- START OF POPUP -->
     <div class="popup center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
       <div class="popup-title">Contact Us</div>
       <div class="description">Message submitted successfully!</div>
       <div class="dismiss-btn">
         <button id="dismiss-popup-btn">Close</button>
       </div>
     </div>
+
+    <div class="popup popup2 center">
+      <div class="popup-title">Contact Us</div>
+      <div class="description">Message failed to submit</div>
+      <div class="dismiss-btn">
+      <button id="dismiss-popup-btn-2">Close</button>
+      </div>
+   </div>
 
     <!-- END OF POPUP -->
 
@@ -855,13 +863,13 @@ footer .bottom-details .bottom_text{
         }
 
      // Popup Button
-     document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
-      });
+    //  document.getElementById("open-popup-btn").addEventListener("click", function () {
+    //     document.getElementsByClassName("popup")[0].classList.add("active");
+    //   });
 
-      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.remove("active");
-      });
+      // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.remove("active");
+      // });
 
       const body = document.querySelector("body");
       const navbar = document.querySelector(".navbar");
@@ -929,11 +937,21 @@ footer .bottom-details .bottom_text{
     success: function(dataResult){
       var dataResult = JSON.parse(dataResult);
       if(dataResult.status){
-        alert("Message sent")	
+        document.getElementsByClassName("popup")[0].classList.add("active");
+         
+         document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+         document.getElementsByClassName("popup")[0].classList.remove("active");
+         });
+        // alert("Message sent")	
         location.reload();
       }
       else {
-        alert("message not sent");
+        document.getElementsByClassName("popup2")[0].classList.add("active");
+         
+         document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+         document.getElementsByClassName("popup2")[0].classList.remove("active");
+         });
+        // alert("message not sent");
       }
       
     }
