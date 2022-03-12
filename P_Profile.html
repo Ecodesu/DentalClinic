@@ -259,6 +259,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       height: 190px;
     }
 
+    .popup-short{
+      height: 180px;
+    }
+
     .popup.active {
       opacity: 1;
       top: 50%;
@@ -730,6 +734,14 @@ footer .bottom-details .bottom_text{
         </div>
       </div>
 
+      <div class="popup popup-short popup3 center">
+        <div class="popup-title">Profile</div>
+        <div class="description">Error occured!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn-3">Close</button>
+        </div>
+      </div>
+
       <!-- END OF POPUP -->
 
       <!-- START of FOOTER  --> 
@@ -744,18 +756,18 @@ footer .bottom-details .bottom_text{
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
-          if(!localStorage.getItem('user_id')){
-            window.location = "index.html";	
-        }
+        //   if(!localStorage.getItem('user_id')){
+        //     window.location = "index.html";	
+        // }
 
           // Popup Button
-        document.getElementById("open-popup-btn").addEventListener("click", function () {
-          //document.getElementsByClassName("popup")[0].classList.add("active");
-        });
+        // document.getElementById("open-popup-btn").addEventListener("click", function () {
+        // document.getElementsByClassName("popup")[0].classList.add("active");
+        // });
 
-        document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-          document.getElementsByClassName("popup")[0].classList.remove("active");
-        });
+        // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+        //   document.getElementsByClassName("popup")[0].classList.remove("active");
+        // });
 
         document.getElementById("open-popup-btn-2").addEventListener("click", function () {
           document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -850,16 +862,30 @@ footer .bottom-details .bottom_text{
                         success: function(dataResult){
                           var dataResult = JSON.parse(dataResult);
                           if(dataResult.status){
-                           // alert("profile update success")		
-                            document.getElementsByClassName("popup")[0].classList.add("active");   
+                           // alert("profile update success")
+                            document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                            document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                            document.getElementsByClassName("popup")[0].classList.remove("active");
+                            });
                           }
                           else{
-                            alert("Error occured !");
+                            // alert("Error occured !");
+                            document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                            document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                            document.getElementsByClassName("popup3")[0].classList.remove("active");
+                            });
                           }
                         }
                       });
            }else{
-                console.log('error')
+                // console.log('error')
+                document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                document.getElementsByClassName("popup3")[0].classList.remove("active");
+                });
                 
             }
           }
@@ -870,7 +896,7 @@ footer .bottom-details .bottom_text{
          }
   
 
-          
+
 
     </script>
    </body>
