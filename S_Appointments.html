@@ -300,6 +300,16 @@
       background-color: #efffe7;
       color: #065446
       }
+
+      .past-sort {
+      border-right: 0px;
+      border-left: 0px;
+      padding: 0px;
+      text-align: left;
+      font-size: 16px;
+      background-color: #CAE5BB;
+      }
+
       table tr:last-child td {
       border-bottom: 2px solid #86b170;
       }
@@ -521,6 +531,47 @@
       padding-right: 20px;
     }
 
+    /* SORT */
+
+    .sort-container {
+      display: inline-block;
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      margin-left: 5px;
+    }
+
+    .select-box{
+      width: 125px;
+      position: relative;
+    }
+
+    .select-box select{
+      height: 42px;
+      padding: 10px 15px;
+      line-height: 18px;
+      font-size: 16px;
+      width: 100%;
+      border: 2px solid #86b170;
+      border-radius: 8px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .select-box:after{
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      margin-top: -4px;
+      border-top: 8px solid #86b170;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      pointer-events: none;
+    }
+
+
    </style>
    <head>
       <meta charset="UTF-8" />
@@ -693,6 +744,21 @@
                         </tbody>
                         </table>
                         <table id="pastApp" class="hidden">
+
+                           <td class="past-sort"><span class = "sort">Sort:</span>
+                                 <div class="sort-container">
+                                    <div class="select-box">
+                                       <select onchange="onchange_filter()" id="filter">
+                                          <option value="">All</option>
+                                          <option value="Cancelled">CANCELLED</option>
+                                          <option value="Done">DONE</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                              </td>
+
+                      
+
                            <tr>
                               <th>REF NO.</th>
                               <th>MAIN CONCERN</th>
