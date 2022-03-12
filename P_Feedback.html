@@ -259,6 +259,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       height: 190px;
     }
 
+    .popup-short{
+      height: 180px;
+    }
+
     .popup.active {
       opacity: 1;
       top: 50%;
@@ -306,6 +310,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       background: #86b170;
       color: #f5f5f5;
       border: none;
+      cursor: pointer;
       font-size: 16px;
       font-weight: 600;
       border-radius: 10px;
@@ -681,6 +686,14 @@ footer .bottom-details .bottom_text{
       </div>
     </div>
 
+    <div class="popup popup-short popup3 center">
+      <div class="popup-title">Feedback</div>
+      <div class="description">Error Occured!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-3">Close</button>
+      </div>
+    </div>
+
     <!-- END OF POPUP -->
 
       <!-- END of Container -->
@@ -702,13 +715,13 @@ footer .bottom-details .bottom_text{
         }
 
           // Popup Button
-      document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.add("active");
+      // });
 
-      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.remove("active");
-      });
+      // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.remove("active");
+      // });
 
       document.getElementById("open-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -752,14 +765,29 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                  alert(dataResult.message);
+                  // alert(dataResult.message);
+                  document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  document.getElementsByClassName("popup")[0].classList.remove("active");
+                  });	
                 }
                 else 
                 {
-                  alert(dataResult.message);
+                  // alert(dataResult.message);
+                  document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                  document.getElementsByClassName("popup3")[0].classList.remove("active");
+                  });	
                 }			 
               },error:function(err){
-            console.log(err)
+            // console.log(err)
+                document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                document.getElementsByClassName("popup3")[0].classList.remove("active");
+                });	
             }
             });
             
