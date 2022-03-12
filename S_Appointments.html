@@ -776,10 +776,10 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
       <form action="">
-         <input name="" id="remarks_input" cols="45" rows="3" required>
+         <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3" required/>
       </form>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks()">Yes</button>
+      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks()" disabled>Yes</button>
       <button id="dismiss-popup-btn-2">Cancel</button>
       </div>
    </div>
@@ -788,7 +788,7 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to mark this appointment as done?</div>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-3" onclick="approved_done()">Yes</button>
+      <button id="confirm-popup-btn-3" onclick="approved_done()" >Yes</button>
       <button id="dismiss-popup-btn-3">No</button>
       </div>
    </div>
@@ -815,6 +815,16 @@
       // document.getElementById("open-popup-btn").addEventListener("click", function () {
       //   document.getElementsByClassName("popup")[0].classList.add("active");
       // });
+      function require(){
+         if(document.getElementById('remarks_input').value==="") { 
+            document.getElementById('confirm-popup-btn-2').disabled = true;   
+         }        
+            else{
+               document.getElementById('confirm-popup-btn-2').disabled = false;
+            }
+         }
+
+      
       function approved_submit(response){
          localStorage.setItem('app_id',response)
          document.getElementsByClassName("popup")[0].classList.add("active");
