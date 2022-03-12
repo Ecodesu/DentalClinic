@@ -330,6 +330,10 @@
       height: 190px;
     }
 
+    .popup-short{
+      height: 180px;
+    }
+
     .popup-long{
        width: 400px;
        height:375px;
@@ -687,6 +691,30 @@
          </div>
        </div>
 
+       <div class="popup popup-short popupremove center">
+         <div class="popup-title">Remove User</div>
+         <div class="description">User removed successfully!</div>
+         <div class="dismiss-btn">
+           <button id="dismiss-popup-btn-remove">Close</button>
+         </div>
+       </div>
+
+       <div class="popup popup-short popupupdate center">
+         <div class="popup-title">User Profile</div>
+         <div class="description">User profile updated successfully!</div>
+         <div class="dismiss-btn">
+           <button id="dismiss-popup-btn-update">Close</button>
+         </div>
+       </div>
+
+       <div class="popup popup-short popuperror center">
+         <div class="popup-title">Manage Users</div>
+         <div class="description">Error occured!</div>
+         <div class="dismiss-btn">
+           <button id="dismiss-popup-btn-error">Close</button>
+         </div>
+       </div>
+
       <!-- END OF POPUP -->
 
       <!-- START of FOOTER  --> 
@@ -833,13 +861,23 @@
                 type: "POST",
                 data: {user_id:localStorage.getItem('user')},
                 success: function (response) {
-                   alert("Deleted")
+                  //  alert("Deleted")
+                  document.getElementsByClassName("popupremove")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-remove").addEventListener("click", function () {
+                  document.getElementsByClassName("popupremove")[0].classList.remove("active");
+                  });
                   //  viewarea()
                   location.reload();
 
                 },
                 error: function (er) {
-                    console.log(er)
+                  //   console.log(er)
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
             });
          }
@@ -864,13 +902,23 @@
                 data: {user_id:localStorage.getItem('user'),
                         role:role1, },
                 success: function (response) {
-                   alert("updated")
+                  //  alert("updated")
+                  document.getElementsByClassName("popupupdate")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-update").addEventListener("click", function () {
+                  document.getElementsByClassName("popupupdate")[0].classList.remove("active");
+                  });
                   //  viewarea()
                   location.reload();
 
                 },
                 error: function (er) {
-                    console.log(er)
+                  //   console.log(er)
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
             });
          }
