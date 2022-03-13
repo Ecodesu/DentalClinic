@@ -823,9 +823,9 @@ footer .bottom-details .bottom_text{
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
         var val = true;
-        // if(!localStorage.getItem('user_id')){
-        //   window.location = "index.html";		
-        // }
+        if(!localStorage.getItem('user_id')){
+          window.location = "index.html";		
+        }
         var dtToday = new Date();
         var month = dtToday.getMonth() + 1;
         var day = dtToday.getDate();
