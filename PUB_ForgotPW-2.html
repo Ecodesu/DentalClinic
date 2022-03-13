@@ -381,7 +381,6 @@ footer .bottom-details .bottom_text{
   }
   footer .content .link-boxes .quick-links{
     margin:0px;
-    padd
   }
   footer .content .link-boxes .visit{
     margin: 0px;
@@ -498,6 +497,124 @@ footer .bottom-details .bottom_text{
       display: inline;
       }
       /* END OF RESETPASS2 */
+
+      /* START OF POPUP */
+  .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .popup {
+      width: 350px;
+      height: 240px;
+      padding: 20px 20px;
+      background: #f5f5f5;
+      border-radius: 10px;
+      box-sizing: border-box;
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      text-align: center;
+      opacity: 0;
+      top: -200%;
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+    }
+
+    .popup-logout{
+      height: 190px;
+    }
+
+    .popup-short{
+      height: 180px;
+    }
+
+    .popup.active {
+      opacity: 1;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+    }
+
+    .popup .ckicon {
+      margin: 5px 0px;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #507973;
+      text-align: center;
+      display: inline-block;
+      border-radius: 50%;
+      line-height: 60px;
+    }
+
+    .popup .ckicon i.fa {
+      font-size: 30px;
+      color: #507973;
+    }
+
+    .popup .popup-title {
+      color: #507973;
+      margin: 5px 0px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .popup .description {
+      color: #507973;
+      font-size: 15px;
+      padding: 5px;
+    }
+
+    .popup .dismiss-btn {
+      margin-top: 15px;
+    }
+
+    .popup .dismiss-btn button {
+      padding: 10px 5px;
+      width: 75px;
+      margin: auto 10px;
+      background: #86b170;
+      color: #f5f5f5;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 300ms ease-in-out;
+    }
+
+    .popup > div {
+      position: relative;
+      top: 10px;
+      opacity: 0;
+    }
+
+    .popup.active > div {
+      top: 0px;
+      opacity: 1;
+    }
+
+    .popup.active .ckicon {
+      transition: all 300ms ease-in-out 250ms;
+    }
+
+    .popup.active .popup-title {
+      transition: all 300ms ease-in-out 300ms;
+    }
+
+    .popup.active .description {
+      transition: all 300ms ease-in-out 350ms;
+    }
+
+    .popup.active .dismiss-btn {
+      transition: all 300ms ease-in-out 400ms;
+    }
+
+    .popup.active .confirm-btn {
+      transition: all 300ms ease-in-out 400ms;
+    }
+
+    /* END OF POPUP */
    </style>
    <head>
       <meta charset="UTF-8">
@@ -553,6 +670,18 @@ footer .bottom-details .bottom_text{
          </section>
       </div>
       <!-- END of Container --> 
+
+      <!-- START OF POPUP -->
+      <div class="popup popup-short popuperror center">
+        <div class="popup-title">Verification</div>
+        <div class="description">Verification code does not match!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn-error">Close</button>
+        </div>
+      </div>
+
+      <!-- END OF POPUP -->
+
       <!--START of Footer -->
       <footer>
     <div class="content">
@@ -626,11 +755,15 @@ footer .bottom-details .bottom_text{
          function verify_code(){
            var code = $('#code').val();
            if(code == localStorage.getItem('verification_code')){
-             alert('verification success')
+            //  alert('verification success')
              window.location = "PUB_ForgotPW-3.html";
            }else{
-             alert('verification code not match')
-             
+            //  alert('verification code not match')
+            document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+            });
            }
          }
       </script>

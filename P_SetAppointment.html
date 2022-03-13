@@ -474,6 +474,10 @@ footer .bottom-details .bottom_text{
       height: 190px;
     }
 
+    .popup-short{
+      height: 180px;
+    }
+
       .popup.active {
         opacity: 1;
         top: 50%;
@@ -796,6 +800,14 @@ footer .bottom-details .bottom_text{
         </div>
       </div>
 
+      <div class="popup popup-short popuperror center">
+        <div class="popup-title">Set Appointment</div>
+        <div class="description">Error occured!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn-error">Close</button>
+        </div>
+      </div>
+
       <!-- END OF POPUP -->
 
       <!-- START of FOOTER  --> 
@@ -828,16 +840,16 @@ footer .bottom-details .bottom_text{
         $('#app-date').attr('min', maxDate);
 
         // Popup Button
-      document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup1")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup1")[0].classList.add("active");
+      // });
 
-      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup1")[0].classList.remove("active");
-        if(val){
-          window.location = "P_Appointments.html";
-        }
-      });
+      // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup1")[0].classList.remove("active");
+      //   if(val){
+      //     window.location = "P_Appointments.html";
+      //   }
+      // });
 
       document.getElementById("open-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -920,13 +932,24 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                   // alert(dataResult.message)			
+                  document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  document.getElementsByClassName("popup")[0].classList.remove("active");
+                  });
+
                   $('#return_message').html(dataResult.message)
                   val = dataResult.status
                     // window.location = "P_Appointments.html";	
                   // }
                   //  
               },error:function(err){
-            console.log(err)
+            // console.log(err)
+            document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+            });
             }
             });
          }
