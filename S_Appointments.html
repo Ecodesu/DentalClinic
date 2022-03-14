@@ -941,6 +941,11 @@
                         status:'Done', },
                 success: function (response) {
                   //  alert("updated")
+                  document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+                  document.getElementsByClassName("popup4")[0].classList.remove("active");
+                  });
                   //  viewarea()
                   location.reload();
 

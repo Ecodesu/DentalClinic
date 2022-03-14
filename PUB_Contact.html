@@ -788,7 +788,7 @@ footer .bottom-details .bottom_text{
       <div class="popup-title">Contact Us</div>
       <div class="description">Message submitted successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -945,7 +945,7 @@ footer .bottom-details .bottom_text{
          document.getElementsByClassName("popup")[0].classList.remove("active");
          });
         // alert("Message sent")	
-        location.reload();
+        // location.reload();
       }
       else {
         document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -958,6 +958,10 @@ footer .bottom-details .bottom_text{
       
     }
   });
+ }
+
+ function reload(){
+  location.reload();
  }
 
    </script>
