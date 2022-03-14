@@ -663,6 +663,17 @@ footer .bottom-details .bottom_text{
       <!-- END of Container --> 
 
       <!-- START OF POPUP -->
+      <div class="popup center">
+        <div class="ckicon">
+          <i class="fa fa-check"></i>
+        </div>
+        <div class="popup-title">Forgot Password</div>
+        <div class="description">Password changed!</div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn">Close</button>
+        </div>
+      </div>
+
       <div class="popup popup-short popuperror center">
         <div class="popup-title">Forgot Password</div>
         <div class="description">Password does not match!</div>
@@ -762,6 +773,11 @@ footer .bottom-details .bottom_text{
                 var dataResult = JSON.parse(dataResult);
                 
               //  alert(dataResult.message)
+              document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+              document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+              document.getElementsByClassName("popup")[0].classList.remove("active");
+              });
                if(dataResult.status){
                 window.location = "PUB_Login.html";
                }
