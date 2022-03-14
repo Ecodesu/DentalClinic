@@ -265,6 +265,10 @@
          height: 190px;
       }
 
+      .popup-short{
+      height: 180px;
+      }
+
       .popup.active {
          opacity: 1;
          top: 50%;
@@ -499,7 +503,7 @@
       <!-- END of Container -->
 
          <!-- START OF POPUP -->
-      <div class="popup center">
+      <div class="popup popup1 center">
          <div class="ckicon">
          <i class="fa fa-check"></i>
          </div>
@@ -519,6 +523,22 @@
          </div>
       </div>
 
+      <div class="popup popup-short popup3 center">
+         <div class="popup-title">Add User</div>
+         <div class="description">Email is already in use!</div>
+         <div class="dismiss-btn">
+           <button id="dismiss-popup-btn-3">Close</button>
+         </div>
+       </div>
+
+      <div class="popup popup-short popuperror center">
+         <div class="popup-title">Add User</div>
+         <div class="description">Password does not match or role not assigned!</div>
+         <div class="dismiss-btn">
+           <button id="dismiss-popup-btn-error">Close</button>
+         </div>
+       </div>
+
       <!-- END OF POPUP -->
 
       <!-- START of FOOTER  -->    
@@ -535,13 +555,13 @@
       <script>
 
           // Popup Button
-         document.getElementById("open-popup-btn").addEventListener("click", function () {
-         document.getElementsByClassName("popup")[0].classList.add("active");
-         });
+         // document.getElementById("open-popup-btn").addEventListener("click", function () {
+         // document.getElementsByClassName("popup")[0].classList.add("active");
+         // });
 
-         document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-         document.getElementsByClassName("popup")[0].classList.remove("active");
-         });
+         // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+         // document.getElementsByClassName("popup")[0].classList.remove("active");
+         // });
 
          document.getElementById("open-popup-btn-2").addEventListener("click", function () {
          document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -595,17 +615,32 @@
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                   alert("new user registered")	
+                  //  alert("new user registered")	
+                  document.getElementsByClassName("popup1")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  document.getElementsByClassName("popup1")[0].classList.remove("active");
+                  });
                    location.reload();
                   // window.location = "PUB_Login.html";
                 }
                 else {
-                  alert("Email already use !");
+                  // alert("Email already use !");
+                  document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                  document.getElementsByClassName("popup3")[0].classList.remove("active");
+                  });
                 }
               }
             });
             }else if(confirm_password != password || role == "none"){
-              alert("password not match or role not assigned")
+            //   alert("password not match or role not assigned")
+            document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+            });
             }
          }
          function logout(){
