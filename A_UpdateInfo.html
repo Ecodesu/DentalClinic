@@ -671,7 +671,8 @@
                      </div>
                      <div class="profile-info-image">
                        <h2>Update Image</h2>
-                        <table class="current-photos" align= "center">
+                        <table class="current-photos" align= "center" >
+                          <tbody id="profile_image">
                               <tr>
                                   <td> IMAGE </td>
                                   <td> FILE NAME / SIZE </td>
@@ -682,7 +683,8 @@
                                   <td> <h4>File name:</h4> <span><p class="file-name" id="file-name"> chuchcuchu </p>
                                   <span><strong>Size: </strong>353Kb</span> </td>
                                   <td class="action-btn"><a type="button" href="#popup-upload" class="upload-btn">UPLOAD IMAGE</a></td>
-                              </tr>
+                                </tr>
+                            </tbody>
                           </table>
                         </div>
 
@@ -702,12 +704,12 @@
        <div class="popup-inner">
          <div class="upload-con">
             <div class="file-input" id="file-input">
-              <input class="choose" type="file" name="avatar" accept="image/*">
+              <input class="choose" type="file" name="avatar" id="fileToUpload" accept="image/*">
               <span class="button">Choose File</span>
               <span class="label">No File Chosen</span>
             </div>
          <img id="preview" src="">
-         <a type="button" href="#" class="upload-btn" id="upload-img" >UPLOAD</a>
+         <a type="button" href="#" class="upload-btn" onclick="upload_photo()" id="upload-img" >UPLOAD</a>
          </div>
 
          <a class="popup__close" href="#">X</a>
@@ -768,8 +770,77 @@
       </footer>
       <!-- END of FOOTER  --> 
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+        $.ajax({
+            url:"http://localhost/dental_clinic/api/view_image.php",
+            type:"POST",
+            data:{
+              crdt: 0,
+            },
+            success:function(response){
+              
+                var data = "";
+               
+
+                data+="<tr>"
+                data+="<td> IMAGE </td>"
+                data+="<td> FILE NAME / SIZE </td>"
+                data+="<td> ACTION </td>"
+                data+="</tr>"
+                for (i = 0; i < response.length; i++) {
+                data+="<tr>"
+                data+="<td class='pic-holder'><img src='"+response[i].image+"'></td>"
+                data+="<td> <h4>File name:</h4> <span><p class='file-name' id='file-name'> "+response[i].name+" </p>"
+                data+="<span><strong>Size: </strong>353Kb</span> </td>"
+                data+="<td class='action-btn'><a type='button' href='#popup-upload' class='upload-btn'>UPLOAD IMAGE</a></td>"
+                data+="</tr>"
+              }
+                $('#profile_image').html(data)
+            }
+        })
+              $.ajax({
+                        url: "http://localhost/dental_clinic/api/view_profile.php",
+                        type: "POST",
+                        data: {
+                          user_id: 13,
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                          var dataResult = JSON.parse(dataResult);
+                          if(dataResult.status){
+                            // $('#first_name').val(dataResult.data.user_first_name);     
+                            // $('#last_name').val(dataResult.data.user_last_name);      
+                            $('#contactnum').val(dataResult.data.user_contact_number); 
+                            $('#email').val(dataResult.data.user_email); 
+                            // $('#address').val(dataResult.data.user_address );       
+                            // $('#user_name').val(dataResult.data.user_name);	          
+                                
+                          }
+                          else{
+                            alert("Error occured !");
+                          }
+                        }
+                      });
+            function upload_photo(){
+            // console.log(document.getElementById('fileToUpload').files[0].name)
+            var form_data = new FormData();
+            form_data.append("fileToUpload", document.getElementById('fileToUpload').files[0]);
+            form_data.append("img_id", 5);
+            $.ajax({
+              url: "http://localhost/dental_clinic/api/update_image.php",
+              type: "POST",
+              data: form_data,
+              processData: false,
+              contentType: false,
+              cache: false,
+              success: function(dataResult){
+               //  var dataResult = JSON.parse(dataResult);
+               location.reload()
+                alert(dataResult)
+              }
+            });
+         }
           //Popup File Upload
          const readURL = (input) => {
            if (input.files && input.files[0]) {
