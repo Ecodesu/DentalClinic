@@ -449,7 +449,7 @@
          transform: translate(-50%, -50%);
          }
 
-         .popup {
+         .popup1 {
          width: 350px;
          height: 240px;
          padding: 20px 20px;
@@ -469,14 +469,14 @@
          height: 190px;
       }
 
-      .popup.active {
+      .popup1.active {
          opacity: 1;
          top: 50%;
          transform: translate(-50%, -50%) scale(1);
          transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
       }
 
-      .popup .ckicon {
+      .popup1 .ckicon {
          margin: 5px 0px;
          width: 50px;
          height: 50px;
@@ -487,29 +487,29 @@
          line-height: 60px;
       }
 
-      .popup .ckicon i.fa {
+      .popup1 .ckicon i.fa {
          font-size: 30px;
          color: #507973;
       }
 
-      .popup .popup-title {
+      .popup1 .popup-title {
          color: #507973;
          margin: 5px 0px;
          font-size: 26px;
          font-weight: 600;
       }
 
-      .popup .description {
+      .popup1 .description {
          color: #507973;
          font-size: 15px;
          padding: 5px;
       }
 
-      .popup .dismiss-btn {
+      .popup1 .dismiss-btn {
          margin-top: 15px;
       }
 
-      .popup .dismiss-btn button {
+      .popup1 .dismiss-btn button {
          padding: 10px 5px;
          width: 75px;
          margin: auto 10px;
@@ -522,34 +522,34 @@
          transition: all 300ms ease-in-out;
       }
 
-      .popup > div {
+      .popup1 > div {
          position: relative;
          top: 10px;
          opacity: 0;
       }
 
-      .popup.active > div {
+      .popup1.active > div {
          top: 0px;
          opacity: 1;
       }
 
-      .popup.active .ckicon {
+      .popup1.active .ckicon {
          transition: all 300ms ease-in-out 250ms;
       }
 
-      .popup.active .popup-title {
+      .popup1.active .popup-title {
          transition: all 300ms ease-in-out 300ms;
       }
 
-      .popup.active .description {
+      .popup1.active .description {
          transition: all 300ms ease-in-out 350ms;
       }
 
-      .popup.active .dismiss-btn {
+      .popup1.active .dismiss-btn {
          transition: all 300ms ease-in-out 400ms;
       }
 
-      .popup.active .confirm-btn {
+      .popup1.active .confirm-btn {
          transition: all 300ms ease-in-out 400ms;
       }
 
@@ -971,10 +971,9 @@
       </div>
 
 
-      <div class="popup popup-logout center" id="bootstrap-overrides">
+      <div class="popup1 popup-logout center">
          <div class="popup-title">Logout</div>
          <div class="description">Are you sure you want to logout?</div>
-         <!-- problem with layout of buttons due to bootstrap -->
          <div class="dismiss-btn">
          <button id="confirm-popup-btn" onclick="logout()">Yes</button>
          <button id="dismiss-popup-btn">No</button>
@@ -1074,15 +1073,15 @@
 
          // Popup Button
          document.getElementById("open-popup-btn").addEventListener("click", function () {
-         document.getElementsByClassName("popup")[0].classList.add("active");
+         document.getElementsByClassName("popup1")[0].classList.add("active");
          });
 
          document.getElementById("confirm-popup-btn").addEventListener("click", function () {
-         document.getElementsByClassName("popup")[0].classList.remove("active");
+         document.getElementsByClassName("popup1")[0].classList.remove("active");
          });
 
          document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-         document.getElementsByClassName("popup")[0].classList.remove("active");
+         document.getElementsByClassName("popup1")[0].classList.remove("active");
          });
 
          const body = document.querySelector("body");
