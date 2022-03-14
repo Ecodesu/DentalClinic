@@ -368,7 +368,7 @@
 
     .popup {
       width: 350px;
-      height: 205px;
+      height: 240px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -386,13 +386,13 @@
       height: 190px;
    }
 
+   .popup-short{
+      height: 180px;
+   }
+
    .popup-short2{
       height: 205px;
    }
-
-    .popup-medium{
-       height: 240px;
-    }
 
     .popup-large{
        height: 265px;
@@ -450,6 +450,7 @@
       margin: auto 10px;
       background: #86b170;
       color: #f5f5f5;
+      cursor: pointer;
       border: none;
       font-size: 16px;
       font-weight: 600;
@@ -854,7 +855,7 @@
       </div>
     </div>
 
-    <div class="popup popup-medium popup2 center">
+    <div class="popup popup2 center">
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
       <form action="">
@@ -874,6 +875,25 @@
       <button id="dismiss-popup-btn-3">No</button>
       </div>
    </div>
+
+   <div class="popup popup-large popup4 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Appointments</div>
+      <div class="description">Appointment updated successfully!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-4">Close</button>
+      </div>
+    </div>
+
+   <div class="popup popup-short popuperror center">
+      <div class="popup-title">Appointments</div>
+      <div class="description">Error occured!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-error">Close</button>
+      </div>
+    </div>
 
     <!-- END OF POPUP -->
 
@@ -926,7 +946,12 @@
 
                 },
                 error: function (er) {
-                    console.log(er)
+                  //   console.log(er)
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
             });
       }
@@ -943,7 +968,12 @@
 
                 },
                 error: function (er) {
-                    console.log(er)
+                  //   console.log(er)
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
             });
       }
@@ -965,11 +995,21 @@
                   //  alert("updated")
                   //  viewarea()
                   // location.reload();
-                  console.log('success')
+                  // console.log('success')
+                  document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+                  document.getElementsByClassName("popup4")[0].classList.remove("active");
+                  });
 
                 },
                 error: function (er) {
-                    console.log(er)
+                  //   console.log(er)
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
             });
             
@@ -983,11 +1023,22 @@
             //  alert("updated")
             //  viewarea()
             location.reload();
-            console.log('success')
+            // console.log('success')
+            document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+            document.getElementsByClassName("popup4")[0].classList.remove("active");
+            });
+
 
           },
           error: function (er) {
-              console.log(er)
+            //   console.log(er)
+            document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+            });
           }
       });
 
