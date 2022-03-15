@@ -481,7 +481,7 @@
                      </div>
                      <div class="form-control">
                         <label for="password">Password:</label>
-                        <input type="password" size="50" type="text" id="password" name="password"><br>
+                        <input type="password" size="50" type="text" id="password" name="password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character."><br>
                      </div>
                      <div class="form-control">
                         <label for="cpassword">Confirm Password:</label>
