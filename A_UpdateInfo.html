@@ -769,9 +769,12 @@
          </div>
       </footer>
       <!-- END of FOOTER  --> 
-
+     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
+
+        
+
         $.ajax({
             url:"http://localhost/dental_clinic/api/view_image.php",
             type:"POST",
@@ -811,7 +814,7 @@
                           if(dataResult.status){
                             // $('#first_name').val(dataResult.data.user_first_name);     
                             // $('#last_name').val(dataResult.data.user_last_name);      
-                            $('#contactnum').val(dataResult.data.user_contact_number); 
+                            // $('#contactnum').val(dataResult.data.user_contact_number); 
                             $('#email').val(dataResult.data.user_email); 
                             // $('#address').val(dataResult.data.user_address );       
                             // $('#user_name').val(dataResult.data.user_name);	          
