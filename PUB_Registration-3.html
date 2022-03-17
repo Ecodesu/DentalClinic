@@ -708,7 +708,7 @@ footer .bottom-details .bottom_text{
                   </div>
                   <div class="input-box">
                      <span class="details">Contact Number</span>
-                     <input type="text" placeholder="Contact number" id="contact" value="09" onkeypress="return isNumber(event)" required>
+                     <input type="text" placeholder="Contact number" id="contact" value="09" onchange="testthis()" onkeypress="return isNumber(event)" required>
                   </div>
                   <div class="input-box">
                      <span class="details">Password</span>
@@ -949,6 +949,13 @@ footer .bottom-details .bottom_text{
       <!-- End of Footer --> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
+        function testthis(){
+          var contact = document.getElementById('contact').value
+          if(contact.length == 11){
+            var result = contact.substring(0, 4) +"-"+contact.substring(4, 7) + "-"+contact.substring(7, 11);
+            document.getElementById('contact').value = result
+          }
+        }
 
 var input = document.getElementById('contact');
        input.onkeydown = function() {
@@ -965,6 +972,17 @@ var input = document.getElementById('contact');
       var str= document.getElementById('contact').value;
       document.getElementById('contact').value = str.substring(0, str.length - 1);
    }
+   
+
+};
+input.onkeyup = function() {
+   var key = event.keyCode || event.charCode;
+   var contact = document.getElementById('contact').value
+   var result = contact.substring(0, 2)
+   if((contact.length == 0 && key == 8)){
+    document.getElementById('contact').value = "09"
+   }
+  
    
 
 };
