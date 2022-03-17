@@ -1015,7 +1015,7 @@
                 for (i = 0; i < response.length; i++) {
                   data+="<tr>"
                   data+="<td class='pic-holder'><img src='"+response[i].image+"'></td>"
-                  data+="<td> <h4>File name:</h4> <span><p class='file-name' id='file-name'> chuchcuchu </p>"
+                  data+="<td> <h4>File name:</h4> <span><p class='file-name' id='file-name'>"+response[i].name+" </p>"
                     
 
                   result = parseInt(getImageSizeInBytes(response[i].image) * 0.001)
