@@ -623,11 +623,11 @@ footer .bottom-details .bottom_text{
                <ul>
                   <li>
                      <i class="fas fa-phone-alt" style="color:white; margin-right: 5px;"></i>
-                     <div class="Con-text"> 77461448</div>
+                     <div class="Con-text" id="contact1"> 77461448</div>
                   </li>
                   <li>
                      <i class="fas fa-envelope"style="color:white; margin-right: 5px;"></i>
-                     <div class="Con-text">milapatajo69@gmail.com</div>
+                     <div class="Con-text" id="email1">milapatajo69@gmail.com</div>
                   </li>
                   <li>
                      <i class="fas fa-map-marker-alt"style="color:white; margin-right: 5px;"></i>
@@ -655,7 +655,7 @@ footer .bottom-details .bottom_text{
             </div>
             <div class="experience">
                <h2 class="title"> <i class="fas fa-medal" style="margin-right: 5px;"></i> Training & Certifications </h2>
-               <ul>
+               <ul id="cert">
                   <li>
                      <div class="data">
                         <h3 class="cert-date">1994 to 1995 </h3>
@@ -700,8 +700,8 @@ footer .bottom-details .bottom_text{
            <ul class="box visit">
              <li class="link_name">Visit Us</li>
              <li><p>Clinic Hours: 9AM - 6PM</p></li>
-             <li><p><i class="fa fa-phone-alt"></i>&emsp;77461448</p></li>
-             <li><p><i class="fa fa-envelope"></i>&emsp;milapatajo69@gmail.com</p></li>
+             <li><p><i class="fa fa-phone-alt"></i>&emsp;<as id="contact"></as></p></li>
+             <li><p><i class="fa fa-envelope"></i>&emsp;<as id="email"></as></p></li>
              <li><p><i class="fa fa-map-marker"></i>&emsp;#312 Dansalan St. Brgy. Ilaya, Mandaluyong City</p></li>
            </ul>
            <ul class="box services">
@@ -727,8 +727,59 @@ footer .bottom-details .bottom_text{
 
    <!-- End of Footer -->   
 
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
+        $.ajax({
+                        url: "http://localhost/dental_clinic/api/view_profile.php",
+                        type: "POST",
+                        data: {
+                          user_id: 13,
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                          var dataResult = JSON.parse(dataResult);
+                          if(dataResult.status){
+                            // $('#first_name').val(dataResult.data.user_first_name);     
+                            // $('#last_name').val(dataResult.data.user_last_name);      
+                            $('#contact').html(dataResult.data.user_contact_number); 
+                            $('#email').html(dataResult.data.user_email); 
+                            $('#contact1').html(dataResult.data.user_contact_number); 
+                            $('#email1').html(dataResult.data.user_email); 
+                            // $('#address').val(dataResult.data.user_address );       
+                            // $('#user_name').val(dataResult.data.user_name);	          
+                                
+                          }
+                          else{
+                            alert("Error occured !");
+                          }
+                        }
+                      });
+
+
+
+            $.ajax({
+            url:"http://localhost/dental_clinic/api/cert.php",
+            type:"POST",
+            data:{
+              request_key: "show",
+            },
+            success:function(response){
+              
+                
+                var data = ""
+                for (i = 0; i < response.length; i++) {
+                  data+="<li>"
+                  data+="<div class='data'>"
+                  data+="<h3 class='cert-date'>"+response[i].cert_date+"</h3>"
+                  data+="<h4 class='cert-title'>"+response[i].cert_title+"</h4>"
+                  data+="</div>"
+                  data+="</li>"
+
+                }
+                
+                $('#cert').html(data)
+            }
+        })
 
 
 

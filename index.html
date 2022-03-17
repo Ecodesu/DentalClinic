@@ -95,27 +95,28 @@
                     <span>
                         <label>
                     <input type="radio" name="car-rd1" class="cbox1" style="display:none !important;" checked >
+                    
                     <span>
-                        <div class="content-1 car-content"><img src="HOME_image1.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
-                        <div class="content-2 car-content"><img src="HOME_image2.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
-                        <div class="content-3 car-content"><img src="HOME_image3.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
-                        <div class="content-4 car-content"><img src="HOME_image4.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
-                          <span class="thumb thumb-1" style="display:none;"><img src="HOME_image1.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                        <div class="content-1 car-content"><img id="home1" src="HOME_image1.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-2 car-content"><img id="home2" src="HOME_image2.jpg" width=540 height=300 alt="" style="display:block;max-height:0; object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-3 car-content"><img id="home3" src="HOME_image3.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
+                        <div class="content-4 car-content"><img id="home4" src="HOME_image4.jpg" width=540 height=300 alt="" style="display:block;max-height:0;object-fit: cover; border-radius: 10px;" border=0></div>
+                          <span class="thumb thumb-1" style="display:none;"><img id="home11" src="HOME_image1.jpg" width="50" style="display:block;max-height:0" border=0></span>
                     </span>
                     </label>
-                          <span class="thumb thumb-2" style="display:none;"><img src="HOME_image2.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                          <span class="thumb thumb-2" style="display:none;"><img id="home21" src="HOME_image2.jpg" width="50" style="display:block;max-height:0" border=0></span>
                     </span>
                     </label>
-                          <span class="thumb thumb-3" style="display:none;"><img src="HOME_image3.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                          <span class="thumb thumb-3" style="display:none;"><img id="home31" src="HOME_image3.jpg" width="50" style="display:block;max-height:0" border=0></span>
                     </span>
                     </label>
-                          <span class="thumb thumb-4" style="display:none;"><img src="HOME_image4.jpg" width="50" style="display:block;max-height:0" border=0></span>
+                          <span class="thumb thumb-4" style="display:none;"><img id="home41" src="HOME_image4.jpg" width="50" style="display:block;max-height:0" border=0></span>
                     </span>
                     </label>
                         </div>
                     <!--<![endif]-->
                     <div class="fallback">
-                    <div class="car-content"><a href="%%DISPLAY_MSG%%"><img src="HOME_image1.jpg" width="540" height="377" alt="." style="display:block;" border=0></a></div>
+                    <div class="car-content"><a href="%%DISPLAY_MSG%%"><img id="home111" src="HOME_image1.jpg" width="540" height="377" alt="." style="display:block;" border=0></a></div>
                     </div>
                     </div>
                     </td></tr></table>
@@ -344,6 +345,30 @@
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script>
+
+$.ajax({
+            url:"http://localhost/dental_clinic/api/view_image.php",
+            type:"POST",
+            data:{
+              crdt: 1,
+            },
+            success:function(response){
+              
+              $("#home1").attr('src',response[0].image);
+              $("#home11").attr('src',response[0].image);
+              $("#home111").attr('src',response[0].image);
+              $("#home2").attr('src',response[1].image);
+              $("#home21").attr('src',response[1].image);
+              
+              $("#home3").attr('src',response[2].image);
+              $("#home31").attr('src',response[2].image);
+              
+              $("#home4").attr('src',response[3].image);
+              $("#home41").attr('src',response[3].image);
+             
+                
+            }
+        })
 
 
 $.ajax({

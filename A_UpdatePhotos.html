@@ -1006,6 +1006,7 @@
             success:function(response){
               
                 var data = "";
+                var result = 0;
                 data+="<tr>"
                data+="<td> IMAGE </td>"
                data+="<td> FILE NAME / SIZE </td>"
@@ -1015,13 +1016,25 @@
                   data+="<tr>"
                   data+="<td class='pic-holder'><img src='"+response[i].image+"'></td>"
                   data+="<td> <h4>File name:</h4> <span><p class='file-name' id='file-name'> chuchcuchu </p>"
-                  data+="<span><strong>Size: </strong>353Kb</span></td>"
+                    
+
+                  result = parseInt(getImageSizeInBytes(response[i].image) * 0.001)
+                  data+="<span><strong>Size: </strong>"+result+"KB</span></td>"
                   data+="<td class='action-btn'><a type='button' href='#popup-upload' onclick='set_id("+response[i].img_id+")' class='upload-btn'>UPLOAD IMAGE</a></td>"              
                   data+="</tr>"
                 }
                 $('#home_images').html(data)
             }
         })
+        function getImageSizeInBytes(imgURL) {
+            var request = new XMLHttpRequest();
+            request.open("HEAD", imgURL, false);
+            request.send(null);
+            var headerText = request.getAllResponseHeaders();
+            var re = /Content\-Length\s*:\s*(\d+)/i;
+            re.exec(headerText);
+            return parseInt(RegExp.$1);
+         }
         function set_id(e){
            localStorage.setItem('img_id',e)
            console.log(e)

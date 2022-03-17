@@ -742,7 +742,7 @@
 
       </div>
 
-      <button id="confirm-popup-btn-2">Add</button>
+      <button id="confirm-popup-btn-2" onclick="add_cert()">Add</button>
       <button id="dismiss-popup-btn-2">Close</button>
 
     </div>
@@ -813,7 +813,7 @@
             success:function(response){
               
                 var data = "";
-               
+               var size = 0;
 
                 data+="<tr>"
                 data+="<td> IMAGE </td>"
@@ -821,12 +821,27 @@
                 data+="<td> ACTION </td>"
                 data+="</tr>"
                 for (i = 0; i < response.length; i++) {
+                  
                 data+="<tr>"
                 data+="<td class='pic-holder'><img src='"+response[i].image+"'></td>"
                 data+="<td> <h4>File name:</h4> <span><p class='file-name' id='file-name'> "+response[i].name+" </p>"
-                data+="<span><strong>Size: </strong>353Kb</span> </td>"
+                  var xhr = new XMLHttpRequest();
+                xhr.open("GET", response[i].image, true);
+                xhr.responseType = "arraybuffer";
+                xhr.onreadystatechange = function() {
+                    if(this.readyState == this.DONE) {
+                      var result = this.response.byteLength * 0.001
+                        localStorage.setItem('size',parseInt(result))
+                    }
+                };
+
+                xhr.send(null);
+                // alert(localStorage.getItem('size'))
+                data+="<span><strong>Size: </strong>"+localStorage.getItem('size')+"KB</span> </td>"
                 data+="<td class='action-btn'><a type='button' href='#popup-upload' class='upload-btn'>UPLOAD IMAGE</a></td>"
                 data+="</tr>"
+                
+
               }
                 $('#profile_image').html(data)
             }
@@ -871,6 +886,30 @@
                          console.log("success")
                         }
                       });
+            }
+            function add_cert(){
+              $.ajax({
+              url: "http://localhost/dental_clinic/api/cert.php",
+              type: "POST",
+              data: {
+                title:   document.getElementById("cert-title").value,
+                date:    document.getElementById("cert-date").value,
+                request_key:    "insert",
+                
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.status){
+                   alert("success")	
+                  location.reload();
+                }
+                else {
+                 
+                   alert("Error occured !");
+                }
+              }
+            });
             }
             function upload_photo(){
             // console.log(document.getElementById('fileToUpload').files[0].name)
