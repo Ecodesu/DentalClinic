@@ -453,10 +453,11 @@
                 if(dataResult.status){
                   if(dataResult.data.user_credential == "Admin"){
                      alert("success")		
-                  // localStorage.setItem('user_id',dataResult.data.user_id)
+                  localStorage.setItem('user',dataResult.data.user_id)
                      window.location = "A_AddUser.html";				
                    }else if(dataResult.data.user_credential == "Personnel" || dataResult.data.user_credential == "Doctor"){
                      // alert('success')
+                     localStorage.setItem('user',dataResult.data.user_id)
                      window.location = "S_Calendar.html";
                   }else{
                      // alert('not allowed to login')

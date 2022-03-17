@@ -652,7 +652,7 @@ footer .bottom-details .bottom_text{
                       <input type="password" placeholder="Confirm New Password" id="confirm_password" />
                    </div>
                 </div>
-                <button type="button" id="open-popup-btn" >Submit</button>
+                <button type="button" onclick="change_pass()" >Submit</button>
              </div>
           </form>
          </div>
@@ -665,7 +665,7 @@ footer .bottom-details .bottom_text{
           <i class="fa fa-check"></i>
         </div>
         <div class="popup-title">Change Password</div>
-        <div class="description">Password changed successfully!</div>
+        <div class="description" id="message_here"></div>
         <div class="dismiss-btn">
           <button id="dismiss-popup-btn">Close</button>
         </div>
@@ -683,8 +683,44 @@ footer .bottom-details .bottom_text{
       </footer>
       <!-- END of FOOTER  --> 
 
- 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script >
+function change_pass(){
+          var user_id = localStorage.getItem('user')
+          console.log(user_id)
+          var old_password      = $('#old_password').val();
+          var new_password      = $('#new_password').val();
+          var confirm_password  = $('#confirm_password').val();
+
+          if(new_password == confirm_password){
+          $.ajax({
+              url: "http://localhost/dental_clinic/api/change_password.php",
+              type: "POST",
+              data: {
+                user_id: user_id,
+                old_password: old_password,
+                new_password: new_password,     
+              },
+              cache: false,
+              success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                  // alert(dataResult.message)
+                  $("#message_here").html(dataResult.message)
+                  document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  document.getElementsByClassName("popup")[0].classList.remove("active");
+                  });			 
+              },error:function(err){
+            // console.log(err)
+              alert("old password not matched from db")
+              
+            }
+            });
+          }else{
+            alert("password not matched")
+          }
+         }
         // Popup Button
         document.getElementById("open-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.add("active");
