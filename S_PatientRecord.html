@@ -801,6 +801,7 @@ footer .bottom-details .bottom_text{
                 data+="<th>Email</th>"
                 data+="<th>Action</th>"
                 data+="</tr>"
+                if(response.length>0){
                 for (i = 0; i < response.length; i++) {
                   
                     data+="<tr>"
@@ -811,6 +812,15 @@ footer .bottom-details .bottom_text{
                     data+="<td class='actionbtn-column'> <a href='S_PatientProfile.html' onclick='view_patient_profile("+response[i].user_id+")' class='action-btn'> VIEW </a> </td>"
                     data+="</tr>"
                 }
+              }else{
+                data+="<tr>"
+                    data+="<td class='patient-name'> </td>"
+                    data+="<td class='patient-uname'>  </td>"
+                    data+="<td class='patient-contact'> No data </td>"
+                    data+="<td class='patient-email'>  </td>"
+                    data+="<td class='actionbtn-column'> </td>"
+                    data+="</tr>"
+              }
                 $('#table_patient').html(data)
             }
         })

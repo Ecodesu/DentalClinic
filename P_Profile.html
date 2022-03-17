@@ -694,7 +694,7 @@ footer .bottom-details .bottom_text{
                         </div>
                         <div class="col-3">
                            <label for="full-name">Contact Number</label>
-                           <input type="text" placeholder="Enter Phone" id="contact" maxlength="11"/>
+                           <input type="text" placeholder="Enter Phone" id="contact" value="09" onkeypress="return isNumber(event)"/>
                         </div>
                      </div>
                      <div class="form-control">
@@ -760,6 +760,32 @@ footer .bottom-details .bottom_text{
           if(!localStorage.getItem('user_id')){
             window.location = "index.html";	
         }
+        var input = document.getElementById('contact');
+            input.onkeydown = function() {
+        var key = event.keyCode || event.charCode;
+        var contact = document.getElementById('contact').value
+        var result = contact.substring(0, 2)
+        if((result == "09" && key == 8 && contact.length == 2) || (contact.length == 13 && key != 8)){
+            return false
+        }
+        if((contact.length == 4 && key != 8) || (contact.length == 8 && key != 8)){
+            document.getElementById('contact').value += "-"
+        }
+        if((contact.length == 5 || contact.length == 9) && key == 8){
+            var str= document.getElementById('contact').value;
+            document.getElementById('contact').value = str.substring(0, str.length - 1);
+        }
+        
+
+      };
+      function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+      }
 
           // Popup Button
         // document.getElementById("open-popup-btn").addEventListener("click", function () {
@@ -845,9 +871,8 @@ footer .bottom-details .bottom_text{
             var contact     = $('#contact').val();
             var address     = $('#address').val();
             var user_name   = $('#user_name').val();
-            if (contact.length === 11 && contact.startsWith('09')){
-              console.log('hello world');
-              console.log(contact.length);
+            if (contact.length != 13 ){
+              
               $.ajax({
                         url: "http://localhost/dental_clinic/api/update_profile.php",
                         type: "POST",
@@ -882,11 +907,8 @@ footer .bottom-details .bottom_text{
                       });
            }else{
                 // console.log('error')
-                document.getElementsByClassName("popup3")[0].classList.add("active");
-                            
-                document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
-                document.getElementsByClassName("popup3")[0].classList.remove("active");
-                });
+                alert("kulang number mo")
+              
                 
             }
           }
