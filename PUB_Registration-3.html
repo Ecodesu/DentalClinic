@@ -949,6 +949,25 @@ footer .bottom-details .bottom_text{
       <!-- End of Footer --> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
+        var input = document.getElementById('contact');
+
+        input.onkeydown = function() {
+            var key = event.keyCode || event.charCode;
+            var contact = document.getElementById('contact').value
+            var result = contact.substring(0, 2)
+            if((result == "09" && key == 8 && contact.length == 2) || (contact.length == 13 && key != 8)){
+              return false
+            }
+            if(contact.length == 4 || contact.length == 8){
+              document.getElementById('contact').value += "-"
+            }
+            if((contact.length == 5 || contact.length == 9) && key == 8){
+              var str= document.getElementById('contact').value;
+              document.getElementById('contact').value = str.substring(0, str.length - 1);
+            }
+            
+
+        };
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
          const menuBtn = document.querySelector(".menu-btn");
