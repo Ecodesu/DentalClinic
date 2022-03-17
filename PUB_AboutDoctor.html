@@ -616,7 +616,7 @@ footer .bottom-details .bottom_text{
       <div class="resume">
          <div class="leftSide">
             <div class="PersonalDetails">
-               <div class="photo"><img src="DR_ID.PNG" alt="Personal photo"></div>
+               <div class="photo"><img src="DR_ID.PNG" id="profile_image" alt="Personal photo"></div>
                <div class="name"> DR. MILA PATAJO </div>
             </div>
             <div class="contcatDetails">
@@ -729,6 +729,18 @@ footer .bottom-details .bottom_text{
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
+        $.ajax({
+            url:"http://localhost/dental_clinic/api/view_image.php",
+            type:"POST",
+            data:{
+              crdt: 0,
+            },
+            success:function(response){
+              
+               
+                $('#profile_image').attr('src',response[0].image)
+            }
+        })
         $.ajax({
                         url: "http://localhost/dental_clinic/api/view_profile.php",
                         type: "POST",
