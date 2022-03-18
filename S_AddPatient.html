@@ -654,7 +654,7 @@ footer .bottom-details .bottom_text{
                <div class="form-control">
                   <div class="col-3">
                      <label for="full-name">Contact Number</label>
-                     <input type="text" id="contact" placeholder="Enter Phone" value="09" onkeypress="return isNumber(event)" />
+                     <input type="text" id="contact" placeholder="Enter Phone" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" />
                   </div>
                   <div class="col-6">
                      <label for="full-name">Email Address</label>
@@ -730,9 +730,25 @@ input.onkeydown = function() {
       var str= document.getElementById('contact').value;
       document.getElementById('contact').value = str.substring(0, str.length - 1);
    }
-   
-
 };
+
+
+
+function auto_fill_validation(){
+          var contact = document.getElementById('contact').value
+          if(contact.length == 11){
+            var result = contact.substring(0, 4) +"-"+contact.substring(4, 7) + "-"+contact.substring(7, 11);
+            document.getElementById('contact').value = result
+          }
+        }
+    input.onkeyup = function() {
+        var key = event.keyCode || event.charCode;
+        var contact = document.getElementById('contact').value
+        var result = contact.substring(0, 2)
+        if((contact.length == 0 && key == 8)){
+        document.getElementById('contact').value = "09"
+        }
+      };
 function isNumber(evt) {
    evt = (evt) ? evt : window.event;
    var charCode = (evt.which) ? evt.which : evt.keyCode;

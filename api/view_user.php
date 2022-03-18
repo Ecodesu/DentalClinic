@@ -3,7 +3,8 @@ include 'database.php';
 // $user_id = $_POST['user_id'];
 $request_key = $_POST['request_key'];
 if($request_key == 'admin'){
-    $sql = "SELECT * FROM tbl_user WHERE user_credential != 'patient'";
+	$search = $_POST['search'];
+    $sql = "SELECT * FROM tbl_user WHERE user_credential != 'patient' AND (user_name LIKE '$search%' OR user_credential = '$search')";
 }
 else if($request_key == 'patient'){
 	$search = $_POST['search'];

@@ -708,7 +708,7 @@ footer .bottom-details .bottom_text{
                   </div>
                   <div class="input-box">
                      <span class="details">Contact Number</span>
-                     <input type="text" placeholder="Contact number" id="contact" minlength="13" value="09" onchange="testthis()" onkeypress="return isNumber(event)" >
+                     <input type="text" placeholder="Contact number" id="contact" minlength="13" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" >
                   </div>
                   <div class="input-box">
                      <span class="details">Password</span>
@@ -949,7 +949,7 @@ footer .bottom-details .bottom_text{
       <!-- End of Footer --> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
-        function testthis(){
+        function auto_fill_validation(){
           var contact = document.getElementById('contact').value
           if(contact.length == 11){
             var result = contact.substring(0, 4) +"-"+contact.substring(4, 7) + "-"+contact.substring(7, 11);

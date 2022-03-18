@@ -541,7 +541,7 @@
                </div>
                <div class="profile-info">
                   <form>
-                     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Users..">
+                     <input type="text" id="myInput" onkeyup="view_user()" placeholder="Search Users..">
                      <table id="myTable">
                         <thead>
                         <tr class="header">
@@ -729,15 +729,18 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
       <script>
-
+         view_user()
+ function view_user(){
       $.ajax({
             url:"http://localhost/dental_clinic/api/view_user.php",
             type:"POST",
             data:{
-              request_key: 'admin'
+              request_key: 'admin',
+              search: document.getElementById('myInput').value
             },
             success:function(response){
             //   alert('success')
+            if(response.length > 0){
                 var data = "";
                 for (i = 0; i < response.length; i++) {
                   data+="<tr>"
@@ -764,8 +767,17 @@
                   data+="</tr>"
                 }
                 $('#table_users').html(data)
+                
+            }else{
+               data+="<tr>"
+               data+="<td> no data </td>"
+               data+="<tr>"
+                  $('#table_users').html(data)
             }
+         
+         }
         })
+      }
          const changePopup = document.querySelector('#myTable');
          changePopup.addEventListener('click', updatePopup);
          function updatePopup(e){

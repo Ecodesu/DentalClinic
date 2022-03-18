@@ -694,7 +694,7 @@ footer .bottom-details .bottom_text{
                         </div>
                         <div class="col-3">
                            <label for="full-name">Contact Number</label>
-                           <input type="text" placeholder="Enter Phone" id="contact" value="09" onkeypress="return isNumber(event)"/>
+                           <input type="text" placeholder="Enter Phone" id="contact" minlength="13" onchange="auto_fill_validation()" onkeypress="return isNumber(event)"/>
                         </div>
                      </div>
                      <div class="form-control">
@@ -760,6 +760,13 @@ footer .bottom-details .bottom_text{
           if(!localStorage.getItem('user_id')){
             window.location = "index.html";	
         }
+        function auto_fill_validation(){
+          var contact = document.getElementById('contact').value
+          if(contact.length == 11){
+            var result = contact.substring(0, 4) +"-"+contact.substring(4, 7) + "-"+contact.substring(7, 11);
+            document.getElementById('contact').value = result
+          }
+        }
         var input = document.getElementById('contact');
             input.onkeydown = function() {
         var key = event.keyCode || event.charCode;
@@ -778,6 +785,17 @@ footer .bottom-details .bottom_text{
         
 
       };
+      input.onkeyup = function() {
+   var key = event.keyCode || event.charCode;
+   var contact = document.getElementById('contact').value
+   var result = contact.substring(0, 2)
+   if((contact.length == 0 && key == 8)){
+    document.getElementById('contact').value = "09"
+   }
+  
+   
+
+};
       function isNumber(evt) {
         evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -871,7 +889,7 @@ footer .bottom-details .bottom_text{
             var contact     = $('#contact').val();
             var address     = $('#address').val();
             var user_name   = $('#user_name').val();
-            if (contact.length != 13 ){
+            // if (contact.length != 13 ){
               
               $.ajax({
                         url: "http://localhost/dental_clinic/api/update_profile.php",
@@ -905,12 +923,12 @@ footer .bottom-details .bottom_text{
                           }
                         }
                       });
-           }else{
-                // console.log('error')
-                alert("kulang number mo")
+          //  }else{
+          //       // console.log('error')
+          //       alert("kulang number mo")
               
                 
-            }
+          //   }
           }
 
           function logout(){
