@@ -658,7 +658,7 @@ footer .bottom-details .bottom_text{
                   </div>
                   <div class="col-6">
                      <label for="full-name">Email Address</label>
-                     <input type="email" id="email" placeholder="Enter Email" pattern=".+@\.com" required/>
+                     <input type="email" id="email" placeholder="Enter Email" onkeyup="validateEmail()" />
                   </div>
                </div>
                <div class="form-control">
@@ -757,7 +757,13 @@ function isNumber(evt) {
    }
    return true;
 }
-
+function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+    
+console.log(validateEmail('anystring@anystring.anystring'));
 
 
 function register_user(){
