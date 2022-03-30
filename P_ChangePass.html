@@ -710,7 +710,7 @@ footer .bottom-details .bottom_text{
                               <input type="password" placeholder="Confirm New Password" id="confirm_password" required/>
                            </div>
                         </div>
-                        <button type="button" id="open-popup-btn" onclick="change_pass(); document.getElementById('old_password').value = ''; document.getElementById('new_password').value = ''; document.getElementById('confirm_password').value = ''" >Submit</button>
+                        <button type="button" id="open-popup-btn" onclick="change_pass()" >Submit</button>
                      </div>
                   </form>
                </div>
@@ -720,14 +720,14 @@ footer .bottom-details .bottom_text{
       </div>
 
     <!-- START OF POPUP -->
-    <div class="popup center">
+    <div class="popup popup1 center">
       <div class="ckicon">
         <i class="fa fa-check"></i>
       </div>
       <div class="popup-title">Change Password</div>
       <div class="description">Password changed successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn-1" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -861,10 +861,10 @@ footer .bottom-details .bottom_text{
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                   // alert(dataResult.message)
-                  document.getElementsByClassName("popup")[0].classList.add("active");
+                  document.getElementsByClassName("popup1")[0].classList.add("active");
                             
-                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-                  document.getElementsByClassName("popup")[0].classList.remove("active");
+                  document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                  document.getElementsByClassName("popup1")[0].classList.remove("active");
                   });			 
               },error:function(err){
             // console.log(err)
@@ -883,6 +883,11 @@ footer .bottom-details .bottom_text{
             document.getElementsByClassName("popup4")[0].classList.remove("active");
             });
           }
+
+          function reload(){
+            location.reload();
+          }
+
          }
          function logout(){
            localStorage.removeItem('user_id')
