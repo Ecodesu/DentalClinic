@@ -624,20 +624,7 @@ footer .bottom-details .bottom_text{
       }
       /* END OF CHANGE PW */
 
-    .submitbtn input {
-      padding: 10px 5px;
-      width: 75px;
-      text-align: center;
-      background: #86b170;
-      color: #f5f5f5;
-      border: none;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: all 300ms ease-in-out;
-      margin-left: 45%;
-      margin-top: 5%;
-    }
+
 
 
    </style>
@@ -723,9 +710,7 @@ footer .bottom-details .bottom_text{
                               <input type="password" placeholder="Confirm New Password" id="confirm_password" required/>
                            </div>
                         </div>
-                        <div class = "submitbtn">
-                        <input type="submit" id="open-popup-btn" onclick="change_pass(); document.getElementById('old_password').value = ''; document.getElementById('new_password').value = ''; document.getElementById('confirm_password').value = ''"  value = "Submit">
-                      </div>
+                        <button type="button" id="open-popup-btn" onclick="change_pass(); document.getElementById('old_password').value = ''; document.getElementById('new_password').value = ''; document.getElementById('confirm_password').value = ''" >Submit</button>
                      </div>
                   </form>
                </div>
@@ -752,6 +737,14 @@ footer .bottom-details .bottom_text{
       <div class="dismiss-btn">
         <button id="confirm-popup-btn-2" onclick="logout()">Yes</button>
         <button id="dismiss-popup-btn-2">No</button>
+      </div>
+    </div>
+
+    <div class="popup popup-short popup4 center">
+      <div class="popup-title">Change Password</div>
+      <div class="description">Password does not match!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-4">Close</button>
       </div>
     </div>
 
@@ -782,9 +775,9 @@ footer .bottom-details .bottom_text{
       
       <script>
 
-       if(!localStorage.getItem('user_id')){
-        window.location = "index.html";		
-       }
+      //  if(!localStorage.getItem('user_id')){
+      //   window.location = "index.html";		
+      //  }
 
        // Popup Button
       // document.getElementById("open-popup-btn").addEventListener("click", function () {
@@ -883,7 +876,12 @@ footer .bottom-details .bottom_text{
             }
             });
           }else{
-            alert("password not matched")
+            // alert("password not matched")
+            document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+            document.getElementsByClassName("popup4")[0].classList.remove("active");
+            });
           }
          }
          function logout(){
