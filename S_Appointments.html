@@ -883,7 +883,7 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Appointment updated successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn-4">Close</button>
+        <button id="dismiss-popup-btn-4" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -947,7 +947,7 @@
                   document.getElementsByClassName("popup4")[0].classList.remove("active");
                   });
                   //  viewarea()
-                  location.reload();
+                  // location.reload();
 
                 },
                 error: function (er) {
@@ -969,7 +969,12 @@
                 success: function (response) {
                   //  alert("updated")
                   //  viewarea()
-                  location.reload();
+                  // location.reload();
+                  document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+                  document.getElementsByClassName("popup4")[0].classList.remove("active");
+                  });
 
                 },
                 error: function (er) {
@@ -1027,7 +1032,7 @@
           success: function (response) {
             //  alert("updated")
             //  viewarea()
-            location.reload();
+            // location.reload();
             // console.log('success')
             document.getElementsByClassName("popup4")[0].classList.add("active");
                             
@@ -1156,6 +1161,10 @@
              pastTable.classList.remove("hidden");
            }
          });
+
+         function reload(){
+            location.reload();
+         }
       </script>
       <script>
          $.ajax({

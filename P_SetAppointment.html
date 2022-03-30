@@ -787,7 +787,7 @@ footer .bottom-details .bottom_text{
         <div class="popup-title">Set Appointment</div>
         <div class="description" id="return_message">Appointment created successfully!</div>
         <div class="dismiss-btn">
-          <button id="dismiss-popup-btn">Close</button>
+          <button id="dismiss-popup-btn" onclick="changewindow()">Close</button>
         </div>
       </div>
 
@@ -964,6 +964,10 @@ footer .bottom-details .bottom_text{
           charactersLength));
           }
             return result;
+          }
+
+          function changewindow(){
+            window.location = "P_Appointments.html";
           }
       </script>
    </body>

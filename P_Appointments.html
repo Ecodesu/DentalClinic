@@ -627,6 +627,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       height: 190px;
     }
 
+    .popup-large{
+      height: 240px;
+    }
+
     .popup-short{
       height: 180px;
     }
@@ -904,6 +908,25 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
       </div>
     </div>
 
+    <div class="popup popup-large popup4 center">
+      <div class="ckicon">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="popup-title">Appointments/div>
+      <div class="description">Appointment updated successfully!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-4" onclick="reload()">Close</button>
+      </div>
+    </div>
+
+    <div class="popup popup-short popuperror center">
+      <div class="popup-title">Appointments</div>
+      <div class="description">Error occured!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-error">Close</button>
+      </div>
+    </div>
+
     <!-- END OF POPUP -->
 
     <!-- START of FOOTER  -->
@@ -1019,11 +1042,21 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   //  alert("updated")
                   //  viewarea()
                   // location.reload();
-                  console.log('success')
+                  // console.log('success')
+                  document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+                  document.getElementsByClassName("popup4")[0].classList.remove("active");
+                  });
 
                 },
                 error: function (er) {
-                    console.log(er)
+                    // console.log(er)
+                    document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                    document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                    document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                    });
                 }
             });
       $.ajax({
@@ -1035,12 +1068,22 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
           success: function (response) {
             //  alert("updated")
             //  viewarea()
-            location.reload();
-            console.log('success')
+            // location.reload();
+            // console.log('success')
+            document.getElementsByClassName("popup4")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+            document.getElementsByClassName("popup4")[0].classList.remove("active");
+            });
 
           },
           error: function (er) {
-              console.log(er)
+              // console.log(er)
+              document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+              document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+              document.getElementsByClassName("popuperror")[0].classList.remove("active");
+              });
           }
       });
     }
@@ -1059,10 +1102,19 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
                   $('#remarks_output').html(dataResult.data.remarks_message)
                 }
                 else{
-                  alert("Error occured !");
+                  // alert("Error occured !");
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
               }
             });
+    }
+
+    function reload(){
+      location.reload();
     }
 
     function logout()
@@ -1115,6 +1167,7 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
             }
         })
     }
+    
     </script>
   </body>
 </html>
