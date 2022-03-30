@@ -514,7 +514,7 @@
          <div class="popup-title">Add User</div>
          <div class="description">User Added Successfully!</div>
          <div class="dismiss-btn">
-         <button id="dismiss-popup-btn">Close</button>
+         <button id="dismiss-popup-btn-1" onclick="reload(); changewindow()">Close</button>
          </div>
       </div>
 
@@ -666,10 +666,10 @@
                   //  alert("new user registered")	
                   document.getElementsByClassName("popup1")[0].classList.add("active");
                             
-                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
                   document.getElementsByClassName("popup1")[0].classList.remove("active");
                   });
-                   location.reload();
+                  //  location.reload();
                   // window.location = "PUB_Login.html";
                 }
                 else {
@@ -691,6 +691,14 @@
             });
             }
          }
+         function reload(){
+            location.reload();
+         }
+
+         function changewindow(){
+            window.location = "PUB_Login.html";
+         }
+
          function logout(){
             location.href = "A_Login.html";
          }

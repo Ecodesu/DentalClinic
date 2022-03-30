@@ -710,7 +710,7 @@
          <div class="popup-title">Remove User</div>
          <div class="description">User removed successfully!</div>
          <div class="dismiss-btn">
-           <button id="dismiss-popup-btn-remove">Close</button>
+           <button id="dismiss-popup-btn-remove" onclick="reload()">Close</button>
          </div>
        </div>
 
@@ -718,7 +718,7 @@
          <div class="popup-title">User Profile</div>
          <div class="description">User profile updated successfully!</div>
          <div class="dismiss-btn">
-           <button id="dismiss-popup-btn-update">Close</button>
+           <button id="dismiss-popup-btn-update" onclick="reload()">Close</button>
          </div>
        </div>
 
@@ -943,13 +943,22 @@ function isNumber(evt) {
                         success: function(dataResult){
                           var dataResult = JSON.parse(dataResult);
                           if(dataResult.status){
-                            alert("profile update success")
-                            location.reload()
+                           //  alert("profile update success")
+                           //  location.reload()
+                           document.getElementsByClassName("popupupdate")[0].classList.add("active");
+                            
+                           document.getElementById("dismiss-popup-btn-update").addEventListener("click", function () {
+                           document.getElementsByClassName("popupupdate")[0].classList.remove("active");
+                           });
                            
                           }
                           else{
-                            alert("Error occured !");
-                          
+                           //  alert("Error occured !");
+                           document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                            });
                            
                           }
                         }
@@ -977,7 +986,12 @@ function isNumber(evt) {
                         
                   }
                   else{
-                     alert("Error occured !");
+                     // alert("Error occured !");
+                     document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                     document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                     document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                     });
                   }
                }
             });
@@ -1004,7 +1018,7 @@ function isNumber(evt) {
                   document.getElementsByClassName("popupremove")[0].classList.remove("active");
                   });
                   //  viewarea()
-                  location.reload();
+                  // location.reload();
 
                 },
                 error: function (er) {
@@ -1045,7 +1059,7 @@ function isNumber(evt) {
                   document.getElementsByClassName("popupupdate")[0].classList.remove("active");
                   });
                   //  viewarea()
-                  location.reload();
+                  // location.reload();
 
                 },
                 error: function (er) {
@@ -1059,7 +1073,9 @@ function isNumber(evt) {
             });
          }
 
-      
+         function reload(){
+            location.reload();
+         }
          
          function logout(){
            localStorage.removeItem('user_id')
