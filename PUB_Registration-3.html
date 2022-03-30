@@ -865,7 +865,7 @@ footer .bottom-details .bottom_text{
       <div class="popup-title">Registration</div>
       <div class="description">Registration successful!</div>
       <div class="dismiss-btn">
-      <button id="dismiss-popup-btn-2">Close</button>
+      <button id="dismiss-popup-btn-2" onclick="changewindow()">Close</button>
       </div>
    </div>
 
@@ -1049,7 +1049,7 @@ function isNumber(evt) {
                   document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
                   document.getElementsByClassName("popup2")[0].classList.remove("active");
                   });
-                  window.location = "PUB_Login.html";
+                  // window.location = "PUB_Login.html";
                 }
                 else {
                   document.getElementsByClassName("popup3")[0].classList.add("active");
@@ -1091,6 +1091,11 @@ function isNumber(evt) {
       document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
         document.getElementsByClassName("popup1")[0].classList.remove("active");
       });
+
+
+      function changewindow(){
+       window.location = "PUB_Login.html";
+      }
       </script>
    </body>
 </html>
