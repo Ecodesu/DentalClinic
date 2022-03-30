@@ -506,6 +506,10 @@ footer .bottom-details .bottom_text{
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
     }
 
+    .popup-short{
+      height: 180px;
+    }
+
     .popup.active {
       opacity: 1;
       top: 50%;
@@ -607,6 +611,7 @@ footer .bottom-details .bottom_text{
       transition: all 300ms ease-in-out;
       margin-left: 45%;
       margin-top: 5%;
+      cursor: pointer;
     }
 
 
@@ -705,14 +710,38 @@ footer .bottom-details .bottom_text{
       </div>
 
           <!-- START OF POPUP -->
-    <div class="popup center">
+    <div class="popup popup1 center">
       <div class="ckicon">
         <i class="fa fa-check"></i>
       </div>
       <div class="popup-title">Add Patient</div>
       <div class="description">Patient added successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn-1" onclick="reload()">Close</button>
+      </div>
+    </div>
+
+    <div class="popup popup-short popup2 center">
+      <div class="popup-title">Add Patient</div>
+      <div class="description">Password does not match!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-2">Close</button>
+      </div>
+    </div>
+
+    <div class="popup popup-short popup3 center">
+      <div class="popup-title">Add Patient</div>
+      <div class="description">Insufficient number!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-3">Close</button>
+      </div>
+    </div>
+
+    <div class="popup popup-short popuperror center">
+      <div class="popup-title">Add Patient</div>
+      <div class="description">Error occured!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-error">Close</button>
       </div>
     </div>
 
@@ -813,22 +842,40 @@ function register_user(){
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                   alert("register success")	
-                  location.reload();
+                  // alert("register success")	
+                  // location.reload();
+                  document.getElementsByClassName("popup1")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                  document.getElementsByClassName("popup1")[0].classList.remove("active");
+                  });
                 }
                 else {
-                 
-                   alert("Error occured !");
+                  //  alert("Error occured !");
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
               }
             });
             }else{
-              
-               alert("password not match")
+              //  alert("password not match")
+              document.getElementsByClassName("popup2")[0].classList.add("active");
+                            
+              document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+              document.getElementsByClassName("popup2")[0].classList.remove("active");
+              });
             }
           }
           else{
-            alert("kulang yung number")
+            document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+            document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+            document.getElementsByClassName("popup3")[0].classList.remove("active");
+            });
+            // alert("kulang yung number")
           }
          
         
@@ -836,13 +883,13 @@ function register_user(){
          }
 
         // Popup Button
-      document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
-      });
+      // document.getElementById("open-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.add("active");
+      // });
 
-      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.remove("active");
-      });
+      // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup")[0].classList.remove("active");
+      // });
 
          const body = document.querySelector("body");
          const navbar = document.querySelector(".navbar");
@@ -862,6 +909,9 @@ function register_user(){
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          }
 
+         function reload(){
+            location.reload();
+          }
          
       </script>
    </body>

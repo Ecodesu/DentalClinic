@@ -243,7 +243,7 @@
 
     .popup {
       width: 350px;
-      height: 250px;
+      height: 240px;
       padding: 20px 20px;
       background: #f5f5f5;
       border-radius: 10px;
@@ -271,6 +271,10 @@
       top: -200%;
       transform: translate(-50%, -50%) scale(0.5);
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;     
+    }
+
+    .popup-short{
+      height: 180px;
     }
 
     .popup-logout{
@@ -719,14 +723,14 @@
          </div>
       </div>
 
-    <div class="popup center">
+    <div class="popup popup1 center">
       <div class="ckicon">
         <i class="fa fa-check"></i>
       </div>
       <div class="popup-title">Update Information</div>
       <div class="description">Changes saved successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn-1" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -748,6 +752,14 @@
       <button id="confirm-popup-btn-2" onclick="add_cert()">Add</button>
       <button id="dismiss-popup-btn-2">Close</button>
 
+    </div>
+
+    <div class="popup popup-short popuperror center">
+      <div class="popup-title">Update Information</div>
+      <div class="description">Error occured!</div>
+      <div class="dismiss-btn">
+        <button id="dismiss-popup-btn-error">Close</button>
+      </div>
     </div>
 
     <div class="popup popup-logout popup3 center">
@@ -868,7 +880,12 @@
                                 
                           }
                           else{
-                            alert("Error occured !");
+                            // alert("Error occured !");
+                            document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                            });
                           }
                         }
                       });
@@ -885,8 +902,12 @@
                         success: function(dataResult){
                           var dataResult = JSON.parse(dataResult);
                                  
-                                
-                         console.log("success")
+                        //  console.log("success")
+                        document.getElementsByClassName("popup1")[0].classList.add("active");
+                            
+                        document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                        document.getElementsByClassName("popup1")[0].classList.remove("active");
+                        });
                         }
                       });
             }
@@ -904,12 +925,22 @@
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
-                   alert("success")	
-                  location.reload();
+                  //  alert("success")	
+                  // location.reload();
+                  document.getElementsByClassName("popup1")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                  document.getElementsByClassName("popup1")[0].classList.remove("active");
+                  });
                 }
                 else {
                  
-                   alert("Error occured !");
+                  //  alert("Error occured !");
+                  document.getElementsByClassName("popuperror")[0].classList.add("active");
+                            
+                  document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+                  document.getElementsByClassName("popuperror")[0].classList.remove("active");
+                  });
                 }
               }
             });
@@ -963,13 +994,13 @@
 
 
          // Popup Button
-     document.getElementById("open-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.add("active");
-      });
+    //  document.getElementById("open-popup-btn").addEventListener("click", function () {
+    //     document.getElementsByClassName("popup")[0].classList.add("active");
+    //   });
 
-      document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-        document.getElementsByClassName("popup")[0].classList.remove("active");
-      });
+    //   document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+    //     document.getElementsByClassName("popup")[0].classList.remove("active");
+    //   });
 
       document.getElementById("open-popup2-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.add("active");
@@ -1011,6 +1042,11 @@
          window.onscroll = () => {
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
+
+         function reload(){
+            location.reload();
+          }
+
          function logout(){
             // windows.location = "A_Login.html"
             location.href = "A_Login.html";
