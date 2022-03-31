@@ -720,17 +720,6 @@ footer .bottom-details .bottom_text{
       </div>
 
     <!-- START OF POPUP -->
-    <div class="popup popup1 center">
-      <div class="ckicon">
-        <i class="fa fa-check"></i>
-      </div>
-      <div class="popup-title">Change Password</div>
-      <div class="description">Password changed successfully!</div>
-      <div class="dismiss-btn">
-        <button id="dismiss-popup-btn-1" onclick="reload()">Close</button>
-      </div>
-    </div>
-
     <div class="popup popup-logout popup2 center">
       <div class="popup-title">Logout</div>
       <div class="description">Are you sure you want to logout?</div>
@@ -742,17 +731,9 @@ footer .bottom-details .bottom_text{
 
     <div class="popup popup-short popup4 center">
       <div class="popup-title">Change Password</div>
-      <div class="description">Password does not match!</div>
+      <div class="description" id="popupDesc"></div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn-4">Close</button>
-      </div>
-    </div>
-
-    <div class="popup popup-short popup3 center">
-      <div class="popup-title">Change Password</div>
-      <div class="description">Error occured!</div>
-      <div class="dismiss-btn">
-        <button id="dismiss-popup-btn-3">Close</button>
+        <button id="dismiss-popup-btn-4" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -818,29 +799,9 @@ footer .bottom-details .bottom_text{
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          };
          
-         const present = document.getElementById("present");
-         const past = document.getElementById("past");
+  
          const presentTable = document.getElementById("presentApp");
          const pastTable = document.getElementById("pastApp");
-         present.addEventListener("click", (e) => {
-           if (past.classList.contains("selected-app")) {
-             past.classList.remove("selected-app");
-             present.classList.add("selected-app");
-         
-             pastTable.classList.add("hidden");
-             presentTable.classList.remove("hidden");
-           }
-         });
-         past.addEventListener("click", (e) => {
-           if (present.classList.contains("selected-app")) {
-             present.classList.remove("selected-app");
-             past.classList.add("selected-app");
-         
-             presentTable.classList.add("hidden");
-             pastTable.classList.remove("hidden");
-           }
-         });
-
 
          function change_pass(){
           var user_id = localStorage.getItem('user_id')
@@ -859,29 +820,15 @@ footer .bottom-details .bottom_text{
               },
               cache: false,
               success: function(dataResult){
+                //depends
                 var dataResult = JSON.parse(dataResult);
-                  // alert(dataResult.message)
-                  // document.getElementsByClassName("popup1")[0].classList.add("active");
-                            
-                  // document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
-                  // document.getElementsByClassName("popup1")[0].classList.remove("active");
-                  // });			 
+                sendMessageToPopup(dataResult.message);	
               },error:function(err){
-            // console.log(err)
-              document.getElementsByClassName("popup3")[0].classList.add("active");
-                            
-              document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
-              document.getElementsByClassName("popup3")[0].classList.remove("active");
-              });
+              sendMessageToPopup('Error');		 
             }
             });
           }else{
-            // alert("password not matched")
-            document.getElementsByClassName("popup4")[0].classList.add("active");
-                            
-            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
-            document.getElementsByClassName("popup4")[0].classList.remove("active");
-            });
+            sendMessageToPopup('Password Not Matched');	
           }
 
           function reload(){
@@ -892,6 +839,15 @@ footer .bottom-details .bottom_text{
          function logout(){
            localStorage.removeItem('user_id')
            location.href = "index.html";
+         }
+         function sendMessageToPopup(message){
+          console.log(message);
+          document.getElementsByClassName("popup4")[0].classList.add("active"); 
+          const desc = document.getElementById('popupDesc');   
+          desc.textContent = message;            
+          document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+          document.getElementsByClassName("popup4")[0].classList.remove("active");
+          });
          }
       </script>
    </body>

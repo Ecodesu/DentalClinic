@@ -710,6 +710,15 @@ footer .bottom-details .bottom_text{
         </div>
       </div>
 
+      
+      <div class="popup popup-short popup4 center">
+        <div class="popup-title">Change Password</div>
+        <div class="description" id="popupDesc"></div>
+        <div class="dismiss-btn">
+          <button id="dismiss-popup-btn-4" onclick="reload()">Close</button>
+        </div>
+      </div>
+
       <!--END OF POPUP -->
 
 
@@ -743,32 +752,15 @@ function change_pass(){
               },
               cache: false,
               success: function(dataResult){
+                //depends
                 var dataResult = JSON.parse(dataResult);
-                  alert(dataResult.message)
-                  $("#message_here").html(dataResult.message)
-                  // document.getElementsByClassName("popup")[0].classList.add("active");
-                            
-                  // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-                  // document.getElementsByClassName("popup")[0].classList.remove("active");
-                  // });			 
+                sendMessageToPopup(dataResult.message);	
               },error:function(err){
-            // console.log(err)
-              // alert("old password not matched from db")
-              document.getElementsByClassName("popup2")[0].classList.add("active");
-                            
-              document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
-              document.getElementsByClassName("popup2")[0].classList.remove("active");
-              });
-              
+              sendMessageToPopup('Error');		 
             }
             });
           }else{
-            // alert("password not matched")
-            document.getElementsByClassName("popup3")[0].classList.add("active");
-                            
-            document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
-            document.getElementsByClassName("popup3")[0].classList.remove("active");
-            });
+            sendMessageToPopup('Password Not Matched');	
           }
          }
         // Popup Button
@@ -798,6 +790,18 @@ function change_pass(){
            this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
          }
 
+         function sendMessageToPopup(message){
+          console.log(message);
+          document.getElementsByClassName("popup4")[0].classList.add("active"); 
+          const desc = document.getElementById('popupDesc');   
+          desc.textContent = message;            
+          document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+          document.getElementsByClassName("popup4")[0].classList.remove("active");
+          });
+         }
+         function reload(){
+            location.reload();
+          }
       </script>
    </body>
 </html>

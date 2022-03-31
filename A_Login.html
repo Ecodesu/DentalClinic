@@ -452,7 +452,7 @@
                 var dataResult = JSON.parse(dataResult);
                 if(dataResult.status){
                   if(dataResult.data.user_credential == "Admin"){
-                     alert("success")		
+                    //  alert("success")		
                   localStorage.setItem('user',dataResult.data.user_id)
                      window.location = "A_AddUser.html";				
                    }else if(dataResult.data.user_credential == "Personnel" || dataResult.data.user_credential == "Doctor"){
