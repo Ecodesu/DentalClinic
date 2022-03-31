@@ -461,35 +461,35 @@
                   <form>
                      <div class="form-control">
                         <label for="fname">First name:</label>
-                        <input size="50" type="text" id="first_name" name="fname"><br>
+                        <input size="50" type="text" id="first_name" name="fname" required><br>
                      </div>
                      <div class="form-control">
                         <label for="lname">Last name:</label>
-                        <input size="50" type="text" id="last_name" name="lname"><br>
+                        <input size="50" type="text" id="last_name" name="lname" required><br>
                      </div>
                      <div class="form-control">
                         <label for="email">Email:</label>
-                        <input size="50" type="text" id="email" name="email"><br>
+                        <input size="50" type="text" id="email" name="email" required><br>
                      </div>
                      <div class="form-control">
                         <label for="uname">Username:</label>
-                        <input size="50" type="text" id="user_name" name="uname"><br>
+                        <input size="50" type="text" id="user_name" name="uname" required><br>
                      </div>
                      <div class="form-control">
                         <label for="contactnum">Contact:</label>
-                        <input size="50" type="text" id="contact" name="contactnum" minlength="13" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" ><br>
+                        <input size="50" type="text" id="contact" name="contactnum" minlength="13" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" required><br>
                      </div>
                      <div class="form-control">
                         <label for="password">Password:</label>
-                        <input type="password" size="50" type="text" id="password" name="password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character."><br>
+                        <input type="password" size="50" type="text" id="password" name="password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." required=""><br>
                      </div>
                      <div class="form-control">
                         <label for="cpassword">Confirm Password:</label>
-                        <input type="password" size="50" type="text" id="confirm_password" name="cpassword"><br>
+                        <input type="password" size="50" type="text" id="confirm_password" name="cpassword" required><br>
                      </div>
                      <div class="form-control">
                         <label for="role">Role:</label>
-                        <select id="role">
+                        <select id="role" required>
                            <option value="none"> --Select Role-- </option>
                            <option value="Admin"> Administrator</option>
                            <option value="Doctor"> Doctor</option>

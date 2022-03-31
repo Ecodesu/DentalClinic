@@ -658,19 +658,19 @@ footer .bottom-details .bottom_text{
                 <div class="form-control">
                    <div class="col-6">
                       <label for="full-name">Old Password</label>
-                      <input type="password" placeholder="Enter Old Password" id="old_password" />
+                      <input type="password" placeholder="Enter Old Password" id="old_password" required/>
                    </div>
                 </div>
                 <div class="form-control">
                    <div class="col-6">
                       <label for="full-name">New Password</label>
-                      <input type="password" placeholder="Enter New Password" id="new_password" />
+                      <input type="password" placeholder="Enter New Password" id="new_password" required/>
                    </div>
                 </div>
                 <div class="form-control">
                    <div class="col-6">
                       <label for="full-name">Confirm Password</label>
-                      <input type="password" placeholder="Confirm New Password" id="confirm_password" />
+                      <input type="password" placeholder="Confirm New Password" id="confirm_password" required/>
                    </div>
                 </div>
                 <div class = "submitbtn">
@@ -744,13 +744,13 @@ function change_pass(){
               cache: false,
               success: function(dataResult){
                 var dataResult = JSON.parse(dataResult);
-                  // alert(dataResult.message)
+                  alert(dataResult.message)
                   $("#message_here").html(dataResult.message)
-                  document.getElementsByClassName("popup")[0].classList.add("active");
+                  // document.getElementsByClassName("popup")[0].classList.add("active");
                             
-                  document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-                  document.getElementsByClassName("popup")[0].classList.remove("active");
-                  });			 
+                  // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                  // document.getElementsByClassName("popup")[0].classList.remove("active");
+                  // });			 
               },error:function(err){
             // console.log(err)
               // alert("old password not matched from db")
