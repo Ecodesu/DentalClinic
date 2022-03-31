@@ -871,7 +871,7 @@ footer .bottom-details .bottom_text{
 
     <div class="popup popup-short popup3 center">
       <div class="popup-title">Registration</div>
-      <div class="description">Error Occured.</div>
+      <div class="description">Error Occured!</div>
       <div class="dismiss-btn">
       <button id="dismiss-popup-btn-3">Close</button>
       </div>
@@ -879,7 +879,7 @@ footer .bottom-details .bottom_text{
 
     <div class="popup popup-short popup4 center">
       <div class="popup-title">Registration</div>
-      <div class="description">Password does not match</div>
+      <div class="description">Password does not match!</div>
       <div class="dismiss-btn">
       <button id="dismiss-popup-btn-4">Close</button>
       </div>
@@ -887,11 +887,19 @@ footer .bottom-details .bottom_text{
 
     <div class="popup popup-short popup5 center">
       <div class="popup-title">Registration</div>
-      <div class="description">Please agree to the terms and conditions</div>
+      <div class="description">Please agree to the terms and conditions.</div>
       <div class="dismiss-btn">
       <button id="dismiss-popup-btn-5">Close</button>
       </div>
    </div>
+
+   <div class="popup popup-short popup6 center">
+    <div class="popup-title">Registration</div>
+    <div class="description">Number Insufficient.</div>
+    <div class="dismiss-btn">
+    <button id="dismiss-popup-btn-6">Close</button>
+    </div>
+ </div>
 
     <!-- END OF POPUP -->
 
@@ -1064,22 +1072,27 @@ function isNumber(evt) {
             }else{
               document.getElementsByClassName("popup4")[0].classList.add("active");
 
-                  document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
-                  document.getElementsByClassName("popup4")[0].classList.remove("active");
-                  });
+              document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+              document.getElementsByClassName("popup4")[0].classList.remove("active");
+              });
               // alert("password not match")
             }
          
           }else{
             document.getElementsByClassName("popup5")[0].classList.add("active");
 
-                  document.getElementById("dismiss-popup-btn-5").addEventListener("click", function () {
-                  document.getElementsByClassName("popup5")[0].classList.remove("active");
-                  });
+            document.getElementById("dismiss-popup-btn-5").addEventListener("click", function () {
+            document.getElementsByClassName("popup5")[0].classList.remove("active");
+            });
             // alert('not agree to the terms and condition?')
           }
         }else{
-          alert("kulang yung number")
+          // alert("kulang yung number")
+          document.getElementsByClassName("popup6")[0].classList.add("active");
+
+          document.getElementById("dismiss-popup-btn-6").addEventListener("click", function () {
+          document.getElementsByClassName("popup6")[0].classList.remove("active");
+          });
         } 
          }
 
