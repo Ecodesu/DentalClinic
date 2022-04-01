@@ -664,41 +664,41 @@ footer .bottom-details .bottom_text{
                <div class="form-control">
                   <div class="col-4">
                      <label for="full-name">Full Name</label>
-                     <input type="text" id="first_name" placeholder="Enter First Name" />
+                     <input type="text" id="first_name" placeholder="Enter First Name" required/>
                   </div>
                   <div class="col-4">
                      <label for="full-name" style="opacity: 0">a</label>
-                     <input type="text" id="last_name" placeholder="Enter Last Name" />
+                     <input type="text" id="last_name" placeholder="Enter Last Name" required/>
                   </div>
                </div>
                <div class="form-control">
                   <div class="col-3">
                      <label for="full-name">Contact Number</label>
-                     <input type="text" id="contact" placeholder="Enter Phone" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" />
+                     <input type="text" id="contact" placeholder="Enter Phone" value="09" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" requred/>
                   </div>
                   <div class="col-6">
                      <label for="full-name">Email Address</label>
-                     <input type="email" id="email" placeholder="Enter Email" onkeyup="validateEmail()" />
+                     <input type="email" id="email" placeholder="Enter Email" onkeyup="validateEmail()" required/>
                   </div>
                </div>
                <div class="form-control">
                   <div class="col-3">
                      <label for="full-name">Username</label>
-                     <input type="text" id="user_name" placeholder="Enter Username" />
+                     <input type="text" id="user_name" placeholder="Enter Username" required/>
                   </div>
                   <div class="col-6">
                      <label for="full-name">Address</label>
-                     <input type="text" id="address" placeholder="Enter Address" />
+                     <input type="text" id="address" placeholder="Enter Address" required/>
                   </div>
                </div>
                 <div class="form-control">
                   <div class="col-4">
                      <label for="password">Password</label>
-                     <input type="password" id="password" placeholder="Enter Password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." />
+                     <input type="password" id="password" placeholder="Enter Password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." required=""/>
                   </div>
                   <div class="col-4">
                      <label for="cpassword">Confirm Password</label>
-                     <input type="password" id="confirm_password" placeholder="Confirm Password" />
+                     <input type="password" id="confirm_password" placeholder="Confirm Password" required/>
                   </div>
                </div>
                <!-- id="open-popup-btn"-->
