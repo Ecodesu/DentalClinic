@@ -220,18 +220,7 @@
       border: 1px solid gray;
       border-radius: 5px;
       }
-      button{
-      background: #507973;;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 16px;
-      padding: 5px 30px;
-      border: none;
-      margin-left: 350px;
-      }
+
       .hidden {
       display: none;
       }
@@ -414,6 +403,19 @@
       /* END OF FOOTER */
 
 
+      .submitbtn input{
+      background: #507973;;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      margin-left: 350px;
+      }
+
    </style>
    <head>
       <meta charset="UTF-8" />
@@ -458,7 +460,7 @@
                   <h2>Add New User</h2>
                </div>
                <div class="profile-info">
-                  <form>
+                  <form action="javascript:register_user()">
                      <div class="form-control">
                         <label for="fname">First name:</label>
                         <input size="50" type="text" id="first_name" name="fname" required><br>
@@ -498,7 +500,9 @@
                         <br><br>
                         
                      </div>
-                     <button type="submit" id="open-popup-btn" onclick="register_user()">Add User</button>
+                     <div class = "submitbtn">
+                     <input type="submit" value="Add User">
+                  </div>
                   </form>
                </div>
             </div>
