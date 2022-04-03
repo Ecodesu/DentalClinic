@@ -653,7 +653,8 @@
          
          var password          = document.getElementById('password').value
          var confirm_password  = document.getElementById('confirm_password').value
-         if(password && confirm_password && first_name && last_name && email && user_name && contact && role){
+         if(password && confirm_password && first_name && last_name && email && user_name && contact && role != "none"){
+           role = document.getElementById('role').value
             if(confirm_password == password && role != "none"){
               $.ajax({
               url: "http://localhost/dental_clinic/api/user_register.php",
@@ -683,7 +684,7 @@
                   // window.location = "PUB_Login.html";
                 }
                 else { 
-                  // alert("Email already use !");
+                  // alert("Email already use or Username already use!");
                   document.getElementsByClassName("popup3")[0].classList.add("active");
                             
                   document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {

@@ -11,7 +11,7 @@
 
 
 	
-	$sql = "SELECT * FROM tbl_user WHERE user_email = '$email'";
+	$sql = "SELECT * FROM tbl_user WHERE user_email = '$email' OR user_name = '$user_name'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		echo json_encode(array("status"=>false));
