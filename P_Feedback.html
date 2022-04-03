@@ -673,7 +673,7 @@ footer .bottom-details .bottom_text{
       <div class="popup-title">Feedback</div>
       <div class="description">Feedback submitted successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn">Close</button>
+        <button id="dismiss-popup-btn" onclick="reload()">Close</button>
       </div>
     </div>
 
@@ -791,6 +791,10 @@ footer .bottom-details .bottom_text{
             }
             });
             
+          function reload(){
+            location.reload();
+          }
+
          }
          function logout(){
            localStorage.removeItem('user_id')
