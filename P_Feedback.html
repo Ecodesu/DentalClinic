@@ -567,7 +567,7 @@ footer .bottom-details .bottom_text{
       font-size: 36px;
       color: #507973;
       }
-      .profile-content button {
+      .profile-content .submitbtn {
       background: #507973;
       color: white;
       font-weight: bold;
@@ -658,7 +658,8 @@ footer .bottom-details .bottom_text{
                <div class="profile-info">
                   <form>
                      <textarea name="" id="feedback_message" cols="150" rows="20" required></textarea>
-                     <button type="button" id="open-popup-btn" onclick="send_feedback()">Submit Feedback</button>
+                     <input type="submit" class="submitbtn" value="Submit Feedback" id="open-popup-btn" onclick="send_feedback()">
+
                   </form>
                </div>
             </div>
