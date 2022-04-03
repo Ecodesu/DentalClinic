@@ -1067,10 +1067,10 @@
               contentType: false,
               cache: false,
               success: function(dataResult){
-                var dataResult = JSON.parse(dataResult);
-                sendMessageToPopup(dataResult.message);	
-               // location.reload()
-               //  alert(dataResult)
+               //  var dataResult = JSON.parse(dataResult);
+               //  sendMessageToPopup(dataResult.message);	
+               location.reload()
+                alert(dataResult)
               }
             });
          }
@@ -1097,10 +1097,10 @@
          });
          
          //Error!
-         $('#upload-img').on('click',function(){
-            $('.choose input[type="file"]').val('');
-            $('.label').val('');
-         });   
+         // $('#upload-img').on('click',function(){
+         //    $('.choose input[type="file"]').val('');
+         //    $('.label').val('');
+         // });   
         
 
          // Popup Button
