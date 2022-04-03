@@ -876,7 +876,12 @@ footer .bottom-details .bottom_text{
                                 
                           }
                           else{
-                            alert("Error occured !");
+                            // alert("Error occured !");
+                            document.getElementsByClassName("popup3")[0].classList.add("active");
+                            
+                            document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
+                            document.getElementsByClassName("popup3")[0].classList.remove("active");
+                            });
                           }
                         }
                       });
