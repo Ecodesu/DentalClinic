@@ -898,7 +898,8 @@
                         }
                       });
             function save_changes(){
-
+              var contact = document.getElementById("contactnum").value
+              if(contact.length == 13){
               $.ajax({
                         url: "http://localhost/dental_clinic/api/update_admin_profile.php",
                         type: "POST",
@@ -918,6 +919,9 @@
                         // });
                         }
                       });
+                    }else{
+                      alert("kulang number")
+                    }
             }
             function add_cert(){
               $.ajax({

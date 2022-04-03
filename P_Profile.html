@@ -894,7 +894,7 @@ footer .bottom-details .bottom_text{
             var contact     = $('#contact').val();
             var address     = $('#address').val();
             var user_name   = $('#user_name').val();
-            // if (contact.length != 13 ){
+            if (contact.length == 13 ){
               
               $.ajax({
                         url: "http://localhost/dental_clinic/api/update_profile.php",
@@ -928,12 +928,12 @@ footer .bottom-details .bottom_text{
                           }
                         }
                       });
-          //  }else{
-          //       // console.log('error')
-          //       alert("kulang number mo")
+           }else{
+                // console.log('error')
+                alert("kulang number mo")
               
                 
-          //   }
+            }
           }
 
           function logout(){
