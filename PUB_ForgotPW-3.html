@@ -775,17 +775,18 @@ footer .bottom-details .bottom_text{
                 var dataResult = JSON.parse(dataResult);
                 
               //  alert(dataResult.message)
-              // document.getElementsByClassName("popup")[0].classList.add("active");
+              document.getElementsByClassName("popup")[0].classList.add("active");
                             
-              // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-              // document.getElementsByClassName("popup")[0].classList.remove("active");
-              // });
+              document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+              document.getElementsByClassName("popup")[0].classList.remove("active");
+              });
                if(dataResult.status){
-                // window.location = "PUB_Login.html";
+                window.location = "PUB_Login.html";
                }
-               
+              
               }
             });
+            
           }else{
             // alert('password not match')
             document.getElementsByClassName("popuperror")[0].classList.add("active");
