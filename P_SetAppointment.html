@@ -645,6 +645,8 @@ footer .bottom-details .bottom_text{
       float: right;
       display: inline-flex;
       }
+
+
       .cancel, .clear{
       margin-top: 50px;
       color: white;
@@ -768,7 +770,9 @@ footer .bottom-details .bottom_text{
                         </div>
                      </div>
                      <div class="control-button" id="form-button">
-                        <button type="submit" class="cancel" href="P_Appointments.html">Cancel</button>
+                      <form action="P_Appointments.html">
+                        <input type="submit" value = "Cancel" class="cancel">
+                      </form>
                         <button type="submit" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
                         <a id="open-popup-btn" type="submit" class="submitbtn" onclick="submit_appointment()">Submit</a>
                      </div>
