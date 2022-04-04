@@ -654,7 +654,7 @@
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td class="pending-edit"> <button type="button" id="open-popup-btn" class="fas fa-check"/> <button onclick="document.getElementById('remarks_input').value = ''" type="button" id="open-popup2-btn" class="fas fa-times"/> </td>
+                              <td class="pending-edit"> <button type="button" id="open-popup-btn" class="fas fa-check"/> <button type="button" id="open-popup2-btn" class="fas fa-times"/> </td>
                            </tr>
                            <tr>
                               <td></td>
@@ -863,7 +863,7 @@
       </form>
       <div class="dismiss-btn">
       <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks(); reload()" disabled>Yes</button>
-      <button id="dismiss-popup-btn-2">Cancel</button>
+      <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Cancel</button>
       </div>
    </div>
 
