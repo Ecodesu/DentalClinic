@@ -695,7 +695,7 @@
                      </div>
                      <div class="form-control">
                         <label for="contactnum">Contact Number:</label><br>
-                        <input size="50" type="text" id="contactnum"  name="contactnum" minlength="13" onkeypress="return isNumber(event)"><br><br>
+                        <input size="50" type="text" id="contactnum"  placeholder="Contact number" minlength="13"onchange="auto_fill_validation()" onkeypress="return isNumber(event)"required/><br><br>
                      </div>
                      <div class = "submitbtn">
                      <input type="submit" id="open-popup-btn" value = "SAVE CHANGES">
@@ -768,10 +768,17 @@
       </div>
       <form action="javascript:add_cert()">
       <div class="form-control">
+<<<<<<< HEAD
         <label for="cert_date">Date :</label>
         <input type="date" id="cert_date" name="cert_date" min="2000-01-02"><br><br>
          <label for="cert_title"> Training/Certification Title: </label><br>
          <input size="50" type="text" id="cert_title" name="cert_title" required><br><br>
+=======
+        <label for="datemin">Date :</label>
+        <input type="date" id="datemin" name="datemin" min="2000-01-02"><br>
+         <label for="cert-title"> Training/Certification Title: </label><br>
+         <input size="50" type="text" id="cert-title" name="cert-title"><br><br>
+>>>>>>> f5619e5ce7b735fd58e34f1a9de52a88e5bcbc57
 
       </div>
       <div class = "submitbtn">
