@@ -667,7 +667,7 @@
          <div class="popup-title">User Profile</div>
          <div class="description">Edit User Information
             <br><br>
-            <form action="">
+            <form >
                <div class="form-group">
                   <label for="fname">First Name:</label>
                   <input type="text" id="fname">
@@ -710,7 +710,7 @@
          <div class="popup-title">Remove User</div>
          <div class="description">User removed successfully!</div>
          <div class="dismiss-btn">
-           <button id="dismiss-popup-btn-remove" >Close</button>
+           <button id="dismiss-popup-btn-remove" onclick="reload()">Close</button>
          </div>
        </div>
 
@@ -718,7 +718,7 @@
          <div class="popup-title">User Profile</div>
          <div class="description">User profile updated successfully!</div>
          <div class="dismiss-btn">
-           <button id="dismiss-popup-btn-update" >Close</button>
+           <button id="dismiss-popup-btn-update" onclick="reload()">Close</button>
          </div>
        </div>
 
@@ -867,9 +867,9 @@ function isNumber(evt) {
          document.getElementsByClassName("popup2")[0].classList.remove("active");
          });
 
-         document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
-         document.getElementsByClassName("popup3")[0].classList.remove("active");
-         });
+         // document.getElementById("confirm-popup-btn-3").addEventListener("click", function () {
+         // document.getElementsByClassName("popup3")[0].classList.remove("active");
+         // });
 
          document.getElementById("dismiss-popup-btn-3").addEventListener("click", function () {
          document.getElementsByClassName("popup3")[0].classList.remove("active");
