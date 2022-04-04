@@ -677,7 +677,7 @@
                      </div>
                      <div class="form-control">
                         <label for="contactnum">Contact Number:</label><br>
-                        <input size="50" type="text" id="contactnum"  name="contactnum" minlength="13" onkeypress="return isNumber(event)"><br><br>
+                        <input size="50" type="text" id="contactnum"  placeholder="Contact number" minlength="13"onchange="auto_fill_validation()" onkeypress="return isNumber(event)"required/><br><br>
                      </div>
 
                      <button type="button" onclick="save_changes()" id="open-popup-btn">SAVE CHANGES</button>
