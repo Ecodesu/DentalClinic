@@ -372,10 +372,6 @@
       transition: all 300ms ease-in-out 400ms;
     }
 
-    .popup.active .confirm-btn {
-      transition: all 300ms ease-in-out 400ms;
-    }
-
     .popup.popup2.center.active {
       height: 350px;
       width: 500px;
@@ -634,7 +630,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title> UPDATE INFORMATION </title>
+      <title> ADD USER </title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
@@ -681,7 +677,7 @@
                      </div>
                      <div class="form-control">
                         <label for="contactnum">Contact Number:</label><br>
-                        <input size="50" type="text" id="contactnum"  name="contactnum" onkeypress="return isNumber(event)"><br><br>
+                        <input size="50" type="text" id="contactnum"  name="contactnum" minlength="13" onkeypress="return isNumber(event)"><br><br>
                      </div>
 
                      <button type="button" onclick="save_changes()" id="open-popup-btn">SAVE CHANGES</button>
@@ -740,29 +736,28 @@
       <div class="popup-title">Update Information</div>
       <div class="description">Changes saved successfully!</div>
       <div class="dismiss-btn">
-        <button id="dismiss-popup-btn-1">Close</button>
+        <button id="dismiss-popup-btn-1" onclick="reload()">Close</button>
       </div>
     </div>
 
     <div class="popup popup2 center">
-      <form action = "javascript:add_cert()">
-        <div class="ckicon1">
-          <i class="fa fa-plus-circle"></i><br>
-          <h3> Additional Trainings & Certifications: </h3>
-        </div>
+      <div class="ckicon1">
+        <i class="fa fa-plus-circle"></i><br>
+        <h3> Additional Trainings & Certifications: </h3>
+      </div>
 
-        <div class="form-control">
-          <label for="cert-date"> Date: </label><br>
-          <input size="50" type="text" id="cert-date" name="cert-date" required><br><br>
+      <div class="form-control">
+         <label for="cert-date"> Date: </label><br>
+         <input size="50" type="text" id="cert-date" name="cert-date"><br><br>
 
-          <label for="cert-title"> Training/Certification Title: </label><br>
-          <input size="50" type="text" id="cert-title" name="cert-title"required><br><br>
+         <label for="cert-title"> Training/Certification Title: </label><br>
+         <input size="50" type="text" id="cert-title" name="cert-title"><br><br>
 
-        </div>
+      </div>
 
-        <button type= "submit" button id="confirm-popup-btn-2">Add</button>
-        <button id="dismiss-popup-btn-2">Close</button>
-      </form>
+      <button id="confirm-popup-btn-2" onclick="add_cert()">Add</button>
+      <button id="dismiss-popup-btn-2">Close</button>
+
     </div>
 
     <div class="popup popup-short popuperror center">
@@ -1026,9 +1021,9 @@
         document.getElementsByClassName("popup2")[0].classList.add("active");
       });
 
-      // document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
-      //   document.getElementsByClassName("popup2")[0].classList.remove("active");
-      // });
+      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+        document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.remove("active");
