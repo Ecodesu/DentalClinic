@@ -760,18 +760,18 @@ footer .bottom-details .bottom_text{
                </div>
                <div class="right-side">
                   <div class="topic-text">Send us a message</div>
-                  <form action="#" method ="post">
+                  <form action="#" onsubmit="return validateEmail()">
                      <div class="input-box">
                         <input type="text" placeholder="Enter your name" id="name">
                      </div>
                      <div class="input-box">
-                        <input type="email"  placeholder="Enter your email" id="email" onkeyup= "validateEmail()" required>
+                        <input type="email"  placeholder="Enter your email" id="email"  required>
                      </div>
                      <div class="input-box message-box">
                         <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message" id="message"></textarea>
                      </div>
                      <div class="button">
-                        <input type="button" id="open-popup-btn" onclick="send_message()" value="Send Now" >
+                        <input type="submit" id="open-popup-btn" onclick="send_message()" value="Send Now" >
                      </div>
                   </form>
                </div>
