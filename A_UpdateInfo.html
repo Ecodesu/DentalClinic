@@ -745,7 +745,7 @@
     </div>
 
     <div class="popup popup2 center">
-      <form action = "add_cert()">
+      <form action = "javascript:add_cert()">
         <div class="ckicon1">
           <i class="fa fa-plus-circle"></i><br>
           <h3> Additional Trainings & Certifications: </h3>
@@ -1026,9 +1026,9 @@
         document.getElementsByClassName("popup2")[0].classList.add("active");
       });
 
-      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
-        document.getElementsByClassName("popup2")[0].classList.remove("active");
-      });
+      // document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup2")[0].classList.remove("active");
+      // });
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.remove("active");
