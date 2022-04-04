@@ -659,6 +659,7 @@ footer .bottom-details .bottom_text{
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 16px;
+      text-decoration: none;
       padding: 5px 30px;
       border: none;
       background:#9C9696;
@@ -774,9 +775,9 @@ footer .bottom-details .bottom_text{
                         </div>
                      </div>
                      <div class="control-button" id="form-button">
-                      <a href = "P_Appointments.html"><input type="submit" value="CANCEL" class="cancel"></a>
-                        <button type="submit" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
-                        <a id="open-popup-btn" type="submit" class="submitbtn" >Submit</a>
+                      <a href = "P_Appointments.html"  input type="submit"  class="cancel" >Cancel</a>
+                        <button type="reset" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
+                        <a id="open-popup-btn" type="submit" onclick="submit_appointment()" class="submitbtn" >Submit</a>
                      </div>
                   </form>
                </div>
