@@ -760,12 +760,12 @@ footer .bottom-details .bottom_text{
                </div>
                <div class="right-side">
                   <div class="topic-text">Send us a message</div>
-                  <form action="#">
+                  <form action="#" method ="post">
                      <div class="input-box">
                         <input type="text" placeholder="Enter your name" id="name">
                      </div>
                      <div class="input-box">
-                        <input type="text" placeholder="Enter your email" id="email">
+                        <input type="email"  placeholder="Enter your email" id="email" onkeyup= "validateEmail()" required>
                      </div>
                      <div class="input-box message-box">
                         <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message" id="message"></textarea>
@@ -918,7 +918,15 @@ footer .bottom-details .bottom_text{
           x = 1;
         }
       });
- 
+      function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+      
+    }
+    
+console.log(validateEmail('anystring@anystring.anystring'));
+
  function send_message(){
   //  alert("success")
   var email         = $('#email').val();
@@ -964,7 +972,7 @@ footer .bottom-details .bottom_text{
  function reload(){
   location.reload();
  }
-
+ 
    </script>
  </body>
 </html>
