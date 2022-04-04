@@ -612,6 +612,19 @@ footer .bottom-details .bottom_text{
       margin: 0 10px;
       }
       /* END OF PROFILE */
+      
+      .submitbtn input {
+        background: #507973;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      margin-left:0px;
+    }
 
    </style>
    <head>
@@ -672,19 +685,22 @@ footer .bottom-details .bottom_text{
             </div>
             <div class="profile-content">
                <div class="profile-header">
+                <form action="javascript:save_profile()">
                   <h2>Profile</h2>
-                  <button type="button" id="open-popup-btn" onclick="save_profile()">Save Changes</button>
+                  <div class = "submitbtn">
+                  <input type="submit" value="Save Changes">
+                </div>
                </div>
                <div class="profile-info">
-                  <form>
+                  
                      <div class="form-control">
                         <div class="col-3">
                            <label for="full-name">Full Name</label>
-                           <input type="text" placeholder="Enter First Name" id="first_name"/>
+                           <input type="text" placeholder="Enter First Name" id="first_name" required/>
                         </div>
                         <div class="col-3">
                            <label for="full-name" style="opacity: 0">a</label>
-                           <input type="text" placeholder="Enter Last Name" id="last_name" />
+                           <input type="text" placeholder="Enter Last Name" id="last_name" required/>
                         </div>
                      </div>
                      <div class="form-control">
@@ -694,17 +710,17 @@ footer .bottom-details .bottom_text{
                         </div>
                         <div class="col-3">
                            <label for="full-name">Contact Number</label>
-                           <input type="text" placeholder="Enter Phone" id="contact" minlength="13" onchange="auto_fill_validation()" onkeypress="return isNumber(event)"/>
+                           <input type="text" placeholder="Enter Phone" id="contact" minlength="13" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" required/>
                         </div>
                      </div>
                      <div class="form-control">
                         <div class="col-6">
                            <label for="full-name">Address</label>
-                           <input type="text" placeholder="Enter Address" id="address"/>
+                           <input type="text" placeholder="Enter Address" id="address" required/>
                         </div>
                         <div class="col-3">
                            <label for="full-name">Username</label>
-                           <input type="text" placeholder="Enter Username" id="user_name"/>
+                           <input type="text" placeholder="Enter Username" id="user_name" required/>
                         </div>
                      </div>
                   </form>
