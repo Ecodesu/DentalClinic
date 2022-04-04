@@ -688,6 +688,19 @@ footer .bottom-details .bottom_text{
 
     /* END OF POPUP */
 
+    .submitbtn input{
+      background: #507973;;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      margin-left: 525px;
+      }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -760,7 +773,7 @@ footer .bottom-details .bottom_text{
                </div>
                <div class="right-side">
                   <div class="topic-text">Send us a message</div>
-                  <form action="#" onsubmit="return validateEmail()">
+                  <form action="javascript:send_message()" method ="post">
                      <div class="input-box">
                         <input type="text" placeholder="Enter your name" id="name">
                      </div>
@@ -770,8 +783,8 @@ footer .bottom-details .bottom_text{
                      <div class="input-box message-box">
                         <textarea  name="contact-message" rows="4" cols="50"placeholder="Enter your message" id="message"></textarea>
                      </div>
-                     <div class="button">
-                        <input type="submit" id="open-popup-btn" onclick="send_message()" value="Send Now" >
+                     <div class="submitbtn">
+                        <input type="submit" id="open-popup-btn" value="Send Now" >
                      </div>
                   </form>
                </div>
