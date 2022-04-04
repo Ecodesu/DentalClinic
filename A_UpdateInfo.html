@@ -256,6 +256,10 @@
       transform: translate(-50%, -50%) scale(0.5);
       transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
     }
+    
+    .popup1{
+      z-index: 99;
+    }
 
     .popup .popup2 .center{
        width: 350px;
@@ -626,6 +630,20 @@
       }
 
       /*END OF UPLOAD PHOTO*/
+
+      .submitbtn input {
+        background: #507973;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      margin-left:0px;
+    }
+
    </style>
    <head>
       <meta charset="UTF-8" />
@@ -670,7 +688,7 @@
                   <h2>Update Information</h2>
                </div>
                <div class="profile-info">
-                  <form>
+                  <form action="javascript:save_changes()">
                      <div class="form-control">
                         <label for="email">E-mail: </label><br>
                         <input size="50" type="email" id="email" name="email"><br><br>
@@ -679,11 +697,14 @@
                         <label for="contactnum">Contact Number:</label><br>
                         <input size="50" type="text" id="contactnum"  name="contactnum" minlength="13" onkeypress="return isNumber(event)"><br><br>
                      </div>
-
-                     <button type="button" onclick="save_changes()" id="open-popup-btn">SAVE CHANGES</button>
-                     <button type="button" id="open-popup2-btn"> + </button>
+                     <div class = "submitbtn">
+                     <input type="submit" id="open-popup-btn" value = "SAVE CHANGES">
+                    </form>
+                     <button type="button" id="open-popup2-btn">+</button>
+                     </div>
                      <br><br>
-
+                  
+                  <form>
                      <div class="profile-info-image">
                        <h2>Update Image</h2>
                         <table class="current-photos" align= "center" >
@@ -745,18 +766,20 @@
         <i class="fa fa-plus-circle"></i><br>
         <h3> Additional Trainings & Certifications: </h3>
       </div>
-
+      <form action="javascript:add_cert()">
       <div class="form-control">
-        <label for="datemin">Date :</label>
-        <input type="date" id="datemin" name="datemin" min="2000-01-02"><br><br>
-         <label for="cert-title"> Training/Certification Title: </label><br>
-         <input size="50" type="text" id="cert-title" name="cert-title"><br><br>
+        <label for="cert_date">Date :</label>
+        <input type="date" id="cert_date" name="cert_date" min="2000-01-02"><br><br>
+         <label for="cert_title"> Training/Certification Title: </label><br>
+         <input size="50" type="text" id="cert_title" name="cert_title" required><br><br>
 
       </div>
-
-      <button id="confirm-popup-btn-2" onclick="add_cert()">Add</button>
-      <button id="dismiss-popup-btn-2">Close</button>
-
+      <div class = "submitbtn">
+      <input type="submit" id="confirm-popup-btn-2" value="Add">
+      </form>
+      <input type="button" id="dismiss-popup-btn-2" value="Close">
+      </div>
+      
     </div>
 
     <div class="popup popup-short popuperror center">
@@ -913,14 +936,15 @@
                         },
                         cache: false,
                         success: function(dataResult){
-                          var dataResult = JSON.parse(dataResult);
-                          sendMessageToPopup(dataResult.message);	       
+                          // var dataResult = JSON.parse(dataResult);
+                          // sendMessageToPopup(dataResult.message);	   
+                          // console.log(dataResult)
                         //  console.log("success")
-                        // document.getElementsByClassName("popup1")[0].classList.add("active");
+                        document.getElementsByClassName("popup1")[0].classList.add("active");
                             
-                        // document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
-                        // document.getElementsByClassName("popup1")[0].classList.remove("active");
-                        // });
+                        document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                        document.getElementsByClassName("popup1")[0].classList.remove("active");
+                        });
                         }
                       });
             }
@@ -929,8 +953,8 @@
               url: "http://localhost/dental_clinic/api/cert.php",
               type: "POST",
               data: {
-                title:   document.getElementById("cert-title").value,
-                date:    document.getElementById("cert-date").value,
+                title:   document.getElementById("cert_title").value,
+                date:    document.getElementById("cert_date").value,
                 request_key:    "insert",
                 
               },
@@ -1020,9 +1044,9 @@
         document.getElementsByClassName("popup2")[0].classList.add("active");
       });
 
-      document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
-        document.getElementsByClassName("popup2")[0].classList.remove("active");
-      });
+      // document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
+      //   document.getElementsByClassName("popup2")[0].classList.remove("active");
+      // });
 
       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
         document.getElementsByClassName("popup2")[0].classList.remove("active");

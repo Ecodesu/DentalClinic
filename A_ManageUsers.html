@@ -943,6 +943,7 @@ function isNumber(evt) {
                         success: function(dataResult){
                           var dataResult = JSON.parse(dataResult);
                           if(dataResult.status){
+                           console.log(dataResult)
                            //  alert("profile update success")
                            //  location.reload()
                            document.getElementsByClassName("popupupdate")[0].classList.add("active");

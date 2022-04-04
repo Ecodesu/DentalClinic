@@ -539,17 +539,17 @@
          </div>
        </div>
 
-       <div class="popup popup-short popup4 center">
+       <div class="popup popup-custom popup4 center">
          <div class="popup-title">Add User</div>
-         <div class="description">Please fill all the fields!</div>
+         <div class="description">Password not match or role not assigned!</div>
          <div class="dismiss-btn">
            <button id="dismiss-popup-btn-4">Close</button>
          </div>
        </div>
 
-      <div class="popup popup-custom popuperror center">
+      <div class="popup popup-short popuperror center">
          <div class="popup-title">Add User</div>
-         <div class="description">Password not match or role not assigned!</div>
+         <div class="description">Error Occured!</div>
          <div class="dismiss-btn">
            <button id="dismiss-popup-btn-error">Close</button>
          </div>
@@ -696,18 +696,19 @@
             }
             else if(confirm_password != password || role == "none"){
             //   alert("password not match or role not assigned")
-            document.getElementsByClassName("popuperror")[0].classList.add("active");
+            document.getElementsByClassName("popup4")[0].classList.add("active");
                             
-            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
-            document.getElementsByClassName("popuperror")[0].classList.remove("active");
+            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
+            document.getElementsByClassName("popup4")[0].classList.remove("active");
             });
             }
          }else{   
          //   console.log('error');
-           document.getElementsByClassName("popup4")[0].classList.add("active");
+           
+            document.getElementsByClassName("popuperror")[0].classList.add("active");
                             
-            document.getElementById("dismiss-popup-btn-4").addEventListener("click", function () {
-            document.getElementsByClassName("popup4")[0].classList.remove("active");
+            document.getElementById("dismiss-popup-btn-error").addEventListener("click", function () {
+            document.getElementsByClassName("popuperror")[0].classList.remove("active");
             });
          } 
          }
