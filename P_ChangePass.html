@@ -636,6 +636,7 @@ footer .bottom-details .bottom_text{
       border-radius: 10px;
       transition: all 300ms ease-in-out;
       margin-left: 45%;
+      cursor: pointer;
     }
 
 
@@ -835,6 +836,7 @@ footer .bottom-details .bottom_text{
               },
               cache: false,
               success: function(dataResult){
+                console.log(dataResult)
                 //depends
                 var dataResult = JSON.parse(dataResult);
                 sendMessageToPopup(dataResult.message);	

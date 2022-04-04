@@ -610,6 +610,7 @@ footer .bottom-details .bottom_text{
       font-weight: 600;
       border-radius: 10px;
       transition: all 300ms ease-in-out;
+      cursor: pointer;
       margin-left: 45%;
       margin-top: 5%;
     }
@@ -656,22 +657,22 @@ footer .bottom-details .bottom_text{
             <form action="javascript:change_pass()">
              <div class="profile-box" >
                 <div class="form-control">
-                   <div class="col-6">
-                      <label for="full-name">Old Password</label>
-                      <input type="password" id="password" placeholder="Enter Password" required=""/>
-                   </div>
-                </div>
-                <div class="form-control">
-                   <div class="col-6">
-                      <label for="full-name">New Password</label>
-                      <input type="password" id="password" placeholder="Enter Password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." required=""/>
-                   </div>
-                </div>
-                <div class="form-control">
-                   <div class="col-6">
-                      <label for="full-name">Confirm Password</label>
-                      <input type="password" id="password" placeholder="Enter Password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." required=""/>
-                   </div>
+                  <div class="col-6">
+                    <label for="full-name">Old Password</label>
+                    <input type="password" placeholder="Enter Old Password" id="old_password" required="" />
+                 </div>
+              </div>
+              <div class="form-control">
+                 <div class="col-6">
+                    <label for="full-name">New Password</label>
+                    <input type="password" placeholder="Enter New Password" id="new_password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*?[~`!@#$%\^&*()\-_=+[\]{};:\x27.,\x22\\|/?<>]).{8,}" title="Password must at least be 8 characters in length, and contain 1 uppercase character and 1 special character." required=""/>
+                 </div>
+              </div>
+              <div class="form-control">
+                 <div class="col-6">
+                    <label for="full-name">Confirm Password</label>
+                    <input type="password" placeholder="Confirm New Password" id="confirm_password" required/>
+                 </div>
                 </div>
                 <div class = "submitbtn">
                <input type="submit" value = "Submit">
@@ -753,8 +754,17 @@ function change_pass(){
               cache: false,
               success: function(dataResult){
                 //depends
-                var dataResult = JSON.parse(dataResult);
-                sendMessageToPopup(dataResult.message);	
+                console.log(dataResult)
+                
+                $("#message_here").html(dataResult.message)
+
+                // document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                // document.getElementsByClassName("popup")[0].classList.remove("active");
+                // });	
+                // var dataResult = JSON.parse(dataResult);
+                // sendMessageToPopup(dataResult.message);	
               },error:function(err){
               sendMessageToPopup('Error');		 
             }
