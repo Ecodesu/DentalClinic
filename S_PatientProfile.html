@@ -1478,8 +1478,14 @@ footer .bottom-details .bottom_text{
           window.print()
           location.reload()
          }
-         
-      </script>
+         window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
    </body>

@@ -825,6 +825,13 @@ footer .bottom-details .bottom_text{
             }
         })
          }
-      </script>
+         window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
    </body>
 </html>

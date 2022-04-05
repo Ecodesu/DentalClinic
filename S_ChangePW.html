@@ -812,6 +812,13 @@ function change_pass(){
          function reload(){
             location.reload();
           }
-      </script>
+          window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
    </body>
 </html>

@@ -1080,9 +1080,16 @@ function isNumber(evt) {
          
          function logout(){
            localStorage.removeItem('user_id')
-           location.href = "index.html";
+           location.href = "A_Login.html";
+
          }
-      </script>
+      window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f121ce653c6a',m:'Q4pwh83moMRVIYfuM0LI.8bUq6dXcwwxXlg6ovAJBV8-1645005762-0-ATjw/SxG78nzJCipt7ThUBvBsA30Iv5UEWpbDwrMbUt9WfDYFLtsjmdm+41p3Feg80iGNFt+Wf5HibSau6s2MECrrynU87oDiluk+sXBQRftj0BqLXosQDFeBTwwuj/DeBdxknrJZfzgUhyZdBo9u7NhcgxdWS3ktOf/vnuweBjLa1jDi8bVKZ5q7P8txAJIF8JrRljGuwecnFb6MWJXv04=',s:[0xc03c8caaba,0x4d96b37322],}})();</script></body>
 </html>
