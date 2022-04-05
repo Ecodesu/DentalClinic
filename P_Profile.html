@@ -566,28 +566,20 @@ footer .bottom-details .bottom_text{
       .profile-content .profile-header h2 {
       font-size: 36px;
       color: #507973;
+      margin-left: 10px;
       }
-      .profile-content .profile-header button {
-      background: #507973;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 16px;
-      padding: 5px 30px;
-      border: none;
-      }
+
       .profile-info {
       margin-top: 80px;
       }
-      .profile-info form {
-      width: 600px;
+      .profile-content .profile-header form {
+      width: 200px;
       }
       .profile-info .form-control {
       margin: 40px 0;
       display: flex;
       flex-direction: row;
+      width: 800px;
       }
       .profile-info .form-control .col-3 {
       width: 50%;
@@ -611,6 +603,19 @@ footer .bottom-details .bottom_text{
       width: 66.67%;
       margin: 0 10px;
       }
+
+      .profile-content .profile-header .submitbtn input{
+      background: #507973;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      padding: 5px 30px;
+      border: none;
+      }
+
       /* END OF PROFILE */
       
       .submitbtn input {
@@ -685,8 +690,8 @@ footer .bottom-details .bottom_text{
             </div>
             <div class="profile-content">
                <div class="profile-header">
-                <form action="javascript:save_profile()">
                   <h2>Profile</h2>
+                  <form action="javascript:save_profile()">
                   <div class = "submitbtn">
                   <input type="submit" value="Save Changes">
                 </div>
