@@ -745,7 +745,7 @@ footer .bottom-details .bottom_text{
                      <div class="form-control">
                         <div class="col-6">
                            <label for="app-date">Date</label>
-                           <input type="date" name="dateofapp" id="app-date" onkeydown="return false" class="datepicker">
+                           <input type="date" name="dateofapp" id="app-date" onkeydown="return false" class="datepicker" required>
                         </div>
                         <div class="col-6">
                            <label for="app-time">Time</label>
@@ -777,7 +777,7 @@ footer .bottom-details .bottom_text{
                      <div class="control-button" id="form-button">
                       <a href = "P_Appointments.html"  input type="submit"  class="cancel" >Cancel</a>
                         <button type="reset" class="clear"  onclick="document.getElementById('concern').value = ''" >Clear</button>
-                        <a id="open-popup-btn" type="submit" class="submitbtn" >Submit</a>
+                        <input id="open-popup-btn" type="submit" class="submitbtn" >
                      </div>
                   </form>
                </div>
