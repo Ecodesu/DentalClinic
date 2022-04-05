@@ -767,7 +767,7 @@
                                     <div class="select-box">
                                        <select onchange="onchange_filter()" id="filter">
                                           <option value="">All</option>
-                                          <option value="Cancel">CANCEL</option>
+                                          <option value="Cancelled">CANCEL</option>
                                           <option value="Done">DONE</option>
                                        </select>
                                     </div>
@@ -1217,6 +1217,39 @@
                 $('#table_past').html(past)
             }
         })
+
+       function onchange_filter(){
+          var filter = document.getElementById('filter').value
+         $.ajax({
+            url:"http://localhost/dental_clinic/api/view_appointment.php",
+            type:"POST",
+            data:{
+              user_id: 'as',
+              filter: filter,
+            },
+            success:function(response){
+              
+                
+                var past   = "";
+                
+                for (i = 0; i < response.length; i++) {
+                  
+                     past+="<tr>"
+                     past+="<td>"+response[i].ref_no+"</td>"
+                     past+="<td>"+response[i].main_concern+"</td>"
+                     past+="<td>"+response[i].date+" "+response[i].time+"</td>"
+                     past+="<td>"+response[i].date_created+"</td>"
+                     past+="<td class='past-status'> "+response[i].status+" </td>"
+                     
+                     past+="</tr>"
+                  }
+                  console.log(response)
+                
+                
+                  $('#table_past').html(past)
+            }
+        })
+       }
       </script>
    </body>
 </html>

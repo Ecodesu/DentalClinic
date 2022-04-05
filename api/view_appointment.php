@@ -4,6 +4,8 @@ $user_id = $_POST['user_id'];
 $filter = $_POST['filter'];
 if($user_id == null || $user_id == ''){
 	$sql = "SELECT * FROM tbl_appointment";
+}else if($user_id == 'as'){
+	$sql = "SELECT * FROM tbl_appointment WHERE status LIKE '$filter%'";
 }else{
 	if($filter == null || $filter == ''){
 		$sql = "SELECT * FROM tbl_appointment WHERE user_id = $user_id";
