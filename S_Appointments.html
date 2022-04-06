@@ -859,10 +859,10 @@
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request?</div>
       <form action="javascript:cancel_appointment_with_remarks()">
-         <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3"  required/>
+         <input type="text" id="remarks_input" oninvalid="setCustomValidity('Input remark')" oninput="setCustomValidity('')" onkeyup ="require()" cols="45" rows="3"  required/>
       
       <div class="dismiss-btn">
-         <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Yes</button>
+         <button id="dismiss-popup-btn-2" button type = "submit">Yes</button>
    </form>
    <button id="confirm-popup-btn-2" onclick="reload()">Cancel</button>
       </div>
