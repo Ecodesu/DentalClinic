@@ -862,9 +862,9 @@
          <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3"  required/>
       
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2" onclick="reload()" disabled>Yes</button>
+         <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Yes</button>
    </form>
-      <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Cancel</button>
+   <button id="confirm-popup-btn-2" onclick="reload()">Cancel</button>
       </div>
    </div>
 
