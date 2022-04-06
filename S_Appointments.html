@@ -857,14 +857,13 @@
 
     <div class="popup popup2 center">
       <div class="popup-title">Appointments</div>
-      <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
+      <div class="description">Are you sure you want to reject this request?</div>
       <form action="javascript:cancel_appointment_with_remarks()">
          <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3"  required/>
-      
-      <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2" onclick="reload()" disabled>Yes</button>
-   </form>
-      <button id="dismiss-popup-btn-2" >Cancel</button>
+         <div class="dismiss-btn">
+            <button id="dismiss-popup-btn-2" button type = "submit">Yes</button>
+      </form>
+   <button id="confirm-popup-btn-2" onclick="reload()">Cancel</button>
       </div>
    </div>
 
@@ -1066,9 +1065,9 @@
       });
 
 
-       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
-         document.getElementsByClassName("popup2")[0].classList.remove("active");
-       });
+      // document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+      //    document.getElementsByClassName("popup2")[0].classList.remove("active");
+      // });
 
       document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
       document.getElementsByClassName("popup2")[0].classList.remove("active");
