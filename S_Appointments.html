@@ -858,11 +858,11 @@
     <div class="popup popup2 center">
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request?</div>
-      <form action="javascript:cancel_appointment_with_remarks()">
+      <form>
          <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3"/>
       
       <div class="dismiss-btn">
-         <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Yes</button>
+         <button id="dismiss-popup-btn-2" onclick="cancel_appointment_with_remarks(); document.getElementById('remarks_input').value = ''">Yes</button>
    </form>
    <button id="confirm-popup-btn-2" onclick="reload()">Cancel</button>
       </div>
