@@ -858,12 +858,11 @@
     <div class="popup popup2 center">
       <div class="popup-title">Appointments</div>
       <div class="description">Are you sure you want to reject this request? (Input remarks)</div>
-      <form action="javascript:cancel_appointment_with_remarks()">
+      <form action="">
          <input type="text" id="remarks_input" onkeyup ="require()" cols="45" rows="3"  required/>
-      
+      </form>
       <div class="dismiss-btn">
-      <button id="confirm-popup-btn-2" onclick="reload()" disabled>Yes</button>
-   </form>
+      <button id="confirm-popup-btn-2" onclick="cancel_appointment_with_remarks(); reload()" disabled>Yes</button>
       <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Cancel</button>
       </div>
    </div>
@@ -913,9 +912,7 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script>
-         function reload(){
-            location.reload();
-         }
+
          // Popup Button
       // document.getElementById("open-popup-btn").addEventListener("click", function () {
       //   document.getElementsByClassName("popup")[0].classList.add("active");
@@ -1066,9 +1063,9 @@
       });
 
 
-      // document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
-      //    document.getElementsByClassName("popup2")[0].classList.remove("active");
-      // });
+      document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+         document.getElementsByClassName("popup2")[0].classList.remove("active");
+      });
 
       document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
       document.getElementsByClassName("popup2")[0].classList.remove("active");
