@@ -864,7 +864,7 @@
       <div class="dismiss-btn">
       <button id="confirm-popup-btn-2" onclick="reload()" disabled>Yes</button>
    </form>
-      <button id="dismiss-popup-btn-2" onclick="document.getElementById('remarks_input').value = ''">Cancel</button>
+      <button id="dismiss-popup-btn-2" >Cancel</button>
       </div>
    </div>
 
@@ -1066,9 +1066,9 @@
       });
 
 
-      // document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
-      //    document.getElementsByClassName("popup2")[0].classList.remove("active");
-      // });
+       document.getElementById("dismiss-popup-btn-2").addEventListener("click", function () {
+         document.getElementsByClassName("popup2")[0].classList.remove("active");
+       });
 
       document.getElementById("confirm-popup-btn-2").addEventListener("click", function () {
       document.getElementsByClassName("popup2")[0].classList.remove("active");
