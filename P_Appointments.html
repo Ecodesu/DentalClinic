@@ -945,6 +945,10 @@ FREEPIK - https://www.freepik.com/vectors/medical - Medical vector created by fr
        }
        var user_id = localStorage.getItem('user_id')
 
+       function reload(){
+      location.reload();
+    }
+
        // Popup Button
       document.getElementById("open-popup-btn").addEventListener("click", function () {
         document.getElementsByClassName("popup")[0].classList.add("active");
