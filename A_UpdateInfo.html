@@ -695,7 +695,7 @@
                      </div>
                      <div class="form-control">
                         <label for="contactnum">Contact Number:</label><br>
-                        <input size="50" type="text" id="contactnum"  placeholder="Contact number" minlength="13"onchange="auto_fill_validation()" onkeypress="return isNumber(event)"required/><br><br>
+                        <input size="50" type="text" id="contactnum" oninvalid="setCustomValidity('Insufficient number')" oninput="setCustomValidity('')" placeholder="Contact number" minlength="13"onchange="auto_fill_validation()" onkeypress="return isNumber(event)"required/><br><br>
                      </div>
                      <div class = "submitbtn">
                      <input type="submit" id="open-popup-btn" value = "SAVE CHANGES">
