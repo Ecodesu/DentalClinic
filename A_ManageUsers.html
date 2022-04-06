@@ -675,7 +675,7 @@
          <div class="popup-title">Remove User</div>
          <div class="description">Are you sure you want to remove the user?</div>
          <div class="dismiss-btn">
-         <button id="confirm-popup-btn-2" onclick="remove_user()">Yes</button>
+         <button id="cwonfirm-popup-btn-2" onclick="remove_user()">Yes</button>
          <button id="dismiss-popup-btn-2">No</button>
          </div>
       </div>
@@ -703,16 +703,14 @@
                 </div>
                 <div class="form-group">
                   <label for="name">Contact: </label>
-                  <input type="text" minlength="13" name="name" onchange="auto_fill_validation()" onkeypress="return isNumber(event)" id="contact" required>
+                  <input type="text" minlength="13" name="name" onchange="auto_fill_validation(); completeNumber()" onkeypress="return isNumber(event)" id="contact" required>
                 </div>
                 <div class = "submitbtn">
                   <input type="submit" value = "Confirm">
             </form>
                   <input type="button" id="dismiss-popup-btn-3" value = "Cancel">
                </div>
-            
          </div>
-         
       </div>
 
       <div class="popup popup-logout popup4 center">
@@ -780,7 +778,14 @@ input.onkeydown = function() {
    }
 };
 
-
+function completeNumber()
+{
+   var input = document.getElementById('contact');
+   input.oninvalid = function(event) 
+   {
+      event.target.setCustomValidity('Insufficient number');
+   }
+}
 
 function auto_fill_validation(){
           var contact = document.getElementById('contact').value
