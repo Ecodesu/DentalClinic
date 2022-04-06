@@ -999,6 +999,11 @@
               cache: false,
               success: function(dataResult){
                 // var dataResult = JSON.parse(dataResult);
+                document.getElementsByClassName("popup1")[0].classList.add("active");
+                            
+                document.getElementById("dismiss-popup-btn-1").addEventListener("click", function () {
+                document.getElementsByClassName("popup1")[0].classList.remove("active");
+                });
                 sendMessageToPopup(dataResult.message);	
               //  location.reload()
               //   alert(dataResult)
