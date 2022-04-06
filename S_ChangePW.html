@@ -689,7 +689,7 @@ footer .bottom-details .bottom_text{
           <i class="fa fa-check"></i>
         </div>
         <div class="popup-title">Change Password</div>
-        <div class="description" id="message_here"></div>
+        <div class="description" id="popupDesc">Password changed Successfully!</div>
         <div class="dismiss-btn">
           <button id="dismiss-popup-btn">Close</button>
         </div>
@@ -755,17 +755,17 @@ function change_pass(){
               success: function(dataResult){
                 //depends
                 console.log(dataResult)
-                
-                $("#message_here").html(dataResult.message)
-                val = dataResult.status
-
-                document.getElementsByClassName("popup")[0].classList.add("active");
-                            
-                document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
-                document.getElementsByClassName("popup")[0].classList.remove("active");
-                });	
                 // var dataResult = JSON.parse(dataResult);
-                // sendMessageToPopup(dataResult.message);	
+                // $("#message_here").html(dataResult.message)
+                // // val = dataResult.status
+
+                // document.getElementsByClassName("popup")[0].classList.add("active");
+                            
+                // document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+                // document.getElementsByClassName("popup")[0].classList.remove("active");
+                // });	
+                var dataResult = JSON.parse(dataResult);
+                sendMessageToPopup(dataResult.message);	
               },error:function(err){
               sendMessageToPopup('Error');		 
             }
@@ -818,6 +818,16 @@ function change_pass(){
     {
         window.history.forward();
     }
+
+    function sendMessageToPopup(message){
+          console.log(message);
+          document.getElementsByClassName("popup")[0].classList.add("active"); 
+          const desc = document.getElementById('popupDesc');   
+          desc.textContent = message;            
+          document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+          document.getElementsByClassName("popup")[0].classList.remove("active");
+          });
+         }
 </script>
 
 <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">

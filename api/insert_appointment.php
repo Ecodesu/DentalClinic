@@ -22,7 +22,7 @@
 		VALUES 
 		('$ref_no','$main_concern','$user_id','$date','$time','Pending')";
 		if (mysqli_query($conn, $sql)) {
-			echo json_encode(array("message"=>"submit success. wait for doctor approval",
+			echo json_encode(array("message"=>"Submit Success! Wait for doctor's approval",
 									"status"=>true));
 		} 
 		else {

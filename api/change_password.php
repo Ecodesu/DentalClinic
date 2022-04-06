@@ -13,14 +13,14 @@ if ($result->num_rows > 0) {
     $sql = "UPDATE `tbl_user` 
 	SET user_password='$new_password' WHERE user_id=$user_id";
 	if (mysqli_query($conn, $sql)) {
-        $json_return['message'] = 'Change password success';
+        $json_return['message'] = 'Change password success!';
 	} 
 	else 
     {
-        $json_return['message'] = 'query error';
+        $json_return['message'] = 'Query Error';
 	}
 }else{
-    $json_return['message'] = 'old password not matched';
+    $json_return['message'] = 'Old password does not match!';
 }
 
 echo json_encode($json_return);
