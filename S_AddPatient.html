@@ -622,7 +622,7 @@ footer .bottom-details .bottom_text{
       <title> ADD PATIENT </title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    </head>
-   <body class = "bg">
+   <body class = "bg" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
 
 
    <!-- START of NAVIGATION BAR --> 
@@ -912,7 +912,11 @@ function register_user(){
          function reload(){
             location.reload();
           }
-         
-      </script>
-   </body>
+          window.history.forward();
+    function noBack()
+    {
+        window.history.forward();
+    }
+</script>
+
 </html>

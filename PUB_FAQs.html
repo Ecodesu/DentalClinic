@@ -518,7 +518,7 @@ footer .bottom-details .bottom_text{
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
    </head>
    <body>
-      <body class = "bg">
+      <body class = "bg" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
 
       <!-- START of NAVIGATION BAR --> 
       <nav class="navbar">
