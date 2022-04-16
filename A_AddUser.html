@@ -424,7 +424,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
    <!-- <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script> -->
 </head>
-   <body class="bg">
+   <body class="bg" onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
 
 
       <!-- START of NAVIGATION BAR --> 
@@ -594,7 +594,7 @@
                document.getElementById('contact').value = str.substring(0, str.length - 1);
             }
             
-
+                 
          };
          function auto_fill_validation(){
           var contact = document.getElementById('contact').value
@@ -731,6 +731,5 @@
     }
 </script>
 
-<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
    <!-- <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6de5f1abae783c6a',m:'wZ.TtnXBFcsRXqoN2Bere83Q.wJnBg4JpycrmjY.DTw-1645005784-0-AbwD/B0QbXbCTIoQ0NsvDJHgkm0N9f2qC+OHv68W67iWQWetWFgcOFuSLTLwrz0kUVFbw2ScAuXzaX+7UqQBxUbYWc4ORHow7KThG9PeC/mhwRpYwK1YlMxoQHjFo8vEpSKoCIMxshonmWVC6YQkPLIvimaIPME3V2MSXHgblMBNXck1qi+1HG4v93akruL4vlx4NfCCCgnnpnDSxBp7vg0=',s:[0xb6291293e6,0x241506f83a],}})();</script></body> -->
 </html>
